@@ -1,4 +1,5 @@
 #pragma once
+#include "Hulk.h"
 
 namespace WarTragedy {
 
@@ -14,6 +15,9 @@ namespace WarTragedy {
 	/// </summary>
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
+	private:
+		Bitmap^ bm = gcnew Bitmap("assets/hulk.png");
+		Hulk* jugador = new Hulk(300, 200);
 	public:
 		MyForm(void)
 		{
@@ -74,10 +78,43 @@ namespace WarTragedy {
 		}
 #pragma endregion
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+		// Creamos los graficos del formulario
+		Graphics^ g = this->CreateGraphics();
+		BufferedGraphicsContext^ espacioBuffer = BufferedGraphicsManager::Current;
+
+		BufferedGraphics^ buffer = espacioBuffer->Allocate(g, this->ClientRectangle);
+		buffer->Graphics->Clear(Color::White);
+
+		//aqui inicia la logica de tu juego
+		jugador->mover(buffer, bm);
+
+		//aqui termina la logica de tu juego
+		buffer->Render(g);
+		delete buffer;
+		delete espacioBuffer;
+		delete g;
 	}
 	private: System::Void MyForm_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		switch (e->KeyCode)
+		{
+		case Keys::W:
+			jugador->setDireccion(Arriba);
+			break;
+		case Keys::A:
+			jugador->setDireccion(Izquierda);
+			break;
+		case Keys::S:
+			jugador->setDireccion(Abajo);
+			break;
+		case Keys::D:
+			jugador->setDireccion(Derecha);
+			break;
+		default:
+			break;
+		}
 	}
 	private: System::Void MyForm_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		jugador->setDireccion(Ninguna);
 	}
 	};
 }
