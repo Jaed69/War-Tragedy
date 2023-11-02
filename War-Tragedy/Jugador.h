@@ -115,7 +115,7 @@ public:
 			}
 			break;
 		case Derecha:
-			if (Container(bg, rec,ancho * 2, 0)) {
+			if (!Container(bg, rec,ancho * 2, 0)) {
 				//dead or smth
 			}
 			else {
@@ -124,7 +124,7 @@ public:
 			}
 			break;
 		case Izquierda:
-			if (Container(bg, rec,  -(ancho * 2), 0)) {
+			if (!Container(bg, rec,  -(ancho * 2), 0)) {
 				//dead or smth
 			}
 			else {
