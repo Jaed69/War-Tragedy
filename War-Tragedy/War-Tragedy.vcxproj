@@ -130,7 +130,7 @@
     <ClInclude Include="Entidad.h" />
     <ClInclude Include="Jugador.h" />
     <ClInclude Include="MyForm.h">
-      <FileType>CppHeader</FileType>
+      <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Nivel1.h">
       <FileType>CppForm</FileType>
@@ -143,17 +143,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="MyForm.resx">
-      <DependentUpon>MyForm.h</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Nivel1.resx">
       <DependentUpon>Nivel1.h</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="assets\hulk.png">
-      <DeploymentContent>true</DeploymentContent>
-    </Image>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
