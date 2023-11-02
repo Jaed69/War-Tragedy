@@ -124,7 +124,9 @@
     <ClCompile Include="MyForm.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Entidad.h" />
     <ClInclude Include="Hulk.h" />
+    <ClInclude Include="Jugador.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppHeader</FileType>
     </ClInclude>
