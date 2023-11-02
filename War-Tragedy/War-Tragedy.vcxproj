@@ -143,6 +143,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="MyForm.resx">
+      <DependentUpon>MyForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Nivel1.resx">
       <DependentUpon>Nivel1.h</DependentUpon>
     </EmbeddedResource>

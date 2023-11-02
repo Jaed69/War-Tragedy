@@ -1,5 +1,7 @@
 #pragma once
-#include "Hulk.h"
+#include "Nivel1.h"
+#include "Nivel2.h"
+#include "Nivel3.h"
 
 namespace WarTragedy {
 
@@ -15,9 +17,6 @@ namespace WarTragedy {
 	/// </summary>
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
-	private:
-		Bitmap^ bm = gcnew Bitmap("assets/hulk.png");
-		Hulk* jugador = new Hulk(300, 200);
 	public:
 		MyForm(void)
 		{
@@ -38,7 +37,12 @@ namespace WarTragedy {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Timer^ timer1;
+	private: System::Windows::Forms::Button^ btnNivel1;
+	private: System::Windows::Forms::Button^ btnNivel2;
+	private: System::Windows::Forms::Button^ btnNivel3;
+	protected:
+
+	protected:
 	protected:
 	private: System::ComponentModel::IContainer^ components;
 
@@ -55,66 +59,67 @@ namespace WarTragedy {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->components = (gcnew System::ComponentModel::Container());
-			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->btnNivel1 = (gcnew System::Windows::Forms::Button());
+			this->btnNivel2 = (gcnew System::Windows::Forms::Button());
+			this->btnNivel3 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
-			// timer1
+			// btnNivel1
 			// 
-			this->timer1->Enabled = true;
-			this->timer1->Tick += gcnew System::EventHandler(this, &MyForm::timer1_Tick);
+			this->btnNivel1->Location = System::Drawing::Point(102, 59);
+			this->btnNivel1->Name = L"btnNivel1";
+			this->btnNivel1->Size = System::Drawing::Size(75, 23);
+			this->btnNivel1->TabIndex = 0;
+			this->btnNivel1->Text = L"Nivel1";
+			this->btnNivel1->UseVisualStyleBackColor = true;
+			this->btnNivel1->Click += gcnew System::EventHandler(this, &MyForm::btnNivel1_Click);
+			// 
+			// btnNivel2
+			// 
+			this->btnNivel2->Location = System::Drawing::Point(102, 108);
+			this->btnNivel2->Name = L"btnNivel2";
+			this->btnNivel2->Size = System::Drawing::Size(75, 23);
+			this->btnNivel2->TabIndex = 1;
+			this->btnNivel2->Text = L"Nivel2";
+			this->btnNivel2->UseVisualStyleBackColor = true;
+			this->btnNivel2->Click += gcnew System::EventHandler(this, &MyForm::btnNivel2_Click);
+			// 
+			// btnNivel3
+			// 
+			this->btnNivel3->Location = System::Drawing::Point(102, 161);
+			this->btnNivel3->Name = L"btnNivel3";
+			this->btnNivel3->Size = System::Drawing::Size(75, 23);
+			this->btnNivel3->TabIndex = 2;
+			this->btnNivel3->Text = L"Nivel3";
+			this->btnNivel3->UseVisualStyleBackColor = true;
+			this->btnNivel3->Click += gcnew System::EventHandler(this, &MyForm::btnNivel3_Click);
 			// 
 			// MyForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(584, 535);
+			this->ClientSize = System::Drawing::Size(1924, 923);
+			this->Controls->Add(this->btnNivel3);
+			this->Controls->Add(this->btnNivel2);
+			this->Controls->Add(this->btnNivel1);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"MyForm";
 			this->Text = L"MyForm";
-			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MyForm::MyForm_KeyDown);
-			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &MyForm::MyForm_KeyUp);
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
-	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
-		// Creamos los graficos del formulario
-		Graphics^ g = this->CreateGraphics();
-		BufferedGraphicsContext^ espacioBuffer = BufferedGraphicsManager::Current;
-
-		BufferedGraphics^ buffer = espacioBuffer->Allocate(g, this->ClientRectangle);
-		buffer->Graphics->Clear(Color::White);
-
-		//aqui inicia la logica de tu juego
-		jugador->mover(buffer, bm);
-
-		//aqui termina la logica de tu juego
-		buffer->Render(g);
-		delete buffer;
-		delete espacioBuffer;
-		delete g;
+	private: System::Void btnNivel1_Click(System::Object^ sender, System::EventArgs^ e) {
+		Nivel1^ nivel1 = gcnew Nivel1();
+		nivel1->ShowDialog();
 	}
-	private: System::Void MyForm_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-		switch (e->KeyCode)
-		{
-		case Keys::W:
-			jugador->setDireccion(Arriba);
-			break;
-		case Keys::A:
-			jugador->setDireccion(Izquierda);
-			break;
-		case Keys::S:
-			jugador->setDireccion(Abajo);
-			break;
-		case Keys::D:
-			jugador->setDireccion(Derecha);
-			break;
-		default:
-			break;
-		}
+	private: System::Void btnNivel2_Click(System::Object^ sender, System::EventArgs^ e) {
+		Nivel2^ nivel2 = gcnew Nivel2();
+		nivel2->ShowDialog();
 	}
-	private: System::Void MyForm_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-		jugador->setDireccion(Ninguna);
+	private: System::Void btnNivel3_Click(System::Object^ sender, System::EventArgs^ e) {
+		Nivel3^ nivel3 = gcnew Nivel3();
+		nivel3->ShowDialog();
 	}
 	};
 }
