@@ -64,7 +64,7 @@ public:
 
 	void dibujar(BufferedGraphics^ bg, Bitmap^ bm) {
 		Rectangle area = Rectangle(indX * ancho, indY * alto, ancho, alto);
-		Rectangle zonaAumento = Rectangle(x, y, ancho * 1.5, alto * 1.5);
+		Rectangle zonaAumento = Rectangle(x, y, ancho * 2, alto *2);
 		bg->Graphics->DrawImage(bm, zonaAumento, area, GraphicsUnit::Pixel);
 		x += dx * vel;
 		y += dy * vel;

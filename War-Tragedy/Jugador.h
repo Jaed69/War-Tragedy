@@ -25,33 +25,29 @@ public:
 			switch (ultDireccion)
 			{
 			case Abajo:
-				indX = 0;
-				indY = 0;
+				indX = 4;
+				indY = 2;
 				break;
 			case Arriba:
-				indX = 0;
-				indY = 3;
+				indX = 4;
+				indY = 0;
 				break;
 			case Izquierda:
-				indX = 0;
+				indX = 1;
 				indY = 1;
 				break;
 			case Derecha:
-				indX = 0;
-				indY = 2;
+				indX = 7;
+				indY = 1;
 				break;
 			default:
 				break;
 			}
 			break;
 		case Abajo:
-			indY = 0;
-			if (indX >= 0 && indX < 3) {
-				indX++;
-			}
-			else {
-				indX = 0;
-			}
+			indY = 2;
+			if (indX >= 3 && indX < 5) indX++;
+			else indX = 3;
 			if (Container(bg, rec, x, y, 0, 10)) {
 				dx = 0; dy = 10; ultDireccion = Abajo;
 			}
@@ -60,13 +56,9 @@ public:
 			}
 			break;
 		case Arriba:
-			indY = 3;
-			if (indX >= 0 && indX < 3) {
-				indX++;
-			}
-			else {
-				indX = 0;
-			}
+			indY = 0;
+			if (indX >= 3 && indX < 5) indX++;
+			else indX = 3;
 			if (Container(bg, rec, x, y, 0, -10)) {
 				dx = 0; dy = -10; ultDireccion = Arriba;
 			}
@@ -76,12 +68,8 @@ public:
 			break;
 		case Izquierda:
 			indY = 1;
-			if (indX >= 0 && indX < 3) {
-				indX++;
-			}
-			else {
-				indX = 0;
-			}
+			if (indX >= 0 && indX < 2) indX++;
+			else indX = 0;
 			if (Container(bg, rec, x, y, -10, 0)) {
 				dx = -10; dy = 0; ultDireccion = Izquierda;
 			}
@@ -90,13 +78,9 @@ public:
 			}
 			break;
 		case Derecha:
-			indY = 2;
-			if (indX >= 0 && indX < 3) {
-				indX++;
-			}
-			else {
-				indX = 0;
-			}
+			indY = 1;
+			if (indX >= 6 && indX < 8) indX++;
+			else indX = 7;
 			if (Container(bg, rec, x, y, 10, 0)) {
 				dx = 10; dy = 0; ultDireccion = Derecha;
 			}
