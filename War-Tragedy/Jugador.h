@@ -41,6 +41,22 @@ public:
 				indX = 7;
 				indY = 1;
 				break;
+			case ArrDer:
+				indX = 8;
+				indY = 0;
+				break;
+			case ArrIzq:
+				indX = 1;
+				indY = 0;
+				break;
+			case AbDer:
+				indX = 8;
+				indY = 2;
+				break;
+			case AbIzq:
+				indX = 1;
+				indY = 2;
+				break;
 			default:
 				break;
 			}
@@ -87,6 +103,50 @@ public:
 			}
 			else {
 				dx = 0; dy = 0; ultDireccion = Derecha;
+			}
+			break;
+		case ArrDer:
+			indY = 0;
+			if (indX >= 6 && indX < 8) indX++;
+			else indX = 7;
+			if (Container(bg, rec, 10, -10)) {
+				dx = 10; dy = -10; ultDireccion = ArrDer;
+			}
+			else {
+				dx = 0; dy = 0; ultDireccion = ArrDer;
+			}
+			break;
+		case ArrIzq:
+			indY = 0;
+			if (indX >= 0 && indX < 2) indX++;
+			else indX = 0;
+			if (Container(bg, rec, -10, -10)) {
+				dx = -10; dy = -10; ultDireccion = ArrIzq;
+			}
+			else {
+				dx = 0; dy = 0; ultDireccion = ArrIzq;
+			}
+			break;
+		case AbDer:
+			indY = 2;
+			if (indX >= 6 && indX < 8) indX++;
+			else indX = 7;
+			if (Container(bg, rec, 10, 10)) {
+				dx = 10; dy = 10; ultDireccion = AbDer;
+			}
+			else {
+				dx = 0; dy = 0; ultDireccion = AbDer;
+			}
+			break;
+		case AbIzq:
+			indY = 2;
+			if (indX >= 0 && indX < 2) indX++;
+			else indX = 0;
+			if (Container(bg, rec, -10, 10)) {
+				dx = -10; dy = 10; ultDireccion = AbIzq;
+			}
+			else {
+				dx = 0; dy = 0; ultDireccion = AbIzq;
 			}
 			break;
 
