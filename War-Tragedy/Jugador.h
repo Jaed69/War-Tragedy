@@ -92,4 +92,43 @@ public:
 		}
 		dibujar(bg, bm);
 	}
+
+	void Dash(BufferedGraphics^ bg, Rectangle rec) {
+		switch (ultDireccion) {
+		case Arriba:
+			if (!Container(bg, rec, x, y, 0, -(alto * 2))) {
+				//dead or smth
+			}
+			else			{
+				y -= alto * 2;
+			}
+			break;
+		case Abajo:
+			if (!Container(bg, rec, x, y, 0, (alto * 2))) {
+				//dead or smth
+			}
+			else {
+				y += alto * 2;
+			}			
+			break;
+		case Derecha:
+			if (Container(bg, rec, x, y, ancho * 2, 0)) {
+				//dead or smth
+			}
+			else {
+				x += ancho * 2;
+			}
+			break;
+		case Izquierda:
+			if (Container(bg, rec, x, y, -(ancho * 2), 0)) {
+				//dead or smth
+			}
+			else {
+				x += ancho * 2;
+			}
+			break;
+		}
+
+	}
+
 };
