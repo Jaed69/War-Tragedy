@@ -25,7 +25,7 @@ namespace WarTragedy {
 			//
 			//TODO: Add the constructor code here
 			//
-			r = Rectangle(40, 40, 1060, 590);
+			r = Rectangle(80, 68, 800, 450);
 		}
 
 	protected:
@@ -70,9 +70,7 @@ namespace WarTragedy {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->ClientSize = System::Drawing::Size(1125, 609);
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->ClientSize = System::Drawing::Size(1280, 720);
 			this->Name = L"Nivel1";
 			this->Text = L"Nivel1";
 			this->Load += gcnew System::EventHandler(this, &Nivel1::Nivel1_Load);
@@ -94,12 +92,16 @@ namespace WarTragedy {
 		delete buffer; delete espacioBuffer; delete g;
 	}
 	private: System::Void Nivel1_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		Graphics^ g = this->CreateGraphics();
+		BufferedGraphicsContext^ espacioBuffer = BufferedGraphicsManager::Current;
+		BufferedGraphics^ buffer = espacioBuffer->Allocate(g, this->ClientRectangle);
 		switch (e->KeyCode)
 		{
 		case Keys::W: jugador->setDireccion(Arriba); break;
 		case Keys::A: jugador->setDireccion(Izquierda); break;
 		case Keys::S: jugador->setDireccion(Abajo); break;
 		case Keys::D: jugador->setDireccion(Derecha); break;
+		case Keys::Space: jugador->Dash(buffer, r); break;
 		default:
 			break;
 		}
