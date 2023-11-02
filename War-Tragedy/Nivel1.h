@@ -25,7 +25,7 @@ namespace WarTragedy {
 			//
 			//TODO: Add the constructor code here
 			//
-			r = Rectangle(40, 40, 1060, 590);
+			r = Rectangle(80, 68, 800, 450);
 		}
 
 	protected:
@@ -69,7 +69,7 @@ namespace WarTragedy {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1500, 750);
+			this->ClientSize = System::Drawing::Size(1280, 720);
 			this->Name = L"Nivel1";
 			this->Text = L"Nivel1";
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &Nivel1::Nivel1_KeyDown);
