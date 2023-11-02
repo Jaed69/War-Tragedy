@@ -10,6 +10,7 @@ public:
 	Jugador(int x,int y):Entidad(x,y,32,48,1){
 		indX = 4;
 		indY = 2;
+		aumento = 2;
 	}
 	~Jugador(){}
 	int getchaleco() { return this->chaleco; }
@@ -48,7 +49,7 @@ public:
 			indY = 2;
 			if (indX >= 3 && indX < 5) indX++;
 			else indX = 3;
-			if (Container(bg, rec, x, y, 0, 10)) {
+			if (Container(bg, rec, 0, 10)) {
 				dx = 0; dy = 10; ultDireccion = Abajo;
 			}
 			else {
@@ -59,7 +60,7 @@ public:
 			indY = 0;
 			if (indX >= 3 && indX < 5) indX++;
 			else indX = 3;
-			if (Container(bg, rec, x, y, 0, -10)) {
+			if (Container(bg, rec,  0, -10)) {
 				dx = 0; dy = -10; ultDireccion = Arriba;
 			}
 			else {
@@ -70,7 +71,7 @@ public:
 			indY = 1;
 			if (indX >= 0 && indX < 2) indX++;
 			else indX = 0;
-			if (Container(bg, rec, x, y, -10, 0)) {
+			if (Container(bg, rec, -10, 0)) {
 				dx = -10; dy = 0; ultDireccion = Izquierda;
 			}
 			else {
@@ -81,7 +82,7 @@ public:
 			indY = 1;
 			if (indX >= 6 && indX < 8) indX++;
 			else indX = 7;
-			if (Container(bg, rec, x, y, 10, 0)) {
+			if (Container(bg, rec,  10, 0)) {
 				dx = 10; dy = 0; ultDireccion = Derecha;
 			}
 			else {
@@ -96,7 +97,7 @@ public:
 	void Dash(BufferedGraphics^ bg, Rectangle rec) {
 		switch (ultDireccion) {
 		case Arriba:
-			if (!Container(bg, rec, x, y, 0, -(alto * 2))) {
+			if (!Container(bg, rec, 0, -(alto * 2))) {
 				//dead or smth
 			}
 			else			{
@@ -104,7 +105,7 @@ public:
 			}
 			break;
 		case Abajo:
-			if (!Container(bg, rec, x, y, 0, (alto * 2))) {
+			if (!Container(bg, rec, 0, (alto * 2))) {
 				//dead or smth
 			}
 			else {
@@ -112,7 +113,7 @@ public:
 			}			
 			break;
 		case Derecha:
-			if (Container(bg, rec, x, y, ancho * 2, 0)) {
+			if (Container(bg, rec,ancho * 2, 0)) {
 				//dead or smth
 			}
 			else {
@@ -120,7 +121,7 @@ public:
 			}
 			break;
 		case Izquierda:
-			if (Container(bg, rec, x, y, -(ancho * 2), 0)) {
+			if (Container(bg, rec,  -(ancho * 2), 0)) {
 				//dead or smth
 			}
 			else {

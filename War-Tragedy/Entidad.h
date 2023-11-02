@@ -13,8 +13,11 @@ protected:
 	int vel;
 	int indX, indY;
 	int vida;
+	int aumento;
 	Direcciones ultDireccion;
 	Direcciones direccion;
+	Rectangle area;
+	Rectangle zonaAumento;
 
 public:
 	Entidad(){}
@@ -30,6 +33,7 @@ public:
 		direccion = Ninguna;
 		indX = 0;
 		indY = 0;
+		aumento = 1;
 	}
 
 	~Entidad(){}
@@ -49,11 +53,11 @@ public:
 	void setalto(int alto) { this->alto = alto; }
 
 	Rectangle getRec() {
-		return Rectangle(x, y, ancho, alto);
+		return Rectangle(x, y, ancho* aumento, alto* aumento);
 	}
 
-	bool Container(BufferedGraphics^ bg, Rectangle container, int x, int y, int dx, int dy) {
-		Rectangle _r = Rectangle(x + dx, y + dy, ancho, alto);
+	bool Container(BufferedGraphics^ bg, Rectangle container, int dx, int dy) {
+		Rectangle _r = Rectangle(x + dx, y + dy, ancho* aumento, alto* aumento);
 		bg->Graphics->DrawRectangle(gcnew Pen(Color::Blue), _r);
 		return (container.Contains(_r));
 	}
@@ -63,8 +67,9 @@ public:
 	}
 
 	void dibujar(BufferedGraphics^ bg, Bitmap^ bm) {
-		Rectangle area = Rectangle(indX * ancho, indY * alto, ancho, alto);
-		Rectangle zonaAumento = Rectangle(x, y, ancho * 2, alto *2);
+		area = Rectangle(indX * ancho, indY * alto, ancho, alto);
+		zonaAumento = Rectangle(x, y, ancho * aumento, alto * aumento);
+		bg->Graphics->DrawRectangle(gcnew Pen(Color::Yellow), zonaAumento);
 		bg->Graphics->DrawImage(bm, zonaAumento, area, GraphicsUnit::Pixel);
 		x += dx * vel;
 		y += dy * vel;
