@@ -2,7 +2,7 @@
 
 using namespace System::Drawing;
 
-enum Direcciones { Ninguna, Abajo, Arriba, Izquierda, Derecha };
+enum Direcciones { Ninguna, Abajo, Arriba, Izquierda, Derecha, ArrDer, ArrIzq, AbDer, AbIzq };
 
 class Entidad
 {
@@ -12,21 +12,22 @@ protected:
 	int dx, dy;
 	int vel;
 	int indX, indY;
-	Direcciones ultimaTecla;
+	int vida;
+	Direcciones ultDireccion;
 	Direcciones direccion;
 
 public:
 	Entidad(){}
 
-	Entidad(int x, int y){
+	Entidad(int x, int y, int ancho, int alto, int vida){
 		this->x = x;
 		this->y = y;
+		this->ancho = ancho;
+		this->alto = alto;
 		dx = dy = 0;
 		vel = 1;
-		ultimaTecla = Abajo;
+		ultDireccion = Abajo;
 		direccion = Ninguna;
-		ancho = 40;
-		alto = 56;
 		indX = 0;
 		indY = 0;
 	}
@@ -34,12 +35,46 @@ public:
 	~Entidad(){}
 
 	void setDireccion(Direcciones d) { direccion = d; }
+	int getx() { return this->x; }
+	int gety() { return this->y; }
+	int getdx() { return this->dx; }
+	int getdy() { return this->dy; }
+	int getvida() { return this->vida; }
+	void setvida(int vidas) { this->vida = vidas; }
+	void setx(int x) { this->x = x; }
+	void sety(int y) { this->y = y; }
+	void setdx(int dx) { this->dx = dx; }
+	void setdy(int dy) { this->dy = dy; }
+	void setancho(int ancho) { this->ancho = ancho; }
+	void setalto(int alto) { this->alto = alto; }
 
-	int getX() { return x; }
+	Rectangle getRec() {
+		return Rectangle(x, y, ancho, alto);
+	}
 
-	int getY() { return y; }
+	bool Container(BufferedGraphics^ bg, Rectangle container, int x, int y, int dx, int dy) {
+		Rectangle _r = Rectangle(x + dx, y + dy, ancho, alto);
+		bg->Graphics->DrawRectangle(gcnew Pen(Color::Blue), _r);
+		return (container.Contains(_r));
+	}
+	
+	bool Colision(BufferedGraphics^ bg, Rectangle ajeno) {
+		return getRec().IntersectsWith(ajeno);
+	}
 
-	void mover(BufferedGraphics^ bg, Bitmap^ bm) {
+	void dibujar(BufferedGraphics^ bg, Bitmap^ bm) {
+		Rectangle area = Rectangle(indX * ancho, indY * alto, ancho, alto);
+		Rectangle zonaAumento = Rectangle(x, y, ancho * 1.5, alto * 1.5);
+		bg->Graphics->DrawImage(bm, zonaAumento, area, GraphicsUnit::Pixel);
+		x += dx * vel;
+		y += dy * vel;
+	}
+
+
+};
+
+/*
+ void mover(BufferedGraphics^ bg, Bitmap^ bm) {
 
 		switch (direccion)
 		{
@@ -119,14 +154,5 @@ public:
 		dibujar(bg, bm);
 
 	}
-
-	void dibujar(BufferedGraphics^ bg, Bitmap^ bm) {
-		Rectangle area = Rectangle(indX * ancho, indY * alto, ancho, alto);
-		Rectangle zonaAumento = Rectangle(x, y, ancho * 1.5, alto * 1.5);
-		bg->Graphics->DrawImage(bm, zonaAumento, area, GraphicsUnit::Pixel);
-		x += dx * vel;
-		y += dy * vel;
-	}
-
-
-};
+ 
+ */

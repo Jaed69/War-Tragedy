@@ -23,9 +23,6 @@
     <ClInclude Include="MyForm.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Hulk.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="Entidad.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
