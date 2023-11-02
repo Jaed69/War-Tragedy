@@ -90,12 +90,16 @@ namespace WarTragedy {
 		delete buffer; delete espacioBuffer; delete g;
 	}
 	private: System::Void Nivel1_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		Graphics^ g = this->CreateGraphics();
+		BufferedGraphicsContext^ espacioBuffer = BufferedGraphicsManager::Current;
+		BufferedGraphics^ buffer = espacioBuffer->Allocate(g, this->ClientRectangle);
 		switch (e->KeyCode)
 		{
 		case Keys::W: jugador->setDireccion(Arriba); break;
 		case Keys::A: jugador->setDireccion(Izquierda); break;
 		case Keys::S: jugador->setDireccion(Abajo); break;
 		case Keys::D: jugador->setDireccion(Derecha); break;
+		case Keys::Space: jugador->Dash(buffer, r); break;
 		default:
 			break;
 		}

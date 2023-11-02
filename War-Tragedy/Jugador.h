@@ -115,8 +115,9 @@ public:
 			if (!Container(bg, rec, x, y, 0, -(alto * 2))) {
 				//dead or smth
 			}
-			else			{
+			else {
 				y -= alto * 2;
+				ultDireccion = Arriba;
 			}
 			break;
 		case Abajo:
@@ -125,22 +126,25 @@ public:
 			}
 			else {
 				y += alto * 2;
-			}			
+				ultDireccion = Abajo;
+			}
 			break;
 		case Derecha:
-			if (Container(bg, rec, x, y, ancho * 2, 0)) {
+			if (!Container(bg, rec, x, y, ancho * 2, 0)) {
 				//dead or smth
 			}
 			else {
 				x += ancho * 2;
+				ultDireccion = Derecha;
 			}
 			break;
 		case Izquierda:
-			if (Container(bg, rec, x, y, -(ancho * 2), 0)) {
+			if (!Container(bg, rec, x, y, -(ancho * 2), 0)) {
 				//dead or smth
 			}
 			else {
-				x += ancho * 2;
+				x -= ancho * 2;
+				ultDireccion = Izquierda;
 			}
 			break;
 		}
