@@ -5,17 +5,24 @@ class Jugador:public Entidad
 {
 private:
 	int chaleco;
+	bool dashdisponible;
 public:
 	Jugador(){}
 	Jugador(int x,int y):Entidad(x,y,32,48,1){
 		indX = 4;
 		indY = 2;
 		aumento = 2;
+		dashdisponible = true;
 	}
 	~Jugador(){}
 	int getchaleco() { return this->chaleco; }
 	void setchaleco(int chaleco) { this->chaleco = chaleco; }
-
+	bool getDashodisponible() {
+		return dashdisponible;
+	}
+	void setDashodisponible(bool a) {
+		dashdisponible = a;
+	}
 	void mover(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
 		switch (direccion)
 		{

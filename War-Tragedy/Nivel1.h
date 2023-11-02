@@ -18,6 +18,7 @@ namespace WarTragedy {
 		Rectangle r;
 		Bitmap^ bm = gcnew Bitmap("assets/Personaje/Personaje.png");
 		Jugador* jugador = new Jugador(500, 100);
+		int contador;
 	public:
 		Nivel1(void)
 		{
@@ -26,6 +27,7 @@ namespace WarTragedy {
 			//TODO: Add the constructor code here
 			//
 			r = Rectangle(80, 68, 800, 450);
+			contador = 0;
 		}
 
 	protected:
@@ -79,15 +81,19 @@ namespace WarTragedy {
 
 		}
 #pragma endregion
-	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
-		Graphics^ g = this->CreateGraphics(); 
+	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {		
+		if (jugador->getDashodisponible() == false) {
+			contador++;
+			if (contador > 5) { contador = 0; jugador->setDashodisponible(true); }
+		}
+		Graphics^ g = this->CreateGraphics();
 		BufferedGraphicsContext^ espacioBuffer = BufferedGraphicsManager::Current;
 		BufferedGraphics^ buffer = espacioBuffer->Allocate(g, this->ClientRectangle);
 		buffer->Graphics->Clear(Color::White);
 		buffer->Graphics->DrawRectangle(gcnew Pen(Color::Orange), r);
 		jugador->mover(buffer, bm, r);
 		buffer->Render(g);
-		delete buffer; delete espacioBuffer; delete g;
+		delete buffer; delete espacioBuffer; delete g;		
 	}
 	private: System::Void Nivel1_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		Graphics^ g = this->CreateGraphics();
@@ -99,7 +105,7 @@ namespace WarTragedy {
 		case Keys::A: jugador->setDireccion(Izquierda); break;
 		case Keys::S: jugador->setDireccion(Abajo); break;
 		case Keys::D: jugador->setDireccion(Derecha); break;
-		case Keys::Space: jugador->Dash(buffer, r); break;
+		case Keys::Space: if (jugador->getDashodisponible()) { jugador->Dash(buffer, r); jugador->setDashodisponible(false); } break;
 		default:
 			break;
 		}
