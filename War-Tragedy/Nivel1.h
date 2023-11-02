@@ -57,6 +57,7 @@ namespace WarTragedy {
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Nivel1::typeid));
 			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->SuspendLayout();
 			// 
@@ -67,11 +68,14 @@ namespace WarTragedy {
 			// 
 			// Nivel1
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1500, 750);
+			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
+			this->ClientSize = System::Drawing::Size(1125, 609);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"Nivel1";
 			this->Text = L"Nivel1";
+			this->Load += gcnew System::EventHandler(this, &Nivel1::Nivel1_Load);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &Nivel1::Nivel1_KeyDown);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &Nivel1::Nivel1_KeyUp);
 			this->PreviewKeyDown += gcnew System::Windows::Forms::PreviewKeyDownEventHandler(this, &Nivel1::Nivel1_PreviewKeyDown);
@@ -109,6 +113,9 @@ namespace WarTragedy {
 		default:
 			break;
 		}
+	}
+	private: System::Void Nivel1_Load(System::Object^ sender, System::EventArgs^ e) {
+
 	}
 	};
 }
