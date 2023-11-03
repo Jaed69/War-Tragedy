@@ -16,6 +16,7 @@ namespace WarTragedy {
 	{
 	private:
 		Rectangle r;
+		Bitmap^ fondo = gcnew Bitmap("assets/Nivel/Nivel1.png");
 		Bitmap^ bm = gcnew Bitmap("assets/Personaje/Personaje.png");
 		Jugador* jugador = new Jugador(500, 100);
 	public:
@@ -70,6 +71,7 @@ namespace WarTragedy {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->ClientSize = System::Drawing::Size(1280, 720);
 			this->Name = L"Nivel1";
 			this->Text = L"Nivel1";
@@ -85,7 +87,12 @@ namespace WarTragedy {
 		Graphics^ g = this->CreateGraphics(); 
 		BufferedGraphicsContext^ espacioBuffer = BufferedGraphicsManager::Current;
 		BufferedGraphics^ buffer = espacioBuffer->Allocate(g, this->ClientRectangle);
-		buffer->Graphics->Clear(Color::White);
+
+		Rectangle area = Rectangle(0, 0, 384, 216);
+		Rectangle zoom = Rectangle(0, 0, 1280, 720);
+		buffer->Graphics->DrawImage(fondo, zoom, area, GraphicsUnit::Pixel);
+
+
 		buffer->Graphics->DrawRectangle(gcnew Pen(Color::Orange), r);
 		jugador->mover(buffer, bm, r);
 		buffer->Render(g);
