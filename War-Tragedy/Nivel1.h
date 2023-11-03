@@ -18,7 +18,7 @@ namespace WarTragedy {
 		Rectangle r;
 		Bitmap^ fondo = gcnew Bitmap("assets/Nivel/Nivel1.png");
 		Bitmap^ bm = gcnew Bitmap("assets/Personaje/Personaje.png");
-		Jugador* jugador = new Jugador(500, 100);
+		Jugador* jugador = new Jugador(620, 400);
 		int contador;
 	public:
 		Nivel1(void)
@@ -27,7 +27,7 @@ namespace WarTragedy {
 			//
 			//TODO: Add the constructor code here
 			//
-			r = Rectangle(80, 68, 800, 450);
+			r = Rectangle(240, 130, 800, 450);
 			contador = 0;
 		}
 
