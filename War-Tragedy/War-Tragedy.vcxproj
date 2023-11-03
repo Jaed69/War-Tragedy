@@ -141,6 +141,7 @@
     <ClInclude Include="Nivel3.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Niveles.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">
