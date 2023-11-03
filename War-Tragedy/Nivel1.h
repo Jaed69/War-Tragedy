@@ -1,5 +1,7 @@
 #pragma once
 #include "Jugador.h"
+#include "Recursos.h"
+
 namespace WarTragedy {
 
 	using namespace System;
@@ -17,6 +19,7 @@ namespace WarTragedy {
 	private:
 		Rectangle r;
 		Bitmap^ fondo = gcnew Bitmap("assets/Nivel/Nivel1.png");
+		Bitmap^ pisos = gcnew Bitmap("assets/Nivel/Piso2.png");
 		Bitmap^ bm = gcnew Bitmap("assets/Personaje/Personaje.png");
 		Jugador* jugador = new Jugador(620, 400);
 		int contador;
@@ -95,6 +98,19 @@ namespace WarTragedy {
 		Rectangle area = Rectangle(0, 0, 384, 216);
 		Rectangle zoom = Rectangle(0, 0, 1280, 720);
 		buffer->Graphics->DrawImage(fondo, zoom, area, GraphicsUnit::Pixel);
+		int an = 32;
+		int al = 32;
+
+		for (int i = 0; i < 25; i++) {
+			for (int j =0; j < 14; j++)	{
+				Rectangle area2 = Rectangle(2*an, 0*al, an, al);
+				Rectangle zoom2 = Rectangle(240+an*i, 130+al*j, an, al);
+				buffer->Graphics->DrawImage(pisos, zoom2, area2, GraphicsUnit::Pixel);
+			}
+		}
+
+		
+
 
 
 		buffer->Graphics->DrawRectangle(gcnew Pen(Color::Orange), r);
@@ -131,4 +147,9 @@ namespace WarTragedy {
 
 	}
 	};
+}
+
+
+void Dibpiso(BufferedGraphics^ bf) {
+
 }
