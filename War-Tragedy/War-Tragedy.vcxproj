@@ -149,6 +149,12 @@
     <EmbeddedResource Include="Nivel1.resx">
       <DependentUpon>Nivel1.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Nivel2.resx">
+      <DependentUpon>Nivel2.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nivel3.resx">
+      <DependentUpon>Nivel3.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

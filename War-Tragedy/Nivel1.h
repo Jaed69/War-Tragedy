@@ -20,6 +20,7 @@ namespace WarTragedy {
 		Bitmap^ bm = gcnew Bitmap("assets/Personaje/Personaje.png");
 		Jugador* jugador = new Jugador(620, 400);
 		int contador;
+
 	public:
 		Nivel1(void)
 		{
@@ -71,21 +72,20 @@ namespace WarTragedy {
 			// 
 			// Nivel1
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
-			this->ClientSize = System::Drawing::Size(1280, 720);
+			this->ClientSize = System::Drawing::Size(1707, 886);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"Nivel1";
 			this->Text = L"Nivel1";
-			this->Load += gcnew System::EventHandler(this, &Nivel1::Nivel1_Load);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &Nivel1::Nivel1_KeyDown);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &Nivel1::Nivel1_KeyUp);
-			this->PreviewKeyDown += gcnew System::Windows::Forms::PreviewKeyDownEventHandler(this, &Nivel1::Nivel1_PreviewKeyDown);
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
-	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {		
+	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
 		if (jugador->getDashodisponible() == false) {
 			contador++;
 			if (contador > 5) { contador = 0; jugador->setDashodisponible(true); }
@@ -102,15 +102,35 @@ namespace WarTragedy {
 		buffer->Graphics->DrawRectangle(gcnew Pen(Color::Orange), r);
 		jugador->mover(buffer, bm, r);
 		buffer->Render(g);
-		delete buffer; delete espacioBuffer; delete g;		
+		delete buffer; delete espacioBuffer; delete g;
 	}
 	private: System::Void Nivel1_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		Graphics^ g = this->CreateGraphics();
 		BufferedGraphicsContext^ espacioBuffer = BufferedGraphicsManager::Current;
 		BufferedGraphics^ buffer = espacioBuffer->Allocate(g, this->ClientRectangle);
+		//if (e->KeyCode == Keys::W) {
+		//	if (e->KeyCode == Keys::A)
+		//		jugador->setDireccion(ArrIzq);
+		//	else if (e->KeyCode == Keys::D)
+		//		jugador->setDireccion(ArrDer);
+		//	else
+		//		jugador->setDireccion(Arriba);
+		//}
+		//if (e->KeyCode == Keys::S) {
+		//	if (e->KeyCode == Keys::A)
+		//		jugador->setDireccion(AbIzq);
+		//	else if (e->KeyCode == Keys::D)
+		//		jugador->setDireccion(AbDer);
+		//	else
+		//		jugador->setDireccion(Abajo);
+		//}
+		//if (e->KeyCode == Keys::A)
+		//	jugador->setDireccion(Izquierda);
+		//if (e->KeyCode == Keys::D)
+		//	jugador->setDireccion(Derecha);
 		switch (e->KeyCode)
 		{
-		case Keys::W: jugador->setDireccion(Arriba); break;
+		case Keys::W:jugador->setDireccion(Arriba); break;
 		case Keys::A: jugador->setDireccion(Izquierda); break;
 		case Keys::S: jugador->setDireccion(Abajo); break;
 		case Keys::D: jugador->setDireccion(Derecha); break;
@@ -121,16 +141,6 @@ namespace WarTragedy {
 	}
 	private: System::Void Nivel1_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		jugador->setDireccion(Ninguna);
-	}
-	private: System::Void Nivel1_PreviewKeyDown(System::Object^ sender, System::Windows::Forms::PreviewKeyDownEventArgs^ e) {
-		switch (e->KeyCode)
-		{
-		default:
-			break;
-		}
-	}
-	private: System::Void Nivel1_Load(System::Object^ sender, System::EventArgs^ e) {
-
 	}
 	};
 }
