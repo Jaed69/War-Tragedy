@@ -34,6 +34,7 @@ public:
 		indX = 0;
 		indY = 0;
 		aumento = 1;
+		this->vida = vida;
 	}
 
 	~Entidad(){}
