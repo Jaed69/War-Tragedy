@@ -31,7 +31,7 @@ namespace WarTragedy {
 			//
 			//TODO: Add the constructor code here
 			//
-			r = Rectangle(240, 130, 800, 450);
+			r = Rectangle(180, 130, 800, 450);
 			contador = 0;
 		}
 
@@ -76,7 +76,7 @@ namespace WarTragedy {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1280, 720);
+			this->ClientSize = System::Drawing::Size(1580, 920);
 			this->Name = L"Nivel1";
 			this->Text = L"Nivel1";
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &Nivel1::Nivel1_KeyDown);
@@ -103,7 +103,7 @@ namespace WarTragedy {
 		for (int i = 0; i < 25; i++) {
 			for (int j =0; j < 14; j++)	{
 				Rectangle area2 = Rectangle(2*an, 0*al, an, al);
-				Rectangle zoom2 = Rectangle(240+an*i, 130+al*j, an, al);
+				Rectangle zoom2 = Rectangle(180 +an*i, 130+al*j, an, al);
 				buffer->Graphics->DrawImage(pisos, zoom2, area2, GraphicsUnit::Pixel);
 			}
 		}

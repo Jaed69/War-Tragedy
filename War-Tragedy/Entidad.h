@@ -58,7 +58,7 @@ public:
 
 	bool Container(BufferedGraphics^ bg, Rectangle container, int dx, int dy) {
 		Rectangle _r = Rectangle(x + dx, y + dy, ancho* aumento, alto* aumento);
-		bg->Graphics->DrawRectangle(gcnew Pen(Color::Blue), _r);
+		//bg->Graphics->DrawRectangle(gcnew Pen(Color::Blue), _r);
 		return (container.Contains(_r));
 	}
 	
@@ -69,7 +69,7 @@ public:
 	void dibujar(BufferedGraphics^ bg, Bitmap^ bm) {
 		area = Rectangle(indX * ancho, indY * alto, ancho, alto);
 		zonaAumento = Rectangle(x, y, ancho * aumento, alto * aumento);
-		bg->Graphics->DrawRectangle(gcnew Pen(Color::Yellow), zonaAumento);
+		//bg->Graphics->DrawRectangle(gcnew Pen(Color::Yellow), zonaAumento);
 		bg->Graphics->DrawImage(bm, zonaAumento, area, GraphicsUnit::Pixel);
 		x += dx * vel;
 		y += dy * vel;
