@@ -11,7 +11,7 @@ public:
 	Jugador(int x,int y):Entidad(x,y,32,48,1){
 		indX = 4;
 		indY = 2;
-		aumento = 2;
+		aumento = 1;
 		dashdisponible = true;
 	}
 	~Jugador(){}
