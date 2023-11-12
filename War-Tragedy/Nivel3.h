@@ -1,5 +1,6 @@
 #pragma once
 #include "Jugador.h"
+#include "GeAliados.h"
 namespace WarTragedy {
 
 	using namespace System;
@@ -20,6 +21,7 @@ namespace WarTragedy {
 		Bitmap^ pisos = gcnew Bitmap("assets/Nivel/Piso2.png");
 		Bitmap^ bm = gcnew Bitmap("assets/Personaje/Personaje.png");
 		Jugador* jugador = new Jugador(620, 400);
+		GeAliado* gA = new GeAliado();
 	private: System::Windows::Forms::Timer^ timer1;
 		   int contador;
 	public:
