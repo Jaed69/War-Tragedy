@@ -34,12 +34,9 @@ public:
 
 
 	void mover(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
-		
-
 
 		posx += dx;
 		posy += dy;
-
 		
 		x = roundf(posx);
 		y = roundf(posy);

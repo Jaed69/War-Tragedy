@@ -77,13 +77,15 @@ namespace WarTragedy {
 			// 
 			// Nivel1
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1580, 920);
+			this->ClientSize = System::Drawing::Size(1185, 748);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"Nivel1";
 			this->Text = L"Nivel1";
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &Nivel1::Nivel1_KeyDown);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &Nivel1::Nivel1_KeyUp);
+			this->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &Nivel1::Nivel1_MouseClick);
 			this->ResumeLayout(false);
 
 		}
@@ -111,12 +113,9 @@ namespace WarTragedy {
 			}
 		}
 
-		
-
-
-
 		buffer->Graphics->DrawRectangle(gcnew Pen(Color::Orange), r);
 		jugador->mover(buffer, bm, r);
+		jugador->moverB(buffer, bm, r);
 		
 		buffer->Render(g);
 		delete buffer; delete espacioBuffer; delete g;
@@ -147,6 +146,8 @@ namespace WarTragedy {
 		//	jugador->setDireccion(Derecha);
 		switch (e->KeyCode)
 		{
+		case Keys::I:jugador->disparar(100, 100); break;
+
 		case Keys::W:jugador->setDireccion(Arriba); break;
 		case Keys::A: jugador->setDireccion(Izquierda); break;
 		case Keys::S: jugador->setDireccion(Abajo); break;
@@ -159,7 +160,13 @@ namespace WarTragedy {
 	private: System::Void Nivel1_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		jugador->setDireccion(Ninguna);
 	}
-	};
+	private: System::Void Nivel1_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+
+		
+		jugador->disparar(e->X, e->Y);
+
+	}
+};
 }
 
 

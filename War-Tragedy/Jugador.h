@@ -216,5 +216,13 @@ public:
 		vBala.push_back(oBala);
 	}
 
+	void moverB(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
+		for (int i = 0; i < vBala.size(); i++)
+		{
+			if (vBala.at(i)->getActivo()) vBala.at(i)->mover(bg, bm, rec);
+			else vBala.erase(vBala.begin() + i);
+		}
+	}
+
 
 };
