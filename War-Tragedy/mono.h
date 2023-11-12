@@ -6,38 +6,86 @@ private:
 	vector<Bala*> vBala;
 public:
 	Mono(int x, int y) :Entidad(x, y, 40, 40, 10) {
+		direccion = ArrDer;
 		ultDireccion = Ninguna;
 		dx = dy = indX=indY= 0; vel = 5;
 		aumento = 1;
 	}
 	~Mono(){}
 
+	void mov() {
+
+	}
+
 	void mover(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
 		switch (direccion)
 		{
 		case Ninguna:
-			indX = 0;
-			indY = 0;
+			indX = 0; indY = 0;
+			dx = 0; dy = 0;
+			ultDireccion = Ninguna;
 			break;
 		case Abajo:
+			indX = 0; indY = 0;
+			dx = 0; dy = 0; ultDireccion = Abajo;
 			break;
 		case Arriba:
+			indX = 0; indY = 0;
+			dx = 0; dy = 0; ultDireccion = Arriba;
 			break;
 		case Izquierda:
+			indX = 0; indY = 0;
+			dx = 0; dy = 0; ultDireccion = Izquierda;
 			break;
 		case Derecha:
+			indX = 0; indY = 0;
+			dx = 0; dy = 0; ultDireccion = Derecha;
 			break;
 		case ArrDer:
+			indX = 0; indY = 0;
+			ultDireccion = ArrDer;
+			if (Container(bg, rec, 5, -5)) {
+				dx = 1; dy = -1;
+			}
+			else {
+				direccion = ArrIzq;
+			}
+			
 			break;
 		case ArrIzq:
+			indX = 0; indY = 0;
+			 ultDireccion = ArrIzq;
+			if (Container(bg, rec, -5, -5)) {
+				dx = -1; dy = -1;
+			}
+			else {
+				direccion = AbIzq;
+			}
 			break;
 		case AbDer:
+			indX = 0; indY = 0;
+			 ultDireccion = AbDer;
+			if (Container(bg, rec, 5, 5)) {
+				dx = 1; dy = 1;
+			}
+			else {
+				direccion = ArrDer;
+			}
 			break;
 		case AbIzq:
-			break;
-		default:
+			indX = 0; indY = 0;
+			 ultDireccion = AbIzq;
+			if (Container(bg, rec, -5, -5)) {
+				dx = -1; dy = -1;
+			}
+			else {
+				direccion = AbDer;
+			}
 			break;
 		}
+		x += dx * vel;
+		y += dy * vel;
+		dibujar(bg,bm);
 	}
 
 	void disparar(int fx, int fy) {
