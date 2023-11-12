@@ -1,11 +1,14 @@
 #pragma once
 #include"Entidad.h"
+#include"Bala.h"
 
 class Jugador:public Entidad
 {
 private:
 	int chaleco;
 	bool dashdisponible;
+	vector<Bala*> vBala;
+
 public:
 	Jugador(){}
 	Jugador(int x,int y):Entidad(x,y,32,48,1){
@@ -202,5 +205,12 @@ public:
 		}
 
 	}
+
+	void disparar(int fx,int fy) {
+		Bala* oBala = new Bala(x, y, fx, fy);
+		oBala->setRnRl(10, 10);
+		vBala.push_back(oBala);
+	}
+
 
 };

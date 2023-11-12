@@ -1,5 +1,7 @@
 #pragma once
+#include<vector>
 
+using namespace std;
 using namespace System::Drawing;
 
 enum Direcciones { Ninguna, Abajo, Arriba, Izquierda, Derecha, ArrDer, ArrIzq, AbDer, AbIzq };
@@ -11,11 +13,12 @@ protected:
 	int Rx, Ry;
 	int ancho, alto;
 	int Rancho, Ralto;
-	int dx, dy;
+	float dx, dy;
 	int vel;
 	int indX, indY;
 	int vida;
 	int aumento;
+	bool activo;
 	Direcciones ultDireccion;
 	Direcciones direccion;
 	Rectangle area;
@@ -39,6 +42,7 @@ public:
 		indX = 0;
 		indY = 0;
 		aumento = 1;
+		activo = true;
 		this->vida = vida;
 	}
 
@@ -57,6 +61,8 @@ public:
 	void setdy(int dy) { this->dy = dy; }
 	void setancho(int ancho) { this->ancho = ancho; }
 	void setalto(int alto) { this->alto = alto; }
+
+	void setActivo(bool activo) { this->activo = activo; }
 
 	void setRxRy(int rx, int ry) {
 		this->Rx = rx;
@@ -81,16 +87,17 @@ public:
 	}
 
 	void dibujar(BufferedGraphics^ bg, Bitmap^ bm) {
-		area = Rectangle(indX * ancho, indY * alto, ancho, alto);
-		zonaAumento = Rectangle(x, y, ancho * aumento, alto * aumento);
-		hitbox = Rectangle(x + Rx, y + Ry, Rancho, Ralto);
+		if (activo)
+		{
+			area = Rectangle(indX * ancho, indY * alto, ancho, alto);
+			zonaAumento = Rectangle(x, y, ancho * aumento, alto * aumento);
+			hitbox = Rectangle(x + Rx, y + Ry, Rancho, Ralto);
 
-		bg->Graphics->DrawRectangle(gcnew Pen(Color::Blue), hitbox);
-		bg->Graphics->DrawRectangle(gcnew Pen(Color::Yellow), zonaAumento);
-		bg->Graphics->DrawRectangle(gcnew Pen(Color::Red), zonaAumento);
-		bg->Graphics->DrawImage(bm, zonaAumento, area, GraphicsUnit::Pixel);
-		x += dx * vel;
-		y += dy * vel;
+			bg->Graphics->DrawRectangle(gcnew Pen(Color::Blue), hitbox);
+			//bg->Graphics->DrawRectangle(gcnew Pen(Color::Red), zonaAumento);
+			bg->Graphics->DrawImage(bm, zonaAumento, area, GraphicsUnit::Pixel);
+		}
+
 	}
 
 

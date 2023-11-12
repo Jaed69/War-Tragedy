@@ -1,5 +1,6 @@
 #pragma once
 #include "Jugador.h"
+#include "Bala.h"
 #include "Recursos.h"
 
 namespace WarTragedy {
@@ -33,6 +34,8 @@ namespace WarTragedy {
 			//
 			r = Rectangle(180, 130, 800, 450);
 			contador = 0;
+			jugador->setRxRy(5, 5);
+			jugador->setRnRl(20, 20);
 		}
 
 	protected:
@@ -114,6 +117,7 @@ namespace WarTragedy {
 
 		buffer->Graphics->DrawRectangle(gcnew Pen(Color::Orange), r);
 		jugador->mover(buffer, bm, r);
+		bala->mover(buffer, bm, r);
 		buffer->Render(g);
 		delete buffer; delete espacioBuffer; delete g;
 	}
