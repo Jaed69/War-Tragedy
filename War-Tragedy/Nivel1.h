@@ -113,6 +113,7 @@ namespace WarTragedy {
 
 		buffer->Graphics->DrawRectangle(gcnew Pen(Color::Orange), r);
 		jugador->mover(buffer, bm, r);
+		jugador->moverB(buffer, bm, r);
 		
 		buffer->Render(g);
 		delete buffer; delete espacioBuffer; delete g;
@@ -143,6 +144,8 @@ namespace WarTragedy {
 		//	jugador->setDireccion(Derecha);
 		switch (e->KeyCode)
 		{
+		case Keys::I:jugador->disparar(100, 100); break;
+
 		case Keys::W:jugador->setDireccion(Arriba); break;
 		case Keys::A: jugador->setDireccion(Izquierda); break;
 		case Keys::S: jugador->setDireccion(Abajo); break;

@@ -62,6 +62,7 @@ public:
 	void setancho(int ancho) { this->ancho = ancho; }
 	void setalto(int alto) { this->alto = alto; }
 
+	bool getActivo() { return this->activo; }
 	void setActivo(bool activo) { this->activo = activo; }
 
 	void setRxRy(int rx, int ry) {
