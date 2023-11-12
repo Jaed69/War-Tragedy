@@ -5,7 +5,7 @@ public:
 	Avion(int x, int y) :Entidad(x,y,40,40,1) {
 		indX = indY= 0;
 		direccion = Ninguna;
-		aumento = 1;
+		aumento = 2;
 		vel = 10;
 	}
 	~Avion(){}
