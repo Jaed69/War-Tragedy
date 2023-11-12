@@ -161,6 +161,8 @@ public:
 			break;
 
 		}
+		x += dx * vel;
+		y += dy * vel;
 		dibujar(bg, bm);
 	}
 
@@ -201,6 +203,8 @@ public:
 				x -= ancho * 2;
 				ultDireccion = Izquierda;
 			}
+			x += dx * vel;
+			y += dy * vel;
 			break;
 		}
 

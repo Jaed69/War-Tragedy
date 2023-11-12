@@ -104,8 +104,8 @@ public:
 			break;
 		}
 		
-		x += dx;
-		y += dy;
+		x += dx*vel;
+		y += dy*vel;
 		dibujar(bg,bm);
 	}
 

@@ -58,6 +58,8 @@ public:
 			dy = 1;
 			break;
 		}
+		x += dx * vel;
+		y += dy * vel;
 		dibujar(bg, bm);
 	}
 };
