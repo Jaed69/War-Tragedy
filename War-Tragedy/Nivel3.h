@@ -16,7 +16,7 @@ namespace WarTragedy {
 	{
 	private:
 		Rectangle r;
-		Bitmap^ fondo = gcnew Bitmap("assets/Nivel/Nivel1.png");
+		Bitmap^ fondo = gcnew Bitmap("assets/Nivel/Nivel3 limites.png");
 		Bitmap^ pisos = gcnew Bitmap("assets/Nivel/Piso2.png");
 		Bitmap^ bm = gcnew Bitmap("assets/Personaje/Personaje.png");
 		Jugador* jugador = new Jugador(620, 400);
