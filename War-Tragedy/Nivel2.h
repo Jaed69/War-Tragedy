@@ -1,6 +1,7 @@
 #pragma once
 #include "Jugador.h"
 #include "Avion.h"
+#include "Helicoptero.h"
 namespace WarTragedy {
 
 	using namespace System;
@@ -17,26 +18,32 @@ namespace WarTragedy {
 	{
 	private:
 		Rectangle r;
+		Rectangle r2;
 		Bitmap^ fondo = gcnew Bitmap("assets/Nivel/Nivel2Color.png");
 		Bitmap^ pisos = gcnew Bitmap("assets/Nivel/Piso2.png");
 		Bitmap^ bm = gcnew Bitmap("assets/Personaje/Personaje.png");
 		Bitmap^ avi = gcnew Bitmap("assets/Enemigo/Avion/image.png");
+		Bitmap^ helic = gcnew Bitmap("assets/Enemigo/heli.png");
 		Jugador* jugador = new Jugador(620, 400);
 		Avion* avion;
+		Helicoptero* heli;
 		int contador;
 	public:
 		Nivel2(void)
 		{
 			InitializeComponent();
+			Graphics^ g = this->CreateGraphics();
 			//
 			//TODO: Add the constructor code here
 			//
 			//r = Rectangle(240, 130, 800, 450);
 			r = Rectangle(180, 80, 800, 450);
+			r2 = Rectangle(0, 0, g->VisibleClipBounds.Width, g->VisibleClipBounds.Height);
 			contador = 0;
 			Random r;
-			int x = r.Next(1, 300);
+			int x = r.Next(1, g->VisibleClipBounds.Width);
 			int y = r.Next(1, 300);
+			heli = new Helicoptero(x);
 			avion = new Avion(x, y);
 		}
 
@@ -121,6 +128,7 @@ namespace WarTragedy {
 		buffer->Graphics->DrawRectangle(gcnew Pen(Color::Orange), r);
 		jugador->mover(buffer, bm, r);
 		avion->mover(buffer, avi, r);
+		heli->mover(buffer, helic, r2);
 		buffer->Render(g);
 		delete buffer; delete espacioBuffer; delete g;
 		
