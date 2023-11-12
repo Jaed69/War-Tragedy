@@ -44,7 +44,7 @@ namespace WarTragedy {
 			int x = r.Next(1, g->VisibleClipBounds.Width-40);
 			int y = r.Next(1, g->VisibleClipBounds.Width-40);
 			heli = new Helicoptero(x);
-			avion = new Avion(0,0);
+			avion = new Avion(r.Next(200,g->VisibleClipBounds.Width-230), 0);
 		}
 
 	protected:
