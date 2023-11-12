@@ -2,6 +2,7 @@
 #include "Jugador.h"
 #include "Avion.h"
 #include "Helicoptero.h"
+#include "GeAliados.h"
 namespace WarTragedy {
 
 	using namespace System;
@@ -19,6 +20,7 @@ namespace WarTragedy {
 	private:
 		Rectangle r;
 		Rectangle r2;
+
 		Bitmap^ fondo = gcnew Bitmap("assets/Nivel/Nivel2Color.png");
 		Bitmap^ pisos = gcnew Bitmap("assets/Nivel/Piso2.png");
 		Bitmap^ bm = gcnew Bitmap("assets/Personaje/Personaje.png");
@@ -26,8 +28,9 @@ namespace WarTragedy {
 		Bitmap^ helic = gcnew Bitmap("assets/Enemigo/heli.png");
 		Jugador* jugador = new Jugador(620, 400);
 		Avion* avion;
-		Helicoptero* heli;
-		int contador;
+
+		   Helicoptero* heli;
+		   int contador;
 	public:
 		Nivel2(void)
 		{
@@ -41,10 +44,10 @@ namespace WarTragedy {
 			r2 = Rectangle(0, 0, g->VisibleClipBounds.Width, g->VisibleClipBounds.Height);
 			contador = 0;
 			Random r;
-			int x = r.Next(1, g->VisibleClipBounds.Width-40);
-			int y = r.Next(1, g->VisibleClipBounds.Width-40);
+			int x = r.Next(1, g->VisibleClipBounds.Width - 40);
+			int y = r.Next(1, g->VisibleClipBounds.Width - 40);
 			heli = new Helicoptero(x);
-			avion = new Avion(r.Next(200,g->VisibleClipBounds.Width-230), 0);
+			avion = new Avion(r.Next(200, g->VisibleClipBounds.Width - 230), 0);
 		}
 
 	protected:
@@ -121,17 +124,15 @@ namespace WarTragedy {
 			}
 		}
 
-
-
-
-
 		buffer->Graphics->DrawRectangle(gcnew Pen(Color::Orange), r);
 		jugador->mover(buffer, bm, r);
-		avion->mover(buffer, avi, r);
+		avion->mover(buffer, avi, r2);
+		jugador->moverB(buffer, bm, r2);
+		
 		heli->mover(buffer, helic, r2);
 		buffer->Render(g);
 		delete buffer; delete espacioBuffer; delete g;
-		
+
 		/*if (jugador->getDashodisponible() == false) {
 			contador++;
 			if (contador > 5) { contador = 0; jugador->setDashodisponible(true); }
@@ -173,13 +174,10 @@ namespace WarTragedy {
 		Random r;
 		switch (e->KeyChar.ToUpper(e->KeyChar))
 		{
-		case 'V': avion->setDireccion(Derecha); break;
-		case 'B': avion->setDireccion(Izquierda); break;
-		case 'N': avion->setDireccion(Abajo); break;
-		case 'M': avion->setDireccion(Arriba); break;
+		case 'M': jugador->disparar(avion->getx(), avion->gety());; break;
 		default:
 			break;
 		}
 	}
-};
+	};
 }

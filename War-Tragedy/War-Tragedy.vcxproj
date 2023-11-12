@@ -131,6 +131,7 @@
     <ClInclude Include="Bala.h" />
     <ClInclude Include="Bomba.h" />
     <ClInclude Include="Entidad.h" />
+    <ClInclude Include="GeAliados.h" />
     <ClInclude Include="GeEnemigos.h" />
     <ClInclude Include="Helicoptero.h" />
     <ClInclude Include="Jugador.h" />
