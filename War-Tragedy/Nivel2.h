@@ -1,5 +1,6 @@
 #pragma once
 #include "Jugador.h"
+#include "Avion.h"
 namespace WarTragedy {
 
 	using namespace System;
@@ -19,7 +20,9 @@ namespace WarTragedy {
 		Bitmap^ fondo = gcnew Bitmap("assets/Nivel/Nivel2Color.png");
 		Bitmap^ pisos = gcnew Bitmap("assets/Nivel/Piso2.png");
 		Bitmap^ bm = gcnew Bitmap("assets/Personaje/Personaje.png");
+		Bitmap^ avi = gcnew Bitmap("assets/Enemigo/Avion/image.png");
 		Jugador* jugador = new Jugador(620, 400);
+		Avion* avion;
 		int contador;
 	public:
 		Nivel2(void)
@@ -31,6 +34,10 @@ namespace WarTragedy {
 			//r = Rectangle(240, 130, 800, 450);
 			r = Rectangle(180, 80, 800, 450);
 			contador = 0;
+			Random r;
+			int x = r.Next(1, 300);
+			int y = r.Next(1, 300);
+			avion = new Avion(x, y);
 		}
 
 	protected:
@@ -78,6 +85,7 @@ namespace WarTragedy {
 			this->Name = L"Nivel2";
 			this->Text = L"Nivel2";
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &Nivel2::Nivel2_KeyDown);
+			this->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &Nivel2::Nivel2_KeyPress);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &Nivel2::Nivel2_KeyUp);
 			this->ResumeLayout(false);
 
@@ -112,6 +120,7 @@ namespace WarTragedy {
 
 		buffer->Graphics->DrawRectangle(gcnew Pen(Color::Orange), r);
 		jugador->mover(buffer, bm, r);
+		avion->mover(buffer, avi, r);
 		buffer->Render(g);
 		delete buffer; delete espacioBuffer; delete g;
 		
@@ -151,5 +160,18 @@ namespace WarTragedy {
 	private: System::Void Nivel2_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		jugador->setDireccion(Ninguna);
 	}
-	};
+	private: System::Void Nivel2_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
+		int x, y;
+		Random r;
+		switch (e->KeyChar.ToUpper(e->KeyChar))
+		{
+		case 'V': avion->setDireccion(Derecha); break;
+		case 'B': avion->setDireccion(Izquierda); break;
+		case 'N': avion->setDireccion(Abajo); break;
+		case 'M': avion->setDireccion(Arriba); break;
+		default:
+			break;
+		}
+	}
+};
 }
