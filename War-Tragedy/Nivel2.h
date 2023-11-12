@@ -41,10 +41,10 @@ namespace WarTragedy {
 			r2 = Rectangle(0, 0, g->VisibleClipBounds.Width, g->VisibleClipBounds.Height);
 			contador = 0;
 			Random r;
-			int x = r.Next(1, g->VisibleClipBounds.Width);
-			int y = r.Next(1, 300);
+			int x = r.Next(1, g->VisibleClipBounds.Width-40);
+			int y = r.Next(1, g->VisibleClipBounds.Width-40);
 			heli = new Helicoptero(x);
-			avion = new Avion(x, y);
+			avion = new Avion(0,0);
 		}
 
 	protected:
