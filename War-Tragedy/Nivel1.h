@@ -33,7 +33,7 @@ namespace WarTragedy {
 			//
 			//TODO: Add the constructor code here
 			//
-			r = Rectangle(180, 130, 800, 450);
+			r = Rectangle(256, 144, 768, 432);
 			contador = 0;
 			jugador->setRxRy(5, 5);
 			jugador->setRnRl(20, 20);

@@ -42,7 +42,7 @@ namespace WarTragedy {
 			//TODO: Add the constructor code here
 			//
 			//r = Rectangle(240, 130, 800, 450);
-			r = Rectangle(180, 80, 800, 450);
+			r = Rectangle(224, 96, 800, 450);
 			r2 = Rectangle(0, 0, g->VisibleClipBounds.Width, g->VisibleClipBounds.Height);
 			contador = 0;
 			Random r;
