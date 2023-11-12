@@ -71,9 +71,10 @@ namespace WarTragedy {
 			// 
 			// Nivel3
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1600, 800);
+			this->ClientSize = System::Drawing::Size(1280, 720);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"Nivel3";
 			this->Text = L"Nivel3";
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &Nivel3::Nivel3_KeyDown);
@@ -91,22 +92,9 @@ namespace WarTragedy {
 		BufferedGraphicsContext^ espacioBuffer = BufferedGraphicsManager::Current;
 		BufferedGraphics^ buffer = espacioBuffer->Allocate(g, this->ClientRectangle);
 
-		Rectangle area = Rectangle(0, 0, 384, 216);
+		Rectangle area = Rectangle(0, 0, 1280, 720);
 		Rectangle zoom = Rectangle(0, 0, 1280, 720);
 		buffer->Graphics->DrawImage(fondo, zoom, area, GraphicsUnit::Pixel);
-		int an = 32;
-		int al = 32;
-
-		for (int i = 0; i < 40; i++) {
-			for (int j = 0; j < 25; j++) {
-				Rectangle area2 = Rectangle(2 * an, 0 * al, an, al);
-				Rectangle zoom2 = Rectangle( an * i, al * j, an, al);
-				buffer->Graphics->DrawImage(pisos, zoom2, area2, GraphicsUnit::Pixel);
-			}
-		}
-
-
-
 
 
 		buffer->Graphics->DrawRectangle(gcnew Pen(Color::Orange), r);

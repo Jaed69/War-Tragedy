@@ -4,12 +4,14 @@
 class Mono :public Entidad {
 private:
 	vector<Bala*> vBala;
+	int ammo;
 public:
 	Mono(int x, int y) :Entidad(x, y, 40, 40, 10) {
 		direccion = ArrDer;
 		ultDireccion = Ninguna;
 		dx = dy = indX=indY= 0; vel = 5;
 		aumento = 1;
+		ammo = 50;
 	}
 	~Mono(){}
 
@@ -92,9 +94,10 @@ public:
 		Bala* oBala = new Bala(x, y, fx, fy);
 		oBala->setRnRl(10, 10);
 		vBala.push_back(oBala);
+		ammo--;
 	}
 
-	void moverB(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
+	void moverB(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {		
 		for (int i = 0; i < vBala.size(); i++)
 		{
 			if (vBala.at(i)->getActivo()) vBala.at(i)->mover(bg, bm, rec);
