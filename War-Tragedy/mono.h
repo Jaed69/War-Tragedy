@@ -15,10 +15,6 @@ public:
 	}
 	~Mono() {}
 
-	void mov() {
-
-	}
-
 	void mover(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
 		switch (direccion)
 		{
