@@ -6,10 +6,10 @@ private:
 	vector<Bala*> vBala;
 	int ammo;
 public:
-	Mono(int x, int y) :Entidad(x, y, 40, 40, 10) {
-		direccion = ArrDer;
+	Mono(int x, int y) :Entidad(x, y, 32, 32, 10) {
+		direccion = AbDer;
 		ultDireccion = Ninguna;
-		dx = dy = indX = indY = 0; vel = 5;
+		dx = dy = indX = indY = 0; vel = 20;
 		aumento = 1;
 		ammo = 50;
 	}
@@ -42,42 +42,47 @@ public:
 		case ArrDer:
 			indX = 0; indY = 0;
 			ultDireccion = ArrDer;
-			if (Container(bg, rec, 5, -5)) {
+			if (Container(bg, rec, 1, -1)) {
 				dx = 1; dy = -1;
 			}
 			else {
 				direccion = ArrIzq;
+				dx = 0; dy = 0;
 			}
 
 			break;
 		case ArrIzq:
 			indX = 0; indY = 0;
 			ultDireccion = ArrIzq;
-			if (Container(bg, rec, -5, -5)) {
+			if (Container(bg, rec, -1*vel, -1 * vel)) {
 				dx = -1; dy = -1;
 			}
 			else {
 				direccion = AbIzq;
+				dx = 0; dy = 0;
 			}
 			break;
 		case AbDer:
 			indX = 0; indY = 0;
 			ultDireccion = AbDer;
-			if (Container(bg, rec, 5, 5)) {
+			if (Container(bg, rec, 1 * vel, 1 * vel)) {
 				dx = 1; dy = 1;
 			}
 			else {
 				direccion = ArrDer;
+				dx = 0; dy = 0;
 			}
 			break;
 		case AbIzq:
 			indX = 0; indY = 0;
 			ultDireccion = AbIzq;
-			if (Container(bg, rec, -5, -5)) {
-				dx = -1; dy = -1;
+			if (Container(bg, rec, -1 * vel, 1 * vel)) {
+				dx = -1; dy = 1;
 			}
 			else {
 				direccion = AbDer;
+				dx = 0; dy = 0;
+				
 			}
 			break;
 		}
