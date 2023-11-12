@@ -117,7 +117,7 @@ namespace WarTragedy {
 
 		buffer->Graphics->DrawRectangle(gcnew Pen(Color::Orange), r);
 		jugador->mover(buffer, bm, r);
-		bala->mover(buffer, bm, r);
+		
 		buffer->Render(g);
 		delete buffer; delete espacioBuffer; delete g;
 	}
