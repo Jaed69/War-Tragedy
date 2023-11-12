@@ -18,6 +18,7 @@ protected:
 	Direcciones direccion;
 	Rectangle area;
 	Rectangle zonaAumento;
+	Rectangle hitbox;
 
 public:
 	Entidad(){}

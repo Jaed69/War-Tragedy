@@ -127,6 +127,7 @@
     <ClCompile Include="Nivel3.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bala.h" />
     <ClInclude Include="Entidad.h" />
     <ClInclude Include="Helicoptero.h" />
     <ClInclude Include="Jugador.h" />
@@ -144,6 +145,7 @@
     </ClInclude>
     <ClInclude Include="Niveles.h" />
     <ClInclude Include="Recursos.h" />
+    <ClInclude Include="Soldado.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MyForm.resx">
