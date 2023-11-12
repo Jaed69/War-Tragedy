@@ -1,47 +1,49 @@
 #pragma once
 #include "Entidad.h"
+#include <math.h>
 
 class Bala :public Entidad {
 private:
+	float posx, posy;
+	int fx, fy;
 
+	float difx, dify;
+	float menor;
 
 public:
 	Bala() {}
-	Bala() :Entidad(0, 0, 32, 48, 20) {//poner ancho alto bien y determinar vida
-		direccion = Derecha;
-		dx = 1;
-		dy = 0;
+	Bala(int x,int y,int fx,int fy) :Entidad(x, y, 32, 48, 20) {//poner ancho alto bien y determinar vida
+		direccion = Ninguna;
+		posx = x;
+		posy = y;
+		this->fx = fx;
+		this->fy = fy;
+		
+		menor = 0, 0;
+		difx = dify = 0, 0;
+
+		difx = fx - x;
+		dify = fy - y;
+
+		menor = fabsf(fminf(difx, dify));
+
+		dx = difx / menor;
+		dy = dify / menor;
 	}
 	~Bala() {}
 
 
-	void Mover(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
-		if (x + dx + ancho > 1050) {
-			dx = 0;
-			dy = 1;
-			direccion = Abajo;
-		}
-		if (x < 10) {
-			dx = 0;
-			dy = 1;
-			direccion = Abajo;
-		}
-		if (y + alto + dy > 590) {
-			dy *= -1;
-			direccion = Arriba;
-		}
-		if (y < 5) {
-			if (x > 500) {
-				dx = -1;
-				direccion = Izquierda;
-			}
-			else {
-				dx = 1;
-				direccion = Derecha;
-			}
-		}
-		x += dx;
-		y += dy;
+	void mover(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
+		
+
+
+		posx += dx;
+		posy += dy;
+
+		
+		x = roundf(posx);
+		y = roundf(posy);
+
 		dibujar(bg, bm);
 	}
 
