@@ -111,10 +111,6 @@ namespace WarTragedy {
 			}
 		}
 
-		
-
-
-
 		buffer->Graphics->DrawRectangle(gcnew Pen(Color::Orange), r);
 		jugador->mover(buffer, bm, r);
 		

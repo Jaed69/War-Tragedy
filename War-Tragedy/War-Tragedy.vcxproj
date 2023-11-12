@@ -129,7 +129,9 @@
   <ItemGroup>
     <ClInclude Include="Avion.h" />
     <ClInclude Include="Bala.h" />
+    <ClInclude Include="Bomba.h" />
     <ClInclude Include="Entidad.h" />
+    <ClInclude Include="GeEnemigos.h" />
     <ClInclude Include="Helicoptero.h" />
     <ClInclude Include="Jugador.h" />
     <ClInclude Include="MyForm.h">
@@ -145,7 +147,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Niveles.h" />
+    <ClInclude Include="Power.h" />
     <ClInclude Include="Recursos.h" />
+    <ClInclude Include="Serpiente.h" />
     <ClInclude Include="Soldado.h" />
   </ItemGroup>
   <ItemGroup>
