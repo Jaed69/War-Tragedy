@@ -79,7 +79,7 @@ namespace WarTragedy {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1185, 748);
+			this->ClientSize = System::Drawing::Size(1280, 720);
 			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"Nivel1";
 			this->Text = L"Nivel1";
@@ -99,19 +99,9 @@ namespace WarTragedy {
 		BufferedGraphicsContext^ espacioBuffer = BufferedGraphicsManager::Current;
 		BufferedGraphics^ buffer = espacioBuffer->Allocate(g, this->ClientRectangle);
 
-		Rectangle area = Rectangle(0, 0, 384, 216);
+		Rectangle area = Rectangle(0, 0, 1280, 720);
 		Rectangle zoom = Rectangle(0, 0, 1280, 720);
 		buffer->Graphics->DrawImage(fondo, zoom, area, GraphicsUnit::Pixel);
-		int an = 32;
-		int al = 32;
-
-		for (int i = 0; i < 25; i++) {
-			for (int j =0; j < 14; j++)	{
-				Rectangle area2 = Rectangle(2*an, 0*al, an, al);
-				Rectangle zoom2 = Rectangle(180 +an*i, 130+al*j, an, al);
-				buffer->Graphics->DrawImage(pisos, zoom2, area2, GraphicsUnit::Pixel);
-			}
-		}
 
 		buffer->Graphics->DrawRectangle(gcnew Pen(Color::Orange), r);
 		jugador->mover(buffer, bm, r);
