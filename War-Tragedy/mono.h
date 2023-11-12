@@ -1,7 +1,9 @@
 #pragma once
 #include "Entidad.h"
+#include "Bala.h"
 class Mono :public Entidad {
 private:
+	vector<Bala*> vBala;
 public:
 	Mono(int x, int y) :Entidad(x, y, 40, 40, 10) {
 		ultDireccion = Ninguna;
@@ -35,6 +37,20 @@ public:
 			break;
 		default:
 			break;
+		}
+	}
+
+	void disparar(int fx, int fy) {
+		Bala* oBala = new Bala(x, y, fx, fy);
+		oBala->setRnRl(10, 10);
+		vBala.push_back(oBala);
+	}
+
+	void moverB(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
+		for (int i = 0; i < vBala.size(); i++)
+		{
+			if (vBala.at(i)->getActivo()) vBala.at(i)->mover(bg, bm, rec);
+			else vBala.erase(vBala.begin() + i);
 		}
 	}
 };

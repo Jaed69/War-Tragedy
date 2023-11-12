@@ -5,8 +5,6 @@
 #include "Avion.h"
 #include "Serpiente.h"
 
-
-
 class GeEnemigos
 {
 public:
