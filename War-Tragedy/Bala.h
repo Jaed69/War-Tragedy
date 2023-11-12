@@ -25,7 +25,7 @@ public:
 		difx = fx - x;
 		dify = fy - y;
 
-		menor = fabsf(fminf(difx, dify));
+		menor = fmaxf(fabsf(difx),fabsf(dify));
 
 		dx = difx / menor;
 		dy = dify / menor;
@@ -34,9 +34,9 @@ public:
 
 
 	void mover(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
-
-		posx += dx;
-		posy += dy;
+		vel = 10;
+		posx += dx * vel;
+		posy += dy * vel;
 		
 		x = roundf(posx);
 		y = roundf(posy);
