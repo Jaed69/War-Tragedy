@@ -23,6 +23,7 @@ namespace WarTragedy {
 		Bitmap^ pisos = gcnew Bitmap("assets/Nivel/Piso2.png");
 		Bitmap^ bm = gcnew Bitmap("assets/Personaje/Personaje.png");
 		Jugador* jugador = new Jugador(620, 400);
+		
 		int contador;
 
 	public:
@@ -105,6 +106,7 @@ namespace WarTragedy {
 		buffer->Graphics->DrawImage(fondo, zoom, area, GraphicsUnit::Pixel);
 
 		buffer->Graphics->DrawRectangle(gcnew Pen(Color::Orange), r);
+		
 		jugador->mover(buffer, bm, r);
 		jugador->moverB(buffer, bm, r);
 		

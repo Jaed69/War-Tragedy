@@ -98,7 +98,7 @@ namespace WarTragedy {
 		Rectangle zoom = Rectangle(0, 0, 1280, 720);
 		buffer->Graphics->DrawImage(fondo, zoom, area, GraphicsUnit::Pixel);
 
-
+		
 		buffer->Graphics->DrawRectangle(gcnew Pen(Color::Orange), r);
 		jugador->mover(buffer, bm, r);
 		buffer->Render(g);

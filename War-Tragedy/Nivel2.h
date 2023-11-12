@@ -26,9 +26,11 @@ namespace WarTragedy {
 		Bitmap^ bm = gcnew Bitmap("assets/Personaje/Personaje.png");
 		Bitmap^ avi = gcnew Bitmap("assets/Enemigo/Avion/image.png");
 		Bitmap^ helic = gcnew Bitmap("assets/Enemigo/heli.png");
+		Bitmap^ monoo = gcnew Bitmap("assets/Aliado/mono.png");
+		Bitmap^ balaa = gcnew Bitmap("assets/Bala/bala.png");
 		Jugador* jugador = new Jugador(620, 400);
 		Avion* avion;
-
+		GeAliado* gA = new GeAliado();
 		   Helicoptero* heli;
 		   int contador;
 	public:
@@ -119,9 +121,10 @@ namespace WarTragedy {
 		buffer->Graphics->DrawRectangle(gcnew Pen(Color::Orange), r);
 		jugador->mover(buffer, bm, r);
 		avion->mover(buffer, avi, r2);
-		jugador->moverB(buffer, bm, r2);
-		
+		jugador->moverB(buffer, balaa, r2);
+		gA->moverMono(buffer, monoo, r, balaa, r2, avion->getx(), avion->gety());
 		heli->mover(buffer, helic, r2);
+		gA->sumCont();
 		buffer->Render(g);
 		delete buffer; delete espacioBuffer; delete g;
 
@@ -166,7 +169,7 @@ namespace WarTragedy {
 		Random r;
 		switch (e->KeyChar.ToUpper(e->KeyChar))
 		{
-		case 'M': jugador->disparar(avion->getx(), avion->gety());; break;
+		case 'M': gA->crearmono(); break;
 		default:
 			break;
 		}
