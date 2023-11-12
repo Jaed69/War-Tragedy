@@ -8,7 +8,9 @@ class Entidad
 {
 protected:
 	int x, y;
+	int Rx, Ry;
 	int ancho, alto;
+	int Rancho, Ralto;
 	int dx, dy;
 	int vel;
 	int indX, indY;
@@ -29,6 +31,8 @@ public:
 		this->ancho = ancho;
 		this->alto = alto;
 		dx = dy = 0;
+		Rx = Ry = 0;
+		Rancho = Ralto = 0;
 		vel = 1;
 		ultDireccion = Abajo;
 		direccion = Ninguna;
@@ -54,8 +58,14 @@ public:
 	void setancho(int ancho) { this->ancho = ancho; }
 	void setalto(int alto) { this->alto = alto; }
 
-	Rectangle getRec() {
-		return Rectangle(x, y, ancho* aumento, alto* aumento);
+	void setRxRy(int rx, int ry) {
+		this->Rx = rx;
+		this->Ry = ry;
+	}
+
+	void setRnRl(int Rancho, int Ralto) {
+		this->Rancho = Rancho;
+		this->Ralto = Ralto;
 	}
 
 	bool Container(BufferedGraphics^ bg, Rectangle container, int dx, int dy) {
@@ -63,14 +73,19 @@ public:
 		bg->Graphics->DrawRectangle(gcnew Pen(Color::Blue), _r);
 		return (container.Contains(_r));
 	}
-	
-	bool Colision(BufferedGraphics^ bg, Rectangle ajeno) {
-		return getRec().IntersectsWith(ajeno);
+
+	Rectangle getHB() { return hitbox; }
+
+	bool Colision(Rectangle ajeno) {
+		return hitbox.IntersectsWith(ajeno);
 	}
 
 	void dibujar(BufferedGraphics^ bg, Bitmap^ bm) {
 		area = Rectangle(indX * ancho, indY * alto, ancho, alto);
 		zonaAumento = Rectangle(x, y, ancho * aumento, alto * aumento);
+		hitbox = Rectangle(x + Rx, y + Ry, Rancho, Ralto);
+
+		bg->Graphics->DrawRectangle(gcnew Pen(Color::Blue), hitbox);
 		bg->Graphics->DrawRectangle(gcnew Pen(Color::Yellow), zonaAumento);
 		bg->Graphics->DrawRectangle(gcnew Pen(Color::Red), zonaAumento);
 		bg->Graphics->DrawImage(bm, zonaAumento, area, GraphicsUnit::Pixel);
