@@ -8,7 +8,7 @@ private:
 	int fx, fy;
 
 	float difx, dify;
-	float menor;
+	float mayor;
 
 public:
 	Bala() {}
@@ -19,16 +19,16 @@ public:
 		this->fx = fx;
 		this->fy = fy;
 		
-		menor = 0, 0;
+		mayor = 0, 0;
 		difx = dify = 0, 0;
 
 		difx = fx - x;
 		dify = fy - y;
 
-		menor = fmaxf(fabsf(difx),fabsf(dify));
+		mayor = fmaxf(fabsf(difx),fabsf(dify));
 
-		dx = difx / menor;
-		dy = dify / menor;
+		dx = difx / mayor;
+		dy = dify / mayor;
 	}
 	~Bala() {}
 
