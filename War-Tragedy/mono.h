@@ -9,11 +9,11 @@ public:
 	Mono(int x, int y) :Entidad(x, y, 40, 40, 10) {
 		direccion = ArrDer;
 		ultDireccion = Ninguna;
-		dx = dy = indX=indY= 0; vel = 5;
+		dx = dy = indX = indY = 0; vel = 5;
 		aumento = 1;
 		ammo = 50;
 	}
-	~Mono(){}
+	~Mono() {}
 
 	void mov() {
 
@@ -52,11 +52,11 @@ public:
 			else {
 				direccion = ArrIzq;
 			}
-			
+
 			break;
 		case ArrIzq:
 			indX = 0; indY = 0;
-			 ultDireccion = ArrIzq;
+			ultDireccion = ArrIzq;
 			if (Container(bg, rec, -5, -5)) {
 				dx = -1; dy = -1;
 			}
@@ -66,7 +66,7 @@ public:
 			break;
 		case AbDer:
 			indX = 0; indY = 0;
-			 ultDireccion = AbDer;
+			ultDireccion = AbDer;
 			if (Container(bg, rec, 5, 5)) {
 				dx = 1; dy = 1;
 			}
@@ -76,7 +76,7 @@ public:
 			break;
 		case AbIzq:
 			indX = 0; indY = 0;
-			 ultDireccion = AbIzq;
+			ultDireccion = AbIzq;
 			if (Container(bg, rec, -5, -5)) {
 				dx = -1; dy = -1;
 			}
@@ -87,7 +87,7 @@ public:
 		}
 		x += dx * vel;
 		y += dy * vel;
-		dibujar(bg,bm);
+		dibujar(bg, bm);
 	}
 
 	void disparar(int fx, int fy) {
@@ -97,7 +97,7 @@ public:
 		ammo--;
 	}
 
-	void moverB(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {		
+	void moverB(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
 		for (int i = 0; i < vBala.size(); i++)
 		{
 			if (vBala.at(i)->getActivo()) vBala.at(i)->mover(bg, bm, rec);
