@@ -16,7 +16,7 @@ public:
 		}
 		ultDireccion = Ninguna;
 		dx = 0;
-		dy = 0; aumento = 2; vel = 15;
+		dy = 0; aumento = 2; vel = 10;
 	}
 	~Helicoptero() {}
 	

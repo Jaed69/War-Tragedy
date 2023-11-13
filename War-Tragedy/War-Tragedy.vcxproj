@@ -135,7 +135,7 @@
     <ClInclude Include="GeEnemigos.h" />
     <ClInclude Include="Helicoptero.h" />
     <ClInclude Include="Jugador.h" />
-    <ClInclude Include="mono.h" />
+    <ClInclude Include="Mono.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>

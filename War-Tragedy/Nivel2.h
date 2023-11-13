@@ -42,7 +42,7 @@ namespace WarTragedy {
 			//TODO: Add the constructor code here
 			//
 			//r = Rectangle(240, 130, 800, 450);
-			r = Rectangle(224, 96, 800, 450);
+			r = Rectangle(256, 176, 768, 432);
 			r2 = Rectangle(0, 0, g->VisibleClipBounds.Width, g->VisibleClipBounds.Height);
 			contador = 0;
 			Random r;
@@ -122,7 +122,7 @@ namespace WarTragedy {
 		jugador->mover(buffer, bm, r);
 		avion->mover(buffer, avi, r2);
 		jugador->moverB(buffer, balaa, r2);
-		gA->moverMono(buffer, monoo, r, balaa, r2, avion->getx(), avion->gety());
+		gA->moverMono(buffer, monoo, r, balaa, r2, heli->getx(), heli->gety());
 		heli->mover(buffer, helic, r2);
 		gA->sumCont();
 		buffer->Render(g);

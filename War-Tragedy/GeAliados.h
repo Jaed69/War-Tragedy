@@ -1,6 +1,6 @@
 #pragma once
 #include "Entidad.h"
-#include "mono.h"
+#include "Mono.h"
 #include "Bala.h"
 #include <vector>
 using namespace std;
@@ -19,7 +19,7 @@ public:
 	}
 
 	void crearmono() {
-		Mono* mono = new Mono(210, 210);
+		Mono* mono = new Mono(260, 210);
 		listaMono.push_back(mono);
 	}
 

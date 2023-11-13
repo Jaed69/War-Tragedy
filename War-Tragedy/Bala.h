@@ -34,7 +34,7 @@ public:
 
 
 	void mover(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
-		vel = 10;
+		vel = 15;
 		posx += dx * vel;
 		posy += dy * vel;
 		

@@ -9,9 +9,14 @@ public:
 	Mono(int x, int y) :Entidad(x, y, 32, 32, 10) {
 		direccion = AbDer;
 		ultDireccion = Ninguna;
-		dx = dy = indX = indY = 0; vel = 20;
+		dx = dy = indX = indY = 0; vel = 5;
+		Rx = 12;
+		Ry = 10;
+		Rancho = 11;
+		Ralto = 11;
 		aumento = 1;
 		ammo = 50;
+		
 	}
 	~Mono() {}
 

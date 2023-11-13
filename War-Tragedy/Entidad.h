@@ -76,8 +76,8 @@ public:
 	}
 
 	bool Container(BufferedGraphics^ bg, Rectangle container, int dx, int dy) {
-		Rectangle _r = Rectangle(x + dx, y + dy, ancho* aumento, alto* aumento);
-		bg->Graphics->DrawRectangle(gcnew Pen(Color::Blue), _r);
+		Rectangle _r = Rectangle(x + Rx + dx, y + Ry + dy, Rancho, Ralto);
+		bg->Graphics->DrawRectangle(gcnew Pen(Color::Green), _r);
 		return (container.Contains(_r));
 	}
 
