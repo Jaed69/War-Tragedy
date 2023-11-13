@@ -128,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Avion.h" />
+    <ClInclude Include="AvionAliado.h" />
     <ClInclude Include="Bala.h" />
     <ClInclude Include="Bomba.h" />
     <ClInclude Include="Entidad.h" />
