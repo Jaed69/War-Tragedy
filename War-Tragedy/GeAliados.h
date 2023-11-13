@@ -47,9 +47,9 @@ public:
 	}
 	void moverAvion(BufferedGraphics^ bg, Bitmap^ aviBM, Rectangle aviE, Bitmap^ bala, Rectangle balaE) {
 		for (int i = 0; i < listaAviones.size(); i++) {
-			listaAviones[i]->mover(bg, aviBM, aviE);
+			listaAviones.at(i)->mover(bg, aviBM, aviE);
 			if (contador % 8 == 0) {
-				listaAviones[i]->disparar();
+				listaAviones.at(i)->disparar();
 			}
 			listaAviones.at(i)->moverB(bg, bala, balaE);
 		}	
