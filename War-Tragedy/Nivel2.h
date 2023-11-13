@@ -123,6 +123,7 @@ namespace WarTragedy {
 		avion->mover(buffer, avi, r2);
 		jugador->moverB(buffer, balaa, r2);
 		gA->moverMono(buffer, monoo, r, balaa, r2, heli->getx(), heli->gety());
+		gA->moverAvion(buffer, avi, r, balaa, r2);
 		heli->mover(buffer, helic, r2);
 		gA->sumCont();
 		buffer->Render(g);
@@ -170,9 +171,11 @@ namespace WarTragedy {
 		switch (e->KeyChar.ToUpper(e->KeyChar))
 		{
 		case 'M': gA->crearmono(); break;
+		case 'V':gA->crearAvion(); break;
 		default:
 			break;
 		}
+
 	}
 	};
 }

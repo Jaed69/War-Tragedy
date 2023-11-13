@@ -9,7 +9,7 @@ class GeAliado {
 private:
 	int contador;
 	vector<Mono*>listaMono;
-	AvionAliado* avion;
+	vector<AvionAliado*> listaAviones;
 
 public:
 	GeAliado(){
@@ -24,6 +24,10 @@ public:
 	void crearmono() {
 		Mono* mono = new Mono(260, 210);
 		listaMono.push_back(mono);
+	}
+	void crearAvion() {
+		AvionAliado* avi = new AvionAliado(100, 0);
+		listaAviones.push_back(avi);
 	}
 	/*
 	* void moverAliados(BufferedGraphics^ bg, Bitmap^ monoBM, Rectangle monoE, Bitmap^ bala, Rectangle balaE, int avX, int avY) {
@@ -42,9 +46,13 @@ public:
 		}
 	}
 	void moverAvion(BufferedGraphics^ bg, Bitmap^ aviBM, Rectangle aviE, Bitmap^ bala, Rectangle balaE) {
-		avion->mover(bg,aviBM,aviE);
-		if (contador % 8 == 0) {
-			avion->disparar();
-		}
+		for (int i = 0; i < listaAviones.size(); i++) {
+			listaAviones[0]->mover(bg, aviBM, aviE);
+			if (contador % 8 == 0) {
+				listaAviones[0]->disparar();
+			}
+			listaAviones.at(i)->moverB(bg, bala, balaE);
+		}	
+		
 	}
 };
