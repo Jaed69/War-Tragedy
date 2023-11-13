@@ -54,6 +54,8 @@ public:
 	int getdx() { return this->dx; }
 	int getdy() { return this->dy; }
 	int getvida() { return this->vida; }
+	int getancho() { return this->ancho; }
+	int getalto() { return this->alto; }
 	void setvida(int vidas) { this->vida = vidas; }
 	void setx(int x) { this->x = x; }
 	void sety(int y) { this->y = y; }

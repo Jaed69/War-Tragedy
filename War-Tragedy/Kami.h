@@ -8,7 +8,7 @@ private:
 public:
 	Kami(int _x, int _y):Entidad(_x, _y, 40, 40, 1) {
 		indX = indY = 0;
-		direccion = Abajo;
+		direccion = Ninguna;
 		aumento = 2;
 		vel = 10;
 	}
@@ -62,18 +62,19 @@ public:
 			break;
 		}
 		if (x > ju->getx()&&y>ju->gety()) {
-			direccion = AbDer;			
-		}
-		else {
 			direccion = ArrIzq;
 		}
+		if (x < ju->getx()&&y<ju->gety()) {
+			direccion = AbDer;
+		}		
 		if (x > ju->getx() && y < ju->gety()) {
-			direccion = ArrDer;
-		}
-		else {
 			direccion = AbIzq;
 		}
-		if (y == ju->gety()) {
+		if (x < ju->getx() && y > ju->gety()) {
+			direccion = ArrDer;
+		}
+				
+		if (y > ju->gety()- (ju->getalto() / 2) && y < ju->gety()+(ju->getalto()/2)) {
 			if (x > ju->getx()) {
 				direccion = Izquierda;
 			}
@@ -81,14 +82,15 @@ public:
 				direccion = Derecha;
 			}
 		}
-		if (x == ju->getx()) {
+		if (x > ju->getx()- (ju->getancho() / 2) &&x<ju->getx()+(ju->getancho()/2)) {
 			if (y > ju->gety()) {
 				direccion = Arriba;
 			}
 			else {
 				direccion = Abajo;
 			}
-		}	
+		}			
+		
 		x += dx * vel;
 		y += dy * vel;
 		dibujar(bg, bm);
