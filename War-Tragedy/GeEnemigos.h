@@ -18,7 +18,7 @@ public:
 
 	void sumCont() {
 		contador += 1;
-		if (contador % 50 == 0) {
+		if (contador % 150 == 0) {
 			crearKami();
 		}
 	}
