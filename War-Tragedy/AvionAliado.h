@@ -69,9 +69,10 @@ public:
 	void disparar() {
 		Bala* oBala = new Bala(x, y, x +20, y);
 		oBala->setRnRl(10, 10);
-		Bala* oBala = new Bala(x, y, x -20, y);
+		Bala* oBala2 = new Bala(x, y, x -20, y);	
 		oBala->setRnRl(10, 10);
 		vBala.push_back(oBala);
+		vBala.push_back(oBala2);
 	}
 
 	void moverB(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
