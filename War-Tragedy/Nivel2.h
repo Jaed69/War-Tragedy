@@ -3,6 +3,7 @@
 #include "Avion.h"
 #include "Helicoptero.h"
 #include "GeAliados.h"
+#include "GeEnemigos.h"
 namespace WarTragedy {
 
 	using namespace System;
@@ -31,6 +32,7 @@ namespace WarTragedy {
 		Jugador* jugador = new Jugador(620, 400);
 		Avion* avion;
 		GeAliado* gA = new GeAliado();
+		GeEnemigos* gE = new GeEnemigos();
 		   Helicoptero* heli;
 		   int contador;
 	public:
@@ -119,14 +121,24 @@ namespace WarTragedy {
 	
 
 		buffer->Graphics->DrawRectangle(gcnew Pen(Color::Orange), r);
+		//jugador
 		jugador->mover(buffer, bm, r);
-		avion->mover(buffer, avi, r2);
 		jugador->moverB(buffer, balaa, r2);
+
+		//enemigos
+		avion->mover(buffer, avi, r2);
+		heli->mover(buffer, helic, r2);
+		gE->sumCont();
+		gE->MoverKami(jugador, buffer,avi,r2);
+		//aliados
 		gA->moverMono(buffer, monoo, r, balaa, r2, heli->getx(), heli->gety());
 		gA->moverAvion(buffer, avi, r, balaa, r2);
-		heli->mover(buffer, helic, r2);
 		gA->sumCont();
 		buffer->Render(g);
+
+
+
+
 		delete buffer; delete espacioBuffer; delete g;
 
 		/*if (jugador->getDashodisponible() == false) {

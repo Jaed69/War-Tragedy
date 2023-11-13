@@ -22,6 +22,9 @@
     <Filter Include="Archivos de encabezado\Niveles">
       <UniqueIdentifier>{b0eb8730-85e0-45f1-8a51-ff6e430a5bd3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\Gestores">
+      <UniqueIdentifier>{acff0bf9-67d5-4204-8c11-63f4c105d8cc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Nivel1.cpp">
@@ -62,9 +65,6 @@
     <ClInclude Include="Bala.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="GeEnemigos.h">
-      <Filter>Archivos de encabezado\Enemigos</Filter>
-    </ClInclude>
     <ClInclude Include="Helicoptero.h">
       <Filter>Archivos de encabezado\Enemigos</Filter>
     </ClInclude>
@@ -86,14 +86,20 @@
     <ClInclude Include="Power.h">
       <Filter>Archivos de encabezado\Aliados</Filter>
     </ClInclude>
-    <ClInclude Include="mono.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="AvionAliado.h">
+      <Filter>Archivos de encabezado\Aliados</Filter>
+    </ClInclude>
+    <ClInclude Include="Mono.h">
+      <Filter>Archivos de encabezado\Aliados</Filter>
+    </ClInclude>
+    <ClInclude Include="Kami.h">
+      <Filter>Archivos de encabezado\Enemigos</Filter>
+    </ClInclude>
+    <ClInclude Include="GeEnemigos.h">
+      <Filter>Archivos de encabezado\Gestores</Filter>
     </ClInclude>
     <ClInclude Include="GeAliados.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="AvionAliado.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\Gestores</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

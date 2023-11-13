@@ -7,12 +7,14 @@ private:
 
 public:
 	Soldado() {}
+	/* ta en comentario porque no me dejaba compilar xdxdxdxdhkbasfvhasfvbhi
 	Soldado() :Entidad(0, 0, 32, 48, 20) {//poner ancho alto bien y determinar vida
 		direccion = Derecha;
 		dx = 1;
 		dy = 0;
 	}
-	~Soldado() {}
+	~Soldado() {}*/
+	
 
 
 	void Mover(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
