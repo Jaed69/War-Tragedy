@@ -130,6 +130,7 @@ namespace WarTragedy {
 		heli->mover(buffer, helic, r2);
 		gE->sumCont();
 		gE->MoverKami(jugador, buffer,avi,r2);
+		gE->MoverHeli(buffer, helic, r2);
 		//aliados
 		gA->moverMono(buffer, monoo, r, balaa, r2, heli->getx(), heli->gety());
 		gA->moverAvion(buffer, avi, r, balaa, r2);
