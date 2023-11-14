@@ -9,12 +9,17 @@
 class GeEnemigos{
 private:
 	int contador;
+	vector<Soldado*> soldados;
+	vector<Bomba*> bombas;
+	vector<Helicoptero*> helicopteros;
+	vector<Avion*> aviones;
+	vector<Serpiente*> serpientes;
 	vector<Kami*> listaka;
-	vector<Helicoptero*> listahelis;
+	
 public:
 	GeEnemigos(){
 		Helicoptero* h = new Helicoptero(0);
-		listahelis.push_back(h);
+		helicopteros.push_back(h);
 		contador = 0;
 	}
 	~GeEnemigos(){}
@@ -34,7 +39,7 @@ public:
 	}
 	void crearHeli() {
 		Helicoptero* h = new Helicoptero(0);
-		listahelis.push_back(h);
+		helicopteros.push_back(h);
 	}
 
 	void MoverKami(Jugador* ju, BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
@@ -43,8 +48,8 @@ public:
 		}
 	}
 	void MoverHeli(BufferedGraphics^ bg, Rectangle rec) {
-		for (int i = 0; i < listahelis.size(); i++) {
-			listahelis.at(i)->mover(bg, rec);
+		for (int i = 0; i < helicopteros.size(); i++) {
+			helicopteros.at(i)->mover(bg, rec);
 		}
 	}
 

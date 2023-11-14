@@ -123,7 +123,6 @@
   <ItemGroup>
     <ClCompile Include="Entorno.cpp" />
     <ClCompile Include="MyForm.cpp" />
-    <ClCompile Include="Nivel2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Avion.h" />
@@ -147,9 +146,6 @@
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Nivel2.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
     <ClInclude Include="Obstaculo.h" />
     <ClInclude Include="Prado.h" />
     <ClInclude Include="Tejado.h" />
@@ -164,9 +160,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Nivel2.resx">
-      <DependentUpon>Nivel2.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
