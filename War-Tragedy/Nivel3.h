@@ -86,9 +86,9 @@ namespace WarTragedy {
 		}
 #pragma endregion
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
-		if (jugador->getDashodisponible() == false) {
+		if (jugador->getDash() == false) {
 			contador++;
-			if (contador > 5) { contador = 0; jugador->setDashodisponible(true); }
+			if (contador > 5) { contador = 0; jugador->setDash(true); }
 		}
 		Graphics^ g = this->CreateGraphics();
 		BufferedGraphicsContext^ espacioBuffer = BufferedGraphicsManager::Current;
@@ -100,13 +100,13 @@ namespace WarTragedy {
 
 		
 		buffer->Graphics->DrawRectangle(gcnew Pen(Color::Orange), r);
-		jugador->mover(buffer, bm, r);
+		jugador->mover(buffer, r);
 		buffer->Render(g);
 		delete buffer; delete espacioBuffer; delete g;
 		
-		/*if (jugador->getDashodisponible() == false) {
+		/*if (jugador->getDash() == false) {
 			contador++;
-			if (contador > 5) { contador = 0; jugador->setDashodisponible(true); }
+			if (contador > 5) { contador = 0; jugador->setDash(true); }
 		}
 		Graphics^ g = this->CreateGraphics();
 		BufferedGraphicsContext^ espacioBuffer = BufferedGraphicsManager::Current;
@@ -132,7 +132,7 @@ namespace WarTragedy {
 		case Keys::A: jugador->setDireccion(Izquierda); break;
 		case Keys::S: jugador->setDireccion(Abajo); break;
 		case Keys::D: jugador->setDireccion(Derecha); break;
-		case Keys::Space: if (jugador->getDashodisponible()) { jugador->Dash(buffer, r); jugador->setDashodisponible(false); } break;
+		case Keys::Space: if (jugador->getDash()) { jugador->setDireccion(Dash); jugador->setDash(false); } break;
 		default:
 			break;
 		}

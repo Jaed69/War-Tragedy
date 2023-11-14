@@ -36,22 +36,22 @@ public:
 	}
 	*/
 
-	void moverMono(BufferedGraphics^ bg, Bitmap^ monoBM, Rectangle monoE, Bitmap^bala, Rectangle balaE, int avX, int avY) {
+	void moverMono(BufferedGraphics^ bg, Rectangle monoE, Rectangle balaE, int avX, int avY) {
 		for (int i = 0; i < listaMono.size(); i++) {
-			listaMono.at(i)->mover(bg, monoBM, monoE);
+			listaMono.at(i)->mover(bg, monoE);
 			if (contador % 6 == 0) {
 				listaMono.at(i)->disparar(avX, avY);
 			}
-			listaMono.at(i)->moverB(bg, bala, balaE);
+			listaMono.at(i)->moverB(bg, balaE);
 		}
 	}
-	void moverAvion(BufferedGraphics^ bg, Bitmap^ aviBM, Rectangle aviE, Bitmap^ bala, Rectangle balaE) {
+	void moverAvion(BufferedGraphics^ bg, Rectangle aviE, Rectangle balaE) {
 		for (int i = 0; i < listaAviones.size(); i++) {
-			listaAviones.at(i)->mover(bg, aviBM, aviE);
+			listaAviones.at(i)->mover(bg, aviE);
 			if (contador % 8 == 0) {
 				listaAviones.at(i)->disparar();
 			}
-			listaAviones.at(i)->moverB(bg, bala, balaE);
+			listaAviones.at(i)->moverB(bg, balaE);
 		}	
 		
 	}

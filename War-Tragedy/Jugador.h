@@ -6,7 +6,7 @@ class Jugador:public Entidad
 {
 private:
 	int chaleco;
-	bool dashdisponible;
+	bool dash;
 	vector<Bala*> vBala;
 
 public:
@@ -15,18 +15,24 @@ public:
 		indX = 4;
 		indY = 2;
 		aumento = 1;
-		dashdisponible = true;
+		dash = true;
+
+		Rx = Ry = 5;
+		Rancho = Ralto = 20;
+
 	}
 	~Jugador(){}
 	int getchaleco() { return this->chaleco; }
 	void setchaleco(int chaleco) { this->chaleco = chaleco; }
-	bool getDashodisponible() {
-		return dashdisponible;
+	bool getDash() {
+		return dash;
 	}
-	void setDashodisponible(bool a) {
-		dashdisponible = a;
+	void setDash(bool a) {
+		dash = a;
 	}
-	void mover(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
+	void mover(BufferedGraphics^ bg, Rectangle rec) {
+		Bitmap^ bm = gcnew Bitmap("assets/Personaje/Personaje.png");
+
 		switch (direccion)
 		{
 		case Ninguna:
@@ -160,55 +166,54 @@ public:
 			}
 			break;
 
+		case Dash:
+			switch (ultDireccion) {
+			case Arriba:
+				if (!Container(bg, rec, 0, -(alto * 2))) {
+					//dead or smth
+				}
+				else {
+					y -= alto * 2;
+					ultDireccion = Arriba;
+				}
+				break;
+			case Abajo:
+				if (!Container(bg, rec, 0, (alto * 2))) {
+					//dead or smth
+				}
+				else {
+					y += alto * 2;
+					ultDireccion = Abajo;
+				}
+				break;
+			case Derecha:
+				if (!Container(bg, rec, ancho * 2, 0)) {
+					//dead or smth
+				}
+				else {
+					x += ancho * 2;
+					ultDireccion = Derecha;
+				}
+				break;
+			case Izquierda:
+				if (!Container(bg, rec, -(ancho * 2), 0)) {
+					//dead or smth
+				}
+				else {
+					x -= ancho * 2;
+					ultDireccion = Izquierda;
+				}
+				x += dx * vel;
+				y += dy * vel;
+				break;
+			}
+		
 		}
 		x += dx * vel;
 		y += dy * vel;
 		dibujar(bg, bm);
 	}
 
-	void Dash(BufferedGraphics^ bg, Rectangle rec) {
-		switch (ultDireccion) {
-		case Arriba:
-			if (!Container(bg, rec, 0, -(alto * 2))) {
-				//dead or smth
-			}
-			else {
-				y -= alto * 2;
-				ultDireccion = Arriba;
-			}
-			break;
-		case Abajo:
-			if (!Container(bg, rec, 0, (alto * 2))) {
-				//dead or smth
-			}
-			else {
-				y += alto * 2;
-				ultDireccion = Abajo;
-			}
-			break;
-		case Derecha:
-			if (!Container(bg, rec,ancho * 2, 0)) {
-				//dead or smth
-			}
-			else {
-				x += ancho * 2;
-				ultDireccion = Derecha;
-			}
-			break;
-		case Izquierda:
-			if (!Container(bg, rec,  -(ancho * 2), 0)) {
-				//dead or smth
-			}
-			else {
-				x -= ancho * 2;
-				ultDireccion = Izquierda;
-			}
-			x += dx * vel;
-			y += dy * vel;
-			break;
-		}
-
-	}
 
 	void disparar(int fx,int fy) {
 		Bala* oBala = new Bala(x, y, fx, fy);
@@ -216,10 +221,12 @@ public:
 		vBala.push_back(oBala);
 	}
 
-	void moverB(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
+	void moverB(BufferedGraphics^ bg, Rectangle rec) {
+		Bitmap^ bala = gcnew Bitmap("assets/Bala/bala.png");
+
 		for (int i = 0; i < vBala.size(); i++)
 		{
-			if (vBala.at(i)->getActivo()) vBala.at(i)->mover(bg, bm, rec);
+			if (vBala.at(i)->getActivo()) vBala.at(i)->mover(bg, rec);
 			else vBala.erase(vBala.begin() + i);
 		}
 	}

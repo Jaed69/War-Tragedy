@@ -10,7 +10,8 @@ public:
 		vel = 10;
 	}
 	~Avion() {}
-	void mover(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
+	void mover(BufferedGraphics^ bg, Rectangle rec) {
+		Bitmap^ avi = gcnew Bitmap("assets/Enemigo/Avion/image.png");
 
 		switch (direccion)
 		{
@@ -60,7 +61,7 @@ public:
 		}
 		x += dx * vel;
 		y += dy * vel;
-		dibujar(bg, bm);
+		dibujar(bg, avi);
 	}
 };
 

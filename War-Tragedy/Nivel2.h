@@ -22,12 +22,10 @@ namespace WarTragedy {
 		Rectangle r2;
 
 		Bitmap^ fondo = gcnew Bitmap("assets/Nivel/Nivel2.png");
-		Bitmap^ pisos = gcnew Bitmap("assets/Nivel/Piso2.png");
-		Bitmap^ bm = gcnew Bitmap("assets/Personaje/Personaje.png");
-		Bitmap^ avi = gcnew Bitmap("assets/Enemigo/Avion/image.png");
-		Bitmap^ helic = gcnew Bitmap("assets/Enemigo/heli.png");
-		Bitmap^ monoo = gcnew Bitmap("assets/Aliado/mono.png");
-		Bitmap^ balaa = gcnew Bitmap("assets/Bala/bala.png");
+		
+		
+		
+		
 		Jugador* jugador = new Jugador(620, 400);
 		Avion* avion;
 		GeAliado* gA = new GeAliado();
@@ -105,9 +103,9 @@ namespace WarTragedy {
 		}
 #pragma endregion
 	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
-		if (jugador->getDashodisponible() == false) {
+		if (jugador->getDash() == false) {
 			contador++;
-			if (contador > 5) { contador = 0; jugador->setDashodisponible(true); }
+			if (contador > 5) { contador = 0; jugador->setDash(true); }
 		}
 		Graphics^ g = this->CreateGraphics();
 		BufferedGraphicsContext^ espacioBuffer = BufferedGraphicsManager::Current;
@@ -119,19 +117,20 @@ namespace WarTragedy {
 	
 
 		buffer->Graphics->DrawRectangle(gcnew Pen(Color::Orange), r);
-		jugador->mover(buffer, bm, r);
-		avion->mover(buffer, avi, r2);
-		jugador->moverB(buffer, balaa, r2);
-		gA->moverMono(buffer, monoo, r, balaa, r2, heli->getx(), heli->gety());
-		gA->moverAvion(buffer, avi, r, balaa, r2);
-		heli->mover(buffer, helic, r2);
+		buffer->Graphics->DrawRectangle(gcnew Pen(Color::Orange), r2);
+		jugador->mover(buffer, r);
+		avion->mover(buffer, r2);
+		jugador->moverB(buffer, r2);
+		gA->moverMono(buffer, r, r2, heli->getx(), heli->gety());
+		gA->moverAvion(buffer, r, r2);
+		heli->mover(buffer, r2);
 		gA->sumCont();
 		buffer->Render(g);
 		delete buffer; delete espacioBuffer; delete g;
 
-		/*if (jugador->getDashodisponible() == false) {
+		/*if (jugador->getDash() == false) {
 			contador++;
-			if (contador > 5) { contador = 0; jugador->setDashodisponible(true); }
+			if (contador > 5) { contador = 0; jugador->setDash(true); }
 		}
 		Graphics^ g = this->CreateGraphics();
 		BufferedGraphicsContext^ espacioBuffer = BufferedGraphicsManager::Current;
@@ -148,16 +147,13 @@ namespace WarTragedy {
 		delete buffer; delete espacioBuffer; delete g;*/
 	}
 	private: System::Void Nivel2_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
-		Graphics^ g = this->CreateGraphics();
-		BufferedGraphicsContext^ espacioBuffer = BufferedGraphicsManager::Current;
-		BufferedGraphics^ buffer = espacioBuffer->Allocate(g, this->ClientRectangle);
 		switch (e->KeyCode)
 		{
 		case Keys::W:jugador->setDireccion(Arriba); break;
 		case Keys::A: jugador->setDireccion(Izquierda); break;
 		case Keys::S: jugador->setDireccion(Abajo); break;
 		case Keys::D: jugador->setDireccion(Derecha); break;
-		case Keys::Space: if (jugador->getDashodisponible()) { jugador->Dash(buffer, r); jugador->setDashodisponible(false); } break;
+		case Keys::Space: if (jugador->getDash()) { jugador->setDireccion(Dash); jugador->setDash(false); } break;
 		default:
 			break;
 		}
@@ -166,8 +162,6 @@ namespace WarTragedy {
 		jugador->setDireccion(Ninguna);
 	}
 	private: System::Void Nivel2_KeyPress(System::Object^ sender, System::Windows::Forms::KeyPressEventArgs^ e) {
-		int x, y;
-		Random r;
 		switch (e->KeyChar.ToUpper(e->KeyChar))
 		{
 		case 'M': gA->crearmono(); break;

@@ -22,11 +22,14 @@
     <Filter Include="Archivos de encabezado\Niveles">
       <UniqueIdentifier>{b0eb8730-85e0-45f1-8a51-ff6e430a5bd3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\Objetos">
+      <UniqueIdentifier>{7b6e784d-e713-4a32-8f09-b20a47620d96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\Juego">
+      <UniqueIdentifier>{581ea924-442a-4343-9436-82816cd66646}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Nivel1.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="Nivel2.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -36,17 +39,11 @@
     <ClCompile Include="MyForm.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="Entorno.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Entidad.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="Jugador.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="Nivel1.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="Nivel2.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
@@ -54,12 +51,6 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="MyForm.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="Recursos.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="Bala.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="GeEnemigos.h">
@@ -80,20 +71,50 @@
     <ClInclude Include="Avion.h">
       <Filter>Archivos de encabezado\Enemigos</Filter>
     </ClInclude>
-    <ClInclude Include="Niveles.h">
+    <ClInclude Include="Tejado.h">
       <Filter>Archivos de encabezado\Niveles</Filter>
     </ClInclude>
     <ClInclude Include="Power.h">
       <Filter>Archivos de encabezado\Aliados</Filter>
     </ClInclude>
-    <ClInclude Include="mono.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="GeAliados.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\Aliados</Filter>
     </ClInclude>
     <ClInclude Include="AvionAliado.h">
+      <Filter>Archivos de encabezado\Aliados</Filter>
+    </ClInclude>
+    <ClInclude Include="Kami.h">
+      <Filter>Archivos de encabezado\Aliados</Filter>
+    </ClInclude>
+    <ClInclude Include="Entidad.h">
+      <Filter>Archivos de encabezado\Juego</Filter>
+    </ClInclude>
+    <ClInclude Include="Jugador.h">
+      <Filter>Archivos de encabezado\Juego</Filter>
+    </ClInclude>
+    <ClInclude Include="Bala.h">
+      <Filter>Archivos de encabezado\Juego</Filter>
+    </ClInclude>
+    <ClInclude Include="Mono.h">
+      <Filter>Archivos de encabezado\Aliados</Filter>
+    </ClInclude>
+    <ClInclude Include="Recursos.h">
+      <Filter>Archivos de encabezado\Juego</Filter>
+    </ClInclude>
+    <ClInclude Include="Juego.h">
+      <Filter>Archivos de encabezado\Juego</Filter>
+    </ClInclude>
+    <ClInclude Include="Entorno.h">
       <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="Edificio.h">
+      <Filter>Archivos de encabezado\Niveles</Filter>
+    </ClInclude>
+    <ClInclude Include="Prado.h">
+      <Filter>Archivos de encabezado\Niveles</Filter>
+    </ClInclude>
+    <ClInclude Include="Obstaculos.h">
+      <Filter>Archivos de encabezado\Niveles</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

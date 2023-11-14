@@ -121,8 +121,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Entorno.cpp" />
     <ClCompile Include="MyForm.cpp" />
-    <ClCompile Include="Nivel1.cpp" />
     <ClCompile Include="Nivel2.cpp" />
     <ClCompile Include="Nivel3.cpp" />
   </ItemGroup>
@@ -131,17 +131,19 @@
     <ClInclude Include="AvionAliado.h" />
     <ClInclude Include="Bala.h" />
     <ClInclude Include="Bomba.h" />
+    <ClInclude Include="Edificio.h" />
     <ClInclude Include="Entidad.h" />
+    <ClInclude Include="Entorno.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="GeAliados.h" />
     <ClInclude Include="GeEnemigos.h" />
     <ClInclude Include="Helicoptero.h" />
+    <ClInclude Include="Juego.h" />
     <ClInclude Include="Jugador.h" />
     <ClInclude Include="Kami.h" />
     <ClInclude Include="Mono.h" />
     <ClInclude Include="MyForm.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="Nivel1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Nivel2.h">
@@ -150,18 +152,20 @@
     <ClInclude Include="Nivel3.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Niveles.h" />
+    <ClInclude Include="Obstaculos.h" />
+    <ClInclude Include="Prado.h" />
+    <ClInclude Include="Tejado.h" />
     <ClInclude Include="Power.h" />
     <ClInclude Include="Recursos.h" />
     <ClInclude Include="Serpiente.h" />
     <ClInclude Include="Soldado.h" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Entorno.resx">
+      <DependentUpon>Entorno.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Nivel1.resx">
-      <DependentUpon>Nivel1.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Nivel2.resx">
       <DependentUpon>Nivel2.h</DependentUpon>

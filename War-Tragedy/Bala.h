@@ -33,7 +33,9 @@ public:
 	~Bala() {}
 
 
-	void mover(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
+	void mover(BufferedGraphics^ bg, Rectangle rec) {
+		Bitmap^ bala = gcnew Bitmap("assets/Bala/bala.png");
+
 		vel = 15;
 		posx += dx * vel;
 		posy += dy * vel;
@@ -41,7 +43,7 @@ public:
 		x = roundf(posx);
 		y = roundf(posy);
 
-		dibujar(bg, bm);
+		dibujar(bg, bala);
 	}
 
 

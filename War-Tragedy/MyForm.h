@@ -1,7 +1,6 @@
 #pragma once
-#include "Nivel1.h"
-#include "Nivel2.h"
-#include "Nivel3.h"
+
+#include "Entorno.h"
 
 namespace WarTragedy {
 
@@ -17,6 +16,8 @@ namespace WarTragedy {
 	/// </summary>
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
+	private:
+
 	public:
 		MyForm(void)
 		{
@@ -66,9 +67,10 @@ namespace WarTragedy {
 			// 
 			// btnNivel1
 			// 
-			this->btnNivel1->Location = System::Drawing::Point(102, 59);
+			this->btnNivel1->Location = System::Drawing::Point(76, 48);
+			this->btnNivel1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->btnNivel1->Name = L"btnNivel1";
-			this->btnNivel1->Size = System::Drawing::Size(75, 23);
+			this->btnNivel1->Size = System::Drawing::Size(56, 19);
 			this->btnNivel1->TabIndex = 0;
 			this->btnNivel1->Text = L"Nivel1";
 			this->btnNivel1->UseVisualStyleBackColor = true;
@@ -76,9 +78,10 @@ namespace WarTragedy {
 			// 
 			// btnNivel2
 			// 
-			this->btnNivel2->Location = System::Drawing::Point(102, 108);
+			this->btnNivel2->Location = System::Drawing::Point(76, 88);
+			this->btnNivel2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->btnNivel2->Name = L"btnNivel2";
-			this->btnNivel2->Size = System::Drawing::Size(75, 23);
+			this->btnNivel2->Size = System::Drawing::Size(56, 19);
 			this->btnNivel2->TabIndex = 1;
 			this->btnNivel2->Text = L"Nivel2";
 			this->btnNivel2->UseVisualStyleBackColor = true;
@@ -86,9 +89,10 @@ namespace WarTragedy {
 			// 
 			// btnNivel3
 			// 
-			this->btnNivel3->Location = System::Drawing::Point(102, 161);
+			this->btnNivel3->Location = System::Drawing::Point(76, 131);
+			this->btnNivel3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->btnNivel3->Name = L"btnNivel3";
-			this->btnNivel3->Size = System::Drawing::Size(75, 23);
+			this->btnNivel3->Size = System::Drawing::Size(56, 19);
 			this->btnNivel3->TabIndex = 2;
 			this->btnNivel3->Text = L"Nivel3";
 			this->btnNivel3->UseVisualStyleBackColor = true;
@@ -96,30 +100,38 @@ namespace WarTragedy {
 			// 
 			// MyForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1924, 923);
+			this->ClientSize = System::Drawing::Size(1280, 720);
 			this->Controls->Add(this->btnNivel3);
 			this->Controls->Add(this->btnNivel2);
 			this->Controls->Add(this->btnNivel1);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedToolWindow;
 			this->Name = L"MyForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"MyForm";
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
 	private: System::Void btnNivel1_Click(System::Object^ sender, System::EventArgs^ e) {
-		Nivel1^ nivel1 = gcnew Nivel1();
-		nivel1->ShowDialog();
+		Entorno^ juego = gcnew Entorno();
+		juego->setNivel(Tejado);
+		juego->ShowDialog();
+		delete juego;
+
 	}
 	private: System::Void btnNivel2_Click(System::Object^ sender, System::EventArgs^ e) {
-		Nivel2^ nivel2 = gcnew Nivel2();
-		nivel2->ShowDialog();
+		Entorno^ juego = gcnew Entorno();
+		juego->setNivel(Edificio);
+		juego->ShowDialog();
+		delete juego;
 	}
 	private: System::Void btnNivel3_Click(System::Object^ sender, System::EventArgs^ e) {
-		Nivel3^ nivel3 = gcnew Nivel3();
-		nivel3->ShowDialog();
+		Entorno^ juego = gcnew Entorno();
+		juego->setNivel(Prado);
+		juego->ShowDialog();
+		delete juego;
 	}
 	};
 }

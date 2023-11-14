@@ -20,7 +20,9 @@ public:
 	}
 	~Helicoptero() {}
 	
-	void mover(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {	
+	void mover(BufferedGraphics^ bg, Rectangle rec) {	
+		Bitmap^ heli = gcnew Bitmap("assets/Enemigo/heli.png");
+
 		switch (direccion)
 		{
 		case Ninguna:
@@ -107,7 +109,7 @@ public:
 		
 		x += dx*vel;
 		y += dy*vel;
-		dibujar(bg,bm);
+		dibujar(bg,heli);
 	}
 	void disparar(int fx, int fy) {
 		Bala* oBala = new Bala(x, y, fx, fy);
@@ -115,10 +117,10 @@ public:
 		vBala.push_back(oBala);
 	}
 
-	void moverB(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
+	void moverB(BufferedGraphics^ bg, Rectangle rec) {
 		for (int i = 0; i < vBala.size(); i++)
 		{
-			if (vBala.at(i)->getActivo()) vBala.at(i)->mover(bg, bm, rec);
+			if (vBala.at(i)->getActivo()) vBala.at(i)->mover(bg, rec);
 			else vBala.erase(vBala.begin() + i);
 		}
 	}

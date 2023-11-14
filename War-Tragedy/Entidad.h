@@ -2,9 +2,11 @@
 #include<vector>
 
 using namespace std;
+using namespace System;
 using namespace System::Drawing;
+using namespace System::Windows::Forms;
 
-enum Direcciones { Ninguna, Abajo, Arriba, Izquierda, Derecha, ArrDer, ArrIzq, AbDer, AbIzq };
+enum Direcciones { Ninguna, Abajo, Arriba, Izquierda, Derecha, ArrDer, ArrIzq, AbDer, AbIzq, Dash };
 
 class Entidad
 {
@@ -24,6 +26,7 @@ protected:
 	Rectangle area;
 	Rectangle zonaAumento;
 	Rectangle hitbox;
+	Rectangle Fhitbox;
 
 public:
 	Entidad(){}
@@ -76,9 +79,8 @@ public:
 	}
 
 	bool Container(BufferedGraphics^ bg, Rectangle container, int dx, int dy) {
-		Rectangle _r = Rectangle(x + Rx + dx, y + Ry + dy, Rancho, Ralto);
-		bg->Graphics->DrawRectangle(gcnew Pen(Color::Green), _r);
-		return (container.Contains(_r));
+		Fhitbox = Rectangle(x + Rx + dx, y + Ry + dy, Rancho, Ralto);
+		return (container.Contains(Fhitbox));
 	}
 
 	Rectangle getHB() { return hitbox; }
@@ -93,10 +95,14 @@ public:
 			area = Rectangle(indX * ancho, indY * alto, ancho, alto);
 			zonaAumento = Rectangle(x, y, ancho * aumento, alto * aumento);
 			hitbox = Rectangle(x + Rx, y + Ry, Rancho, Ralto);
+			
 
+
+			bg->Graphics->DrawRectangle(gcnew Pen(Color::Green), Fhitbox);
 			bg->Graphics->DrawRectangle(gcnew Pen(Color::Blue), hitbox);
 			//bg->Graphics->DrawRectangle(gcnew Pen(Color::Red), zonaAumento);
 			bg->Graphics->DrawImage(bm, zonaAumento, area, GraphicsUnit::Pixel);
+
 		}
 
 	}

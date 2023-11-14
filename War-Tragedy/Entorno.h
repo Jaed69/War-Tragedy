@@ -1,0 +1,117 @@
+#pragma once
+
+#include "Juego.h"
+
+namespace WarTragedy {
+
+	using namespace System;
+	using namespace System::ComponentModel;
+	using namespace System::Collections;
+	using namespace System::Windows::Forms;
+	using namespace System::Data;
+	using namespace System::Drawing;
+
+	/// <summary>
+	/// Resumen de Entorno
+	/// </summary>
+	public ref class Entorno : public System::Windows::Forms::Form
+	{
+	private:
+		Juego* Jg;
+		Niveles nivel = Tejado;
+	private: System::Windows::Forms::Timer^ Timer_Juego;
+
+
+		   
+	public:
+		void setNivel(Niveles nivel) { this->nivel = nivel; }
+
+		Entorno(void)
+		{
+			InitializeComponent();
+			//
+			//TODO: agregar código de constructor aquí
+			//
+			Jg = new Juego(nivel);
+		}
+
+	protected:
+		/// <summary>
+		/// Limpiar los recursos que se estén usando.
+		/// </summary>
+		~Entorno()
+		{
+			if (components)
+			{
+				delete components;
+			}
+		}
+	private: System::ComponentModel::IContainer^ components;
+	protected:
+
+	private:
+		/// <summary>
+		/// Variable del diseñador necesaria.
+		/// </summary>
+
+
+#pragma region Windows Form Designer generated code
+		/// <summary>
+		/// Método necesario para admitir el Diseñador. No se puede modificar
+		/// el contenido de este método con el editor de código.
+		/// </summary>
+		void InitializeComponent(void)
+		{
+			this->components = (gcnew System::ComponentModel::Container());
+			this->Timer_Juego = (gcnew System::Windows::Forms::Timer(this->components));
+			this->SuspendLayout();
+			// 
+			// Timer_Juego
+			// 
+			this->Timer_Juego->Enabled = true;
+			this->Timer_Juego->Tick += gcnew System::EventHandler(this, &Entorno::Timer_Juego_Tick);
+			// 
+			// Entorno
+			// 
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(1280, 720);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedToolWindow;
+			this->Name = L"Entorno";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
+			this->Text = L"Entorno";
+			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &Entorno::Entorno_KeyDown);
+			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &Entorno::Entorno_KeyUp);
+			this->PreviewKeyDown += gcnew System::Windows::Forms::PreviewKeyDownEventHandler(this, &Entorno::Entorno_PreviewKeyDown);
+			this->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &Entorno::Entorno_MouseClick);
+			this->ResumeLayout(false);
+
+		}
+#pragma endregion
+
+	private: System::Void Timer_Juego_Tick(System::Object^ sender, System::EventArgs^ e) {
+		Graphics^ g = this->CreateGraphics();
+		BufferedGraphicsContext^ espacioBuffer = BufferedGraphicsManager::Current;
+		BufferedGraphics^ buffer = espacioBuffer->Allocate(g, this->ClientRectangle);
+
+		Jg->sumTime();
+
+		Jg->animar(buffer);
+
+		buffer->Render(g);
+		delete buffer; delete espacioBuffer; delete g;
+	}
+	private: System::Void Entorno_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		Jg->movJugador(true, e->KeyCode);
+	}
+	private: System::Void Entorno_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		Jg->movJugador(false, e->KeyCode);
+	}
+	private: System::Void Entorno_PreviewKeyDown(System::Object^ sender, System::Windows::Forms::PreviewKeyDownEventArgs^ e) {
+		
+	}
+	private: System::Void Entorno_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
+		Jg->disparar(e->X, e->Y);
+	}
+	};
+}

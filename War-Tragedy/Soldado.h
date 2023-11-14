@@ -6,7 +6,6 @@ private:
 
 
 public:
-	Soldado() {}
 	Soldado() :Entidad(0, 0, 32, 48, 20) {//poner ancho alto bien y determinar vida
 		direccion = Derecha;
 		dx = 1;

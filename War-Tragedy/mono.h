@@ -20,7 +20,9 @@ public:
 	}
 	~Mono() {}
 
-	void mover(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
+	void mover(BufferedGraphics^ bg, Rectangle rec) {
+		Bitmap^ mono = gcnew Bitmap("assets/Aliado/mono.png");
+
 		switch (direccion)
 		{
 		case Ninguna:
@@ -93,7 +95,8 @@ public:
 		}
 		x += dx * vel;
 		y += dy * vel;
-		dibujar(bg, bm);
+		dibujar(bg, mono);
+		
 	}
 
 	void disparar(int fx, int fy) {
@@ -103,10 +106,10 @@ public:
 		ammo--;
 	}
 
-	void moverB(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
+	void moverB(BufferedGraphics^ bg, Rectangle rec) {
 		for (int i = 0; i < vBala.size(); i++)
 		{
-			if (vBala.at(i)->getActivo()) vBala.at(i)->mover(bg, bm, rec);
+			if (vBala.at(i)->getActivo()) vBala.at(i)->mover(bg, rec);
 			else vBala.erase(vBala.begin() + i);
 		}
 	}
