@@ -3,6 +3,7 @@
 #include "Avion.h"
 #include "Helicoptero.h"
 #include "GeAliados.h"
+#include "GeEnemigos.h"
 namespace WarTragedy {
 
 	using namespace System;
@@ -29,6 +30,7 @@ namespace WarTragedy {
 		Jugador* jugador = new Jugador(620, 400);
 		Avion* avion;
 		GeAliado* gA = new GeAliado();
+		GeEnemigos* gE = new GeEnemigos();
 		   Helicoptero* heli;
 		   int contador;
 	public:
@@ -126,6 +128,10 @@ namespace WarTragedy {
 		heli->mover(buffer, r2);
 		gA->sumCont();
 		buffer->Render(g);
+
+
+
+
 		delete buffer; delete espacioBuffer; delete g;
 
 		/*if (jugador->getDash() == false) {
