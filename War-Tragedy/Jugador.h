@@ -16,21 +16,20 @@ public:
 		indY = 2;
 		aumento = 1;
 		dash = true;
-
+		vel = 8;
 		Rx = Ry = 5;
 		Rancho = Ralto = 20;
 
 	}
+
 	~Jugador(){}
+
 	int getchaleco() { return this->chaleco; }
 	void setchaleco(int chaleco) { this->chaleco = chaleco; }
-	bool getDash() {
-		return dash;
-	}
-	void setDash(bool a) {
-		dash = a;
-	}
-	void mover(BufferedGraphics^ bg, Rectangle rec) {
+	bool getDash() { return dash; }
+	void setDash(bool dash) { this->dash = dash; }
+
+	void animar(BufferedGraphics^ bg, Rectangle rec) {
 		Bitmap^ bm = gcnew Bitmap("assets/Personaje/Personaje.png");
 
 		switch (direccion)
@@ -81,95 +80,79 @@ public:
 			indY = 2;
 			if (indX >= 3 && indX < 5) indX++;
 			else indX = 3;
-			if (Container(bg, rec, 0, 10)) {
-				dx = 0; dy = 10; ultDireccion = Abajo;
-			}
-			else {
-				dx = 0; dy = 0; ultDireccion = Abajo;
-			}
+
+			dx = 0; dy = 1; 
+			ultDireccion = Abajo;
+
 			break;
 		case Arriba:
 			indY = 0;
 			if (indX >= 3 && indX < 5) indX++;
 			else indX = 3;
-			if (Container(bg, rec,  0, -10)) {
-				dx = 0; dy = -10; ultDireccion = Arriba;
-			}
-			else {
-				dx = 0; dy = 0; ultDireccion = Arriba;
-			}
+
+			dx = 0; dy = -1;
+			ultDireccion = Arriba;
+			
 			break;
 		case Izquierda:
 			indY = 1;
 			if (indX >= 0 && indX < 2) indX++;
 			else indX = 0;
-			if (Container(bg, rec, -10, 0)) {
-				dx = -10; dy = 0; ultDireccion = Izquierda;
-			}
-			else {
-				dx = 0; dy = 0; ultDireccion = Izquierda;
-			}
+
+			dx = -1; dy = 0; 
+			ultDireccion = Izquierda;
+
 			break;
 		case Derecha:
 			indY = 1;
 			if (indX >= 6 && indX < 8) indX++;
 			else indX = 7;
-			if (Container(bg, rec,  10, 0)) {
-				dx = 10; dy = 0; ultDireccion = Derecha;
-			}
-			else {
-				dx = 0; dy = 0; ultDireccion = Derecha;
-			}
+
+			dx = 1; dy = 0;
+			ultDireccion = Derecha;
+
 			break;
 		case ArrDer:
 			indY = 0;
 			if (indX >= 6 && indX < 8) indX++;
 			else indX = 7;
-			if (Container(bg, rec, 10, -10)) {
-				dx = 10; dy = -10; ultDireccion = ArrDer;
-			}
-			else {
-				dx = 0; dy = 0; ultDireccion = ArrDer;
-			}
+
+			dx = 1; dy = -1;
+			ultDireccion = ArrDer;
+			
 			break;
 		case ArrIzq:
 			indY = 0;
 			if (indX >= 0 && indX < 2) indX++;
 			else indX = 0;
-			if (Container(bg, rec, -10, -10)) {
-				dx = -10; dy = -10; ultDireccion = ArrIzq;
-			}
-			else {
-				dx = 0; dy = 0; ultDireccion = ArrIzq;
-			}
+
+			dx = -1; dy = -1; 
+			ultDireccion = ArrIzq;
+
 			break;
 		case AbDer:
 			indY = 2;
 			if (indX >= 6 && indX < 8) indX++;
 			else indX = 7;
-			if (Container(bg, rec, 10, 10)) {
-				dx = 10; dy = 10; ultDireccion = AbDer;
-			}
-			else {
-				dx = 0; dy = 0; ultDireccion = AbDer;
-			}
+
+			dx = 1; dy = 1; 
+			ultDireccion = AbDer;
+			
 			break;
 		case AbIzq:
 			indY = 2;
 			if (indX >= 0 && indX < 2) indX++;
 			else indX = 0;
-			if (Container(bg, rec, -10, 10)) {
-				dx = -10; dy = 10; ultDireccion = AbIzq;
-			}
-			else {
-				dx = 0; dy = 0; ultDireccion = AbIzq;
-			}
+			
+			dx = -1; dy = 1; 
+			ultDireccion = AbIzq;
+			
 			break;
 
 		case Dash:
 			switch (ultDireccion) {
 			case Arriba:
-				if (!Container(bg, rec, 0, -(alto * 2))) {
+				if (!Container(rec)) {
 					//dead or smth
 				}
 				else {
@@ -178,7 +161,7 @@ public:
 				}
 				break;
 			case Abajo:
-				if (!Container(bg, rec, 0, (alto * 2))) {
+				if (!Container(rec)) {
 					//dead or smth
 				}
 				else {
@@ -187,7 +170,7 @@ public:
 				}
 				break;
 			case Derecha:
-				if (!Container(bg, rec, ancho * 2, 0)) {
+				if (!Container(rec)){
 					//dead or smth
 				}
 				else {
@@ -196,23 +179,31 @@ public:
 				}
 				break;
 			case Izquierda:
-				if (!Container(bg, rec, -(ancho * 2), 0)) {
+				if (!Container(rec)) {
 					//dead or smth
 				}
 				else {
 					x -= ancho * 2;
 					ultDireccion = Izquierda;
 				}
-				x += dx * vel;
-				y += dy * vel;
 				break;
 			}
 		
 		}
-		x += dx * vel;
-		y += dy * vel;
+		
 		dibujar(bg, bm);
+		mover(rec);
+		
 	}
+
+	void mover(Rectangle rec) {
+		if (Container(rec)) {
+			x += dx * vel;
+			y += dy * vel;
+		}
+		
+	}
+
 
 
 	void disparar(int fx,int fy) {

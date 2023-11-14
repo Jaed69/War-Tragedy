@@ -12,7 +12,7 @@ private:
 	
 public:
 	Juego() {
-		jugador = new Jugador(620, 400);
+		jugador = new Jugador(620, 404);
 		Es = new GeEscenarios();
 		time = 0;
 		
@@ -67,7 +67,7 @@ public:
 	}
 
 	void animarPl(BufferedGraphics^ bf) {
-		jugador->mover(bf, Es->getMargen());
+		jugador->animar(bf, Es->getMargen());
 		jugador->moverB(bf, Es->getBorde());
 	}
 

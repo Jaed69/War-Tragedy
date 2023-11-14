@@ -80,12 +80,11 @@ public:
 		this->Ralto = Ralto;
 	}
 
-	bool Container(BufferedGraphics^ bg, Rectangle container, int dx, int dy) {
-		Fhitbox = Rectangle(x + Rx + dx, y + Ry + dy, Rancho, Ralto);
-		return (container.Contains(Fhitbox));
-	}
-
 	Rectangle getHB() { return hitbox; }
+
+	bool Container(Rectangle container) {
+		return container.Contains(Fhitbox);
+	}
 
 	bool Colision(Rectangle ajeno) {
 		return hitbox.IntersectsWith(ajeno);
@@ -97,8 +96,7 @@ public:
 			area = Rectangle(indX * ancho, indY * alto, ancho, alto);
 			zonaAumento = Rectangle(x, y, ancho * aumento, alto * aumento);
 			hitbox = Rectangle(x + Rx, y + Ry, Rancho, Ralto);
-			
-
+			Fhitbox = Rectangle(x + Rx + dx*4, y + Ry + dy*4, Rancho, Ralto);
 
 			bg->Graphics->DrawRectangle(gcnew Pen(Color::Green), Fhitbox);
 			bg->Graphics->DrawRectangle(gcnew Pen(Color::Blue), hitbox);
@@ -112,86 +110,3 @@ public:
 
 };
 
-/*
- void mover(BufferedGraphics^ bg, Bitmap^ bm) {
-
-		switch (direccion)
-		{
-		case Abajo:
-			indY = 0;
-			if (indX >= 0 && indX < 3) {
-				indX++;
-			}
-			else {
-				indX = 0;
-			}
-			dx = 0;
-			dy = 10;
-			ultimaTecla = Abajo;
-			break;
-		case Arriba:
-			indY = 3;
-			if (indX >= 0 && indX < 3) {
-				indX++;
-			}
-			else {
-				indX = 0;
-			}
-			dx = 0;
-			dy = -10;
-			ultimaTecla = Arriba;
-			break;
-		case Izquierda:
-			indY = 1;
-			if (indX >= 0 && indX < 3) {
-				indX++;
-			}
-			else {
-				indX = 0;
-			}
-			dx = -10;
-			dy = 0;
-			ultimaTecla = Izquierda;
-			break;
-		case Derecha:
-			indY = 2;
-			if (indX >= 0 && indX < 3) {
-				indX++;
-			}
-			else {
-				indX = 0;
-			}
-			dx = 10;
-			dy = 0;
-			ultimaTecla = Derecha;
-			break;
-		case Ninguna:
-			dx = 0;
-			dy = 0;
-			switch (ultimaTecla)
-			{
-			case Abajo:
-				indY = 0;
-				indX = 0;
-				break;
-			case Arriba:
-				indY = 3;
-				indX = 0;
-				break;
-			case Izquierda:
-				indY = 1;
-				indX = 0;
-				break;
-			case Derecha:
-				indY = 2;
-				indX = 0;
-				break;
-
-			}
-
-		}
-		dibujar(bg, bm);
-
-	}
- 
- */

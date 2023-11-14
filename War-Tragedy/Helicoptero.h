@@ -29,88 +29,53 @@ public:
 			indX = indY=0;
 			break;
 		case Abajo:
-			if (Container(bg, rec, 0, 10)) {
-				dx = 0; dy = 1;
-				indY = 2;
-				for (int i = 0; i < 3; i++) {
-					indX = i;
-				}
-			}
-			else if (x < 200) {
-				direccion = Derecha;
-				dx = dy = 0;
-			}
-				
-			else if (x > 200) {
-				direccion = Izquierda;
-				dx = dy = 0;
+
+			dx = 0; dy = 1;
+			indY = 2;
+			for (int i = 0; i < 3; i++) {
+				indX = i;
 			}
 			
 			break;
 		case Arriba:
-			if (Container(bg, rec, 0, -10)) {
-				dx = 0; dy = -1;
-				indY = 0;
-				for (int i = 0; i < 3; i++) {
-					indX = i;
-				}
-			}
-			else if (x < 200) {
-				direccion = Derecha;
-				dx = dy = 0;
-			}
-
-			else if (x > 200) {
-				direccion = Izquierda;
-				dx = dy = 0;
+			
+			dx = 0; dy = -1;
+			indY = 0;
+			for (int i = 0; i < 3; i++) {
+				indX = i;
 			}
 			
 			break;
 		case Izquierda:
-			if (Container(bg, rec, -10, 0)) {
-				dx = -1; dy = 0;
-				indY = 3;
-				for (int i = 0; i < 3; i++) {
-					indX = i;
-				}
-			}
-			else if (y < 200) {
-				direccion = Abajo;
-				dx = dy = 0;
-			}
-				
-			else if (y > 200) {
-				direccion = Arriba;
-				dx = dy = 0;
+			
+			dx = -1; dy = 0;
+			indY = 3;
+			for (int i = 0; i < 3; i++) {
+				indX = i;
 			}
 
 			break;
 		case Derecha:
-			if (Container(bg, rec, 10, 0)) {
-				dx = 1; dy = 0;
-				indY = 1;
-				for (int i = 0; i < 3; i++) {
-					indX = i;
-				}
-
-			}
-			else if (y < 200) {
-				direccion = Abajo;
-				dx = dy = 0;
-			}
-
-			else if (y > 200) {
-				direccion = Arriba;
-				dx = dy = 0;
+			
+			dx = 1; dy = 0;
+			indY = 1;
+			for (int i = 0; i < 3; i++) {
+				indX = i;
 			}
 
 			break;
+		default:
+			break;
 		}
 		
-		x += dx*vel;
-		y += dy*vel;
+		if (Container(rec))	{
+			x += dx * vel;
+			y += dy * vel;
+		}
+		
 		dibujar(bg,heli);
 	}
+
 	void disparar(int fx, int fy) {
 		Bala* oBala = new Bala(x, y, fx, fy);
 		oBala->setRnRl(10, 10);

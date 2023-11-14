@@ -24,76 +24,7 @@ public:
 	void mover(BufferedGraphics^ bg, Rectangle rec) {
 		Bitmap^ Power = gcnew Bitmap("assets/Aliado/Power.png");
 
-		switch (direccion)
-		{
-		case Ninguna:
-			indX = 0; indY = 0;
-			dx = 0; dy = 0;
-			ultDireccion = Ninguna;
-			break;
-		case Abajo:
-			indX = 0; indY = 0;
-			dx = 0; dy = 0; ultDireccion = Abajo;
-			break;
-		case Arriba:
-			indX = 0; indY = 0;
-			dx = 0; dy = 0; ultDireccion = Arriba;
-			break;
-		case Izquierda:
-			indX = 0; indY = 0;
-			dx = 0; dy = 0; ultDireccion = Izquierda;
-			break;
-		case Derecha:
-			indX = 0; indY = 0;
-			dx = 0; dy = 0; ultDireccion = Derecha;
-			break;
-		case ArrDer:
-			indX = 0; indY = 0;
-			ultDireccion = ArrDer;
-			if (Container(bg, rec, 1, -1)) {
-				dx = 1; dy = -1;
-			}
-			else {
-				direccion = ArrIzq;
-				dx = 0; dy = 0;
-			}
-
-			break;
-		case ArrIzq:
-			indX = 0; indY = 0;
-			ultDireccion = ArrIzq;
-			if (Container(bg, rec, -1 * vel, -1 * vel)) {
-				dx = -1; dy = -1;
-			}
-			else {
-				direccion = AbIzq;
-				dx = 0; dy = 0;
-			}
-			break;
-		case AbDer:
-			indX = 0; indY = 0;
-			ultDireccion = AbDer;
-			if (Container(bg, rec, 1 * vel, 1 * vel)) {
-				dx = 1; dy = 1;
-			}
-			else {
-				direccion = ArrDer;
-				dx = 0; dy = 0;
-			}
-			break;
-		case AbIzq:
-			indX = 0; indY = 0;
-			ultDireccion = AbIzq;
-			if (Container(bg, rec, -1 * vel, 1 * vel)) {
-				dx = -1; dy = 1;
-			}
-			else {
-				direccion = AbDer;
-				dx = 0; dy = 0;
-
-			}
-			break;
-		}
+		
 		x += dx * vel;
 		y += dy * vel;
 		dibujar(bg, Power);

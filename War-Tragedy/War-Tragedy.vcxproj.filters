@@ -86,9 +86,6 @@
     <ClInclude Include="Mono.h">
       <Filter>Archivos de encabezado\Aliados</Filter>
     </ClInclude>
-    <ClInclude Include="Recursos.h">
-      <Filter>Archivos de encabezado\Juego</Filter>
-    </ClInclude>
     <ClInclude Include="Juego.h">
       <Filter>Archivos de encabezado\Juego</Filter>
     </ClInclude>

@@ -150,7 +150,6 @@
     <ClInclude Include="Prado.h" />
     <ClInclude Include="Tejado.h" />
     <ClInclude Include="Power.h" />
-    <ClInclude Include="Recursos.h" />
     <ClInclude Include="Serpiente.h" />
     <ClInclude Include="Soldado.h" />
   </ItemGroup>
