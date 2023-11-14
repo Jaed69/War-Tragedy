@@ -116,20 +116,20 @@ namespace WarTragedy {
 #pragma endregion
 	private: System::Void btnNivel1_Click(System::Object^ sender, System::EventArgs^ e) {
 		Entorno^ juego = gcnew Entorno();
-		juego->setNivel(Tejado);
+		juego->setNivel(NTejado);
 		juego->ShowDialog();
 		delete juego;
 
 	}
 	private: System::Void btnNivel2_Click(System::Object^ sender, System::EventArgs^ e) {
 		Entorno^ juego = gcnew Entorno();
-		juego->setNivel(Edificio);
+		juego->setNivel(NEdificio);
 		juego->ShowDialog();
 		delete juego;
 	}
 	private: System::Void btnNivel3_Click(System::Object^ sender, System::EventArgs^ e) {
 		Entorno^ juego = gcnew Entorno();
-		juego->setNivel(Prado);
+		juego->setNivel(NPrado);
 		juego->ShowDialog();
 		delete juego;
 	}

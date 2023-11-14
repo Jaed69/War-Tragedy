@@ -1,7 +1,7 @@
 #pragma once
 #include "GeAliados.h"
 #include "GeEnemigos.h"
-#include "Obstaculos.h"
+#include "Obstaculo.h"
 
 class Edificio
 {
@@ -13,13 +13,16 @@ private:
 public:
 	Edificio() {
 		time = 0;
-		margen = Rectangle(256, 144, 768, 432);
+		margen = Rectangle(256, 176, 768, 432);
 		borde = Rectangle(0, 0, 1280, 720);
 	}
 	~Edificio() {}
 
+	Rectangle getMargen() { return margen; }
+	Rectangle getBorde() { return borde; }
+
 	void animarFn(BufferedGraphics^ bf) {
-		Bitmap^ fondo = gcnew Bitmap("assets/Nivel/Nivel1.png");
+		Bitmap^ fondo = gcnew Bitmap("assets/Nivel/Nivel2.png");
 
 		bf->Graphics->DrawImage(fondo, borde, borde, GraphicsUnit::Pixel);
 

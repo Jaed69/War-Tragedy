@@ -1,7 +1,7 @@
 #pragma once
 #include "GeAliados.h"
 #include "GeEnemigos.h"
-#include "Obstaculos.h"
+#include "Obstaculo.h"
 
 class Prado
 {
@@ -18,8 +18,11 @@ public:
 	}
 	~Prado() {}
 
+	Rectangle getMargen() { return margen; }
+	Rectangle getBorde() { return borde; }
+
 	void animarFn(BufferedGraphics^ bf) {
-		Bitmap^ fondo = gcnew Bitmap("assets/Nivel/Nivel1.png");
+		Bitmap^ fondo = gcnew Bitmap("assets/Nivel/Nivel3.png");
 
 		bf->Graphics->DrawImage(fondo, borde, borde, GraphicsUnit::Pixel);
 

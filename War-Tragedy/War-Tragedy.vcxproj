@@ -124,7 +124,6 @@
     <ClCompile Include="Entorno.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="Nivel2.cpp" />
-    <ClCompile Include="Nivel3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Avion.h" />
@@ -136,8 +135,10 @@
     <ClInclude Include="Entorno.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Escenario.h" />
     <ClInclude Include="GeAliados.h" />
     <ClInclude Include="GeEnemigos.h" />
+    <ClInclude Include="GeEscenarios.h" />
     <ClInclude Include="Helicoptero.h" />
     <ClInclude Include="Juego.h" />
     <ClInclude Include="Jugador.h" />
@@ -149,10 +150,7 @@
     <ClInclude Include="Nivel2.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Nivel3.h">
-      <FileType>CppForm</FileType>
-    </ClInclude>
-    <ClInclude Include="Obstaculos.h" />
+    <ClInclude Include="Obstaculo.h" />
     <ClInclude Include="Prado.h" />
     <ClInclude Include="Tejado.h" />
     <ClInclude Include="Power.h" />
@@ -169,9 +167,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Nivel2.resx">
       <DependentUpon>Nivel2.h</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Nivel3.resx">
-      <DependentUpon>Nivel3.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

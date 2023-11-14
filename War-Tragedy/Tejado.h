@@ -1,7 +1,7 @@
 #pragma once
 #include "GeAliados.h"
 #include "GeEnemigos.h"
-#include "Obstaculos.h"
+#include "Obstaculo.h"
 
 class Tejado
 {
@@ -17,6 +17,9 @@ public:
 		borde = Rectangle(0, 0, 1280, 720);
 	}
 	~Tejado(){}
+
+	Rectangle getMargen() { return margen; }
+	Rectangle getBorde() { return borde; }
 
 	void animarFn(BufferedGraphics^ bf) {
 		Bitmap^ fondo = gcnew Bitmap("assets/Nivel/Nivel1.png");

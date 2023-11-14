@@ -42,9 +42,9 @@ public:
 			listaka.at(i)->mover(ju,bg, bm, rec);
 		}
 	}
-	void MoverHeli(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
+	void MoverHeli(BufferedGraphics^ bg, Rectangle rec) {
 		for (int i = 0; i < listahelis.size(); i++) {
-			listahelis.at(i)->mover(bg, bm, rec);
+			listahelis.at(i)->mover(bg, rec);
 		}
 	}
 

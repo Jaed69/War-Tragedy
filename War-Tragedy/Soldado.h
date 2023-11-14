@@ -11,9 +11,7 @@ public:
 		dx = 1;
 		dy = 0;
 	}
-	~Soldado() {}*/
-	
-
+	~Soldado() {}
 
 	void Mover(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
 		if (x + dx + ancho > 1050) {

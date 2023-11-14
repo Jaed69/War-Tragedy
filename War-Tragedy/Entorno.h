@@ -18,7 +18,7 @@ namespace WarTragedy {
 	{
 	private:
 		Juego* Jg;
-		Niveles nivel = Tejado;
+		Niveles nivel = NTejado;
 	private: System::Windows::Forms::Timer^ Timer_Juego;
 
 
@@ -32,7 +32,7 @@ namespace WarTragedy {
 			//
 			//TODO: agregar código de constructor aquí
 			//
-			Jg = new Juego(nivel);
+			Jg = new Juego();
 		}
 
 	protected:
@@ -80,10 +80,11 @@ namespace WarTragedy {
 			this->Name = L"Entorno";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Entorno";
+			this->Load += gcnew System::EventHandler(this, &Entorno::Entorno_Load);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &Entorno::Entorno_KeyDown);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &Entorno::Entorno_KeyUp);
-			this->PreviewKeyDown += gcnew System::Windows::Forms::PreviewKeyDownEventHandler(this, &Entorno::Entorno_PreviewKeyDown);
 			this->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &Entorno::Entorno_MouseClick);
+			this->PreviewKeyDown += gcnew System::Windows::Forms::PreviewKeyDownEventHandler(this, &Entorno::Entorno_PreviewKeyDown);
 			this->ResumeLayout(false);
 
 		}
@@ -96,7 +97,7 @@ namespace WarTragedy {
 
 		Jg->sumTime();
 
-		Jg->animar(buffer);
+		Jg->jugar(buffer);
 
 		buffer->Render(g);
 		delete buffer; delete espacioBuffer; delete g;
@@ -112,6 +113,9 @@ namespace WarTragedy {
 	}
 	private: System::Void Entorno_MouseClick(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 		Jg->disparar(e->X, e->Y);
+	}
+	private: System::Void Entorno_Load(System::Object^ sender, System::EventArgs^ e) {
+		Jg->setNivel(nivel);
 	}
 	};
 }
