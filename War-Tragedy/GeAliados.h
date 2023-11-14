@@ -1,15 +1,16 @@
 #pragma once
-#include "Entidad.h"
 #include "Mono.h"
-#include "Bala.h"
-#include <vector>
 #include "AvionAliado.h"
-using namespace std;
+#include "Power.h"
+#include "Kami.h"
+
 class GeAliado {
 private:
 	int contador;
-	vector<Mono*>listaMono;
-	vector<AvionAliado*> listaAviones;
+	vector<Mono*>Monos;
+	vector<AvionAliado*> Aliados;
+	vector<Power*> Powers;
+	vector<Kami*> Kamis;
 
 public:
 	GeAliado(){
@@ -21,37 +22,45 @@ public:
 		contador += 1;
 	}
 
-	void crearmono() {
+	void crearMon() {
 		Mono* mono = new Mono(260, 210);
-		listaMono.push_back(mono);
+		Monos.push_back(mono);
 	}
-	void crearAvion() {
+	void crearAvi() {
 		AvionAliado* avi = new AvionAliado(100, 0);
-		listaAviones.push_back(avi);
+		Aliados.push_back(avi);
 	}
-	/*
-	* void moverAliados(BufferedGraphics^ bg, Bitmap^ monoBM, Rectangle monoE, Bitmap^ bala, Rectangle balaE, int avX, int avY) {
-		moverMono(bg,monoBM,monoE,bala,balaE,avX,avY);
-		moverAvion();
+	void crearPow() {
+		Power* pow = new Power(700, 700);
+		Powers.push_back(pow);
 	}
-	*/
+	void crearKam() {
+		Kami* k = new Kami(0, 0);
+		Kamis.push_back(k);
+	}
+
+	void MoverKami(Jugador* ju, BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
+		for (int i = 0; i < Kamis.size(); i++) {
+			Kamis.at(i)->mover(ju, bg, bm, rec);
+		}
+	}
 
 	void moverMono(BufferedGraphics^ bg, Rectangle monoE, Rectangle balaE, int avX, int avY) {
-		for (int i = 0; i < listaMono.size(); i++) {
-			listaMono.at(i)->mover(bg, monoE);
+		for (int i = 0; i < Monos.size(); i++) {
+			Monos.at(i)->mover(bg, monoE);
 			if (contador % 6 == 0) {
-				listaMono.at(i)->disparar(avX, avY);
+				Monos.at(i)->disparar(avX, avY);
 			}
-			listaMono.at(i)->moverB(bg, balaE);
+			Monos.at(i)->moverB(bg, balaE);
 		}
 	}
 	void moverAvion(BufferedGraphics^ bg, Rectangle aviE, Rectangle balaE) {
-		for (int i = 0; i < listaAviones.size(); i++) {
-			listaAviones.at(i)->mover(bg, aviE);
+		for (int i = 0; i < Aliados.size(); i++) {
+			Aliados.at(i)->mover(bg, aviE);
 			if (contador % 8 == 0) {
-				listaAviones.at(i)->disparar();
+				Aliados.at(i)->disparar();
 			}
-			listaAviones.at(i)->moverB(bg, balaE);
+			Aliados.at(i)->moverB(bg, balaE);
 		}	
 		
 	}
