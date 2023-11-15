@@ -4,7 +4,7 @@
 #include "Prado.h"
 #include "Escenario.h"
 
-enum Niveles { NTejado, NEdificio, NPrado };
+enum Niveles { NTejado, NEdificio, NPrado, FinalM, FinalB, FinalBS, FinalMS };
 
 class GeEscenarios
 {
@@ -15,15 +15,38 @@ private:
 	Edificio* nivel2;
 	Prado* nivel3;
 
+	int t_evento;
+
 public:
 	GeEscenarios(){
 		nivel1 = new Tejado();
 		nivel2 = new Edificio();
 		nivel3 = new Prado();
 
+		t_evento = 0;
 	}
 
 	~GeEscenarios(){}
+
+	void T_Evento() {
+		t_evento++;
+
+		switch (nivel)
+		{
+		case NTejado:
+			nivel1->T_Evento();
+			break;
+		case NEdificio:
+			nivel2->T_Evento();
+			break;
+		case NPrado:
+			nivel3->T_Evento();
+			break;
+		default:
+			break;
+		}
+
+	}
 
 	void setNivel(Niveles nivel) { this->nivel = nivel; }
 
@@ -65,6 +88,8 @@ public:
 		switch (nivel)
 		{
 		case NTejado:
+
+
 			nivel1->animarFn(bf);
 			break;
 		case NEdificio:

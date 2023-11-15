@@ -6,17 +6,21 @@
 class Edificio
 {
 private:
-	int time;
+	int t_evento;
 	Rectangle margen;
 	Rectangle borde;
 
 public:
 	Edificio() {
-		time = 0;
+		t_evento = 0;
 		margen = Rectangle(256, 176, 768, 432);
 		borde = Rectangle(0, 0, 1280, 720);
 	}
 	~Edificio() {}
+
+	void T_Evento() {
+		t_evento++;
+	}
 
 	Rectangle getMargen() { return margen; }
 	Rectangle getBorde() { return borde; }

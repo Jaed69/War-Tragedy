@@ -6,17 +6,21 @@
 class Prado
 {
 private:
-	int time;
+	int t_evento;
 	Rectangle margen;
 	Rectangle borde;
 
 public:
 	Prado() {
-		time = 0;
+		t_evento = 0;
 		margen = Rectangle(256, 144, 768, 432);
 		borde = Rectangle(0, 0, 1280, 720);
 	}
 	~Prado() {}
+
+	void T_Evento() {
+		t_evento++;
+	}
 
 	Rectangle getMargen() { return margen; }
 	Rectangle getBorde() { return borde; }

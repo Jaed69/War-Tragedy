@@ -9,6 +9,8 @@ private:
 	bool dash;
 	vector<Bala*> vBala;
 
+	int t_evento;
+
 public:
 	Jugador(){}
 	Jugador(int x,int y):Entidad(x,y,32,48,1){
@@ -20,9 +22,15 @@ public:
 		Rx = Ry = 5;
 		Rancho = Ralto = 20;
 
+		t_evento = 0;
+
 	}
 
 	~Jugador(){}
+
+	void T_Evento() {
+		t_evento++;
+	}
 
 	int getchaleco() { return this->chaleco; }
 	void setchaleco(int chaleco) { this->chaleco = chaleco; }

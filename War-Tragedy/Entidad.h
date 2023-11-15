@@ -81,6 +81,7 @@ public:
 	}
 
 	Rectangle getHB() { return hitbox; }
+	Rectangle getFHB() { return Fhitbox; }
 
 	bool Container(Rectangle container) {
 		return container.Contains(Fhitbox);

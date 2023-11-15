@@ -6,17 +6,25 @@
 class Tejado
 {
 private:
-	int time;
+	int t_evento;
 	Rectangle margen;
 	Rectangle borde;
+	GeAliado* geA;
+	GeEnemigos* geE;
+	vector<Obstaculo*> obstaculos;
 
 public:
 	Tejado(){
-		time = 0;
+		t_evento = 0;
 		margen = Rectangle(256, 144, 768, 432);
 		borde = Rectangle(0, 0, 1280, 720);
 	}
 	~Tejado(){}
+
+	void T_Evento() {
+		t_evento++;
+
+	}
 
 	Rectangle getMargen() { return margen; }
 	Rectangle getBorde() { return borde; }
@@ -29,6 +37,11 @@ public:
 		bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), borde);
 		bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), margen);
 
+	}
+
+	//Zona en qeu se codifica el comportamiento de los enemigos
+	void animarEn(BufferedGraphics^ bf) {  
+		//geE->animarHel(bf,);
 	}
 
 };

@@ -6,14 +6,16 @@ private:
 
 
 public:
-	Soldado() :Entidad(0, 0, 32, 48, 20) {//poner ancho alto bien y determinar vida
+	Soldado(int x,int y) :Entidad(x, y, 32, 48, 20) {//poner ancho alto bien y determinar vida
 		direccion = Derecha;
 		dx = 1;
 		dy = 0;
 	}
 	~Soldado() {}
 
-	void Mover(BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
+	void mover(BufferedGraphics^ bg, Rectangle cont) {
+		Bitmap^ bm = gcnew Bitmap("assets/Obstaculo/Obstaculo.png");
+
 		if (x + dx + ancho > 1050) {
 			dx = 0;
 			dy = 1;
@@ -38,8 +40,12 @@ public:
 				direccion = Derecha;
 			}
 		}
-		x += dx;
-		y += dy;
+
+		if (Container(cont)) {
+			x += dx * vel;
+			y += dy * vel;
+		}
+
 		dibujar(bg, bm);
 	}
 

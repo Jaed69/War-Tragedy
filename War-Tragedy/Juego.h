@@ -8,23 +8,27 @@ private:
 	Jugador* jugador;
 	GeEscenarios* Es;
 
-	int time;
+	int t_evento;
 	
 public:
 	Juego() {
 		jugador = new Jugador(620, 404);
 		Es = new GeEscenarios();
-		time = 0;
+		t_evento = 0;
 		
 	}
 
 	~Juego(){}
 
-	void sumTime() { 
+	void T_Evento() { 
+		t_evento++;
+		Es->T_Evento();
+
+
 		if (jugador->getDash() == false) {
-			time++;
-			if (time > 5) {
-				time = 0;
+			
+			if (t_evento > 5) {
+				t_evento = 0;
 				jugador->setDash(true);
 			}
 		}

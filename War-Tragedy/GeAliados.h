@@ -6,7 +6,7 @@
 
 class GeAliado {
 private:
-	int contador;
+	int t_evento;
 	vector<Mono*>Monos;
 	vector<AvionAliado*> Aliados;
 	vector<Power*> Powers;
@@ -14,12 +14,12 @@ private:
 
 public:
 	GeAliado(){
-		contador = 0;
+		t_evento = 0;
 	}
 	~GeAliado(){}
 
-	void sumCont() {
-		contador += 1;
+	void T_Evento() {
+		t_evento++;
 	}
 
 	void crearMon() {
@@ -39,7 +39,7 @@ public:
 		Kamis.push_back(k);
 	}
 
-	void MoverKami(Jugador* ju, BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
+	void moverKami(Jugador* ju, BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
 		for (int i = 0; i < Kamis.size(); i++) {
 			Kamis.at(i)->mover(ju, bg, bm, rec);
 		}
@@ -48,7 +48,7 @@ public:
 	void moverMono(BufferedGraphics^ bg, Rectangle monoE, Rectangle balaE, int avX, int avY) {
 		for (int i = 0; i < Monos.size(); i++) {
 			Monos.at(i)->mover(bg, monoE);
-			if (contador % 6 == 0) {
+			if (t_evento % 6 == 0) {
 				Monos.at(i)->disparar(avX, avY);
 			}
 			Monos.at(i)->moverB(bg, balaE);
@@ -57,7 +57,7 @@ public:
 	void moverAvion(BufferedGraphics^ bg, Rectangle aviE, Rectangle balaE) {
 		for (int i = 0; i < Aliados.size(); i++) {
 			Aliados.at(i)->mover(bg, aviE);
-			if (contador % 8 == 0) {
+			if (t_evento % 8 == 0) {
 				Aliados.at(i)->disparar();
 			}
 			Aliados.at(i)->moverB(bg, balaE);

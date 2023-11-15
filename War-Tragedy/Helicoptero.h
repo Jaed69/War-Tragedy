@@ -22,8 +22,9 @@ public:
 		Rancho = Ralto = 20;
 	}
 	~Helicoptero() {}
+
 	
-	void mover(BufferedGraphics^ bg, Rectangle rec) {	
+	void mover(BufferedGraphics^ bg, Rectangle cont) {	
 		Bitmap^ heli = gcnew Bitmap("assets/Enemigo/heli.png");
 
 		switch (direccion)
@@ -71,7 +72,7 @@ public:
 			break;
 		}
 		
-		if (Container(rec))	{
+		if (Container(cont))	{
 			x += dx * vel;
 			y += dy * vel;
 		}
@@ -96,30 +97,3 @@ public:
 
 };
 
-
-/*
-if (x + dx + ancho > 1050) {
-			dx = 0;
-			dy = 1;
-			direccion = Abajo;
-		}
-		if (x< 10) {
-			dx = 0;
-			dy = 1;
-			direccion = Abajo;
-		}
-		if (y + alto + dy > 590) {
-			dy *= -1;
-			direccion = Arriba;
-		}
-		if (y < 5) {
-			if (x > 500) {
-				dx = -1;
-				direccion = Izquierda;
-			}
-			else {
-				dx = 1;
-				direccion = Derecha;
-			}
-		}
-*/
