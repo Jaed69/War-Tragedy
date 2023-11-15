@@ -17,6 +17,9 @@ public:
 		ultDireccion = Ninguna;
 		dx = 0;
 		dy = 0; aumento = 2; vel = 10;
+
+		Rx = Ry = 0;
+		Rancho = Ralto = 20;
 	}
 	~Helicoptero() {}
 	

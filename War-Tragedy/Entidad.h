@@ -87,7 +87,7 @@ public:
 	}
 
 	bool Colision(Rectangle ajeno) {
-		return hitbox.IntersectsWith(ajeno);
+		return Fhitbox.IntersectsWith(ajeno);
 	}
 
 	void dibujar(BufferedGraphics^ bg, Bitmap^ bm) {

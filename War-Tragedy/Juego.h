@@ -42,7 +42,7 @@ public:
 		{
 			switch (tecla)
 			{
-			case Keys::I:jugador->disparar(100, 100); break;
+			case Keys::I:; break;
 			case Keys::W:jugador->setDireccion(Arriba); break;
 			case Keys::A: jugador->setDireccion(Izquierda); break;
 			case Keys::S: jugador->setDireccion(Abajo); break;
@@ -73,7 +73,6 @@ public:
 
 	void jugar(BufferedGraphics^ bf) {
 		Es->Escenario(bf);
-
 		animarPl(bf);
 	}
 
