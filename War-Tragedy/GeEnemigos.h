@@ -75,7 +75,7 @@ public:
 	}
 
 	void crearSer() {
-		Serpiente* s = new Serpiente(500, 500, 1000, 1000);
+		Serpiente* s = new Serpiente(150, 0);
 		serpientes.push_back(s);
 	}
 
@@ -170,6 +170,11 @@ public:
 		for (int i = 0; i < serpientes.size(); i++) {
 			if (serpientes.at(i)->Colision(ajeno)) return true;
 			else return false;
+		}
+	}
+	void coordsserpent(int fx, int fy) {
+		for (int i = 0; i < serpientes.size(); i++) {
+			serpientes.at(i)->setfxfy(fx, fy);
 		}
 	}
 
