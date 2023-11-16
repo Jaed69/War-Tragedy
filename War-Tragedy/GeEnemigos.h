@@ -152,5 +152,10 @@ public:
 			else return false;
 		}
 	}
+	void coordsserpent(int fx, int fy) {
+		for (int i = 0; i < serpientes.size(); i++) {
+			serpientes.at(i)->setfxfy(fx, fy);
+		}
+	}
 
 };

@@ -1,14 +1,15 @@
 #pragma once
 #include "Entidad.h"
 #include <math.h>
+#include "Bala.h"
 
 class Serpiente :public Entidad {
 private:
 	float posx, posy;
 	int fx, fy;
-
 	float difx, dify;
 	float mayor;
+	vector<Bala*> balas;
 
 public:
 	Serpiente() {}
@@ -31,6 +32,11 @@ public:
 		dy = dify / mayor;
 	}
 	~Serpiente() {}
+
+	void setfxfy(int afx, int afy) {
+		fx = afx;
+		fy = afy;
+	}
 
 
 	void mover(BufferedGraphics^ bg, Rectangle rec) {

@@ -28,13 +28,13 @@ public:
 
 	~GeEscenarios(){}
 
-	void T_Evento() {
+	void T_Evento(Jugador* ju) {
 		t_evento++;
 
 		switch (nivel)
 		{
 		case NTejado:
-			nivel1->T_Evento();
+			nivel1->T_Evento(ju);
 			break;
 		case NEdificio:
 			nivel2->T_Evento();
