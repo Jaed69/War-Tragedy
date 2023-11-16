@@ -23,13 +23,19 @@ public:
 	}
 	~Tejado(){}
 
+	//Zona para la creacion de eventos segun el tiempo
 	void T_Evento() {
 		t_evento++;
 		geA->T_Evento();
 		geE->T_Evento();
-		if (t_evento == 20) geE->crearAvi(Arriba);
+		if (t_evento == 20) geE->crearAvi(Derecha);
+		/*if (t_evento == 50) geE->crearAvi(Derecha);
+		if (t_evento == 80) geE->crearAvi(Abajo);
+		if (t_evento == 110) geE->crearAvi(Izquierda);
+
+
+		if (t_evento == 150) t_evento = 0;*/
 		
-		if (t_evento == 50) t_evento = 0;
 	}
 
 	Rectangle getMargen() { return margen; }

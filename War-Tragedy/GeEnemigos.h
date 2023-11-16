@@ -54,19 +54,20 @@ public:
 			y = 720;
 			break;
 		case Izquierda:
-			x = 0;
+			x = 1280;
 			y = 360;
 			break;
 		case Derecha:
-			x = 1280;
+			x = 0;
 			y = 360;
 			break;
 		default:
 			break;
 		}
-		Avion* a = new Avion(x, y, d);
+		Avion* a = new Avion(640, 360, d);
 		aviones.push_back(a);
 	}
+
 	void crearSer() {
 		Serpiente* s = new Serpiente(500, 500, 1000, 1000);
 		serpientes.push_back(s);
