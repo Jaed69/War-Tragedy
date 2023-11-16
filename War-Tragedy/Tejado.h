@@ -20,6 +20,7 @@ public:
 		geE = new GeEnemigos();
 		margen = Rectangle(256, 144, 768, 432);
 		borde = Rectangle(0, 0, 1280, 720);
+		geE->crearSer();
 	}
 	~Tejado(){}
 
@@ -28,7 +29,7 @@ public:
 		t_evento++;
 		geA->T_Evento();
 		geE->T_Evento();
-		if (t_evento == 20) geE->coordsserpent(ju->getx(),ju->gety());
+		geE->coordsserpent(ju->getx(),ju->gety());
 		if (t_evento == 20) geE->crearAvi(Abajo);
 		if (t_evento == 20) geE->crearAvi(Derecha);
 		if (t_evento%40==0) geE->crearHel();
@@ -60,6 +61,7 @@ public:
 		geE->animarHel(bf,borde);
 		geE->animarAvi(bf, borde);
 		geE->animarHel(bf, borde);
+		geE->animarSer(bf, borde);
 	}
 
 

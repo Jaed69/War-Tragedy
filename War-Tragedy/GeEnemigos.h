@@ -69,7 +69,7 @@ public:
 	}
 
 	void crearSer() {
-		Serpiente* s = new Serpiente(500, 500, 1000, 1000);
+		Serpiente* s = new Serpiente(150, 0);
 		serpientes.push_back(s);
 	}
 
