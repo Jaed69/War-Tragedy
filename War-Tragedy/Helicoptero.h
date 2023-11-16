@@ -1,36 +1,59 @@
 #pragma once
 #include "Entidad.h"
 #include "Bala.h"
+enum Sentido { horario, antihorario };
 class Helicoptero :public Entidad {
 private:
 	vector<Bala*> vBala;
-
+	Sentido sentido;
 public:
 	Helicoptero() {}
-	Helicoptero(int x) :Entidad(x,550,40,40,10) {//poner ancho alto bien y determinar vida
-		if (x + ancho < 180|| x>980) {
-			direccion = Arriba;
-		}
-		else {
-			direccion = Derecha;
-		}
+	Helicoptero(int x, int y) :Entidad(x, y, 40, 40, 10) {//poner ancho alto bien y determinar vida
+		Random r;
+		if (r.Next(100) % 2 == 0)
+			sentido = antihorario;
+		else
+			sentido = horario;
 		ultDireccion = Ninguna;
 		dx = 0;
 		dy = 0; aumento = 2; vel = 10;
-
 		Rx = Ry = 0;
 		Rancho = Ralto = 20;
 	}
 	~Helicoptero() {}
 
-	
-	void mover(BufferedGraphics^ bg, Rectangle cont) {	
+
+	void mover(BufferedGraphics^ bg, Rectangle cont) {
 		Bitmap^ heli = gcnew Bitmap("assets/Enemigo/heli.png");
+		switch (sentido)
+		{
+		case horario:
+			//(256, 144, 768, 432);
+			if (x < 780 && y == 100)
+				direccion = Derecha;
+			else if (x == 780 && y < 460)
+				direccion = Abajo;
+			else if (x > 200 && y == 460)
+				direccion = Izquierda;
+			else if (x == 200 && y > 100)
+				direccion = Arriba;
+			break;
+		case antihorario:
+			if (x >200 && y == 100)
+				direccion = Izquierda;
+			else if (x == 200 && y < 460)
+				direccion = Abajo;
+			else if (x < 780 && y == 460)
+				direccion = Derecha;
+			else if (x == 780  && y > 100)
+				direccion = Arriba;
+			break;
+		}
 
 		switch (direccion)
 		{
 		case Ninguna:
-			indX = indY=0;
+			indX = indY = 0;
 			break;
 		case Abajo:
 
@@ -39,19 +62,19 @@ public:
 			for (int i = 0; i < 3; i++) {
 				indX = i;
 			}
-			
+
 			break;
 		case Arriba:
-			
+
 			dx = 0; dy = -1;
 			indY = 0;
 			for (int i = 0; i < 3; i++) {
 				indX = i;
 			}
-			
+
 			break;
 		case Izquierda:
-			
+
 			dx = -1; dy = 0;
 			indY = 3;
 			for (int i = 0; i < 3; i++) {
@@ -60,7 +83,7 @@ public:
 
 			break;
 		case Derecha:
-			
+
 			dx = 1; dy = 0;
 			indY = 1;
 			for (int i = 0; i < 3; i++) {
@@ -71,13 +94,13 @@ public:
 		default:
 			break;
 		}
-		
-		if (Container(cont))	{
+
+		if (Container(cont)) {
 			x += dx * vel;
 			y += dy * vel;
 		}
-		
-		dibujar(bg,heli);
+
+		dibujar(bg, heli);
 	}
 
 	void disparar(int fx, int fy) {
@@ -97,3 +120,51 @@ public:
 
 };
 
+/*
+
+		switch (direccion)
+		{
+		case Ninguna:
+			indX = indY=0;
+			break;
+		case Abajo:
+
+			dx = 0; dy = 1;
+			indY = 2;
+			for (int i = 0; i < 3; i++) {
+				indX = i;
+			}
+
+			break;
+		case Arriba:
+
+			dx = 0; dy = -1;
+			indY = 0;
+			for (int i = 0; i < 3; i++) {
+				indX = i;
+			}
+
+			break;
+		case Izquierda:
+
+			dx = -1; dy = 0;
+			indY = 3;
+			for (int i = 0; i < 3; i++) {
+				indX = i;
+			}
+
+			break;
+		case Derecha:
+
+			dx = 1; dy = 0;
+			indY = 1;
+			for (int i = 0; i < 3; i++) {
+				indX = i;
+			}
+
+			break;
+		default:
+			break;
+		}
+
+*/

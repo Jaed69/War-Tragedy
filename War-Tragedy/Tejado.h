@@ -23,7 +23,9 @@ public:
 
 	void T_Evento() {
 		t_evento++;
-
+		if (t_evento % 10 == 0) {
+			geE->crearHel();
+		}
 	}
 
 	Rectangle getMargen() { return margen; }
@@ -40,8 +42,8 @@ public:
 	}
 
 	//Zona en qeu se codifica el comportamiento de los enemigos
-	void animarEn(BufferedGraphics^ bf) {  
-		//geE->animarHel(bf,);
+	void animarEn(BufferedGraphics^ bf) { 
+		geE->animarHel(bf,borde);
 	}
 
 };
