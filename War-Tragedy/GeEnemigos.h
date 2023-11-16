@@ -10,7 +10,7 @@
 class GeEnemigos
 {
 private:
-	int t_enemigos;
+	int t_evento;
 	vector<Rectangle*> lisrec;
 	vector<Soldado*> soldados;
 	vector<Bomba*> bombas;
@@ -20,12 +20,12 @@ private:
 
 public:
 	GeEnemigos(){
-		t_enemigos = 0;	
+		t_evento = 0;
 	}
 	~GeEnemigos(){}
 
-	void T_Enemigos() {
-		t_enemigos++;
+	void T_Evento() {
+		t_evento++;
 	}
 
 	void crearSol() {
@@ -54,11 +54,11 @@ public:
 			y = 720;
 			break;
 		case Izquierda:
-			x = 1280;
+			x = 0;
 			y = 360;
 			break;
 		case Derecha:
-			x = 0;
+			x = 1280;
 			y = 360;
 			break;
 		default:
@@ -100,7 +100,7 @@ public:
 	}
 
 	void animarAvi(BufferedGraphics^ bg, Rectangle con) {
-		for (int i = 0; i < lisrec.size(); i++) {
+		for (int i = 0; i < aviones.size(); i++) {
 			if (aviones.at(i)->getActivo())
 				aviones.at(i)->mover(bg, con);
 			else

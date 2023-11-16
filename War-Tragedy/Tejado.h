@@ -26,7 +26,7 @@ public:
 	void T_Evento() {
 		t_evento++;
 		geA->T_Evento();
-		geE->T_Enemigos();
+		geE->T_Evento();
 		if (t_evento == 20) geE->crearAvi(Arriba);
 		
 		if (t_evento == 50) t_evento = 0;
