@@ -76,6 +76,7 @@ namespace WarTragedy {
 			// 
 			// Timer_Eventos
 			// 
+			this->Timer_Eventos->Enabled = true;
 			this->Timer_Eventos->Tick += gcnew System::EventHandler(this, &Entorno::Timer_Eventos_Tick);
 			// 
 			// Entorno

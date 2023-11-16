@@ -65,7 +65,7 @@ public:
 		x += dx * vel;
 		y += dy * vel;
 		dibujar(bg, avi);
-		if (!Colision(rec)) activo = false;
+		//if (!Colision(rec)) activo = false;
 	}
 
 

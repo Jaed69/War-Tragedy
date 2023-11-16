@@ -22,7 +22,7 @@ public:
 
 	void T_Evento() { 
 		t_evento++;
-		geEs->T_Escenarios();
+		geEs->T_Evento();
 
 
 		if (jugador->getDash() == false) {
