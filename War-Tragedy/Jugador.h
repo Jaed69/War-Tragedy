@@ -157,7 +157,7 @@ public:
 			
 			break;
 
-		case Dash:
+		case Dash: // nose como arreglar pipipi //podemos hacer q muera cuando se sale para no tener q corregir nada xdxdxdxdxdxdxdxdxdxdxd
 			switch (ultDireccion) {
 			case Arriba:
 				if (!Container(rec)) {

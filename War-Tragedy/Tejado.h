@@ -30,7 +30,6 @@ public:
 		geE->T_Evento();
 		if (t_evento == 20) geE->coordsserpent(ju->getx(),ju->gety());
 		if (t_evento == 20) geE->crearAvi(Abajo);
-		if (t_evento == 50) geE->crearAvi(Derecha);
 		if (t_evento == 20) geE->crearAvi(Derecha);
 		if (t_evento%40==0) geE->crearHel();
 		/*if (t_evento == 50) geE->crearAvi(Derecha);
