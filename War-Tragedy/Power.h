@@ -41,7 +41,7 @@ public:
 	void moverB(BufferedGraphics^ bg, Rectangle rec) {
 		for (int i = 0; i < vBala.size(); i++)
 		{
-			if (vBala.at(i)->getActivo()) vBala.at(i)->mover(bg, rec);
+			if (vBala.at(i)->getActivo()) vBala.at(i)->mover(bg);
 			else vBala.erase(vBala.begin() + i);
 		}
 	}

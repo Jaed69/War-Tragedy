@@ -6,14 +6,14 @@ class Juego
 {
 private:
 	Jugador* jugador;
-	GeEscenarios* Es;
+	GeEscenarios* geEs;
 
 	int t_evento;
 	
 public:
 	Juego() {
 		jugador = new Jugador(620, 404);
-		Es = new GeEscenarios();
+		geEs = new GeEscenarios();
 		t_evento = 0;
 		
 	}
@@ -22,7 +22,7 @@ public:
 
 	void T_Evento() { 
 		t_evento++;
-		Es->T_Evento();
+		geEs->T_Escenarios();
 
 
 		if (jugador->getDash() == false) {
@@ -34,7 +34,7 @@ public:
 		}
 	}
 
-	void setNivel(Niveles nivel) { Es->setNivel(nivel); }
+	void setNivel(Niveles nivel) { geEs->setNivel(nivel); }
 
 	void disparar(int x,int y) {
 		jugador->disparar(x, y);
@@ -71,12 +71,12 @@ public:
 	}
 
 	void animarPl(BufferedGraphics^ bf) {
-		jugador->animar(bf, Es->getMargen());
-		jugador->moverB(bf, Es->getBorde());
+		jugador->animar(bf, geEs->getMargen());
+		jugador->moverB(bf, geEs->getBorde());
 	}
 
 	void jugar(BufferedGraphics^ bf) {
-		Es->Escenario(bf);
+		geEs->Escenario(bf);
 		animarPl(bf);
 	}
 

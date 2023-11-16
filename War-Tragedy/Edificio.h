@@ -9,6 +9,9 @@ private:
 	int t_evento;
 	Rectangle margen;
 	Rectangle borde;
+	GeAliado* geA;
+	GeEnemigos* geE;
+	vector<Obstaculo*> obstaculos;
 
 public:
 	Edificio() {
@@ -33,6 +36,12 @@ public:
 		bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), borde);
 		bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), margen);
 
+	}
+
+	//Zona en qeu se codifica el comportamiento de los enemigos
+	void animarEn(BufferedGraphics^ bf) {
+		//geE->animarHel(bf,);
+		geE->animarAvi(bf, borde);
 	}
 
 };

@@ -33,7 +33,7 @@ public:
 	~Bala() {}
 
 
-	void mover(BufferedGraphics^ bg, Rectangle rec) {
+	void mover(BufferedGraphics^ bg) {
 		Bitmap^ bala = gcnew Bitmap("assets/Bala/bala.png");
 
 		vel = 15;

@@ -15,21 +15,21 @@ private:
 	Edificio* nivel2;
 	Prado* nivel3;
 
-	int t_evento;
+	int t_escenarios;
 
 public:
 	GeEscenarios(){
 		nivel1 = new Tejado();
-		nivel2 = new Edificio();
-		nivel3 = new Prado();
+		//nivel2 = new Edificio();
+		//nivel3 = new Prado();
 
-		t_evento = 0;
+		t_escenarios = 0;
 	}
 
 	~GeEscenarios(){}
 
-	void T_Evento() {
-		t_evento++;
+	void T_Escenarios() {
+		t_escenarios++;
 
 		switch (nivel)
 		{
@@ -37,10 +37,10 @@ public:
 			nivel1->T_Evento();
 			break;
 		case NEdificio:
-			nivel2->T_Evento();
+			//nivel2->T_Evento();
 			break;
 		case NPrado:
-			nivel3->T_Evento();
+			//nivel3->T_Evento();
 			break;
 		default:
 			break;
@@ -88,15 +88,16 @@ public:
 		switch (nivel)
 		{
 		case NTejado:
-
-
 			nivel1->animarFn(bf);
+			nivel1->animarEn(bf);
 			break;
 		case NEdificio:
 			nivel2->animarFn(bf);
+			nivel2->animarEn(bf);
 			break;
 		case NPrado:
 			nivel3->animarFn(bf);
+			nivel3->animarEn(bf);
 			break;
 		default:
 			break;

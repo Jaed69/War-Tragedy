@@ -71,13 +71,12 @@ public:
 		default:
 			break;
 		}
-		
-		if (Container(cont))	{
-			x += dx * vel;
-			y += dy * vel;
-		}
-		
+
+		x += dx * vel;
+		y += dy * vel;
+				
 		dibujar(bg,heli);
+		if (!Colision(cont)) activo = false;
 	}
 
 	void disparar(int fx, int fy) {
@@ -87,10 +86,16 @@ public:
 	}
 
 	void moverB(BufferedGraphics^ bg, Rectangle rec) {
-		for (int i = 0; i < vBala.size(); i++)
-		{
-			if (vBala.at(i)->getActivo()) vBala.at(i)->mover(bg, rec);
+		for (int i = 0; i < vBala.size(); i++) {
+			if (vBala.at(i)->Container(rec)) vBala.at(i)->mover(bg);
 			else vBala.erase(vBala.begin() + i);
+		}
+	}
+
+	bool colBala(Rectangle objetivo) {
+		for (int i = 0; i < vBala.size(); i++) {
+			if (vBala.at(i)->Colision(objetivo)) return true;
+			else return false;
 		}
 	}
 

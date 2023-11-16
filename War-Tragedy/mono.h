@@ -95,14 +95,20 @@ public:
 		Bala* oBala = new Bala(x, y, fx, fy);
 		oBala->setRnRl(10, 10);
 		vBala.push_back(oBala);
-		ammo--;
 	}
 
 	void moverB(BufferedGraphics^ bg, Rectangle rec) {
-		for (int i = 0; i < vBala.size(); i++)
-		{
-			if (vBala.at(i)->getActivo()) vBala.at(i)->mover(bg, rec);
+		for (int i = 0; i < vBala.size(); i++) {
+			if (vBala.at(i)->Colision(rec)) vBala.at(i)->mover(bg);
 			else vBala.erase(vBala.begin() + i);
 		}
 	}
+
+	bool colBala(Rectangle objetivo) {
+		for (int i = 0; i < vBala.size(); i++) {
+			if (vBala.at(i)->Colision(objetivo)) return true;
+			else return false;
+		}
+	}
+
 };
