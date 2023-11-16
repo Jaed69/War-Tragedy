@@ -29,6 +29,7 @@ public:
 		geA->T_Evento();
 		geE->T_Evento();
 		if (t_evento == 20) geE->crearAvi(Derecha);
+		if (t_evento%40==0) geE->crearHel();
 		/*if (t_evento == 50) geE->crearAvi(Derecha);
 		if (t_evento == 80) geE->crearAvi(Abajo);
 		if (t_evento == 110) geE->crearAvi(Izquierda);
@@ -55,6 +56,7 @@ public:
 	void animarEn(BufferedGraphics^ bf) {  
 		//geE->animarHel(bf,);
 		geE->animarAvi(bf, borde);
+		geE->animarHel(bf, borde);
 	}
 
 };

@@ -29,23 +29,23 @@ public:
 		{
 		case horario:
 			//(256, 144, 768, 432);
-			if (x < 780 && y == 100)
+			if (x < 1130 && y == 50)
 				direccion = Derecha;
-			else if (x == 780 && y < 460)
+			else if (x == 1130 && y < 640)
 				direccion = Abajo;
-			else if (x > 200 && y == 460)
+			else if (x > 100 && y == 640)
 				direccion = Izquierda;
-			else if (x == 200 && y > 100)
+			else if (x == 100 && y > 50)
 				direccion = Arriba;
 			break;
 		case antihorario:
-			if (x >200 && y == 100)
+			if (x > 100 && y == 50)
 				direccion = Izquierda;
-			else if (x == 200 && y < 460)
+			else if (x == 100 && y < 640)
 				direccion = Abajo;
-			else if (x < 780 && y == 460)
+			else if (x < 1130 && y == 640)
 				direccion = Derecha;
-			else if (x == 780  && y > 100)
+			else if (x == 1130 && y > 50)
 				direccion = Arriba;
 			break;
 		}

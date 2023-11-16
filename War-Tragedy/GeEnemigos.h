@@ -37,7 +37,7 @@ public:
 		bombas.push_back(b);
 	}
 	void crearHel() {
-		Helicoptero* h = new Helicoptero(400,100);
+		Helicoptero* h = new Helicoptero(400, 50);
 		helicopteros.push_back(h);
 	}
 	void crearAvi(Direcciones d) {
