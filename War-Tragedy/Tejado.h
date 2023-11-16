@@ -16,16 +16,26 @@ private:
 public:
 	Tejado(){
 		t_evento = 0;
+		geA = new GeAliado();
+		geE = new GeEnemigos();
 		margen = Rectangle(256, 144, 768, 432);
 		borde = Rectangle(0, 0, 1280, 720);
 	}
 	~Tejado(){}
 
+	//Zona para la creacion de eventos segun el tiempo
 	void T_Evento() {
 		t_evento++;
-		if (t_evento % 10 == 0) {
-			geE->crearHel();
-		}
+		geA->T_Evento();
+		geE->T_Evento();
+		if (t_evento == 20) geE->crearAvi(Derecha);
+		/*if (t_evento == 50) geE->crearAvi(Derecha);
+		if (t_evento == 80) geE->crearAvi(Abajo);
+		if (t_evento == 110) geE->crearAvi(Izquierda);
+
+
+		if (t_evento == 150) t_evento = 0;*/
+		
 	}
 
 	Rectangle getMargen() { return margen; }
@@ -42,8 +52,9 @@ public:
 	}
 
 	//Zona en qeu se codifica el comportamiento de los enemigos
-	void animarEn(BufferedGraphics^ bf) { 
-		geE->animarHel(bf,borde);
+	void animarEn(BufferedGraphics^ bf) {  
+		//geE->animarHel(bf,);
+		geE->animarAvi(bf, borde);
 	}
 
 };

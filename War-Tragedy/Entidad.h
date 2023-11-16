@@ -37,8 +37,10 @@ public:
 		this->ancho = ancho;
 		this->alto = alto;
 		dx = dy = 0;
-		Rx = Ry = 0;
-		Rancho = Ralto = 0;
+		Rx = 0;
+		Ry = 0;
+		Rancho = ancho;
+		Ralto = alto;
 		vel = 1;
 		ultDireccion = Abajo;
 		direccion = Ninguna;
@@ -96,8 +98,8 @@ public:
 		{
 			area = Rectangle(indX * ancho, indY * alto, ancho, alto);
 			zonaAumento = Rectangle(x, y, ancho * aumento, alto * aumento);
-			hitbox = Rectangle(x + Rx, y + Ry, Rancho, Ralto);
-			Fhitbox = Rectangle(x + Rx + dx*4, y + Ry + dy*4, Rancho, Ralto);
+			hitbox = Rectangle(x + Rx, y + Ry, Rancho * aumento, Ralto * aumento);
+			Fhitbox = Rectangle(x + Rx + roundf(dx)*4, y + Ry + roundf(dy)*4, Rancho * aumento, Ralto * aumento);
 
 			bg->Graphics->DrawRectangle(gcnew Pen(Color::Green), Fhitbox);
 			bg->Graphics->DrawRectangle(gcnew Pen(Color::Blue), hitbox);

@@ -88,14 +88,16 @@ public:
 		switch (nivel)
 		{
 		case NTejado:
-			nivel1->animarEn(bf);
 			nivel1->animarFn(bf);
+			nivel1->animarEn(bf);
 			break;
 		case NEdificio:
 			nivel2->animarFn(bf);
+			nivel2->animarEn(bf);
 			break;
 		case NPrado:
 			nivel3->animarFn(bf);
+			nivel3->animarEn(bf);
 			break;
 		default:
 			break;

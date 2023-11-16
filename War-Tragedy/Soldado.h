@@ -3,7 +3,7 @@
 
 class Soldado :public Entidad {
 private:
-
+	vector<Bala*> vBala;
 
 public:
 	Soldado(int x,int y) :Entidad(x, y, 32, 48, 20) {//poner ancho alto bien y determinar vida
@@ -49,10 +49,24 @@ public:
 		dibujar(bg, bm);
 	}
 
+	void disparar(int fx, int fy) {
+		Bala* oBala = new Bala(x, y, fx, fy);
+		oBala->setRnRl(10, 10);
+		vBala.push_back(oBala);
+	}
 
+	void moverB(BufferedGraphics^ bg, Rectangle rec) {
+		for (int i = 0; i < vBala.size(); i++) {
+			if (vBala.at(i)->Colision(rec)) vBala.at(i)->mover(bg);
+			else vBala.erase(vBala.begin() + i);
+		}
+	}
 
-
-
-
+	bool colBala(Rectangle objetivo) {
+		for (int i = 0; i < vBala.size(); i++) {
+			if (vBala.at(i)->Colision(objetivo)) return true;
+			else return false;
+		}
+	}
 
 };

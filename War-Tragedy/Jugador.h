@@ -214,19 +214,23 @@ public:
 
 
 
-	void disparar(int fx,int fy) {
+	void disparar(int fx, int fy) {
 		Bala* oBala = new Bala(x, y, fx, fy);
 		oBala->setRnRl(10, 10);
 		vBala.push_back(oBala);
 	}
 
 	void moverB(BufferedGraphics^ bg, Rectangle rec) {
-		Bitmap^ bala = gcnew Bitmap("assets/Bala/bala.png");
-
-		for (int i = 0; i < vBala.size(); i++)
-		{
-			if (vBala.at(i)->getActivo()) vBala.at(i)->mover(bg, rec);
+		for (int i = 0; i < vBala.size(); i++) {
+			if (vBala.at(i)->Container(rec)) vBala.at(i)->mover(bg);
 			else vBala.erase(vBala.begin() + i);
+		}
+	}
+
+	bool colBala(Rectangle objetivo) {
+		for (int i = 0; i < vBala.size(); i++) {
+			if (vBala.at(i)->Colision(objetivo)) return true;
+			else return false;
 		}
 	}
 

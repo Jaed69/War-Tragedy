@@ -76,6 +76,7 @@ namespace WarTragedy {
 			// 
 			// Timer_Eventos
 			// 
+			this->Timer_Eventos->Enabled = true;
 			this->Timer_Eventos->Tick += gcnew System::EventHandler(this, &Entorno::Timer_Eventos_Tick);
 			// 
 			// Entorno
@@ -83,7 +84,6 @@ namespace WarTragedy {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1280, 720);
-			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedToolWindow;
 			this->Name = L"Entorno";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Entorno";
