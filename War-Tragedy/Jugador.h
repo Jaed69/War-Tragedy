@@ -212,8 +212,6 @@ public:
 		
 	}
 
-
-
 	void disparar(int fx, int fy) {
 		Bala* oBala = new Bala(x, y, fx, fy);
 		oBala->setRnRl(10, 10);

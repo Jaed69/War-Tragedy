@@ -8,7 +8,7 @@ public:
 		indX = indY = 0;
 		direccion = d;
 		aumento = 2;
-		vel = 5;
+		vel = 10;
 
 	}
 	~Avion() {}
@@ -60,7 +60,9 @@ public:
 		y += dy * vel;
 		dibujar(bg, avi);
 		if (!Colision(rec)) activo = false;
+		delete avi;
 	}
+
 
 
 

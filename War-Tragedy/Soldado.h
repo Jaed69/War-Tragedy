@@ -47,6 +47,7 @@ public:
 		}
 
 		dibujar(bg, bm);
+		delete bm;
 	}
 
 	void disparar(int fx, int fy) {

@@ -101,6 +101,7 @@ public:
 		}
 
 		dibujar(bg, heli);
+		delete heli;
 	}
 
 	void disparar(int fx, int fy) {

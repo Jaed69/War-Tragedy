@@ -6,17 +6,21 @@
 #include "Avion.h"
 #include "Serpiente.h"
 
+#include "Obstaculo.h"
+
 
 class GeEnemigos
 {
 private:
 	int t_evento;
-	vector<Rectangle*> lisrec;
+
 	vector<Soldado*> soldados;
 	vector<Bomba*> bombas;
 	vector<Helicoptero*> helicopteros;
 	vector<Avion*> aviones;
 	vector<Serpiente*> serpientes;
+
+	vector<Obstaculo*> llamas;
 
 public:
 	GeEnemigos(){
@@ -27,6 +31,8 @@ public:
 	void T_Evento() {
 		t_evento++;
 	}
+
+	int getTAvi() { return aviones.size(); }
 
 	void crearSol() {
 		Soldado* sol = new Soldado(100, 100);
@@ -64,13 +70,18 @@ public:
 		default:
 			break;
 		}
-		Avion* a = new Avion(640, 360, d);
+		Avion* a = new Avion(x, y, d);
 		aviones.push_back(a);
 	}
 
 	void crearSer() {
 		Serpiente* s = new Serpiente(500, 500, 1000, 1000);
 		serpientes.push_back(s);
+	}
+
+	void crearLla(int x, int y) {
+		Obstaculo* lla = new Obstaculo(x, y);
+		llamas.push_back(lla);
 	}
 
 	void animarSol(BufferedGraphics^ bg, Rectangle con) {
@@ -118,6 +129,15 @@ public:
 		}
 	}
 
+	void animarLla(BufferedGraphics^ bg, Rectangle con) {
+		for (int i = 0; i < llamas.size(); i++) {
+			if (llamas.at(i)->getActivo())
+				llamas.at(i)->animar(bg, con);
+			else
+				llamas.erase(llamas.begin() + i);
+		}
+	}
+
 	bool colBalaSol(Rectangle ajeno) {
 		for (int i = 0; i < soldados.size(); i++) {
 			if (soldados.at(i)->colBala(ajeno)) return true;
@@ -150,6 +170,14 @@ public:
 		for (int i = 0; i < serpientes.size(); i++) {
 			if (serpientes.at(i)->Colision(ajeno)) return true;
 			else return false;
+		}
+	}
+
+	void conAvi(Rectangle ajeno) {
+		for (int i = 0; i < aviones.size(); i++) {
+			if (aviones.at(i)->Container(ajeno)) {
+				crearLla(aviones.at(i)->getx(), aviones.at(i)->gety());
+			}
 		}
 	}
 
