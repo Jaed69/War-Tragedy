@@ -29,6 +29,8 @@ public:
 		geA->T_Evento();
 		geE->T_Evento();
 		if (t_evento == 20) geE->coordsserpent(ju->getx(),ju->gety());
+		if (t_evento == 20) geE->crearAvi(Abajo);
+		if (t_evento == 50) geE->crearAvi(Derecha);
 		if (t_evento == 20) geE->crearAvi(Derecha);
 		if (t_evento%40==0) geE->crearHel();
 		/*if (t_evento == 50) geE->crearAvi(Derecha);
@@ -56,7 +58,7 @@ public:
 
 	//Zona en qeu se codifica el comportamiento de los enemigos
 	void animarEn(BufferedGraphics^ bf) {  
-		//geE->animarHel(bf,);
+		geE->animarHel(bf,borde);
 		geE->animarAvi(bf, borde);
 		geE->animarHel(bf, borde);
 	}

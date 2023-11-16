@@ -18,6 +18,9 @@ public:
 		t_evento = 0;
 		margen = Rectangle(256, 176, 768, 432);
 		borde = Rectangle(0, 0, 1280, 720);
+		geA = new GeAliado();
+		geE = new GeEnemigos();
+
 	}
 	~Edificio() {}
 
