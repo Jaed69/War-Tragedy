@@ -141,8 +141,8 @@ public:
 
 	bool colBalaSer(Rectangle ajeno) {
 		for (int i = 0; i < serpientes.size(); i++) {
-			if (serpientes.at(i)->colBala(ajeno)) return true;
-			else return false;
+			//if (serpientes.at(i)->colBala(ajeno)) return true;
+			//else return false;
 		}
 	}
 
