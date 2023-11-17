@@ -201,7 +201,7 @@ public:
 		
 		dibujar(bg, bm);
 		mover(rec);
-		
+		delete bm;
 	}
 
 	void mover(Rectangle rec) {

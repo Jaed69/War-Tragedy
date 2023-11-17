@@ -5,8 +5,7 @@
 #include "Helicoptero.h"
 #include "Avion.h"
 #include "Serpiente.h"
-
-#include "Obstaculo.h"
+#include "Flama.h"
 
 
 class GeEnemigos
@@ -19,8 +18,7 @@ private:
 	vector<Helicoptero*> helicopteros;
 	vector<Avion*> aviones;
 	vector<Serpiente*> serpientes;
-
-	vector<Obstaculo*> llamas;
+	vector<Flama*> flamas;
 
 public:
 	GeEnemigos(){
@@ -28,7 +26,7 @@ public:
 	}
 	~GeEnemigos(){}
 
-	void T_Evento() {
+	void T_Evento(Jugador* ju) {
 		t_evento++;
 	}
 
@@ -57,10 +55,10 @@ public:
 			break;
 		case Arriba:
 			x = 640;
-			y = 720;
+			y = 660;
 			break;
 		case Izquierda:
-			x = 1280;
+			x = 1235;
 			y = 360;
 			break;
 		case Derecha:
@@ -80,8 +78,8 @@ public:
 	}
 
 	void crearLla(int x, int y) {
-		Obstaculo* lla = new Obstaculo(x, y);
-		llamas.push_back(lla);
+		Flama* lla = new Flama(x, y);
+		flamas.push_back(lla);
 	}
 
 	void animarSol(BufferedGraphics^ bg, Rectangle con) {
@@ -130,11 +128,11 @@ public:
 	}
 
 	void animarLla(BufferedGraphics^ bg, Rectangle con) {
-		for (int i = 0; i < llamas.size(); i++) {
-			if (llamas.at(i)->getActivo())
-				llamas.at(i)->animar(bg, con);
+		for (int i = 0; i < flamas.size(); i++) {
+			if (flamas.at(i)->getActivo())
+				flamas.at(i)->animar(bg, con);
 			else
-				llamas.erase(llamas.begin() + i);
+				flamas.erase(flamas.begin() + i);
 		}
 	}
 
@@ -183,6 +181,13 @@ public:
 			if (aviones.at(i)->Container(ajeno)) {
 				crearLla(aviones.at(i)->getx(), aviones.at(i)->gety());
 			}
+		}
+	}
+
+	bool colFla(Rectangle recjg) {
+		for (int i = 0; i < flamas.size(); i++) {
+			if (flamas.at(i)->Colision(recjg)) return true;
+			else return false;
 		}
 	}
 

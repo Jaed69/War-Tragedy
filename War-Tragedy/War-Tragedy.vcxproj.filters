@@ -107,5 +107,8 @@
     <ClInclude Include="Escenario.h">
       <Filter>Archivos de encabezado\Escenarios</Filter>
     </ClInclude>
+    <ClInclude Include="Flama.h">
+      <Filter>Archivos de encabezado\Enemigos</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

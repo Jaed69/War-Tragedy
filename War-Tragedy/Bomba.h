@@ -35,7 +35,7 @@ public:
 
 
 	void mover(BufferedGraphics^ bg, Rectangle rec) {
-		Bitmap^ Bomba = gcnew Bitmap("assets/Bomba/Bomba.png");
+		Bitmap^ bomba = gcnew Bitmap("assets/Bomba/Bomba.png");
 
 		vel = 15;
 		posx += dx * vel;
@@ -44,7 +44,8 @@ public:
 		x = roundf(posx);
 		y = roundf(posy);
 
-		dibujar(bg, Bomba);
+		dibujar(bg, bomba);
+		delete bomba;
 	}
 
 };

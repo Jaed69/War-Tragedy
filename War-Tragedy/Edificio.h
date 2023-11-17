@@ -38,7 +38,7 @@ public:
 
 		bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), borde);
 		bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), margen);
-
+		delete fondo;
 	}
 
 	//Zona en qeu se codifica el comportamiento de los enemigos

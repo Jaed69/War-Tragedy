@@ -65,6 +65,7 @@ public:
 		x += dx * vel;
 		y += dy * vel;
 		dibujar(bg, avi);
+		delete avi;
 	}
 	void disparar() {
 		Bala* oBala = new Bala(x, y, x +20, y);

@@ -22,13 +22,13 @@ public:
 	~Power() {}
 
 	void mover(BufferedGraphics^ bg, Rectangle rec) {
-		Bitmap^ Power = gcnew Bitmap("assets/Aliado/Power.png");
+		Bitmap^ power = gcnew Bitmap("assets/Aliado/Power.png");
 
 		
 		x += dx * vel;
 		y += dy * vel;
-		dibujar(bg, Power);
-
+		dibujar(bg, power);
+		delete power;
 	}
 
 	void disparar(int fx, int fy) {
