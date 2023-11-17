@@ -37,10 +37,10 @@ public:
 			nivel1->T_Evento(ju);
 			break;
 		case NEdificio:
-			nivel2->T_Evento();
+			nivel2->T_Evento(ju);
 			break;
 		case NPrado:
-			nivel3->T_Evento();
+			nivel3->T_Evento(ju);
 			break;
 		default:
 			break;

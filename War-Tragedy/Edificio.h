@@ -45,6 +45,7 @@ public:
 	void animarEn(BufferedGraphics^ bf) {
 		//geE->animarHel(bf,);
 		geE->animarAvi(bf, borde);
+		geE->animarSer(bf, borde);
 	}
 
 };
