@@ -28,6 +28,7 @@ public:
 
 	void T_Evento(Jugador* ju) {
 		t_evento++;
+		if (colFla(ju->getFHB())) ju->Dano();
 	}
 
 	int getTAvi() { return aviones.size(); }
@@ -187,8 +188,8 @@ public:
 	bool colFla(Rectangle recjg) {
 		for (int i = 0; i < flamas.size(); i++) {
 			if (flamas.at(i)->Colision(recjg)) return true;
-			else return false;
 		}
+		return false;
 	}
 
 };

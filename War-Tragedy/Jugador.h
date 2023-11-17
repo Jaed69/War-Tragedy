@@ -10,20 +10,22 @@ private:
 	vector<Bala*> vBala;
 
 	int t_evento;
+	bool danado;
 
 public:
 	Jugador(){}
-	Jugador(int x,int y):Entidad(x,y,32,48,1){
+	Jugador(int x,int y):Entidad(x,y,32,48,100){
 		indX = 4;
 		indY = 2;
 		aumento = 1;
 		dash = true;
 		vel = 8;
-		Rx = Ry = 5;
-		Rancho = Ralto = 20;
+		Rx = 10; Ry = 9;
+		Rancho = 10;
+		Ralto = 28;
 
 		t_evento = 0;
-
+		danado = false;
 	}
 
 	~Jugador(){}
@@ -206,11 +208,19 @@ public:
 
 	void mover(Rectangle rec) {
 		if (Container(rec)) {
-			x += dx * vel;
-			y += dy * vel;
+			if (danado)	{
+				x += dx * vel * -1.5;
+				y += dy * vel * -1.5;
+			}else{
+				x += dx * vel;
+				y += dy * vel;
+			}
+			danado = false;
 		}
 		
 	}
+
+	void Dano() { danado = true; }
 
 	void disparar(int fx, int fy) {
 		Bala* oBala = new Bala(x, y, fx, fy);

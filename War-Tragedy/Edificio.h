@@ -24,7 +24,7 @@ public:
 	}
 	~Edificio() {}
 
-	void T_Evento() {
+	void T_Evento(Jugador* ju) {
 		t_evento++;
 	}
 
