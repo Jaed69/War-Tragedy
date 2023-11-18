@@ -20,12 +20,14 @@ public:
 		borde = Rectangle(0, 0, 1280, 720);
 		geA = new GeAliado();
 		geE = new GeEnemigos();
-
+		geE->crearSer();
 	}
 	~Edificio() {}
 
-	void T_Evento() {
+	void T_Evento(Jugador* ju) {
 		t_evento++;
+
+		geE->coordsserpent(ju->getx(), ju->gety());
 	}
 
 	Rectangle getMargen() { return margen; }
