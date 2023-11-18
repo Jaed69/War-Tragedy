@@ -111,8 +111,12 @@ namespace WarTragedy {
 	}
 	private: System::Void Entorno_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		if (e->KeyCode == Keys::P) {
+			this->Timer_Juego->Enabled = false;
+			this->Timer_Eventos->Enabled = false;
 			pausa = gcnew Pausa();
 			pausa->ShowDialog();
+			this->Timer_Juego->Enabled = true;
+			this->Timer_Eventos->Enabled = true;
 			delete pausa;
 		}
 		Jg->movJugador(true, e->KeyCode);
