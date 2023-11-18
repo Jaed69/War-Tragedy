@@ -85,6 +85,7 @@ public:
 
 
 	void Escenario(BufferedGraphics^ bf) {
+
 		switch (nivel)
 		{
 		case NTejado:
