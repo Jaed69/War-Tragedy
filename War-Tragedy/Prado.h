@@ -34,6 +34,7 @@ public:
 		if (t_evento % 51 == 0)geE->dispararHeli(ju->getx(),ju->gety());
 		if (t_evento % 52 == 0)geE->dispararHeli(ju->getx(),ju->gety());
 		if (t_evento % 30 == 0)geE->dispararSol(ju->getx(), ju->gety());
+		if (t_evento % 50 == 0) geA->crearMon();
 		
 	}
 
@@ -59,6 +60,7 @@ public:
 		geE->SeguirMovSoldado(ju->getx(), ju->gety());
 		geE->moverBalasHeli(bf, borde);
 		geE->moverBalasSoldado(bf, borde);
+		geA->moverMono(bf,borde);
 	}
 
 };
