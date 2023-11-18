@@ -13,7 +13,7 @@ private:
 
 public:
 	Jugador(){}
-	Jugador(int x,int y):Entidad(x,y,32,48,1){
+	Jugador(int x,int y):Entidad(x,y,32,48,100){
 		indX = 4;
 		indY = 2;
 		aumento = 1;

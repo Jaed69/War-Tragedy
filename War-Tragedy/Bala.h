@@ -36,7 +36,7 @@ public:
 	void mover(BufferedGraphics^ bg) {
 		Bitmap^ bala = gcnew Bitmap("assets/Bala/bala.png");
 
-		vel = 15;
+		vel = 25;
 		posx += dx * vel;
 		posy += dy * vel;
 		
@@ -45,11 +45,5 @@ public:
 
 		dibujar(bg, bala);
 	}
-
-
-
-
-
-
 
 };
