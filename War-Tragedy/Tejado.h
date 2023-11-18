@@ -42,6 +42,9 @@ public:
 		if (t_evento == 120) geE->crearAvi(Izquierda);
 		//if (t_evento == 20) geE->crearAvi(Derecha);
 		if (t_evento % 40 == 0) geE->crearHel(); 
+		if (t_evento % 50 == 0)geE->dispararHeli(ju->getx(), ju->gety());
+		if (t_evento % 51 == 0)geE->dispararHeli(ju->getx(), ju->gety());
+		if (t_evento % 52 == 0)geE->dispararHeli(ju->getx(), ju->gety());
 		
 
 
@@ -66,6 +69,7 @@ public:
 		geE->animarHel(bf,borde);
 		geE->animarLla(bf, borde);
 		geE->animarAvi(bf, borde);
+		geE->moverBalasHeli(bf, borde);
 		//geE->animarSer(bf, borde);
 	}
 

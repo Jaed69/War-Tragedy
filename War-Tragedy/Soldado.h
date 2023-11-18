@@ -134,7 +134,7 @@ public:
 
 	void moverB(BufferedGraphics^ bg, Rectangle rec) {
 		for (int i = 0; i < vBala.size(); i++) {
-			if (vBala.at(i)->Colision(rec)) vBala.at(i)->mover(bg);
+		    if (vBala.at(i)->Container(rec)) vBala.at(i)->mover(bg);
 			else vBala.erase(vBala.begin() + i);
 		}
 	}
@@ -147,31 +147,3 @@ public:
 	}
 
 };
-
-/*
-
-if (x + dx + ancho > 1050) {
-			dx = 0;
-			dy = 1;
-			direccion = Abajo;
-		}
-		if (x < 10) {
-			dx = 0;
-			dy = 1;
-			direccion = Abajo;
-		}
-		if (y + alto + dy > 590) {
-			dy *= -1;
-			direccion = Arriba;
-		}
-		if (y < 5) {
-			if (x > 500) {
-				dx = -1;
-				direccion = Izquierda;
-			}
-			else {
-				dx = 1;
-				direccion = Derecha;
-			}
-		}
-*/

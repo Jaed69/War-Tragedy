@@ -16,7 +16,6 @@ public:
 		Ralto = 11;
 		aumento = 1;
 		ammo = 50;
-		
 	}
 	~Mono() {}
 
@@ -28,13 +27,11 @@ public:
 		case Ninguna:
 			indX = 0; indY = 0;
 			dx = 0; dy = 0;
-
 			ultDireccion = Ninguna;
 			break;
 		case Abajo:
 			indX = 0; indY = 0;
 			dx = 0; dy = 1;
-
 			ultDireccion = Abajo;
 			break;
 		case Arriba:
