@@ -20,11 +20,17 @@ private:
 	vector<Serpiente*> serpientes;
 	vector<Flama*> flamas;
 
+	int sArriba, sAbajo, sDerecha, sIzquierda;
+	int sLimArriba, sLimAbajo, sLimDerecha, sLimIzquierda;
+	int cantHeli, limCantHeli;
 public:
-	GeEnemigos(){
+	GeEnemigos() {
 		t_evento = 0;
+		sArriba = sAbajo = sDerecha = sIzquierda = 0;
+		sLimArriba = sLimAbajo = sLimDerecha = sLimIzquierda = 3;
+		cantHeli = 0; limCantHeli = 2;
 	}
-	~GeEnemigos(){}
+	~GeEnemigos() {}
 
 	void T_Evento(Jugador* ju) {
 		t_evento++;
@@ -32,34 +38,48 @@ public:
 	}
 
 	int getTAvi() { return aviones.size(); }
+	int getLimCantHeli() { return limCantHeli; }
 
 	void crearSol() {
 		Random r;
 		int _x, _y;
-		if (r.Next(100) % 2 == 0) {
-			if (r.Next(100) % 4 == 0)
-				_x = 1;
-			else
-				_x = 1244;
-			_y = r.Next(1,670);
+		
+		if (sArriba < sLimArriba) {
+			_y = 1; _x = r.Next(1, 1245);
+			sArriba += 1;
+			Soldado* sol = new Soldado(_x, _y);
+			soldados.push_back(sol);
 		}
-		else {
-			if (r.Next(100) % 4 == 0)
-				_y = 1;
-			else
-				_y = 669;
-			_x = r.Next(1,1245);
+		else if (sAbajo < sLimAbajo) {
+			_y = 669; _x = r.Next(1, 1245);
+			sAbajo += 1;
+			Soldado* sol = new Soldado(_x, _y);
+			soldados.push_back(sol);
 		}
-		Soldado* sol = new Soldado(_x, _y);
-		soldados.push_back(sol);
+		else if (sDerecha < sLimDerecha) {
+			_x = 1244; _y = r.Next(1, 670);
+			sDerecha += 1;
+			Soldado* sol = new Soldado(_x, _y);
+			soldados.push_back(sol);
+		}
+		else if (sIzquierda < sLimIzquierda) {
+			_x = 1; _y = r.Next(1, 670);
+			sIzquierda += 1;
+			Soldado* sol = new Soldado(_x, _y);
+			soldados.push_back(sol);
+		}
+		
 	}
 	void crearBom(int x, int y) {
 		Bomba* b = new Bomba(x, y);
 		bombas.push_back(b);
 	}
 	void crearHel() {
-		Helicoptero* h = new Helicoptero(400, 50);
-		helicopteros.push_back(h);
+		if (cantHeli < limCantHeli) {
+			cantHeli++;
+			Helicoptero* h = new Helicoptero(400, 50);
+			helicopteros.push_back(h);
+		}
 	}
 	void crearAvi(Direcciones d) {
 		int x, y;
@@ -138,7 +158,7 @@ public:
 	void animarSer(BufferedGraphics^ bg, Rectangle con, vector<Obstaculo*> obstaculos) {
 		for (int i = 0; i < serpientes.size(); i++) {
 			if (serpientes.at(i)->getActivo())
-				serpientes.at(i)->mover(bg, con,obstaculos);
+				serpientes.at(i)->mover(bg, con, obstaculos);
 			else
 				serpientes.erase(serpientes.begin() + i);
 		}
@@ -208,4 +228,19 @@ public:
 		return false;
 	}
 
+	void SeguirMovSoldado(int x, int y) {
+		for (int i = 0; i < soldados.size(); i++) {
+			if (soldados.at(i)->getEstatico()) {
+				soldados.at(i)->apuntarJugador(x,y);
+			}
+		}
+	}
+	void dispararSol(int fx, int fy) {
+		for (int i = 0; i < soldados.size(); i++) {
+			if (soldados.at(i)->getEstatico()) {
+				soldados.at(i)->disparar(fx, fy);
+			}
+		}
+	}
 };
+

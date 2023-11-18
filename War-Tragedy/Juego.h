@@ -87,7 +87,7 @@ public:
 	}
 
 	void jugar(BufferedGraphics^ bf) {
-		geEs->Escenario(bf);
+		geEs->Escenario(bf, jugador);
 		animarPl(bf);
 	}
 

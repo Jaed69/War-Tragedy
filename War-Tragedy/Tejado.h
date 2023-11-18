@@ -35,7 +35,7 @@ public:
 		if (t_evento == 20) geE->crearAvi(Arriba);
 		if (t_evento == 120) geE->crearAvi(Izquierda);
 		//if (t_evento == 20) geE->crearAvi(Derecha);
-		if (t_evento==40) geE->crearHel();
+		if (t_evento%40==0) geE->crearHel();
 		
 	}
 
