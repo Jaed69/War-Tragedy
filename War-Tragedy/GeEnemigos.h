@@ -12,6 +12,8 @@ class GeEnemigos
 {
 private:
 	int t_evento;
+	int lim_hel;
+	int cont_hel;
 
 	vector<Soldado*> soldados;
 	vector<Bomba*> bombas;
@@ -23,6 +25,8 @@ private:
 public:
 	GeEnemigos(){
 		t_evento = 0;
+		lim_hel = 2;
+		cont_hel = 0;
 	}
 	~GeEnemigos(){}
 
@@ -61,8 +65,12 @@ public:
 		bombas.push_back(b);
 	}
 	void crearHel() {
-		Helicoptero* h = new Helicoptero(400, 50);
-		helicopteros.push_back(h);
+		if (cont_hel < lim_hel) {
+			cont_hel++;
+			Helicoptero* h = new Helicoptero(400, 50);
+			helicopteros.push_back(h);
+		}
+		
 	}
 	void crearAvi(Direcciones d) {
 		int x, y;

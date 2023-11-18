@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Pausa.h"
 #include "Juego.h"
 
 namespace WarTragedy {
@@ -19,6 +20,7 @@ namespace WarTragedy {
 	private:
 		Juego* Jg;
 		Niveles nivel = NTejado;
+		Pausa^ pausa;
 	private: System::Windows::Forms::Timer^ Timer_Eventos;
 
 	private: System::Windows::Forms::Timer^ Timer_Juego;
@@ -108,6 +110,11 @@ namespace WarTragedy {
 		delete buffer; delete espacioBuffer; delete g;
 	}
 	private: System::Void Entorno_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		if (e->KeyCode == Keys::P) {
+			pausa = gcnew Pausa();
+			pausa->ShowDialog();
+			delete pausa;
+		}
 		Jg->movJugador(true, e->KeyCode);
 	}
 	private: System::Void Entorno_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
