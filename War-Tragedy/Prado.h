@@ -16,6 +16,8 @@ private:
 public:
 	Prado() {
 		t_evento = 0;
+		geA = new GeAliado();
+		geE = new GeEnemigos();
 		margen = Rectangle(256, 144, 768, 432);
 		borde = Rectangle(0, 0, 1280, 720);
 		geA = new GeAliado();
@@ -25,6 +27,7 @@ public:
 
 	void T_Evento(Jugador* ju) {
 		t_evento++;
+		if (t_evento % 17 == 0) geE->crearSol();
 	}
 
 	Rectangle getMargen() { return margen; }
@@ -44,6 +47,7 @@ public:
 	void animarEn(BufferedGraphics^ bf) {
 		//geE->animarHel(bf,);
 		geE->animarAvi(bf, borde);
+		geE->animarSol(bf, borde);
 	}
 
 };

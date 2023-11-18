@@ -34,7 +34,23 @@ public:
 	int getTAvi() { return aviones.size(); }
 
 	void crearSol() {
-		Soldado* sol = new Soldado(100, 100);
+		Random r;
+		int _x, _y;
+		if (r.Next(100) % 2 == 0) {
+			if (r.Next(100) % 4 == 0)
+				_x = 1;
+			else
+				_x = 1244;
+			_y = r.Next(1,670);
+		}
+		else {
+			if (r.Next(100) % 4 == 0)
+				_y = 1;
+			else
+				_y = 669;
+			_x = r.Next(1,1245);
+		}
+		Soldado* sol = new Soldado(_x, _y);
 		soldados.push_back(sol);
 	}
 	void crearBom(int x, int y) {
@@ -74,7 +90,7 @@ public:
 	}
 
 	void crearSer() {
-		Serpiente* s = new Serpiente(150, 0);
+		Serpiente* s = new Serpiente(500, 500);
 		serpientes.push_back(s);
 	}
 
@@ -119,10 +135,10 @@ public:
 		}
 	}
 
-	void animarSer(BufferedGraphics^ bg, Rectangle con) {
+	void animarSer(BufferedGraphics^ bg, Rectangle con, vector<Obstaculo*> obstaculos) {
 		for (int i = 0; i < serpientes.size(); i++) {
 			if (serpientes.at(i)->getActivo())
-				serpientes.at(i)->mover(bg, con);
+				serpientes.at(i)->mover(bg, con,obstaculos);
 			else
 				serpientes.erase(serpientes.begin() + i);
 		}

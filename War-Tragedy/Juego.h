@@ -7,7 +7,7 @@ class Juego
 private:
 	Jugador* jugador;
 	GeEscenarios* geEs;
-
+	int BarraVida;
 	int t_evento;
 	
 public:
@@ -15,7 +15,7 @@ public:
 		jugador = new Jugador(620, 404);
 		geEs = new GeEscenarios();
 		t_evento = 0;
-		
+		BarraVida = 10;
 	}
 
 	~Juego(){}
@@ -68,6 +68,17 @@ public:
 			jugador->setDireccion(Ninguna);
 		}
 
+	}
+
+	void vida(BufferedGraphics^ bg) {
+		Bitmap^ vidaa = gcnew Bitmap("assets/Nivel/UI/ui x1.png");
+		int vj = 85;
+		if (jugador->getvida() < vj&&BarraVida!=0) {
+			BarraVida--; vj -= 12;
+		}
+		Rectangle area = Rectangle(BarraVida *31.8, 0*32,31.8,32);
+		Rectangle zonaAumento = Rectangle(30, 0, 31.8*3, 32*3);
+		bg->Graphics->DrawImage(vidaa, zonaAumento, area, GraphicsUnit::Pixel);
 	}
 
 	void animarPl(BufferedGraphics^ bf) {

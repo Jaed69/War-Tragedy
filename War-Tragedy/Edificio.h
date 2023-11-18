@@ -24,6 +24,7 @@ public:
 		crearObs(356, 476, 50, 50);
 		crearObs(656, 276, 50, 50);
 		crearObs(656, 476, 50, 50);
+		geE->crearSer();
 	}
 	~Edificio() {}
 
@@ -33,6 +34,7 @@ public:
 		if (t_evento == 101) geE->crearBom(840, 360);
 		if (t_evento == 102) geE->crearBom(640, 260);
 		if (t_evento == 103) geE->crearBom(640, 460);
+		geE->coordsserpent(ju->getx(), ju->gety());
 	}
 
 	Rectangle getMargen() { return margen; }
@@ -52,7 +54,7 @@ public:
 	void animarEn(BufferedGraphics^ bf) {
 		//geE->animarHel(bf,);
 		geE->animarBom(bf);
-		geE->animarSer(bf, borde);
+		geE->animarSer(bf, borde, obstaculos);
 		animarObs(bf);
 	}
 
