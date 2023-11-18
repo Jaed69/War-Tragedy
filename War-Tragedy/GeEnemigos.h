@@ -37,8 +37,8 @@ public:
 		Soldado* sol = new Soldado(100, 100);
 		soldados.push_back(sol);
 	}
-	void crearBom() {
-		Bomba* b = new Bomba(500, 500, 1000, 1000);
+	void crearBom(int x, int y) {
+		Bomba* b = new Bomba(x, y);
 		bombas.push_back(b);
 	}
 	void crearHel() {
@@ -92,10 +92,10 @@ public:
 		}
 	}
 
-	void animarBom(BufferedGraphics^ bg, Rectangle con) {
+	void animarBom(BufferedGraphics^ bg) {
 		for (int i = 0; i < bombas.size(); i++) {
 			if (bombas.at(i)->getActivo())
-				bombas.at(i)->mover(bg, con);
+				bombas.at(i)->animar(bg);
 			else
 				bombas.erase(bombas.begin() + i);
 		}
