@@ -2,6 +2,7 @@
 #include "Entidad.h"
 #include <math.h>
 #include "Bala.h"
+#include "Obstaculo.h"
 
 class Serpiente :public Entidad {
 private:
@@ -36,27 +37,52 @@ public:
 	}
 
 
-	void mover(BufferedGraphics^ bg, Rectangle rec) {
-		Bitmap^ ser = gcnew Bitmap("assets/Personaje/Personaje.png");//conseguir asset de serpiente		
-		switch (direccion)
-		{
-		case Abajo:
-			dx = 0;
-			dy=1;
-			break;
-		case Arriba:
-			dx = 0;
-			dy=-1;
-			break;
-		case Izquierda:
-			dx=-1;
-			dy = 0;
-			break;
-		case Derecha:
-			dx =1;	
-			dy = 0;
-			break;
-		}
+	void mover(BufferedGraphics^ bg, Rectangle rec, vector<Obstaculo*> obstaculos) {
+		Bitmap^ ser = gcnew Bitmap("assets/Personaje/Personaje.png");//conseguir asset de serpiente	
+		for (int i = 0; i < obstaculos.size(); i++) {				
+			if (obstaculos.at(i)->Colision(Fhitbox)) {
+				switch (direccion)
+				{
+				case Abajo:
+					dx = 1;
+					dy = 0;
+					break;
+				case Arriba:
+					dx = -1;
+					dy = 0;
+					break;
+				case Izquierda:
+					dx = 0;
+					dy = -1;
+					break;
+				case Derecha:
+					dx = 0;
+					dy = 1;
+					break;
+				}			
+			}
+			else {
+				switch (direccion)
+				{
+				case Abajo:
+					dx = 0;
+					dy = 1;
+					break;
+				case Arriba:
+					dx = 0;
+					dy = -1;
+					break;
+				case Izquierda:
+					dx = -1;
+					dy = 0;
+					break;
+				case Derecha:
+					dx = 1;
+					dy = 0;
+					break;
+				}
+			}
+		}		
 		if (x > (fx - 20)) {
 			direccion = Izquierda;
 		}

@@ -74,7 +74,7 @@ public:
 	}
 
 	void crearSer() {
-		Serpiente* s = new Serpiente(150, 0);
+		Serpiente* s = new Serpiente(500, 500);
 		serpientes.push_back(s);
 	}
 
@@ -119,10 +119,10 @@ public:
 		}
 	}
 
-	void animarSer(BufferedGraphics^ bg, Rectangle con) {
+	void animarSer(BufferedGraphics^ bg, Rectangle con, vector<Obstaculo*> obstaculos) {
 		for (int i = 0; i < serpientes.size(); i++) {
 			if (serpientes.at(i)->getActivo())
-				serpientes.at(i)->mover(bg, con);
+				serpientes.at(i)->mover(bg, con,obstaculos);
 			else
 				serpientes.erase(serpientes.begin() + i);
 		}
