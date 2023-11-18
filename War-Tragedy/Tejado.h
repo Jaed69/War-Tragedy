@@ -13,6 +13,8 @@ private:
 	GeEnemigos* geE;
 	vector<Obstaculo*> obstaculos;
 
+	bool termino;
+
 public:
 	Tejado(){
 		t_evento = 0;
@@ -20,9 +22,13 @@ public:
 		geE = new GeEnemigos();
 		margen = Rectangle(256, 144, 768, 432);
 		borde = Rectangle(0, 0, 1280, 720);
+
+		termino = false;
 		//geE->crearSer();
 	}
 	~Tejado(){}
+
+	bool verTer() { return termino; }
 
 	//Zona para la creacion de eventos segun el tiempo
 	void T_Evento(Jugador* ju) {//añadir jugador
@@ -35,8 +41,11 @@ public:
 		if (t_evento == 20) geE->crearAvi(Arriba);
 		if (t_evento == 120) geE->crearAvi(Izquierda);
 		//if (t_evento == 20) geE->crearAvi(Derecha);
-		if (t_evento%40==0) geE->crearHel();
+		if (t_evento % 40 == 0) geE->crearHel(); 
 		
+
+
+		if (t_evento == 200)termino = true;
 	}
 
 	Rectangle getMargen() { return margen; }

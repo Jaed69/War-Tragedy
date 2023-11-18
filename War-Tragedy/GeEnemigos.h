@@ -12,6 +12,8 @@ class GeEnemigos
 {
 private:
 	int t_evento;
+	int lim_hel;
+	int cont_hel;
 
 	vector<Soldado*> soldados;
 	vector<Bomba*> bombas;
@@ -34,7 +36,10 @@ public:
 
 	void T_Evento(Jugador* ju) {
 		t_evento++;
-		if (colFla(ju->getFHB())) ju->Dano();
+		if (colFla(ju->getFHB())) {
+			ju->Dano();
+			ju->resDano(1);
+		}
 	}
 
 	int getTAvi() { return aviones.size(); }

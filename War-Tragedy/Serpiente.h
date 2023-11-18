@@ -14,7 +14,7 @@ private:
 
 public:
 	Serpiente() {}
-	Serpiente(int x, int y) :Entidad(x, y, 32, 48, 20) {//poner ancho alto bien y determinar vida
+	Serpiente(int x, int y) :Entidad(x, y, 64, 64, 20) {//poner ancho alto bien y determinar vida
 		/*
 		
 		*/
@@ -23,7 +23,8 @@ public:
 		aumento = 1;
 		vel = 3;
 		Rx = Ry = 5;
-		Rancho = Ralto = 20;
+		Rancho = ancho;
+		Ralto = alto;
 		direccion = Abajo;
 		this->fx = 0;
 		this->fy = 0;
@@ -38,24 +39,30 @@ public:
 
 
 	void mover(BufferedGraphics^ bg, Rectangle rec, vector<Obstaculo*> obstaculos) {
-		Bitmap^ ser = gcnew Bitmap("assets/Personaje/Personaje.png");//conseguir asset de serpiente	
+		Bitmap^ ser = gcnew Bitmap("assets/Enemigo/death snake.png");//conseguir asset de serpiente	
+		indX++;
+		if (indX >= 4) { indX = 0; }
 		for (int i = 0; i < obstaculos.size(); i++) {				
 			if (obstaculos.at(i)->Colision(Fhitbox)) {
 				switch (direccion)
 				{
 				case Abajo:
+					indY = 0		;
 					dx = 1;
 					dy = 0;
 					break;
 				case Arriba:
+					indY = 3;
 					dx = -1;
 					dy = 0;
 					break;
 				case Izquierda:
+					indY = 1;
 					dx = 0;
 					dy = -1;
 					break;
 				case Derecha:
+					indY = 2;
 					dx = 0;
 					dy = 1;
 					break;
@@ -65,18 +72,22 @@ public:
 				switch (direccion)
 				{
 				case Abajo:
+					indY = 0;
 					dx = 0;
 					dy = 1;
 					break;
 				case Arriba:
+					indY = 3;
 					dx = 0;
 					dy = -1;
 					break;
 				case Izquierda:
+					indY = 1	;
 					dx = -1;
 					dy = 0;
 					break;
 				case Derecha:
+					indY = 2;
 					dx = 1;
 					dy = 0;
 					break;

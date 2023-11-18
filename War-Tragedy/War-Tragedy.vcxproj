@@ -123,6 +123,7 @@
   <ItemGroup>
     <ClCompile Include="Entorno.cpp" />
     <ClCompile Include="MyForm.cpp" />
+    <ClCompile Include="Pausa.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Avion.h" />
@@ -148,6 +149,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Obstaculo.h" />
+    <ClInclude Include="Pausa.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Prado.h" />
     <ClInclude Include="Tejado.h" />
     <ClInclude Include="Power.h" />
@@ -160,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MyForm.resx">
       <DependentUpon>MyForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pausa.resx">
+      <DependentUpon>Pausa.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
