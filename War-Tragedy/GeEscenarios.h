@@ -35,12 +35,23 @@ public:
 		{
 		case NTejado:
 			nivel1->T_Evento(ju);
+			if (nivel1->verTer()) nivel = NEdificio;
 			break;
 		case NEdificio:
 			nivel2->T_Evento(ju);
+			if (nivel1->verTer()) nivel = NEdificio;
 			break;
 		case NPrado:
 			nivel3->T_Evento(ju);
+			if (nivel1->verTer()) nivel = NEdificio;
+			break;
+		case FinalM:
+			break;
+		case FinalB:
+			break;
+		case FinalMS:
+			break;
+		case FinalBS:
 			break;
 		default:
 			break;
@@ -99,6 +110,14 @@ public:
 		case NPrado:
 			nivel3->animarFn(bf);
 			nivel3->animarEn(bf);
+			break;
+		case FinalM:
+			break;
+		case FinalB:
+			break;
+		case FinalMS:
+			break;
+		case FinalBS:
 			break;
 		default:
 			break;
