@@ -5,18 +5,20 @@
 #include "Helicoptero.h"
 #include "Avion.h"
 #include "Serpiente.h"
+#include "Flama.h"
 
 
 class GeEnemigos
 {
 private:
 	int t_evento;
-	vector<Rectangle*> lisrec;
+
 	vector<Soldado*> soldados;
 	vector<Bomba*> bombas;
 	vector<Helicoptero*> helicopteros;
 	vector<Avion*> aviones;
 	vector<Serpiente*> serpientes;
+	vector<Flama*> flamas;
 
 public:
 	GeEnemigos(){
@@ -24,9 +26,12 @@ public:
 	}
 	~GeEnemigos(){}
 
-	void T_Evento() {
+	void T_Evento(Jugador* ju) {
 		t_evento++;
+		if (colFla(ju->getFHB())) ju->Dano();
 	}
+
+	int getTAvi() { return aviones.size(); }
 
 	void crearSol() {
 		Random r;
@@ -48,8 +53,8 @@ public:
 		Soldado* sol = new Soldado(_x, _y);
 		soldados.push_back(sol);
 	}
-	void crearBom() {
-		Bomba* b = new Bomba(500, 500, 1000, 1000);
+	void crearBom(int x, int y) {
+		Bomba* b = new Bomba(x, y);
 		bombas.push_back(b);
 	}
 	void crearHel() {
@@ -67,10 +72,10 @@ public:
 			break;
 		case Arriba:
 			x = 640;
-			y = 720;
+			y = 660;
 			break;
 		case Izquierda:
-			x = 1280;
+			x = 1235;
 			y = 360;
 			break;
 		case Derecha:
@@ -80,13 +85,18 @@ public:
 		default:
 			break;
 		}
-		Avion* a = new Avion(640, 360, d);
+		Avion* a = new Avion(x, y, d);
 		aviones.push_back(a);
 	}
 
 	void crearSer() {
-		Serpiente* s = new Serpiente(500, 500, 1000, 1000);
+		Serpiente* s = new Serpiente(500, 500);
 		serpientes.push_back(s);
+	}
+
+	void crearLla(int x, int y) {
+		Flama* lla = new Flama(x, y);
+		flamas.push_back(lla);
 	}
 
 	void animarSol(BufferedGraphics^ bg, Rectangle con) {
@@ -98,10 +108,10 @@ public:
 		}
 	}
 
-	void animarBom(BufferedGraphics^ bg, Rectangle con) {
+	void animarBom(BufferedGraphics^ bg) {
 		for (int i = 0; i < bombas.size(); i++) {
 			if (bombas.at(i)->getActivo())
-				bombas.at(i)->mover(bg, con);
+				bombas.at(i)->animar(bg);
 			else
 				bombas.erase(bombas.begin() + i);
 		}
@@ -125,12 +135,21 @@ public:
 		}
 	}
 
-	void animarSer(BufferedGraphics^ bg, Rectangle con) {
+	void animarSer(BufferedGraphics^ bg, Rectangle con, vector<Obstaculo*> obstaculos) {
 		for (int i = 0; i < serpientes.size(); i++) {
 			if (serpientes.at(i)->getActivo())
-				serpientes.at(i)->mover(bg, con);
+				serpientes.at(i)->mover(bg, con,obstaculos);
 			else
 				serpientes.erase(serpientes.begin() + i);
+		}
+	}
+
+	void animarLla(BufferedGraphics^ bg, Rectangle con) {
+		for (int i = 0; i < flamas.size(); i++) {
+			if (flamas.at(i)->getActivo())
+				flamas.at(i)->animar(bg, con);
+			else
+				flamas.erase(flamas.begin() + i);
 		}
 	}
 
@@ -157,8 +176,8 @@ public:
 
 	bool colBalaSer(Rectangle ajeno) {
 		for (int i = 0; i < serpientes.size(); i++) {
-			if (serpientes.at(i)->colBala(ajeno)) return true;
-			else return false;
+			//if (serpientes.at(i)->colBala(ajeno)) return true;
+			//else return false;
 		}
 	}
 
@@ -167,6 +186,26 @@ public:
 			if (serpientes.at(i)->Colision(ajeno)) return true;
 			else return false;
 		}
+	}
+	void coordsserpent(int fx, int fy) {
+		for (int i = 0; i < serpientes.size(); i++) {
+			serpientes.at(i)->setfxfy(fx, fy);
+		}
+	}
+
+	void conAvi(Rectangle ajeno) {
+		for (int i = 0; i < aviones.size(); i++) {
+			if (aviones.at(i)->Container(ajeno)) {
+				crearLla(aviones.at(i)->getx(), aviones.at(i)->gety());
+			}
+		}
+	}
+
+	bool colFla(Rectangle recjg) {
+		for (int i = 0; i < flamas.size(); i++) {
+			if (flamas.at(i)->Colision(recjg)) return true;
+		}
+		return false;
 	}
 
 };

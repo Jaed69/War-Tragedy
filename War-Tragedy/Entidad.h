@@ -110,6 +110,8 @@ public:
 
 	}
 
+	void resDano(int dano) { vida -= dano; }
+
 
 };
 

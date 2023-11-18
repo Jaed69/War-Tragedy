@@ -20,10 +20,12 @@ public:
 		geE = new GeEnemigos();
 		margen = Rectangle(256, 144, 768, 432);
 		borde = Rectangle(0, 0, 1280, 720);
+		geA = new GeAliado();
+		geE = new GeEnemigos();
 	}
 	~Prado() {}
 
-	void T_Evento() {
+	void T_Evento(Jugador* ju) {
 		t_evento++;
 		if (t_evento % 17 == 0) geE->crearSol();
 	}
@@ -38,7 +40,7 @@ public:
 
 		bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), borde);
 		bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), margen);
-
+		delete fondo;
 	}
 
 	//Zona en qeu se codifica el comportamiento de los enemigos

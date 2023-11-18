@@ -44,6 +44,7 @@ public:
 		y = roundf(posy);
 
 		dibujar(bg, bala);
+		delete bala;
 	}
 
 };

@@ -10,6 +10,7 @@ private:
 	vector<Bala*> vBala;
 
 	int t_evento;
+	bool danado;
 
 public:
 	Jugador(){}
@@ -19,11 +20,12 @@ public:
 		aumento = 1;
 		dash = true;
 		vel = 8;
-		Rx = Ry = 5;
-		Rancho = Ralto = 20;
+		Rx = 10; Ry = 9;
+		Rancho = 10;
+		Ralto = 28;
 
 		t_evento = 0;
-
+		danado = false;
 	}
 
 	~Jugador(){}
@@ -157,7 +159,7 @@ public:
 			
 			break;
 
-		case Dash:
+		case Dash: // nose como arreglar pipipi //podemos hacer q muera cuando se sale para no tener q corregir nada xdxdxdxdxdxdxdxdxdxdxd
 			switch (ultDireccion) {
 			case Arriba:
 				if (!Container(rec)) {
@@ -201,18 +203,24 @@ public:
 		
 		dibujar(bg, bm);
 		mover(rec);
-		
+		delete bm;
 	}
 
 	void mover(Rectangle rec) {
 		if (Container(rec)) {
-			x += dx * vel;
-			y += dy * vel;
+			if (danado)	{
+				x += dx * vel * -1.5;
+				y += dy * vel * -1.5;
+			}else{
+				x += dx * vel;
+				y += dy * vel;
+			}
+			danado = false;
 		}
 		
 	}
 
-
+	void Dano() { danado = true; }
 
 	void disparar(int fx, int fy) {
 		Bala* oBala = new Bala(x, y, fx, fy);

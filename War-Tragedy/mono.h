@@ -88,7 +88,7 @@ public:
 		}
 
 		dibujar(bg, mono);
-		
+		delete mono;
 	}
 
 	void disparar(int fx, int fy) {
