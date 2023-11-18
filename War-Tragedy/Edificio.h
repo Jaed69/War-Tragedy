@@ -20,14 +20,19 @@ public:
 		borde = Rectangle(0, 0, 1280, 720);
 		geA = new GeAliado();
 		geE = new GeEnemigos();
-		geE->crearSer();
+		crearObs(356, 276, 50, 50);
+		crearObs(356, 476, 50, 50);
+		crearObs(656, 276, 50, 50);
+		crearObs(656, 476, 50, 50);
 	}
 	~Edificio() {}
 
 	void T_Evento(Jugador* ju) {
 		t_evento++;
-
-		geE->coordsserpent(ju->getx(), ju->gety());
+		if (t_evento%75 == 0) geE->crearBom(440, 360);
+		if (t_evento == 101) geE->crearBom(840, 360);
+		if (t_evento == 102) geE->crearBom(640, 260);
+		if (t_evento == 103) geE->crearBom(640, 460);
 	}
 
 	Rectangle getMargen() { return margen; }
@@ -40,14 +45,29 @@ public:
 
 		bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), borde);
 		bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), margen);
-
+		delete fondo;
 	}
 
 	//Zona en qeu se codifica el comportamiento de los enemigos
 	void animarEn(BufferedGraphics^ bf) {
 		//geE->animarHel(bf,);
-		geE->animarAvi(bf, borde);
+		geE->animarBom(bf);
 		geE->animarSer(bf, borde);
+		animarObs(bf);
+	}
+
+	void crearObs(int x, int y, int ancho, int alto) {
+		Obstaculo* obs = new Obstaculo(x, y, ancho, alto);
+		obstaculos.push_back(obs);
+	}
+
+	void animarObs(BufferedGraphics^ bg) {
+		for (int i = 0; i < obstaculos.size(); i++) {
+			if (obstaculos.at(i)->getActivo())
+				obstaculos.at(i)->animar(bg);
+			else
+				obstaculos.erase(obstaculos.begin() + i);
+		}
 	}
 
 };

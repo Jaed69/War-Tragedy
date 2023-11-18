@@ -37,7 +37,7 @@ public:
 
 
 	void mover(BufferedGraphics^ bg, Rectangle rec) {
-		Bitmap^ Serpiente = gcnew Bitmap("assets/Personaje/Personaje.png");//conseguir asset de serpiente		
+		Bitmap^ ser = gcnew Bitmap("assets/Personaje/Personaje.png");//conseguir asset de serpiente		
 		switch (direccion)
 		{
 		case Abajo:
@@ -74,7 +74,8 @@ public:
 		x += dx*vel;
 		y += dy*vel;
 
-		dibujar(bg, Serpiente);
+		dibujar(bg, ser);
+		delete ser;
 	}
 
 

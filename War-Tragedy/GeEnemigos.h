@@ -5,8 +5,7 @@
 #include "Helicoptero.h"
 #include "Avion.h"
 #include "Serpiente.h"
-
-#include "Obstaculo.h"
+#include "Flama.h"
 
 
 class GeEnemigos
@@ -19,8 +18,7 @@ private:
 	vector<Helicoptero*> helicopteros;
 	vector<Avion*> aviones;
 	vector<Serpiente*> serpientes;
-
-	vector<Obstaculo*> llamas;
+	vector<Flama*> flamas;
 
 public:
 	GeEnemigos(){
@@ -28,8 +26,9 @@ public:
 	}
 	~GeEnemigos(){}
 
-	void T_Evento() {
+	void T_Evento(Jugador* ju) {
 		t_evento++;
+		if (colFla(ju->getFHB())) ju->Dano();
 	}
 
 	int getTAvi() { return aviones.size(); }
@@ -38,8 +37,8 @@ public:
 		Soldado* sol = new Soldado(100, 100);
 		soldados.push_back(sol);
 	}
-	void crearBom() {
-		Bomba* b = new Bomba(500, 500, 1000, 1000);
+	void crearBom(int x, int y) {
+		Bomba* b = new Bomba(x, y);
 		bombas.push_back(b);
 	}
 	void crearHel() {
@@ -57,10 +56,10 @@ public:
 			break;
 		case Arriba:
 			x = 640;
-			y = 720;
+			y = 660;
 			break;
 		case Izquierda:
-			x = 1280;
+			x = 1235;
 			y = 360;
 			break;
 		case Derecha:
@@ -80,8 +79,8 @@ public:
 	}
 
 	void crearLla(int x, int y) {
-		Obstaculo* lla = new Obstaculo(x, y);
-		llamas.push_back(lla);
+		Flama* lla = new Flama(x, y);
+		flamas.push_back(lla);
 	}
 
 	void animarSol(BufferedGraphics^ bg, Rectangle con) {
@@ -93,10 +92,10 @@ public:
 		}
 	}
 
-	void animarBom(BufferedGraphics^ bg, Rectangle con) {
+	void animarBom(BufferedGraphics^ bg) {
 		for (int i = 0; i < bombas.size(); i++) {
 			if (bombas.at(i)->getActivo())
-				bombas.at(i)->mover(bg, con);
+				bombas.at(i)->animar(bg);
 			else
 				bombas.erase(bombas.begin() + i);
 		}
@@ -130,11 +129,11 @@ public:
 	}
 
 	void animarLla(BufferedGraphics^ bg, Rectangle con) {
-		for (int i = 0; i < llamas.size(); i++) {
-			if (llamas.at(i)->getActivo())
-				llamas.at(i)->animar(bg, con);
+		for (int i = 0; i < flamas.size(); i++) {
+			if (flamas.at(i)->getActivo())
+				flamas.at(i)->animar(bg, con);
 			else
-				llamas.erase(llamas.begin() + i);
+				flamas.erase(flamas.begin() + i);
 		}
 	}
 
@@ -184,6 +183,13 @@ public:
 				crearLla(aviones.at(i)->getx(), aviones.at(i)->gety());
 			}
 		}
+	}
+
+	bool colFla(Rectangle recjg) {
+		for (int i = 0; i < flamas.size(); i++) {
+			if (flamas.at(i)->Colision(recjg)) return true;
+		}
+		return false;
 	}
 
 };
