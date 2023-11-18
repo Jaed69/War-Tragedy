@@ -21,7 +21,6 @@ private:
 	vector<Avion*> aviones;
 	vector<Serpiente*> serpientes;
 	vector<Flama*> flamas;
-
 	int sArriba, sAbajo, sDerecha, sIzquierda;
 	int sLimArriba, sLimAbajo, sLimDerecha, sLimIzquierda;
 	int cantHeli, limCantHeli;
@@ -33,6 +32,8 @@ public:
 		cantHeli = 0; limCantHeli = 2;
 	}
 	~GeEnemigos() {}
+
+	void setlimiteHeli(int limite) { limCantHeli = limite; }
 
 	void T_Evento(Jugador* ju) {
 		t_evento++;
@@ -242,9 +243,25 @@ public:
 	}
 	void dispararSol(int fx, int fy) {
 		for (int i = 0; i < soldados.size(); i++) {
+			//soldados.at(i)->disparar(fx, fy);
 			if (soldados.at(i)->getEstatico()) {
 				soldados.at(i)->disparar(fx, fy);
 			}
+		}
+	}
+	void dispararHeli(int fx, int fy) {
+		for (int i = 0; i < helicopteros.size(); i++) {
+			helicopteros.at(i)->disparar(fx, fy);
+		}
+	}
+	void moverBalasHeli(BufferedGraphics^ bg, Rectangle valido){
+		for (int i = 0; i < helicopteros.size(); i++) {
+			helicopteros.at(i)->moverB(bg,valido);
+		}
+	}
+	void moverBalasSoldado(BufferedGraphics^ bg, Rectangle valido) {
+		for (int i = 0; i < soldados.size(); i++) {
+			soldados.at(i)->moverB(bg, valido);
 		}
 	}
 };
