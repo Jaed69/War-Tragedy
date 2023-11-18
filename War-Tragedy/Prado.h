@@ -27,7 +27,10 @@ public:
 
 	void T_Evento(Jugador* ju) {
 		t_evento++;
+		if (t_evento % 40 == 0) geE->crearHel();
 		if (t_evento % 17 == 0) geE->crearSol();
+		if (t_evento % 30 == 0)geE->dispararSol(ju->getx(),ju->gety());
+		
 	}
 
 	Rectangle getMargen() { return margen; }
@@ -44,10 +47,12 @@ public:
 	}
 
 	//Zona en qeu se codifica el comportamiento de los enemigos
-	void animarEn(BufferedGraphics^ bf) {
+	void animarEn(BufferedGraphics^ bf, Jugador*ju) {
 		//geE->animarHel(bf,);
 		geE->animarAvi(bf, borde);
 		geE->animarSol(bf, borde);
+		geE->SeguirMovSoldado(ju->getx(), ju->gety());
+		
 	}
 
 };

@@ -95,8 +95,7 @@ public:
 	}
 
 
-	void Escenario(BufferedGraphics^ bf) {
-
+	void Escenario(BufferedGraphics^ bf, Jugador*ju) {
 		switch (nivel)
 		{
 		case NTejado:
@@ -109,7 +108,7 @@ public:
 			break;
 		case NPrado:
 			nivel3->animarFn(bf);
-			nivel3->animarEn(bf);
+			nivel3->animarEn(bf, ju);
 			break;
 		case FinalM:
 			break;

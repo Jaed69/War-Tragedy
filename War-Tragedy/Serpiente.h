@@ -14,7 +14,7 @@ private:
 
 public:
 	Serpiente() {}
-	Serpiente(int x, int y) :Entidad(x, y, 32, 48, 20) {//poner ancho alto bien y determinar vida
+	Serpiente(int x, int y) :Entidad(x, y, 64, 64, 20) {//poner ancho alto bien y determinar vida
 		/*
 		
 		*/
@@ -22,9 +22,11 @@ public:
 		indY = 2;
 		aumento = 1;
 		vel = 3;
-		Rx = Ry = 5;
-		Rancho = Ralto = 20;
-		direccion = Abajo;
+		Rx = ancho/2;
+		Ry = 0;
+		Rancho = ancho/2;
+		Ralto = alto;
+		direccion = Abajo;	
 		this->fx = 0;
 		this->fy = 0;
 
@@ -38,26 +40,48 @@ public:
 
 
 	void mover(BufferedGraphics^ bg, Rectangle rec, vector<Obstaculo*> obstaculos) {
-		Bitmap^ ser = gcnew Bitmap("assets/Personaje/Personaje.png");//conseguir asset de serpiente	
+		Bitmap^ ser = gcnew Bitmap("assets/Enemigo/death snake.png");//conseguir asset de serpiente	
+		indX++;
+		if (indX >= 4) { indX = 0; }
 		for (int i = 0; i < obstaculos.size(); i++) {				
 			if (obstaculos.at(i)->Colision(Fhitbox)) {
 				switch (direccion)
 				{
 				case Abajo:
+					indY = 0;
 					dx = 1;
 					dy = 0;
+
+					Rx = ancho / 4;
+					Rancho = ancho / 2;
+
 					break;
 				case Arriba:
+					indY = 3;
 					dx = -1;
 					dy = 0;
+
+					Rx = ancho / 4;
+					Rancho = ancho / 2;
+
 					break;
 				case Izquierda:
+					indY = 1;
 					dx = 0;
 					dy = -1;
+
+					Rx = 0;
+					Rancho = ancho / 2;
+
 					break;
 				case Derecha:
+					indY = 2;
 					dx = 0;
 					dy = 1;
+
+					Rx = ancho / 2;
+					Rancho = ancho / 2;
+
 					break;
 				}			
 			}
@@ -65,20 +89,40 @@ public:
 				switch (direccion)
 				{
 				case Abajo:
+					indY = 0;
 					dx = 0;
 					dy = 1;
+
+					Rx = ancho / 4;
+					Rancho = ancho / 2;
+
 					break;
 				case Arriba:
+					indY = 3;
 					dx = 0;
 					dy = -1;
+
+					Rx = ancho / 4;
+					Rancho = ancho / 2;
+
 					break;
 				case Izquierda:
+					indY = 1	;
 					dx = -1;
 					dy = 0;
+
+					Rx = 0;
+					Rancho = ancho / 2;
+
 					break;
 				case Derecha:
+					indY = 2;
 					dx = 1;
-					dy = 0;
+					dy = 0; 
+					
+					Rx = ancho / 2;
+					Rancho = ancho / 2;
+
 					break;
 				}
 			}
