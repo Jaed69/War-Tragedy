@@ -22,10 +22,11 @@ public:
 		indY = 2;
 		aumento = 1;
 		vel = 3;
-		Rx = Ry = 5;
-		Rancho = ancho;
+		Rx = ancho/2;
+		Ry = 0;
+		Rancho = ancho/2;
 		Ralto = alto;
-		direccion = Abajo;
+		direccion = Abajo;	
 		this->fx = 0;
 		this->fy = 0;
 
@@ -47,24 +48,40 @@ public:
 				switch (direccion)
 				{
 				case Abajo:
-					indY = 0		;
+					indY = 0;
 					dx = 1;
 					dy = 0;
+
+					Rx = ancho / 4;
+					Rancho = ancho / 2;
+
 					break;
 				case Arriba:
 					indY = 3;
 					dx = -1;
 					dy = 0;
+
+					Rx = ancho / 4;
+					Rancho = ancho / 2;
+
 					break;
 				case Izquierda:
 					indY = 1;
 					dx = 0;
 					dy = -1;
+
+					Rx = 0;
+					Rancho = ancho / 2;
+
 					break;
 				case Derecha:
 					indY = 2;
 					dx = 0;
 					dy = 1;
+
+					Rx = ancho / 2;
+					Rancho = ancho / 2;
+
 					break;
 				}			
 			}
@@ -75,21 +92,37 @@ public:
 					indY = 0;
 					dx = 0;
 					dy = 1;
+
+					Rx = ancho / 4;
+					Rancho = ancho / 2;
+
 					break;
 				case Arriba:
 					indY = 3;
 					dx = 0;
 					dy = -1;
+
+					Rx = ancho / 4;
+					Rancho = ancho / 2;
+
 					break;
 				case Izquierda:
 					indY = 1	;
 					dx = -1;
 					dy = 0;
+
+					Rx = 0;
+					Rancho = ancho / 2;
+
 					break;
 				case Derecha:
 					indY = 2;
 					dx = 1;
-					dy = 0;
+					dy = 0; 
+					
+					Rx = ancho / 2;
+					Rancho = ancho / 2;
+
 					break;
 				}
 			}
