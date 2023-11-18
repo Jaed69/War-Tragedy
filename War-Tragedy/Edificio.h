@@ -20,7 +20,10 @@ public:
 		borde = Rectangle(0, 0, 1280, 720);
 		geA = new GeAliado();
 		geE = new GeEnemigos();
-		crearObs(356, 276, 100, 100);
+		crearObs(356, 276, 50, 50);
+		crearObs(356, 476, 50, 50);
+		crearObs(656, 276, 50, 50);
+		crearObs(656, 476, 50, 50);
 	}
 	~Edificio() {}
 
