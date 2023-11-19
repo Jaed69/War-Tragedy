@@ -30,6 +30,7 @@ public:
 
 	void T_Evento(Jugador* ju) {
 		t_evento++;
+		geE->T_Evento(ju);
 		if (t_evento%75 == 0) geE->crearBom(440, 360);
 		if (t_evento == 101) geE->crearBom(840, 360);
 		if (t_evento == 102) geE->crearBom(640, 260);
