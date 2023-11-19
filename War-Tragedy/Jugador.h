@@ -8,7 +8,7 @@ private:
 	int chaleco;
 	bool dash;
 	vector<Bala*> vBala;
-
+	int ammo;
 	int t_evento;
 	bool danado;
 
@@ -23,7 +23,7 @@ public:
 		Rx = 10; Ry = 9;
 		Rancho = 10;
 		Ralto = 28;
-
+		ammo = 50;
 		chaleco = 100;
 		t_evento = 0;
 		danado = false;
@@ -226,9 +226,12 @@ public:
 	void Dano() { danado = true; }
 
 	void disparar(int fx, int fy) {
-		Bala* oBala = new Bala(x, y, fx, fy);
-		oBala->setRnRl(10, 10);
-		vBala.push_back(oBala);
+		if (ammo > 0) {
+			Bala* oBala = new Bala(x, y, fx, fy);
+			oBala->setRnRl(10, 10);
+			vBala.push_back(oBala);
+			ammo--;
+		}		
 	}
 
 	void moverB(BufferedGraphics^ bg, Rectangle rec) {
@@ -236,6 +239,10 @@ public:
 			if (vBala.at(i)->Container(rec)) vBala.at(i)->mover(bg);
 			else vBala.erase(vBala.begin() + i);
 		}
+	}
+
+	void masBalas() {
+		ammo += 30;
 	}
 
 	bool colBala(Rectangle objetivo) {
