@@ -15,7 +15,7 @@ public:
 		Ry = 10;
 		Rancho = 11;
 		Ralto = 11;
-		aumento = 1;
+		aumento = 1.5;
 		ammo = 50;
 		modoDisparar = false;
 	}
