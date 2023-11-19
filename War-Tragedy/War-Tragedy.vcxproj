@@ -157,6 +157,7 @@
     <ClInclude Include="Power.h" />
     <ClInclude Include="Serpiente.h" />
     <ClInclude Include="Soldado.h" />
+    <ClInclude Include="UI.h" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Entorno.resx">
