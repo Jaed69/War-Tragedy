@@ -105,7 +105,6 @@ namespace WarTragedy {
 		BufferedGraphics^ buffer = espacioBuffer->Allocate(g, this->ClientRectangle);
 
 		Jg->jugar(buffer);
-		Jg->vida(buffer);
 		buffer->Render(g);
 		delete buffer; delete espacioBuffer; delete g;
 	}

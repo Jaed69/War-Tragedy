@@ -24,6 +24,7 @@ public:
 		Rancho = 10;
 		Ralto = 28;
 
+		chaleco = 100;
 		t_evento = 0;
 		danado = false;
 	}
