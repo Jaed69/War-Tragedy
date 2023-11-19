@@ -42,6 +42,8 @@ public:
 			ju->Dano();
 			ju->resDano(1);
 		}
+
+		if (colBalaSol(ju->getHB())) ju->resDano(5);
 		/*if (colBalaSer(ju->getFHB())) {
 			ju->Dano();
 			ju->resDano(1);
@@ -96,6 +98,7 @@ public:
 		}
 		
 	}
+
 	void balasdejugadorcolisionanconserpiente(Jugador* ju) {
 		for (int i = 0; i < serpientes.size(); i++) {
 			if (ju->colBala(serpientes.at(i)->getFHB())) {//poner q pasa si serpiente colisiona con balas
@@ -264,24 +267,20 @@ public:
 	}
 
 	void SeguirMovSoldado(int x, int y) {
-		/*
 		for (int i = 0; i < soldados.size(); i++) {
 			if (soldados.at(i)->getEstatico()) {
 				soldados.at(i)->apuntarJugador(x,y);
 			}
 		}
-		*/
 	}
+
 	void dispararSol(int fx, int fy) {
-		/*
 		for (int i = 0; i < soldados.size(); i++) {
 			//soldados.at(i)->disparar(fx, fy);
 			if (soldados.at(i)->getEstatico()) {
 				soldados.at(i)->disparar(fx, fy);
 			}
-		}
-		*/
-		
+		}		
 	}
 	void dispararHeli(int fx, int fy) {
 		for (int i = 0; i < helicopteros.size(); i++) {

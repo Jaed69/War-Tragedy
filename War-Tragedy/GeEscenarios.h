@@ -101,13 +101,11 @@ public:
 		case NTejado:
 			nivel1->animarFn(bf);
 			nivel1->animarEn(bf, ju);
-			nivel1->animarEn(bf);
 			//nivel1->animarAl(bf);
 			break;
 		case NEdificio:
 			nivel2->animarFn(bf);
 			nivel2->animarEn(bf, ju);
-			nivel2->animarEn(bf);
 			nivel2->animarAl(bf);
 			break;
 		case NPrado:

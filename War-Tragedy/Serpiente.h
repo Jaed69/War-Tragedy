@@ -10,7 +10,7 @@ private:
 	int fx, fy;
 	float difx, dify;
 	float mayor;
-	vector<Bala*> balas;
+	vector<Bala*> vBala;
 
 public:
 	Serpiente() {}

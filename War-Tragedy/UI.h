@@ -1,5 +1,6 @@
 #pragma once
 using namespace System::Drawing;
+
 class UI{
 private:
 	int anchoVida, altoVida;
@@ -17,7 +18,7 @@ public:
 	~UI(){}
 
 	void movVida(BufferedGraphics^ bg, int vida) {
-		if (vida == 100) indXv == 10;
+		if (vida == 100) indXv = 10;
 		if (vida % 12 && vida < 100 && vida <12) {
 			indXv--;
 		}
