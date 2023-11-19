@@ -22,6 +22,7 @@ namespace WarTragedy {
 		Niveles nivel = NTejado;
 		Pausa^ pausa;
 	private: System::Windows::Forms::Timer^ Timer_Eventos;
+	private: System::Windows::Forms::Timer^ Timer_Bala;
 
 	private: System::Windows::Forms::Timer^ Timer_Juego;
 
@@ -69,6 +70,7 @@ namespace WarTragedy {
 			this->components = (gcnew System::ComponentModel::Container());
 			this->Timer_Juego = (gcnew System::Windows::Forms::Timer(this->components));
 			this->Timer_Eventos = (gcnew System::Windows::Forms::Timer(this->components));
+			this->Timer_Bala = (gcnew System::Windows::Forms::Timer(this->components));
 			this->SuspendLayout();
 			// 
 			// Timer_Juego
@@ -80,6 +82,12 @@ namespace WarTragedy {
 			// 
 			this->Timer_Eventos->Enabled = true;
 			this->Timer_Eventos->Tick += gcnew System::EventHandler(this, &Entorno::Timer_Eventos_Tick);
+			// 
+			// Timer_Bala
+			// 
+			this->Timer_Bala->Enabled = true;
+			this->Timer_Bala->Interval = 20;
+			this->Timer_Bala->Tick += gcnew System::EventHandler(this, &Entorno::Timer_Bala_Tick);
 			// 
 			// Entorno
 			// 
@@ -135,6 +143,9 @@ namespace WarTragedy {
 
 	private: System::Void Timer_Eventos_Tick(System::Object^ sender, System::EventArgs^ e) {
 		Jg->T_Evento();
+	}
+	private: System::Void Timer_Bala_Tick(System::Object^ sender, System::EventArgs^ e) {
+
 	}
 };
 }

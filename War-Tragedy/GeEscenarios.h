@@ -4,8 +4,6 @@
 #include "Prado.h"
 #include "Escenario.h"
 
-enum Niveles { NTejado, NEdificio, NPrado, FinalM, FinalB, FinalBS, FinalMS };
-
 class GeEscenarios
 {
 private:

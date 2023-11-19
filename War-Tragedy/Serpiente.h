@@ -163,7 +163,7 @@ public:
 
 	bool colBala(Rectangle objetivo) {
 		for (int i = 0; i < vBala.size(); i++) {
-			if (vBala.at(i)->Colision(objetivo)) return true;
+			if (vBala.at(i)->colBal(objetivo)) return true;
 		}
 		return false;
 	}

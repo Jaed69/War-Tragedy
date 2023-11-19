@@ -1,12 +1,5 @@
 #pragma once
-#include<vector>
-
-using namespace std;
-using namespace System;
-using namespace System::Drawing;
-using namespace System::Windows::Forms;
-
-enum Direcciones { Ninguna, Abajo, Arriba, Izquierda, Derecha, ArrDer, ArrIzq, AbDer, AbIzq, Dash };
+#include "Recursos.h"
 
 class Entidad
 {
@@ -90,6 +83,10 @@ public:
 	}
 
 	bool Colision(Rectangle ajeno) {
+		return hitbox.IntersectsWith(ajeno);
+	}
+
+	bool ColisionF(Rectangle ajeno) {
 		return Fhitbox.IntersectsWith(ajeno);
 	}
 
@@ -105,12 +102,16 @@ public:
 			bg->Graphics->DrawRectangle(gcnew Pen(Color::Blue), hitbox);
 			//bg->Graphics->DrawRectangle(gcnew Pen(Color::Red), zonaAumento);
 			bg->Graphics->DrawImage(bm, zonaAumento, area, GraphicsUnit::Pixel);
-
+			if (vida <= 0) {
+				activo = false;
+			}
 		}
 
 	}
 
-	void resDano(int dano) { vida -= dano; }
+	void resDano(int dano) { 
+		vida -= dano; 
+	}
 
 
 };

@@ -31,10 +31,12 @@ public:
 		sArriba = sAbajo = sDerecha = sIzquierda = 0;
 		sLimArriba = sLimAbajo = sLimDerecha = sLimIzquierda = 3;
 		cantHeli = 0; limCantHeli = 2;
+		lim_hel = 2;
 	}
 	~GeEnemigos() {}
 
 	void setlimiteHeli(int limite) { limCantHeli = limite; }
+	int getTamHeli() { return helicopteros.size(); }
 
 	void T_Evento(Jugador* ju) {
 		t_evento++;
@@ -57,7 +59,6 @@ public:
 			ju->resDano(1);
 		}*/
 		if (colSer(ju->getFHB())) {
-			ju->Dano();
 			ju->resDano(1);
 		}
 		balasdejugadorcolisionanconserpiente(ju);
@@ -109,13 +110,22 @@ public:
 		}
 	}
 
+	bool colBalJu(Jugador* ju) {
+		for (int i = 0; i < helicopteros.size(); i++) {
+			if (ju->colBala(helicopteros.at(i)->getHB())) {
+				helicopteros.at(i)->resDano(1);
+				return true;
+			}
+		}
+		return false;
+	}
+
 	void crearBom(int x, int y) {
 		Bomba* b = new Bomba(x, y);
 		bombas.push_back(b);
 	}
 	void crearHel() {
-		if (cantHeli < limCantHeli) {
-			cantHeli++;
+		if ( helicopteros.size() < lim_hel) {
 			Helicoptero* h = new Helicoptero(400, 50);
 			helicopteros.push_back(h);
 		}
@@ -180,8 +190,10 @@ public:
 		for (int i = 0; i < helicopteros.size(); i++) {
 			if (helicopteros.at(i)->getActivo())
 				helicopteros.at(i)->mover(bg, con);
-			else
+			else {
 				helicopteros.erase(helicopteros.begin() + i);
+				lim_hel++;
+			}
 		}
 	}
 

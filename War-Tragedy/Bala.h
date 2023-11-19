@@ -12,7 +12,7 @@ private:
 
 public:
 	Bala() {}
-	Bala(int x,int y,int fx,int fy) :Entidad(x, y, 32, 48, 20) {//poner ancho alto bien y determinar vida
+	Bala(int x,int y,int fx,int fy) :Entidad(x, y, 32, 48, 1) {//poner ancho alto bien y determinar vida
 		direccion = Ninguna;
 		posx = x;
 		posy = y;
@@ -36,7 +36,7 @@ public:
 	void mover(BufferedGraphics^ bg) {
 		Bitmap^ bala = gcnew Bitmap("assets/Bala/bala.png");
 
-		vel = 5;
+		vel = 15;
 		posx += dx * vel;
 		posy += dy * vel;
 		
@@ -45,6 +45,14 @@ public:
 
 		dibujar(bg, bala);
 		delete bala;
+	}
+
+	bool colBal(Rectangle ajeno) {
+		if (Colision(ajeno)) {
+			activo = false;
+			return true;
+		}
+		else return false;
 	}
 
 };

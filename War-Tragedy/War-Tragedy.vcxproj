@@ -149,10 +149,12 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Obstaculo.h" />
+    <ClInclude Include="PanFinal.h" />
     <ClInclude Include="Pausa.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Prado.h" />
+    <ClInclude Include="Recursos.h" />
     <ClInclude Include="Tejado.h" />
     <ClInclude Include="Power.h" />
     <ClInclude Include="Serpiente.h" />
