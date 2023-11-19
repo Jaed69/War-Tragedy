@@ -138,6 +138,7 @@ public:
 					crearKami();
 					break;
 				case municion:
+					ju->masBalas();
 					break;
 				default:
 					break;
