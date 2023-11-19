@@ -61,6 +61,9 @@ public:
 			ju->Dano();
 			ju->resDano(1);
 		}
+		balasdejugadorcolisionanconserpiente(ju);
+		
+		
 	}
 
 	int getTAvi() { return aviones.size(); }
@@ -96,6 +99,15 @@ public:
 		}
 		
 	}
+	void balasdejugadorcolisionanconserpiente(Jugador* ju) {
+		for (int i = 0; i < serpientes.size(); i++) {
+			if (ju->colBala(serpientes.at(i)->getFHB())) {
+				serpientes.at(i)->setx(1250);
+				serpientes.at(i)->sety(500);
+			}
+		}
+	}
+
 	void crearBom(int x, int y) {
 		Bomba* b = new Bomba(x, y);
 		bombas.push_back(b);
@@ -289,5 +301,24 @@ public:
 			soldados.at(i)->moverB(bg, valido);
 		}
 	}
+	Entidad* getRandomEnem() {
+		if (soldados.size() > 0) {
+			return soldados.at(0);
+		}
+		else {
+			if (helicopteros.size() > 0) {
+				return helicopteros.at(0);
+			}
+			else {
+				if (serpientes.size() > 0) {
+					return serpientes[0];
+				}
+				else {
+					return new Entidad(0, 0, 10, 10, 1);
+				}
+			}
+		}
+	}
+
 };
 

@@ -3,7 +3,7 @@
 #include "AvionAliado.h"
 #include "Power.h"
 #include "Kami.h"
-
+#include "GeEnemigos.h"
 class GeAliado {
 private:
 	int t_evento;
@@ -15,6 +15,7 @@ private:
 public:
 	GeAliado(){
 		t_evento = 0;
+		crearKami();
 	}
 	~GeAliado(){}
 
@@ -34,14 +35,14 @@ public:
 		Power* pow = new Power(700, 700);
 		Powers.push_back(pow);
 	}
-	void crearKam() {
+	void crearKami() {
 		Kami* k = new Kami(0, 0);
 		Kamis.push_back(k);
 	}
 
-	void moverKami(Jugador* ju, BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
+	void moverKami(Entidad* enem, BufferedGraphics^ bg) {
 		for (int i = 0; i < Kamis.size(); i++) {
-			Kamis.at(i)->mover(ju, bg, bm, rec);
+			Kamis.at(i)->mover(enem, bg);
 		}
 	}
 
@@ -61,7 +62,12 @@ public:
 				Aliados.at(i)->disparar();
 			}
 			Aliados.at(i)->moverB(bg, balaE);
-		}	
-		
+		}			
+	}
+	bool colKami(Rectangle ajeno) {
+		for (int i = 0; i < Kamis.size(); i++) {
+			if (Kamis.at(i)->Colision(ajeno)) return true;
+			else return false;
+		}
 	}
 };

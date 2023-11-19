@@ -105,6 +105,7 @@ public:
 		case NEdificio:
 			nivel2->animarFn(bf);
 			nivel2->animarEn(bf);
+			nivel2->animarAl(bf);
 			break;
 		case NPrado:
 			nivel3->animarFn(bf);

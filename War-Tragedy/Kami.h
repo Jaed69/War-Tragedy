@@ -14,7 +14,8 @@ public:
 	}
 	~Kami() {}
 
-	void mover(Jugador* ju, BufferedGraphics^ bg, Bitmap^ bm, Rectangle rec) {
+	void mover(Entidad* enem, BufferedGraphics^ bg) {
+		Bitmap^ bm = gcnew Bitmap("assets/Enemigo/Avion/image.png");
 		switch (direccion)
 		{
 		case Ninguna:
@@ -61,29 +62,29 @@ public:
 			dy = 1;
 			break;
 		}
-		if (x > ju->getx()&&y>ju->gety()) {
+		if (x > enem->getx()&&y>enem->gety()) {
 			direccion = ArrIzq;
 		}
-		if (x < ju->getx()&&y<ju->gety()) {
+		if (x < enem->getx()&&y< enem->gety()) {
 			direccion = AbDer;
 		}		
-		if (x > ju->getx() && y < ju->gety()) {
+		if (x > enem->getx() && y < enem->gety()) {
 			direccion = AbIzq;
 		}
-		if (x < ju->getx() && y > ju->gety()) {
+		if (x < enem->getx() && y > enem->gety()) {
 			direccion = ArrDer;
 		}
 				
-		if (y > ju->gety()- (ju->getalto() / 2) && y < ju->gety()+(ju->getalto()/2)) {
-			if (x > ju->getx()) {
+		if (y > enem->gety()- (enem->getalto() / 2) && y < enem->gety()+(enem->getalto()/2)) {
+			if (x > enem->getx()) {
 				direccion = Izquierda;
 			}
 			else {
 				direccion = Derecha;
 			}
 		}
-		if (x > ju->getx()- (ju->getancho() / 2) &&x<ju->getx()+(ju->getancho()/2)) {
-			if (y > ju->gety()) {
+		if (x > enem->getx()- (enem->getancho() / 2) &&x< enem->getx()+(enem->getancho()/2)) {
+			if (y > enem->gety()) {
 				direccion = Arriba;
 			}
 			else {
