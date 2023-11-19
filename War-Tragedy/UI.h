@@ -20,10 +20,9 @@ public:
 
 	void movVida(BufferedGraphics^ bg, int vida) {
 		if (vida == 100) indXv = 10;
-		if (vida % 12 && vida < 100 && vida <12) {
+		else if (vida % 10==0) {
 			indXv--;
-		}
-		if (vida <= 0)
+		}else if (vida <= 0)
 			indXv = 1;
 		DibujarVida(bg, vida);
 	}

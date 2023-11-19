@@ -98,6 +98,8 @@ public:
 	}
 	void jugar(BufferedGraphics^ bf) {
 		geEs->Escenario(bf, jugador);
+		iu->movVida(bf, jugador->getvida());
+		iu->movChaleco(bf, jugador->getchaleco());
 		animarPl(bf);
 	}
 
