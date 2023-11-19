@@ -49,13 +49,9 @@ public:
 		}
 	}
 
-	void moverMono(BufferedGraphics^ bg, Rectangle monoE, Rectangle balaE, int avX, int avY) {
+	void moverMono(BufferedGraphics^ bg, Rectangle espacio) {
 		for (int i = 0; i < Monos.size(); i++) {
-			Monos.at(i)->mover(bg, monoE);
-			if (t_evento % 6 == 0) {
-				Monos.at(i)->disparar(avX, avY);
-			}
-			Monos.at(i)->moverB(bg, balaE);
+			Monos.at(i)->mover(bg, espacio);
 		}
 	}
 	void moverAvion(BufferedGraphics^ bg, Rectangle aviE, Rectangle balaE) {

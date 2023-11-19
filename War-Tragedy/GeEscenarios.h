@@ -111,7 +111,7 @@ public:
 		case NPrado:
 			nivel3->animarFn(bf);
 			nivel3->animarEn(bf, ju);
-			//nivel2->animarAl(bf);
+			nivel3->animarAl(bf);
 			break;
 		case FinalM:
 			break;
