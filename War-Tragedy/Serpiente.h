@@ -14,7 +14,7 @@ private:
 
 public:
 	Serpiente() {}
-	Serpiente(int x, int y) :Entidad(x, y, 64, 64, 500) {//poner ancho alto bien y determinar vida
+	Serpiente(int x, int y) :Entidad(x, y, 64, 64, 10) {//poner ancho alto bien y determinar vida
 		/*
 		
 		*/

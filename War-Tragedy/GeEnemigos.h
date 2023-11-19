@@ -46,6 +46,13 @@ public:
 		}
 
 		if (colBalaSol(ju->getHB())) ju->resDano(5);
+
+		colBalJuAvi(ju);
+		colBalJuHel(ju);
+		colBalJuSer(ju);
+		colBalJuSol(ju);
+
+
 		/*if (colBalaSer(ju->getFHB())) {
 			ju->Dano();
 			ju->resDano(1);
@@ -61,7 +68,6 @@ public:
 		if (colSer(ju->getFHB())) {
 			ju->resDano(1);
 		}
-		balasdejugadorcolisionanconserpiente(ju);
 		
 		
 	}
@@ -100,20 +106,40 @@ public:
 		
 	}
 
-	void balasdejugadorcolisionanconserpiente(Jugador* ju) {
-		if (ju->getbulletsize() != 0) {
-			for (int i = 0; i < serpientes.size(); i++) {
-				if (ju->colBala(serpientes.at(i)->getFHB())) {//poner q pasa si serpiente colisiona con balas
-					serpientes.at(i)->resDano(5); //cambiar esto jijijiji
-				}
+	bool colBalJuSer(Jugador* ju) {
+		for (int i = 0; i < serpientes.size(); i++) {
+			if (ju->colBala(serpientes.at(i)->getHB())) {
+				serpientes.at(i)->resDano(1);
+				return true;
 			}
 		}
+		return false;
 	}
 
-	bool colBalJu(Jugador* ju) {
+	bool colBalJuHel(Jugador* ju) {
 		for (int i = 0; i < helicopteros.size(); i++) {
 			if (ju->colBala(helicopteros.at(i)->getHB())) {
 				helicopteros.at(i)->resDano(1);
+				return true;
+			}
+		}
+		return false;
+	}
+
+	bool colBalJuSol(Jugador* ju) {
+		for (int i = 0; i < soldados.size(); i++) {
+			if (ju->colBala(soldados.at(i)->getHB())) {
+				soldados.at(i)->resDano(20);
+				return true;
+			}
+		}
+		return false;
+	}
+
+	bool colBalJuAvi(Jugador* ju) {
+		for (int i = 0; i < aviones.size(); i++) {
+			if (ju->colBala(aviones.at(i)->getHB())) {
+				aviones.at(i)->resDano(1);
 				return true;
 			}
 		}

@@ -35,7 +35,6 @@ public:
 		t_evento++;
 		geA->T_Evento(ju);
 		geE->T_Evento(ju);
-		geE->colBalJu(ju);
 		//geE->coordsserpent(ju->getx(),ju->gety());
 				
 		if(t_evento%2 == 0) geE->conAvi(margen);

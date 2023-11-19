@@ -12,13 +12,15 @@ private:
 
 public:
 	Bala() {}
-	Bala(int x,int y,int fx,int fy) :Entidad(x, y, 32, 48, 1) {//poner ancho alto bien y determinar vida
+	Bala(int x,int y,int fx,int fy) :Entidad(x, y, 8, 8, 1) {//poner ancho alto bien y determinar vida
 		direccion = Ninguna;
 		posx = x;
 		posy = y;
 		this->fx = fx;
 		this->fy = fy;
 		
+		
+
 		mayor = 0, 0;
 		difx = dify = 0, 0;
 
@@ -34,7 +36,15 @@ public:
 
 
 	void mover(BufferedGraphics^ bg) {
-		Bitmap^ bala = gcnew Bitmap("assets/Bala/bala.png");
+		Bitmap^ bala = gcnew Bitmap("assets/Bala/balas.png");
+		Rx = Ry = 1;
+		Rancho = Ralto = 5;
+
+		dibujar(bg, bala);
+
+		if (indX >= 0 && indX < 2) indX++;
+
+
 
 		vel = 15;
 		posx += dx * vel;
@@ -43,7 +53,7 @@ public:
 		x = roundf(posx);
 		y = roundf(posy);
 
-		dibujar(bg, bala);
+		
 		delete bala;
 	}
 
