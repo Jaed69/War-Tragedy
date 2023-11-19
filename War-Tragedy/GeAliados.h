@@ -21,6 +21,7 @@ public:
 		//crearArmadura();
 		crearBanana();
 		crearRadio();
+		crearArma();
 	}
 	~GeAliado(){}
 
