@@ -60,7 +60,7 @@ public:
 		geE->SeguirMovSoldado(ju->getx(), ju->gety());
 		geE->moverBalasHeli(bf, borde);
 		geE->moverBalasSoldado(bf, borde);
-		geA->moverMono(bf,borde);
+		//geA->moverMono(bf,borde);
 	}
 
 };

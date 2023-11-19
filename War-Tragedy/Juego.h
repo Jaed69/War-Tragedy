@@ -70,7 +70,7 @@ public:
 	}
 
 	void vida(BufferedGraphics^ bg) {
-		Bitmap^ vidaa = gcnew Bitmap("assets/Nivel/UI/ui x1.png");
+		Bitmap^ vidaa = gcnew Bitmap("assets/UI/Vida.png");
 		int BarraVida=0;
 		if (jugador->getvida() ==100) BarraVida = 10;
 		if (jugador->getvida() < 100 && jugador->getvida() > 89) BarraVida = 9;
@@ -80,9 +80,10 @@ public:
 		if (jugador->getvida() <= 56 && jugador->getvida() > 45) BarraVida = 5;
 		if (jugador->getvida() <= 45 && jugador->getvida() > 34) BarraVida = 4;
 		if (jugador->getvida() <= 34 && jugador->getvida() > 23) BarraVida = 3;
+		if (jugador->getvida() <= 23 && jugador->getvida() > 10) BarraVida = 2;
 		if (jugador->getvida() == 0) BarraVida = 1;
-		Rectangle area = Rectangle(BarraVida * 31.8, 0 * 32, 31.8, 32);
-		Rectangle zonaAumento = Rectangle(30, 0, 31.8*3, 32*3);
+		Rectangle area = Rectangle(BarraVida * 96, 0 * 96, 96, 96);
+		Rectangle zonaAumento = Rectangle(30, 0, 96, 96);
 		bg->Graphics->DrawImage(vidaa, zonaAumento, area, GraphicsUnit::Pixel);
 		delete vidaa;
 	}

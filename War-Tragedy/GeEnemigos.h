@@ -41,10 +41,10 @@ public:
 			ju->Dano();
 			ju->resDano(1);
 		}
-		if (colBalaHel(ju->getHB())) {
+		/*if (colBalaHel(ju->getHB())) {
 			ju->Dano();
 			ju->resDano(1);
-		}
+		}*/
 		/*if (colBalaSer(ju->getFHB())) {
 			ju->Dano();
 			ju->resDano(1);
