@@ -24,6 +24,7 @@ public:
 		Rancho = 10;
 		Ralto = 28;
 
+		chaleco = 100;
 		t_evento = 0;
 		danado = false;
 	}
@@ -38,7 +39,9 @@ public:
 	void setchaleco(int chaleco) { this->chaleco = chaleco; }
 	bool getDash() { return dash; }
 	void setDash(bool dash) { this->dash = dash; }
-
+	int getbulletsize() {
+		return vBala.size();
+	}
 	void animar(BufferedGraphics^ bg, Rectangle rec) {
 		Bitmap^ bm = gcnew Bitmap("assets/Personaje/Personaje.png");
 

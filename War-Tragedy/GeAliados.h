@@ -16,6 +16,12 @@ public:
 	GeAliado(){
 		t_evento = 0;
 		crearKami();
+		crearBotiquin();
+		crearAmmo();
+		//crearArmadura();
+		crearBanana();
+		crearRadio();
+		crearArma();
 	}
 	~GeAliado(){}
 
@@ -34,10 +40,31 @@ public:
 		AvionAliado* avi = new AvionAliado(100, 0);
 		Aliados.push_back(avi);
 	}
-	void crearPow() {
-		Power* pow = new Power(700, 700);
+	void crearBanana() {
+		Power* pow = new Power(400, 450, banana);//poner random x y
 		Powers.push_back(pow);
 	}
+	void crearBotiquin() {
+		Power* pow = new Power(450, 450, botiquin);//poner random x y
+		Powers.push_back(pow);
+	}
+	void crearArmadura() {
+		Power* pow = new Power(500, 450, armadura);//poner random x y
+		Powers.push_back(pow);
+	}
+	void crearRadio() {
+		Power* pow = new Power(550, 450, radio);//poner random x y
+		Powers.push_back(pow);
+	}
+	void crearArma() {
+		Power* pow = new Power(600, 450, arma);//poner random x y
+		Powers.push_back(pow);
+	}
+	void crearAmmo() {
+		Power* pow = new Power(650, 450, municion);//poner random x y
+		Powers.push_back(pow);
+	}
+
 	void crearKami() {
 		Kami* k = new Kami(0, 0);
 		Kamis.push_back(k);
@@ -46,6 +73,11 @@ public:
 	void moverKami(Entidad* enem, BufferedGraphics^ bg) {
 		for (int i = 0; i < Kamis.size(); i++) {
 			Kamis.at(i)->mover(enem, bg);
+		}
+	}
+	void animarpUp( BufferedGraphics^ bg) {
+		for (int i = 0; i < Powers.size(); i++) {
+			Powers.at(i)->mover(bg);
 		}
 	}
 
