@@ -58,9 +58,9 @@ public:
 		geE->animarHel(bf, borde);
 		geE->animarSol(bf, borde);
 		geE->SeguirMovSoldado(ju->getx(), ju->gety());
-		geE->moverBalasHeli(bf, borde);
+		geE->moverBalasHeli(bf, borde, ju);
 		geE->moverBalasSoldado(bf, borde);
-		geA->moverMono(bf,borde);
+		//geA->moverMono(bf,borde);
 	}
 
 };

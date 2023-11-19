@@ -120,58 +120,9 @@ public:
 	bool colBala(Rectangle objetivo) {
 		for (int i = 0; i < vBala.size(); i++) {
 			if (vBala.at(i)->Colision(objetivo)) return true;
-			else return false;
 		}
+		return false;
 	}
 
 
 };
-
-/*
-
-		switch (direccion)
-		{
-		case Ninguna:
-			indX = indY=0;
-			break;
-		case Abajo:
-
-			dx = 0; dy = 1;
-			indY = 2;
-			for (int i = 0; i < 3; i++) {
-				indX = i;
-			}
-
-			break;
-		case Arriba:
-
-			dx = 0; dy = -1;
-			indY = 0;
-			for (int i = 0; i < 3; i++) {
-				indX = i;
-			}
-
-			break;
-		case Izquierda:
-
-			dx = -1; dy = 0;
-			indY = 3;
-			for (int i = 0; i < 3; i++) {
-				indX = i;
-			}
-
-			break;
-		case Derecha:
-
-			dx = 1; dy = 0;
-			indY = 1;
-			for (int i = 0; i < 3; i++) {
-				indX = i;
-			}
-
-			break;
-		default:
-			break;
-		}
-
-*/
