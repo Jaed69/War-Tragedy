@@ -16,6 +16,12 @@ public:
 	GeAliado(){
 		t_evento = 0;
 		crearKami();
+		crearBotiquin();
+		crearAmmo();
+		//crearArmadura();
+		crearBanana();
+		crearRadio();
+		crearArma();
 	}
 	~GeAliado(){}
 
@@ -34,10 +40,31 @@ public:
 		AvionAliado* avi = new AvionAliado(100, 0);
 		Aliados.push_back(avi);
 	}
-	void crearPow() {
-		Power* pow = new Power(700, 700);
+	void crearBanana() {
+		Power* pow = new Power(400, 450, banana);//poner random x y
 		Powers.push_back(pow);
 	}
+	void crearBotiquin() {
+		Power* pow = new Power(450, 450, botiquin);//poner random x y
+		Powers.push_back(pow);
+	}
+	void crearArmadura() {
+		Power* pow = new Power(500, 450, armadura);//poner random x y
+		Powers.push_back(pow);
+	}
+	void crearRadio() {
+		Power* pow = new Power(550, 450, radio);//poner random x y
+		Powers.push_back(pow);
+	}
+	void crearArma() {
+		Power* pow = new Power(600, 450, arma);//poner random x y
+		Powers.push_back(pow);
+	}
+	void crearAmmo() {
+		Power* pow = new Power(650, 450, municion);//poner random x y
+		Powers.push_back(pow);
+	}
+
 	void crearKami() {
 		Kami* k = new Kami(0, 0);
 		Kamis.push_back(k);
@@ -48,14 +75,15 @@ public:
 			Kamis.at(i)->mover(enem, bg);
 		}
 	}
+	void animarpUp( BufferedGraphics^ bg) {
+		for (int i = 0; i < Powers.size(); i++) {
+			Powers.at(i)->mover(bg);
+		}
+	}
 
-	void moverMono(BufferedGraphics^ bg, Rectangle monoE, Rectangle balaE, int avX, int avY) {
+	void moverMono(BufferedGraphics^ bg, Rectangle espacio) {
 		for (int i = 0; i < Monos.size(); i++) {
-			Monos.at(i)->mover(bg, monoE);
-			if (t_evento % 6 == 0) {
-				Monos.at(i)->disparar(avX, avY);
-			}
-			Monos.at(i)->moverB(bg, balaE);
+			Monos.at(i)->mover(bg, espacio);
 		}
 	}
 	void moverAvion(BufferedGraphics^ bg, Rectangle aviE, Rectangle balaE) {
@@ -71,6 +99,15 @@ public:
 		for (int i = 0; i < Kamis.size(); i++) {
 			if (Kamis.at(i)->Colision(ajeno)) return true;
 			else return false;
+		}
+	}
+
+	void DispararMono() {
+		Random r;
+		for (int i = 0; i < Monos.size(); i++) {
+			if (Monos.at(i)->getModoDisparar()) {
+				Monos.at(i)->disparar(r.Next(1280),r.Next(720));
+			}
 		}
 	}
 };

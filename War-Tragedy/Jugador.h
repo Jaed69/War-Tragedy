@@ -39,7 +39,9 @@ public:
 	void setchaleco(int chaleco) { this->chaleco = chaleco; }
 	bool getDash() { return dash; }
 	void setDash(bool dash) { this->dash = dash; }
-
+	int getbulletsize() {
+		return vBala.size();
+	}
 	void animar(BufferedGraphics^ bg, Rectangle rec) {
 		Bitmap^ bm = gcnew Bitmap("assets/Personaje/Personaje.png");
 
