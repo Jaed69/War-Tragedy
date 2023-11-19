@@ -6,7 +6,7 @@ private:
 	vector<Bala*> vBala;
 	bool estatico;
 public:
-	Soldado(int x, int y) :Entidad(x, y, 32, 48, 20) {//poner ancho alto bien y determinar vida
+	Soldado(int x, int y) :Entidad(x, y, 32, 48, 1) {//poner ancho alto bien y determinar vida
 		estatico = false;
 		if (x <= 256 && y + alto <= 144)direccion = AbDer;
 		else if (x >= 768 && y + alto <= 144)direccion = AbIzq;
@@ -141,9 +141,8 @@ public:
 
 	bool colBala(Rectangle objetivo) {
 		for (int i = 0; i < vBala.size(); i++) {
-			if (vBala.at(i)->Colision(objetivo)) return true;
-			else return false;
+			if (vBala.at(i)->colBal(objetivo)) return true;
 		}
+		return false;
 	}
-
 };

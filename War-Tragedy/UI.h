@@ -14,7 +14,7 @@ public:
 		altoChaleco = 96; anchoChaleco = 192;
 		indXv = 10; indYv = 0;
 		indXc = 7; indYc = 2;
-		xv = xc = 10; yv = 5; yc = 20;
+		xv = 10;  xc = 100; yv = 5; yc = 5;
 	}
 	~UI(){}
 

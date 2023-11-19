@@ -28,13 +28,16 @@ public:
 
 	void T_Evento(Jugador* ju) {
 		t_evento++;
+		geA->T_Evento(ju);
+		geE->T_Evento(ju);
+
 		if (t_evento % 40 == 0) geE->crearHel();
-		if (t_evento % 17==0) geE->crearSol();
+		if (t_evento % 17 == 0) geE->crearSol();
 		if (t_evento % 50 == 0)geE->dispararHeli(ju->getx(),ju->gety());
 		if (t_evento % 51 == 0)geE->dispararHeli(ju->getx(),ju->gety());
 		if (t_evento % 52 == 0)geE->dispararHeli(ju->getx(),ju->gety());
 		if (t_evento % 30 == 0)geE->dispararSol(ju->getx(), ju->gety());
-		if (t_evento % 50 == 0) geA->crearMon();
+		if (t_evento ==50) geA->crearMon();
 		
 	}
 
@@ -61,6 +64,10 @@ public:
 		geE->moverBalasHeli(bf, borde, ju);
 		geE->moverBalasSoldado(bf, borde);
 		//geA->moverMono(bf,borde);
+	}
+
+	void animarAl(BufferedGraphics^ bf) {
+		geA->moverMono(bf, borde);
 	}
 
 };

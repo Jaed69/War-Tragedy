@@ -103,4 +103,8 @@ public:
 		animarPl(bf);
 	}
 
+	void animarBala() {
+
+	}
+
 };

@@ -8,7 +8,7 @@ private:
 	Sentido sentido;
 public:
 	Helicoptero() {}
-	Helicoptero(int x, int y) :Entidad(x, y, 40, 40, 10) {//poner ancho alto bien y determinar vida
+	Helicoptero(int x, int y) :Entidad(x, y, 40, 40, 1) {//poner ancho alto bien y determinar vida
 		Random r;
 		if (r.Next(100) % 2 == 0)
 			sentido = antihorario;
@@ -17,7 +17,7 @@ public:
 		ultDireccion = Ninguna;
 		dx = 0;
 		dy = 0; aumento = 2; vel = 10;
-		Rx = Ry = 0;
+		Rx = Ry = 20;
 		Rancho = Ralto = 20;
 	}
 	~Helicoptero() {}
@@ -119,7 +119,7 @@ public:
 
 	bool colBala(Rectangle objetivo) {
 		for (int i = 0; i < vBala.size(); i++) {
-			if (vBala.at(i)->Colision(objetivo)) return true;
+			if (vBala.at(i)->colBal(objetivo)) return true;
 		}
 		return false;
 	}

@@ -5,6 +5,7 @@ class Mono :public Entidad {
 private:
 	vector<Bala*> vBala;
 	int ammo;
+	bool modoDisparar;
 public:
 	Mono(int x, int y) :Entidad(x, y, 32, 32, 10) {
 		direccion = AbDer;
@@ -14,13 +15,20 @@ public:
 		Ry = 10;
 		Rancho = 11;
 		Ralto = 11;
-		aumento = 1;
+		aumento = 1.5;
 		ammo = 50;
+		modoDisparar = false;
 	}
 	~Mono() {}
 
+	bool getModoDisparar() { return modoDisparar; }
+
 	void mover(BufferedGraphics^ bg, Rectangle rec) {
 		Bitmap^ mono = gcnew Bitmap("assets/Aliado/mono.png");
+		if (x < 0) direccion = AbDer;
+		if (x +ancho >1280) direccion = ArrIzq;
+		if (y < 0)direccion = AbIzq;
+		if (y +alto >720)direccion = ArrDer;
 
 		switch (direccion)
 		{

@@ -48,7 +48,7 @@ public:
 		
 
 
-		if (t_evento == 200)termino = true;
+		if (t_evento == 400)termino = true;
 	}
 
 	Rectangle getMargen() { return margen; }

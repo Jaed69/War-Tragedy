@@ -31,10 +31,12 @@ public:
 		sArriba = sAbajo = sDerecha = sIzquierda = 0;
 		sLimArriba = sLimAbajo = sLimDerecha = sLimIzquierda = 3;
 		cantHeli = 0; limCantHeli = 2;
+		lim_hel = 2;
 	}
 	~GeEnemigos() {}
 
 	void setlimiteHeli(int limite) { limCantHeli = limite; }
+	int getTamHeli() { return helicopteros.size(); }
 
 	void T_Evento(Jugador* ju) {
 		t_evento++;
@@ -44,6 +46,13 @@ public:
 		}
 
 		if (colBalaSol(ju->getHB())) ju->resDano(5);
+
+		colBalJuAvi(ju);
+		colBalJuHel(ju);
+		colBalJuSer(ju);
+		colBalJuSol(ju);
+
+
 		/*if (colBalaSer(ju->getFHB())) {
 			ju->Dano();
 			ju->resDano(1);
@@ -57,10 +66,8 @@ public:
 			ju->resDano(1);
 		}*/
 		if (colSer(ju->getFHB())) {
-			ju->Dano();
 			ju->resDano(1);
 		}
-		balasdejugadorcolisionanconserpiente(ju);
 		
 		
 	}
@@ -99,14 +106,44 @@ public:
 		
 	}
 
-	void balasdejugadorcolisionanconserpiente(Jugador* ju) {
-		if (ju->getbulletsize() != 0) {
-			for (int i = 0; i < serpientes.size(); i++) {
-				if (ju->colBala(serpientes.at(i)->getFHB())) {//poner q pasa si serpiente colisiona con balas
-					serpientes.at(i)->resDano(5); //cambiar esto jijijiji
-				}
+	bool colBalJuSer(Jugador* ju) {
+		for (int i = 0; i < serpientes.size(); i++) {
+			if (ju->colBala(serpientes.at(i)->getHB())) {
+				serpientes.at(i)->resDano(1);
+				return true;
 			}
 		}
+		return false;
+	}
+
+	bool colBalJuHel(Jugador* ju) {
+		for (int i = 0; i < helicopteros.size(); i++) {
+			if (ju->colBala(helicopteros.at(i)->getHB())) {
+				helicopteros.at(i)->resDano(1);
+				return true;
+			}
+		}
+		return false;
+	}
+
+	bool colBalJuSol(Jugador* ju) {
+		for (int i = 0; i < soldados.size(); i++) {
+			if (ju->colBala(soldados.at(i)->getHB())) {
+				soldados.at(i)->resDano(20);
+				return true;
+			}
+		}
+		return false;
+	}
+
+	bool colBalJuAvi(Jugador* ju) {
+		for (int i = 0; i < aviones.size(); i++) {
+			if (ju->colBala(aviones.at(i)->getHB())) {
+				aviones.at(i)->resDano(1);
+				return true;
+			}
+		}
+		return false;
 	}
 
 	void crearBom(int x, int y) {
@@ -114,8 +151,7 @@ public:
 		bombas.push_back(b);
 	}
 	void crearHel() {
-		if (cantHeli < limCantHeli) {
-			cantHeli++;
+		if ( helicopteros.size() < lim_hel) {
 			Helicoptero* h = new Helicoptero(400, 50);
 			helicopteros.push_back(h);
 		}
@@ -180,8 +216,10 @@ public:
 		for (int i = 0; i < helicopteros.size(); i++) {
 			if (helicopteros.at(i)->getActivo())
 				helicopteros.at(i)->mover(bg, con);
-			else
+			else {
 				helicopteros.erase(helicopteros.begin() + i);
+				lim_hel++;
+			}
 		}
 	}
 

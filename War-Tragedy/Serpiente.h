@@ -14,7 +14,7 @@ private:
 
 public:
 	Serpiente() {}
-	Serpiente(int x, int y) :Entidad(x, y, 64, 64, 500) {//poner ancho alto bien y determinar vida
+	Serpiente(int x, int y) :Entidad(x, y, 64, 64, 10) {//poner ancho alto bien y determinar vida
 		/*
 		
 		*/
@@ -163,7 +163,7 @@ public:
 
 	bool colBala(Rectangle objetivo) {
 		for (int i = 0; i < vBala.size(); i++) {
-			if (vBala.at(i)->Colision(objetivo)) return true;
+			if (vBala.at(i)->colBal(objetivo)) return true;
 		}
 		return false;
 	}
