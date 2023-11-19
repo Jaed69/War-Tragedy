@@ -21,6 +21,9 @@ public:
 
 	void T_Evento(Jugador* ju) {
 		t_evento++;
+		//agregar colision de kami
+
+
 	}
 
 	void crearMon() {

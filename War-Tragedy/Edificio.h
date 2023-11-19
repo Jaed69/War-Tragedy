@@ -60,7 +60,7 @@ public:
 		animarObs(bf);
 	}
 	//Zona en qeu se codifica el comportamiento de los alidos
-	void animarAl(BufferedGraphics^ bf) {
+	void animarAl(BufferedGraphics^ bf) { //agregar todos los aliados
 		//geE->animarHel(bf,);
 		geA->moverKami(geE->getRandomEnem(),bf);
 		animarObs(bf);
