@@ -30,6 +30,8 @@ public:
 
 	void T_Evento(Jugador* ju) {
 		t_evento++;
+		geE->T_Evento(ju);
+		geA->T_Evento(ju);
 		if (t_evento%75 == 0) geE->crearBom(440, 360);
 		if (t_evento == 101) geE->crearBom(840, 360);
 		if (t_evento == 102) geE->crearBom(640, 260);
@@ -55,6 +57,12 @@ public:
 		//geE->animarHel(bf,);
 		geE->animarBom(bf);
 		geE->animarSer(bf, borde, obstaculos);
+		animarObs(bf);
+	}
+	//Zona en qeu se codifica el comportamiento de los alidos
+	void animarAl(BufferedGraphics^ bf) { //agregar todos los aliados
+		//geE->animarHel(bf,);
+		geA->moverKami(geE->getRandomEnem(),bf);
 		animarObs(bf);
 	}
 
