@@ -103,8 +103,7 @@ public:
 		if (ju->getbulletsize() != 0) {
 			for (int i = 0; i < serpientes.size(); i++) {
 				if (ju->colBala(serpientes.at(i)->getFHB())) {//poner q pasa si serpiente colisiona con balas
-					//serpientes.at(i)->setx(1250); //cambiar esto jijijiji
-					//serpientes.at(i)->sety(500);
+					serpientes.at(i)->resDano(5); //cambiar esto jijijiji
 				}
 			}
 		}
