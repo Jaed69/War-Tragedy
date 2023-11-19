@@ -24,6 +24,7 @@ private:
 	int sArriba, sAbajo, sDerecha, sIzquierda;
 	int sLimArriba, sLimAbajo, sLimDerecha, sLimIzquierda;
 	int cantHeli, limCantHeli;
+
 public:
 	GeEnemigos() {
 		t_evento = 0;
@@ -41,10 +42,8 @@ public:
 			ju->Dano();
 			ju->resDano(1);
 		}
-		/*if (colBalaHel(ju->getHB())) {
-			ju->Dano();
-			ju->resDano(1);
-		}*/
+
+		if (colBalaSol(ju->getHB())) ju->resDano(5);
 		/*if (colBalaSer(ju->getFHB())) {
 			ju->Dano();
 			ju->resDano(1);
@@ -99,6 +98,7 @@ public:
 		}
 		
 	}
+
 	void balasdejugadorcolisionanconserpiente(Jugador* ju) {
 		for (int i = 0; i < serpientes.size(); i++) {
 			if (ju->colBala(serpientes.at(i)->getFHB())) {//poner q pasa si serpiente colisiona con balas
@@ -214,36 +214,36 @@ public:
 	bool colBalaSol(Rectangle ajeno) {
 		for (int i = 0; i < soldados.size(); i++) {
 			if (soldados.at(i)->colBala(ajeno)) return true;
-			else return false;
 		}
+		return false;
 	}
 
 	bool colBom(Rectangle ajeno) {
 		for (int i = 0; i < bombas.size(); i++) {
 			if (bombas.at(i)->Colision(ajeno)) return true;
-			else return false;
 		}
+		return false;
 	}
 
 	bool colBalaHel(Rectangle ajeno) {
 		for (int i = 0; i < helicopteros.size(); i++) {
 			if (helicopteros.at(i)->colBala(ajeno)) return true;
-			else return false;
 		}
+		return false;
 	}
 
 	bool colBalaSer(Rectangle ajeno) {
 		for (int i = 0; i < serpientes.size(); i++) {
-			//if (serpientes.at(i)->colBala(ajeno)) return true;
-			//else return false;
+			if (serpientes.at(i)->colBala(ajeno)) return true;
 		}
+		return false;
 	}
 
 	bool colSer(Rectangle ajeno) {
 		for (int i = 0; i < serpientes.size(); i++) {
 			if (serpientes.at(i)->Colision(ajeno)) return true;
-			else return false;
 		}
+		return false;
 	}
 	void coordsserpent(int fx, int fy) {
 		for (int i = 0; i < serpientes.size(); i++) {
@@ -267,33 +267,32 @@ public:
 	}
 
 	void SeguirMovSoldado(int x, int y) {
-		/*
 		for (int i = 0; i < soldados.size(); i++) {
 			if (soldados.at(i)->getEstatico()) {
 				soldados.at(i)->apuntarJugador(x,y);
 			}
 		}
-		*/
 	}
+
 	void dispararSol(int fx, int fy) {
-		/*
 		for (int i = 0; i < soldados.size(); i++) {
 			//soldados.at(i)->disparar(fx, fy);
 			if (soldados.at(i)->getEstatico()) {
 				soldados.at(i)->disparar(fx, fy);
 			}
-		}
-		*/
-		
+		}		
 	}
 	void dispararHeli(int fx, int fy) {
 		for (int i = 0; i < helicopteros.size(); i++) {
 			helicopteros.at(i)->disparar(fx, fy);
 		}
 	}
-	void moverBalasHeli(BufferedGraphics^ bg, Rectangle valido){
+	void moverBalasHeli(BufferedGraphics^ bg, Rectangle valido, Jugador* ju){
 		for (int i = 0; i < helicopteros.size(); i++) {
 			helicopteros.at(i)->moverB(bg,valido);
+			if (helicopteros.at(i)->colBala(ju->getHB())) {
+				ju->resDano(5);
+			}
 		}
 	}
 	void moverBalasSoldado(BufferedGraphics^ bg, Rectangle valido) {

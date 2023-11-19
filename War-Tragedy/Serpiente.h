@@ -10,7 +10,7 @@ private:
 	int fx, fy;
 	float difx, dify;
 	float mayor;
-	vector<Bala*> balas;
+	vector<Bala*> vBala;
 
 public:
 	Serpiente() {}
@@ -146,6 +146,26 @@ public:
 
 		dibujar(bg, ser);
 		delete ser;
+	}
+
+	void disparar(int fx, int fy) {
+		Bala* oBala = new Bala(x, y, fx, fy);
+		oBala->setRnRl(10, 10);
+		vBala.push_back(oBala);
+	}
+
+	void moverB(BufferedGraphics^ bg, Rectangle rec) {
+		for (int i = 0; i < vBala.size(); i++) {
+			if (vBala.at(i)->Container(rec)) vBala.at(i)->mover(bg);
+			else vBala.erase(vBala.begin() + i);
+		}
+	}
+
+	bool colBala(Rectangle objetivo) {
+		for (int i = 0; i < vBala.size(); i++) {
+			if (vBala.at(i)->Colision(objetivo)) return true;
+		}
+		return false;
 	}
 
 

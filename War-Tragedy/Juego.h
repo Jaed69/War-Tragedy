@@ -1,12 +1,14 @@
 #pragma once
 #include "Jugador.h"
 #include "GeEscenarios.h"
+#include "UI.h"
 
 class Juego
 {
 private:
 	Jugador* jugador;
 	GeEscenarios* geEs;
+	UI* iu;
 
 	int t_evento;
 
@@ -14,6 +16,8 @@ public:
 	Juego() {
 		jugador = new Jugador(620, 404);
 		geEs = new GeEscenarios();
+		iu = new UI();
+
 		t_evento = 0;
 	}
 
@@ -90,6 +94,7 @@ public:
 	void animarPl(BufferedGraphics^ bf) {
 		jugador->animar(bf, geEs->getMargen());
 		jugador->moverB(bf, geEs->getBorde());
+
 	}
 	void jugar(BufferedGraphics^ bf) {
 		geEs->Escenario(bf, jugador);

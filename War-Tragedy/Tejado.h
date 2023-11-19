@@ -65,11 +65,11 @@ public:
 	}
 
 	//Zona en qeu se codifica el comportamiento de los enemigos
-	void animarEn(BufferedGraphics^ bf) {  
+	void animarEn(BufferedGraphics^ bf, Jugador* ju) {  
 		geE->animarHel(bf,borde);
 		geE->animarLla(bf, borde);
 		geE->animarAvi(bf, borde);
-		geE->moverBalasHeli(bf, borde);
+		geE->moverBalasHeli(bf, borde, ju);
 		//geE->animarSer(bf, borde);
 	}
 

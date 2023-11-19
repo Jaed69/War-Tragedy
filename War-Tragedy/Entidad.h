@@ -99,7 +99,7 @@ public:
 			area = Rectangle(indX * ancho, indY * alto, ancho, alto);
 			zonaAumento = Rectangle(x, y, ancho * aumento, alto * aumento);
 			hitbox = Rectangle(x + Rx, y + Ry, Rancho * aumento, Ralto * aumento);
-			Fhitbox = Rectangle(x + Rx + roundf(dx)*4, y + Ry + roundf(dy)*4, Rancho * aumento, Ralto * aumento);
+			Fhitbox = Rectangle(x + Rx + roundf(dx)*8, y + Ry + roundf(dy)*8, Rancho * aumento, Ralto * aumento);
 
 			bg->Graphics->DrawRectangle(gcnew Pen(Color::Green), Fhitbox);
 			bg->Graphics->DrawRectangle(gcnew Pen(Color::Blue), hitbox);
