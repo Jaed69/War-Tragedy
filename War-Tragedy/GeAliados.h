@@ -28,7 +28,7 @@ public:
 	void T_Evento(Jugador* ju) {
 		t_evento++;
 		//agregar colision de kami
-
+		colPUp(ju);
 
 	}
 
@@ -75,9 +75,14 @@ public:
 			Kamis.at(i)->mover(enem, bg);
 		}
 	}
-	void animarpUp( BufferedGraphics^ bg) {
+	void animarpUp(BufferedGraphics^ bg) {
 		for (int i = 0; i < Powers.size(); i++) {
-			Powers.at(i)->mover(bg);
+			if (Powers.at(i)->getActivo()) {
+				Powers.at(i)->mover(bg);
+			}
+			else {
+				Powers.erase(Powers.begin() + i);
+			}
 		}
 	}
 
@@ -110,4 +115,36 @@ public:
 			}
 		}
 	}
+	void colPUp(Jugador* ju) {
+		for (int i = 0; i < Powers.size(); i++) {
+			if (Powers.at(i)->Colision(ju->getFHB())) {
+				Powers.at(i)->setActivo(false);
+				switch (Powers.at(i)->gettype())
+				{
+				case banana:
+					crearMon();
+					break;
+				case botiquin:
+					ju->setvida(ju->getvida() + 1);//corregir puede
+					break;
+				case arma:
+					//agregar velocida de disparo
+					break;
+				case armadura:
+					ju->setchaleco(ju->getchaleco() + 1);
+					//agregar mas armor
+					break;
+				case radio:
+					crearKami();
+					break;
+				case municion:
+					break;
+				default:
+					break;
+				}
+
+			}
+		}
+	}
+
 };
