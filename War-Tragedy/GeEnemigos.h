@@ -57,13 +57,10 @@ public:
 			ju->Dano();
 			ju->resDano(1);
 		}*/
-
 		if (colSer(ju->getFHB())) {
 			ju->Dano();
 			ju->resDano(1);
 		}
-
-
 	}
 
 	int getTAvi() { return aviones.size(); }
