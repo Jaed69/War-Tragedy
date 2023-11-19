@@ -101,4 +101,13 @@ public:
 			else return false;
 		}
 	}
+
+	void DispararMono() {
+		Random r;
+		for (int i = 0; i < Monos.size(); i++) {
+			if (Monos.at(i)->getModoDisparar()) {
+				Monos.at(i)->disparar(r.Next(1280),r.Next(720));
+			}
+		}
+	}
 };
