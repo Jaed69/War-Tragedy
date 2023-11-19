@@ -13,6 +13,7 @@ public:
 		altoChaleco = 96; anchoChaleco = 192;
 		indXv = 10; indYv = 0;
 		indXc = 7; indYc = 2;
+		xv = xc = 10; yv = 5; yc = 20;
 	}
 	~UI(){}
 
@@ -45,13 +46,13 @@ public:
 			if (indXc > 0) {
 				indXc--;
 			}
-			else if (indYc>0){
+			else if (indYc>0&&indXc>=1){
 				indXc = 9;
 				indYc--;
 			}
 		}
 		if (Chaleco<=0) {
-			indXc = indYc = 0;
+			indXc = 1; indYc = 0;
 		}
 		DibujarChaleco(bg, Chaleco);
 	}
