@@ -71,6 +71,7 @@ public:
 	void animarAl(BufferedGraphics^ bf) { //agregar todos los aliados
 		//geE->animarHel(bf,);
 		geA->moverKami(geE->getRandomEnem(),bf);
+		geA->moverMono(bf, borde);
 		geA->animarpUp(bf);
 		animarObs(bf);
 	}

@@ -15,7 +15,6 @@ private:
 public:
 	GeAliado(){
 		t_evento = 0;
-		crearKami();
 		crearBotiquin();
 		crearAmmo();
 		//crearArmadura();
