@@ -46,7 +46,12 @@ public:
 		if (t_evento ==50) geA->crearMon();
 
 		if (t_evento == 500)termino = true;
-		
+		if (t_evento == 5) {
+			geA->crearRandomPower(margen);
+		}
+		if (t_evento % 50 == 0) {
+			geA->crearRandomPower(margen);
+		}
 	}
 
 	Rectangle getMargen() { return margen; }

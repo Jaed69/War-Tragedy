@@ -153,6 +153,7 @@ public:
 		case NTejado:
 			nivel1->animarFn(bf);
 			nivel1->animarEn(bf, ju);
+			nivel1->animarAl(bf);
 			//nivel1->animarAl(bf);
 			break;
 		case NEdificio:

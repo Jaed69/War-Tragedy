@@ -43,7 +43,12 @@ public:
 		if (t_evento == 102) geE->crearBom(640, 260);
 		if (t_evento == 103) geE->crearBom(640, 460);
 		geE->coordsserpent(ju->getx(), ju->gety());
-
+		if (t_evento == 5) {
+			geA->crearRandomPower(margen);
+		}
+		if (t_evento % 50 == 0) {
+			geA->crearRandomPower(margen);
+		}
 		if (t_evento == 500) termino = true;
 	}
 

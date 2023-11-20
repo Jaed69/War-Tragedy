@@ -45,7 +45,12 @@ public:
 		if (t_evento % 51 == 0)geE->dispararHeli(ju->getx(), ju->gety());
 		if (t_evento % 52 == 0)geE->dispararHeli(ju->getx(), ju->gety());
 		
-
+		if (t_evento == 5) {
+			geA->crearRandomPower(margen);
+		}
+		if (t_evento % 50 == 0) {
+			geA->crearRandomPower(margen);
+		}
 
 		if (t_evento == 400)termino = true;
 	}

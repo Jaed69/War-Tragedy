@@ -21,12 +21,12 @@ public:
 	void T_Evento(Jugador* ju, Rectangle margen) {
 		t_evento++;
 		//colision de kami está en mover porqye no tiene sentido que no esté ahi para que haga daño a la entidad
-		if (t_evento == 5) {
+		/*if (t_evento == 5) {
 			crearRandomPower(margen);
 		}
 		if (t_evento % 50 == 0) {
 			crearRandomPower(margen);
-		}
+		}*/
 		colPUp(ju);
 
 	}
