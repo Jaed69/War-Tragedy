@@ -96,8 +96,8 @@ public:
 		hitbox = Rectangle(x + Rx, y + Ry, Rancho * aumento, Ralto * aumento);
 		Fhitbox = Rectangle(x + Rx + roundf(dx)*vel, y + Ry + roundf(dy)*vel, Rancho * aumento, Ralto * aumento);
 
-		bg->Graphics->DrawRectangle(gcnew Pen(Color::Green), Fhitbox);
-		bg->Graphics->DrawRectangle(gcnew Pen(Color::Blue), hitbox);
+		//bg->Graphics->DrawRectangle(gcnew Pen(Color::Green), Fhitbox);
+		//bg->Graphics->DrawRectangle(gcnew Pen(Color::Blue), hitbox);
 		//bg->Graphics->DrawRectangle(gcnew Pen(Color::Red), zonaAumento);
 		bg->Graphics->DrawImage(bm, zonaAumento, area, GraphicsUnit::Pixel);
 		if (vida <= 0) activo = false;
