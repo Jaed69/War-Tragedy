@@ -25,7 +25,7 @@ public:
 		Bitmap^ Boti = gcnew Bitmap("assets/PowerUp/botiquin.png");
 		Bitmap^ banan = gcnew Bitmap("assets/PowerUp/Banana.png");
 		Bitmap^ gun = gcnew Bitmap("assets/PowerUp/minigun.png");
-		Bitmap^ armonr = gcnew Bitmap("assets/PowerUp/radio.png");
+		Bitmap^ armonr = gcnew Bitmap("assets/PowerUp/chaleco.png");
 		Bitmap^ rad = gcnew Bitmap("assets/PowerUp/radio.png");
 		Bitmap^ muni = gcnew Bitmap("assets/PowerUp/ammo.png");
 		switch (tipo)
@@ -53,7 +53,11 @@ public:
 
 			break;
 		case armadura:
-
+			ancho = 20;
+			alto = 20;
+			Rancho = 20;
+			Ralto = 20;
+			dibujar(bg, armonr);
 			break;
 		case radio:
 			ancho = 9;

@@ -13,16 +13,16 @@ private:
 	vector<Kami*> Kamis;
 
 public:
-	GeAliado(){
+	GeAliado() {
 		t_evento = 0;
 		crearRandomPower();
 
 	}
-	~GeAliado(){}
+	~GeAliado() {}
 
 	void T_Evento(Jugador* ju) {
 		t_evento++;
-		//agregar colision de kami
+		//colision de kami está en mover porqye no tiene sentido que no esté ahi para que haga daño a la entidad
 		if (t_evento % 50 == 0) {
 			crearRandomPower();
 		}
@@ -71,7 +71,7 @@ public:
 	}
 	void crearRandomPower() {
 		Random randi;
-		switch (randi.Next(1,8))
+		switch (randi.Next(1, 8))
 		{
 		case 1:
 			crearAmmo();
@@ -101,8 +101,18 @@ public:
 	}
 
 	void moverKami(Entidad* enem, BufferedGraphics^ bg) {
+		if (Kamis.size() > 0) {
+			if (colKami(enem->getFHB())) {
+				enem->resDano(20);
+			}
+		}
 		for (int i = 0; i < Kamis.size(); i++) {
-			Kamis.at(i)->mover(enem, bg);
+			if (Kamis.at(i)->getActivo()) {
+				Kamis.at(i)->mover(enem, bg);
+			}
+			else {
+				Kamis.erase(Kamis.begin() + i);
+			}
 		}
 	}
 	void animarpUp(BufferedGraphics^ bg) {
@@ -128,20 +138,24 @@ public:
 				Aliados.at(i)->disparar();
 			}
 			Aliados.at(i)->moverB(bg, balaE);
-		}			
-	}
-	bool colKami(Rectangle ajeno) {
-		for (int i = 0; i < Kamis.size(); i++) {
-			if (Kamis.at(i)->Colision(ajeno)) return true;
-			else return false;
 		}
+	}
+	bool colKami(Rectangle ajeno) {		
+			for (int i = 0; i < Kamis.size(); i++) {
+				if (Kamis.at(i)->Colision(ajeno)) {
+					Kamis.at(i)->setActivo(false);
+					return true;
+				}
+				else return false;
+			}
+		
 	}
 
 	void DispararMono() {
 		Random r;
 		for (int i = 0; i < Monos.size(); i++) {
 			if (Monos.at(i)->getModoDisparar()) {
-				Monos.at(i)->disparar(r.Next(1280),r.Next(720));
+				Monos.at(i)->disparar(r.Next(1280), r.Next(720));
 			}
 		}
 	}
@@ -177,5 +191,4 @@ public:
 			}
 		}
 	}
-
 };
