@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Entorno.h"
-
+#include "Juego.h"
 namespace WarTragedy {
 
 	using namespace System;
@@ -17,7 +17,8 @@ namespace WarTragedy {
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	private:
-
+		Juego* Jg;
+		Niveles nivel = habitacionS;
 	public:
 		MyForm(void)
 		{
@@ -25,6 +26,7 @@ namespace WarTragedy {
 			//
 			//TODO: agregar código de constructor aquí
 			//
+			Jg = new Juego();
 		}
 
 	protected:
@@ -41,6 +43,7 @@ namespace WarTragedy {
 	private: System::Windows::Forms::Button^ btnNivel1;
 	private: System::Windows::Forms::Button^ btnNivel2;
 	private: System::Windows::Forms::Button^ btnNivel3;
+	private: System::Windows::Forms::Timer^ timer1;
 	protected:
 
 	protected:
@@ -60,17 +63,19 @@ namespace WarTragedy {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			this->btnNivel1 = (gcnew System::Windows::Forms::Button());
 			this->btnNivel2 = (gcnew System::Windows::Forms::Button());
 			this->btnNivel3 = (gcnew System::Windows::Forms::Button());
+			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
 			this->SuspendLayout();
 			// 
 			// btnNivel1
 			// 
-			this->btnNivel1->Location = System::Drawing::Point(76, 48);
-			this->btnNivel1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnNivel1->Location = System::Drawing::Point(135, 73);
+			this->btnNivel1->Margin = System::Windows::Forms::Padding(4, 2, 4, 2);
 			this->btnNivel1->Name = L"btnNivel1";
-			this->btnNivel1->Size = System::Drawing::Size(56, 19);
+			this->btnNivel1->Size = System::Drawing::Size(100, 28);
 			this->btnNivel1->TabIndex = 0;
 			this->btnNivel1->Text = L"Nivel1";
 			this->btnNivel1->UseVisualStyleBackColor = true;
@@ -78,10 +83,10 @@ namespace WarTragedy {
 			// 
 			// btnNivel2
 			// 
-			this->btnNivel2->Location = System::Drawing::Point(76, 88);
-			this->btnNivel2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnNivel2->Location = System::Drawing::Point(135, 133);
+			this->btnNivel2->Margin = System::Windows::Forms::Padding(4, 2, 4, 2);
 			this->btnNivel2->Name = L"btnNivel2";
-			this->btnNivel2->Size = System::Drawing::Size(56, 19);
+			this->btnNivel2->Size = System::Drawing::Size(100, 28);
 			this->btnNivel2->TabIndex = 1;
 			this->btnNivel2->Text = L"Nivel2";
 			this->btnNivel2->UseVisualStyleBackColor = true;
@@ -89,14 +94,19 @@ namespace WarTragedy {
 			// 
 			// btnNivel3
 			// 
-			this->btnNivel3->Location = System::Drawing::Point(76, 131);
-			this->btnNivel3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnNivel3->Location = System::Drawing::Point(135, 198);
+			this->btnNivel3->Margin = System::Windows::Forms::Padding(4, 2, 4, 2);
 			this->btnNivel3->Name = L"btnNivel3";
-			this->btnNivel3->Size = System::Drawing::Size(56, 19);
+			this->btnNivel3->Size = System::Drawing::Size(100, 28);
 			this->btnNivel3->TabIndex = 2;
 			this->btnNivel3->Text = L"Nivel3";
 			this->btnNivel3->UseVisualStyleBackColor = true;
 			this->btnNivel3->Click += gcnew System::EventHandler(this, &MyForm::btnNivel3_Click);
+			// 
+			// timer1
+			// 
+			this->timer1->Enabled = true;
+			this->timer1->Tick += gcnew System::EventHandler(this, &MyForm::timer1_Tick);
 			// 
 			// MyForm
 			// 
@@ -107,13 +117,26 @@ namespace WarTragedy {
 			this->Controls->Add(this->btnNivel2);
 			this->Controls->Add(this->btnNivel1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedToolWindow;
+			this->Margin = System::Windows::Forms::Padding(0);
 			this->Name = L"MyForm";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"MyForm";
+			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
+			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MyForm::MyForm_KeyDown);
+			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &MyForm::MyForm_KeyUp);
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
+	private: System::Void timer1_Tick(System::Object^ sender, System::EventArgs^ e) {
+		Graphics^ g = this->CreateGraphics();
+		BufferedGraphicsContext^ espacioBuffer = BufferedGraphicsManager::Current;
+		BufferedGraphics^ buffer = espacioBuffer->Allocate(g, this->ClientRectangle);
+		Jg->T_Evento();
+		Jg->jugar(buffer);
+		buffer->Render(g);
+		delete buffer; delete espacioBuffer; delete g;
+	}
 	private: System::Void btnNivel1_Click(System::Object^ sender, System::EventArgs^ e) {
 		Entorno^ juego = gcnew Entorno();
 		juego->setNivel(NTejado);
@@ -133,5 +156,15 @@ namespace WarTragedy {
 		juego->ShowDialog();
 		delete juego;
 	}
-	};
+
+	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		Jg->setNivel(nivel);
+	}
+	private: System::Void MyForm_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+		Jg->movJugador(true, e->KeyCode);
+	}
+private: System::Void MyForm_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+	Jg->movJugador(false, e->KeyCode);
+}
+};
 }

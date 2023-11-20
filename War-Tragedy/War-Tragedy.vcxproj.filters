@@ -125,5 +125,8 @@
     <ClInclude Include="UI.h">
       <Filter>Archivos de encabezado\Escenarios</Filter>
     </ClInclude>
+    <ClInclude Include="HabitacionS.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

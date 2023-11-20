@@ -60,6 +60,7 @@ public:
 	void setdx(int dx) { this->dx = dx; }
 	void setdy(int dy) { this->dy = dy; }
 	void setancho(int ancho) { this->ancho = ancho; }
+	void setaumento(int aumento) { this->aumento = aumento; }
 	void setalto(int alto) { this->alto = alto; }
 
 	bool getActivo() { return this->activo; }

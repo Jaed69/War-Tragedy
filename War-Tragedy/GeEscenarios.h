@@ -3,7 +3,7 @@
 #include "Edificio.h"
 #include "Prado.h"
 #include "Escena.h"
-
+#include "HabitacionS.h"
 class GeEscenarios
 {
 private:
@@ -12,6 +12,7 @@ private:
 	Tejado* nivel1;
 	Edificio* nivel2;
 	Prado* nivel3;
+	HabitacionS* nivel0;
 	Escena* esce;
 
 	int t_evento;
@@ -22,6 +23,7 @@ public:
 		nivel1 = new Tejado();
 		nivel2 = new Edificio();
 		nivel3 = new Prado();
+		nivel0 = new HabitacionS();
 		esce = new Escena();
 
 		t_evento = 0;
@@ -39,15 +41,23 @@ public:
 
 		switch (nivel)
 		{
+		case habitacionS:
+			nivel0->T_Evento(ju); 
+			ju->setaumento(2); 
+			if (nivel0->verTer()) nivel = habitacionS;
+			break;
 		case NTejado:
 			nivel1->T_Evento(ju);
+			ju->setaumento(1);
 			if (nivel1->verTer()) nivel = NEdificio;
 			break;
 		case NEdificio:
+			ju->setaumento(1);
 			nivel2->T_Evento(ju);
 			if (nivel2->verTer()) nivel = NPrado;
 			break;
 		case NPrado:
+			ju->setaumento(1);
 			nivel3->T_Evento(ju);
 			if (nivel3->verTer()) nivel = FinalM;
 			break;
@@ -71,6 +81,9 @@ public:
 	Rectangle getMargen(){
 		switch (nivel)
 		{
+		case habitacionS:
+			return nivel0->getMargen();
+			break;
 		case NTejado:
 			return nivel1->getMargen();
 			break;
@@ -87,6 +100,9 @@ public:
 	Rectangle getBorde() {
 		switch (nivel)
 		{
+		case habitacionS:
+			return nivel0->getBorde();
+			break;
 		case NTejado:
 			return nivel1->getBorde();
 			break;
@@ -131,6 +147,9 @@ public:
 	void Escenario(BufferedGraphics^ bf, Jugador*ju) {
 		switch (nivel)
 		{
+		case habitacionS:
+			nivel0->animarFn(bf);
+			break;
 		case NTejado:
 			nivel1->animarFn(bf);
 			nivel1->animarEn(bf, ju);

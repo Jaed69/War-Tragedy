@@ -83,6 +83,7 @@ public:
 		geEs->Escenario(bf, jugador);
 		switch (geEs->getNivel())
 		{
+		case habitacionS:animarPl(bf); break;
 		case NTejado:
 		case NPrado:
 		case NEdificio:
