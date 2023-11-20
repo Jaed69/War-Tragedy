@@ -116,14 +116,14 @@
     <ClInclude Include="Pausa.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="UI.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="PanFinal.h">
       <Filter>Archivos de encabezado\Escenarios</Filter>
     </ClInclude>
     <ClInclude Include="Recursos.h">
       <Filter>Archivos de encabezado\Juego</Filter>
+    </ClInclude>
+    <ClInclude Include="UI.h">
+      <Filter>Archivos de encabezado\Escenarios</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
