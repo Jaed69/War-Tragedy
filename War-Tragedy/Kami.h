@@ -4,7 +4,6 @@
 
 class Kami :public Entidad {
 private:
-
 public:
 	Kami(int _x, int _y):Entidad(_x, _y, 40, 40, 1) {
 		indX = indY = 0;
@@ -13,7 +12,6 @@ public:
 		vel = 10;
 	}
 	~Kami() {}
-
 	void mover(Entidad* enem, BufferedGraphics^ bg) {
 		Bitmap^ bm = gcnew Bitmap("assets/Enemigo/Avion/image.png");
 		switch (direccion)
