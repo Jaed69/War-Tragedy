@@ -43,7 +43,7 @@ public:
 		jugador->disparar(x, y);
 	}
 
-	void movPF(Keys tecla) { geEs->movPF(tecla); }
+	bool movPF(Keys tecla) { return geEs->movPF(tecla, jugador); }
 
 	void movJugador(bool teclapres, Keys tecla) {
 

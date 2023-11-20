@@ -127,7 +127,8 @@ namespace WarTragedy {
 			delete pausa;
 		}
 		Jg->movJugador(true, e->KeyCode);
-		Jg->movPF(e->KeyCode);
+		if (Jg->movPF(e->KeyCode))this->Close();
+		
 	}
 	private: System::Void Entorno_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		Jg->movJugador(false, e->KeyCode);

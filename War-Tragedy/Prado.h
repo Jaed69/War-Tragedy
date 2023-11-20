@@ -13,6 +13,8 @@ private:
 	GeEnemigos* geE;
 	vector<Obstaculo*> obstaculos;
 
+	bool termino;
+
 public:
 	Prado() {
 		t_evento = 0;
@@ -23,8 +25,12 @@ public:
 		geA = new GeAliado();
 		geE = new GeEnemigos();
 		geE->setlimiteHeli(1);
+
+		termino = false;
 	}
 	~Prado() {}
+
+	bool verTer() { return termino; }
 
 	void T_Evento(Jugador* ju) {
 		t_evento++;
@@ -38,6 +44,8 @@ public:
 		if (t_evento % 52 == 0)geE->dispararHeli(ju->getx(),ju->gety());
 		if (t_evento % 30 == 0)geE->dispararSol(ju->getx(), ju->gety());
 		if (t_evento ==50) geA->crearMon();
+
+		if (t_evento == 500)termino = true;
 		
 	}
 

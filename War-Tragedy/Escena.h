@@ -32,8 +32,8 @@ public:
 			bf->Graphics->DrawImage(rex, borde, borde, GraphicsUnit::Pixel);
 			break;
 		case Keys::W:
-		default:
 			bf->Graphics->DrawImage(rpa, borde, borde, GraphicsUnit::Pixel);
+		default:
 			break;
 		}
 

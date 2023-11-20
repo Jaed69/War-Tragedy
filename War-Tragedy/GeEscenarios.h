@@ -45,11 +45,11 @@ public:
 			break;
 		case NEdificio:
 			nivel2->T_Evento(ju);
-			if (nivel1->verTer()) nivel = NEdificio;
+			if (nivel2->verTer()) nivel = NPrado;
 			break;
 		case NPrado:
 			nivel3->T_Evento(ju);
-			if (nivel1->verTer()) nivel = NEdificio;
+			if (nivel3->verTer()) nivel = FinalM;
 			break;
 		case FinalM:
 			break;
@@ -65,7 +65,6 @@ public:
 
 	}
 
-	void movPF(Keys tecla) { this->tecla = tecla; }
 	void setNivel(Niveles nivel) { this->nivel = nivel; }
 	Niveles getNivel() { return nivel; }
 
@@ -102,6 +101,32 @@ public:
 		}
 	}
 
+	bool movPF(Keys entrada, Jugador* ju) { 
+		switch (entrada)
+		{
+		case Keys::W:
+		case Keys::S:
+			tecla = entrada;
+			break;
+		case Keys::Enter:
+			switch (tecla)
+			{
+			case Keys::W:
+				ju->setvida(100);
+				nivel = NTejado;
+				break;
+			case Keys::S:
+				return true;
+				break;
+			default:
+				break;
+			}
+			break;
+		default:
+			break;
+		}
+		return false;
+	}
 
 	void Escenario(BufferedGraphics^ bf, Jugador*ju) {
 		switch (nivel)

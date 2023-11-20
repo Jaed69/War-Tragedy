@@ -13,6 +13,8 @@ private:
 	GeEnemigos* geE;
 	vector<Obstaculo*> obstaculos;
 
+	bool termino;
+
 public:
 	Edificio() {
 		t_evento = 0;
@@ -25,8 +27,12 @@ public:
 		crearObs(656, 276, 50, 50);
 		crearObs(656, 476, 50, 50);
 		geE->crearSer();
+
+		termino = false;
 	}
 	~Edificio() {}
+
+	bool verTer() { return termino; }
 
 	void T_Evento(Jugador* ju) {
 		t_evento++;
@@ -37,6 +43,8 @@ public:
 		if (t_evento == 102) geE->crearBom(640, 260);
 		if (t_evento == 103) geE->crearBom(640, 460);
 		geE->coordsserpent(ju->getx(), ju->gety());
+
+		if (t_evento == 500) termino = true;
 	}
 
 	Rectangle getMargen() { return margen; }
