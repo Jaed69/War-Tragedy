@@ -72,21 +72,23 @@ namespace WarTragedy {
 			// 
 			// btnNivel1
 			// 
-			this->btnNivel1->Location = System::Drawing::Point(135, 73);
-			this->btnNivel1->Margin = System::Windows::Forms::Padding(4, 2, 4, 2);
+			this->btnNivel1->Location = System::Drawing::Point(240, 111);
+			this->btnNivel1->Margin = System::Windows::Forms::Padding(7, 2, 7, 2);
 			this->btnNivel1->Name = L"btnNivel1";
-			this->btnNivel1->Size = System::Drawing::Size(100, 28);
+			this->btnNivel1->Size = System::Drawing::Size(177, 42);
 			this->btnNivel1->TabIndex = 0;
 			this->btnNivel1->Text = L"Nivel1";
 			this->btnNivel1->UseVisualStyleBackColor = true;
 			this->btnNivel1->Click += gcnew System::EventHandler(this, &MyForm::btnNivel1_Click);
+			this->btnNivel1->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MyForm::btnNivel1_KeyDown);
+			this->btnNivel1->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &MyForm::btnNivel1_KeyUp);
 			// 
 			// btnNivel2
 			// 
-			this->btnNivel2->Location = System::Drawing::Point(135, 133);
-			this->btnNivel2->Margin = System::Windows::Forms::Padding(4, 2, 4, 2);
+			this->btnNivel2->Location = System::Drawing::Point(240, 202);
+			this->btnNivel2->Margin = System::Windows::Forms::Padding(7, 2, 7, 2);
 			this->btnNivel2->Name = L"btnNivel2";
-			this->btnNivel2->Size = System::Drawing::Size(100, 28);
+			this->btnNivel2->Size = System::Drawing::Size(177, 42);
 			this->btnNivel2->TabIndex = 1;
 			this->btnNivel2->Text = L"Nivel2";
 			this->btnNivel2->UseVisualStyleBackColor = true;
@@ -94,10 +96,10 @@ namespace WarTragedy {
 			// 
 			// btnNivel3
 			// 
-			this->btnNivel3->Location = System::Drawing::Point(135, 198);
-			this->btnNivel3->Margin = System::Windows::Forms::Padding(4, 2, 4, 2);
+			this->btnNivel3->Location = System::Drawing::Point(240, 300);
+			this->btnNivel3->Margin = System::Windows::Forms::Padding(7, 2, 7, 2);
 			this->btnNivel3->Name = L"btnNivel3";
-			this->btnNivel3->Size = System::Drawing::Size(100, 28);
+			this->btnNivel3->Size = System::Drawing::Size(177, 42);
 			this->btnNivel3->TabIndex = 2;
 			this->btnNivel3->Text = L"Nivel3";
 			this->btnNivel3->UseVisualStyleBackColor = true;
@@ -119,6 +121,7 @@ namespace WarTragedy {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedToolWindow;
 			this->Margin = System::Windows::Forms::Padding(0);
 			this->Name = L"MyForm";
+			this->SizeGripStyle = System::Windows::Forms::SizeGripStyle::Hide;
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"MyForm";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
@@ -165,6 +168,12 @@ namespace WarTragedy {
 	}
 private: System::Void MyForm_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 	Jg->movJugador(false, e->KeyCode);
+}
+private: System::Void btnNivel1_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+	Jg->movJugador(false, e->KeyCode);
+}
+private: System::Void btnNivel1_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
+	Jg->movJugador(true, e->KeyCode);
 }
 };
 }
