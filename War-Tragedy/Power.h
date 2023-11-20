@@ -5,8 +5,6 @@ enum poderes {banana,botiquin, arma, armadura, radio, municion};
 
 class Power :public Entidad {
 private:
-	vector<Bala*> vBala;
-	int ammo;
 	poderes tipo;
 public:
 	Power(int x, int y, poderes type) :Entidad(x, y, 0, 0, 10) {
@@ -15,11 +13,11 @@ public:
 		dx = dy = indX = indY = 0; vel = 0;
 		Rx = 0;
 		Ry = 0;
-		Rancho = 11;
-		Ralto = 11;
+		Rancho = alto;
+		Ralto = ancho;
 		aumento = 1;
-		ammo = 50;
 		tipo = type;
+		activo = true;
 	}
 	~Power() {}
 
@@ -34,17 +32,23 @@ public:
 		{
 		case banana:
 			ancho = 12;
-			alto = 10;
+			alto = 10; 
+			Rancho = 12;
+			Ralto = 10;
 			dibujar(bg, banan);
 			break;
 		case botiquin:
 			alto = 12;
 			ancho = 16;
+			Rancho = 12;
+			Ralto = 16;
 			dibujar(bg, Boti);
 			break;
 		case arma:
 			ancho = 35;
 			alto = 12;
+			Rancho = 35;
+			Ralto = 12;
 			dibujar(bg, gun);
 
 			break;
@@ -54,11 +58,15 @@ public:
 		case radio:
 			ancho = 9;
 			alto = 14;
+			Rancho = 9;
+			Ralto = 14;
 			dibujar(bg, rad);
 			break;
 		case municion:
 			ancho = 23;
 			alto = 12;
+			Rancho = 23;
+			Ralto = 12;
 			dibujar(bg, muni);
 			break;
 
@@ -72,19 +80,8 @@ public:
 		delete rad;
 		delete muni;
 	}
-
-	void disparar(int fx, int fy) {
-		Bala* oBala = new Bala(x, y, fx, fy);
-		oBala->setRnRl(10, 10);
-		vBala.push_back(oBala);
-		ammo--;
+	poderes gettype() {
+		return tipo;		
 	}
 
-	void moverB(BufferedGraphics^ bg, Rectangle rec) {
-		for (int i = 0; i < vBala.size(); i++)
-		{
-			if (vBala.at(i)->getActivo()) vBala.at(i)->mover(bg);
-			else vBala.erase(vBala.begin() + i);
-		}
-	}
 };
