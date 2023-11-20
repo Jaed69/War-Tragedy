@@ -15,16 +15,17 @@ private:
 public:
 	GeAliado() {
 		t_evento = 0;
-		crearRandomPower();
-
 	}
 	~GeAliado() {}
 
-	void T_Evento(Jugador* ju) {
+	void T_Evento(Jugador* ju, Rectangle margen) {
 		t_evento++;
 		//colision de kami está en mover porqye no tiene sentido que no esté ahi para que haga daño a la entidad
+		if (t_evento == 5) {
+			crearRandomPower(margen);
+		}
 		if (t_evento % 50 == 0) {
-			crearRandomPower();
+			crearRandomPower(margen);
 		}
 		colPUp(ju);
 
@@ -38,58 +39,58 @@ public:
 		AvionAliado* avi = new AvionAliado(100, 0);
 		Aliados.push_back(avi);
 	}
-	void crearBanana() {
+	void crearBanana(Rectangle margen) {
 		Random r;
-		Power* pow = new Power(r.Next(256, 1020), r.Next(176, 608), banana);//poner random x y
+		Power* pow = new Power(r.Next(margen.X, margen.X+margen.Width), r.Next(margen.Y, margen.Y + margen.Height), banana);//poner random x y
 		Powers.push_back(pow);
 	}
-	void crearBotiquin() {
+	void crearBotiquin(Rectangle margen) {
 		Random r;
-		Power* pow = new Power(r.Next(256, 1020), r.Next(176, 608), botiquin);//poner random x y
+		Power* pow = new Power(r.Next(margen.X, margen.X + margen.Width), r.Next(margen.Y, margen.Y + margen.Height), botiquin);
 		Powers.push_back(pow);
 	}
-	void crearArmadura() {
+	void crearArmadura(Rectangle margen) {
 		Random r;
-		Power* pow = new Power(r.Next(256, 1020), r.Next(176, 608), armadura);//poner random x y
+		Power* pow = new Power(r.Next(margen.X, margen.X + margen.Width), r.Next(margen.Y, margen.Y + margen.Height), armadura);
 		Powers.push_back(pow);
 
 	}
-	void crearRadio() {
+	void crearRadio(Rectangle margen) {
 		Random r;
-		Power* pow = new Power(r.Next(256, 1020), r.Next(176, 608), radio);//poner random x y
+		Power* pow = new Power(r.Next(margen.X, margen.X + margen.Width), r.Next(margen.Y, margen.Y + margen.Height), radio);
 		Powers.push_back(pow);
 	}
-	void crearArma() {
+	void crearArma(Rectangle margen) {
 		Random r;
-		Power* pow = new Power(r.Next(256, 1020), r.Next(176, 608), arma);//poner random x y
+		Power* pow = new Power(r.Next(margen.X, margen.X + margen.Width), r.Next(margen.Y, margen.Y + margen.Height), arma);
 		Powers.push_back(pow);
 	}
-	void crearAmmo() {
+	void crearAmmo(Rectangle margen) {
 		Random r;
-		Power* pow = new Power(r.Next(256, 1020), r.Next(176, 608), municion);//poner random x y
+		Power* pow = new Power(r.Next(margen.X, margen.X + margen.Width), r.Next(margen.Y, margen.Y + margen.Height), municion);
 		Powers.push_back(pow);
 	}
-	void crearRandomPower() {
+	void crearRandomPower(Rectangle margen) {
 		Random randi;
 		switch (randi.Next(1, 8))
 		{
 		case 1:
-			crearAmmo();
+			crearAmmo(margen);
 			break;
 		case 2:
-			crearArma();
+			crearArma(margen);
 			break;
 		case 3:
-			crearArmadura();
+			crearArmadura(margen);
 			break;
 		case 4:
-			crearBanana();
+			crearBanana(margen);
 			break;
 		case 5:
-			crearBotiquin();
+			crearBotiquin(margen);
 			break;
 		case 6:
-			crearRadio();
+			crearRadio(margen);
 			break;
 		default:
 			break;
@@ -172,7 +173,7 @@ public:
 					ju->setvida(ju->getvida() + 1);//corregir puede
 					break;
 				case arma:
-					//agregar velocida de disparo
+					//agregar velocida de disparo o mas daño nose
 					break;
 				case armadura:
 					ju->setchaleco(ju->getchaleco() + 1);

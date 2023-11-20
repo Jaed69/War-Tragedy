@@ -34,7 +34,7 @@ public:
 
 	void T_Evento(Jugador* ju) {
 		t_evento++;
-		geA->T_Evento(ju);
+		geA->T_Evento(ju, margen);
 		geE->T_Evento(ju);
 
 		if (t_evento % 40 == 0) geE->crearHel();
@@ -75,7 +75,9 @@ public:
 	}
 
 	void animarAl(BufferedGraphics^ bf) {
+		geA->moverKami(geE->getRandomEnem(),bf);
 		geA->moverMono(bf, borde);
+		geA->animarpUp(bf);
 	}
 
 };

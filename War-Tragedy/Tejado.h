@@ -33,10 +33,9 @@ public:
 	//Zona para la creacion de eventos segun el tiempo
 	void T_Evento(Jugador* ju) {//añadir jugador
 		t_evento++;
-		geA->T_Evento(ju);
 		geE->T_Evento(ju);
+		geA->T_Evento(ju, margen);
 		//geE->coordsserpent(ju->getx(),ju->gety());
-				
 		if(t_evento%2 == 0) geE->conAvi(margen);
 		if (t_evento == 20) geE->crearAvi(Arriba);
 		if (t_evento == 120) geE->crearAvi(Izquierda);
@@ -59,7 +58,7 @@ public:
 
 		bf->Graphics->DrawImage(fondo, borde, borde, GraphicsUnit::Pixel);
 
-		bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), borde);
+		bf->Graphics->DrawRectangle(gcnew Pen(Color::Red), borde);
 		bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), margen);
 		delete fondo;
 	}
@@ -72,6 +71,10 @@ public:
 		geE->moverBalasHeli(bf, borde, ju);
 		//geE->animarSer(bf, borde);
 	}
-
+	void animarAl(BufferedGraphics^ bf) { //agregar todos los aliados
+		geA->moverKami(geE->getRandomEnem(), bf);
+		geA->moverMono(bf, borde);
+		geA->animarpUp(bf);
+	}
 
 };
