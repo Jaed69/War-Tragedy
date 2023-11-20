@@ -166,6 +166,7 @@ public:
 			switch (ultDireccion) {
 			case Arriba:
 				if (!Container(rec)) {
+					vida = -1;
 					//dead or smth
 				}
 				else {
@@ -175,6 +176,7 @@ public:
 				break;
 			case Abajo:
 				if (!Container(rec)) {
+					vida = -1;
 					//dead or smth
 				}
 				else {
@@ -184,6 +186,7 @@ public:
 				break;
 			case Derecha:
 				if (!Container(rec)){
+					vida = -1;
 					//dead or smth
 				}
 				else {
@@ -193,6 +196,7 @@ public:
 				break;
 			case Izquierda:
 				if (!Container(rec)) {
+					vida = -1;
 					//dead or smth
 				}
 				else {
