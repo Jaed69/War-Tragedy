@@ -15,18 +15,17 @@ private:
 public:
 	GeAliado(){
 		t_evento = 0;
-		crearBotiquin();
-		crearAmmo();
-		//crearArmadura();
-		crearBanana();
-		crearRadio();
-		crearArma();
+		crearRandomPower();
+
 	}
 	~GeAliado(){}
 
 	void T_Evento(Jugador* ju) {
 		t_evento++;
 		//agregar colision de kami
+		if (t_evento % 50 == 0) {
+			crearRandomPower();
+		}
 		colPUp(ju);
 
 	}
@@ -40,30 +39,62 @@ public:
 		Aliados.push_back(avi);
 	}
 	void crearBanana() {
-		Power* pow = new Power(400, 450, banana);//poner random x y
+		Random r;
+		Power* pow = new Power(r.Next(256, 1020), r.Next(176, 608), banana);//poner random x y
 		Powers.push_back(pow);
 	}
 	void crearBotiquin() {
-		Power* pow = new Power(450, 450, botiquin);//poner random x y
+		Random r;
+		Power* pow = new Power(r.Next(256, 1020), r.Next(176, 608), botiquin);//poner random x y
 		Powers.push_back(pow);
 	}
 	void crearArmadura() {
-		Power* pow = new Power(500, 450, armadura);//poner random x y
+		Random r;
+		Power* pow = new Power(r.Next(256, 1020), r.Next(176, 608), armadura);//poner random x y
 		Powers.push_back(pow);
+
 	}
 	void crearRadio() {
-		Power* pow = new Power(550, 450, radio);//poner random x y
+		Random r;
+		Power* pow = new Power(r.Next(256, 1020), r.Next(176, 608), radio);//poner random x y
 		Powers.push_back(pow);
 	}
 	void crearArma() {
-		Power* pow = new Power(600, 450, arma);//poner random x y
+		Random r;
+		Power* pow = new Power(r.Next(256, 1020), r.Next(176, 608), arma);//poner random x y
 		Powers.push_back(pow);
 	}
 	void crearAmmo() {
-		Power* pow = new Power(650, 450, municion);//poner random x y
+		Random r;
+		Power* pow = new Power(r.Next(256, 1020), r.Next(176, 608), municion);//poner random x y
 		Powers.push_back(pow);
 	}
-
+	void crearRandomPower() {
+		Random randi;
+		switch (randi.Next(1,8))
+		{
+		case 1:
+			crearAmmo();
+			break;
+		case 2:
+			crearArma();
+			break;
+		case 3:
+			crearArmadura();
+			break;
+		case 4:
+			crearBanana();
+			break;
+		case 5:
+			crearBotiquin();
+			break;
+		case 6:
+			crearRadio();
+			break;
+		default:
+			break;
+		}
+	}
 	void crearKami() {
 		Kami* k = new Kami(0, 0);
 		Kamis.push_back(k);
