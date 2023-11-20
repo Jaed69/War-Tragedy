@@ -2,7 +2,7 @@
 #include "Tejado.h"
 #include "Edificio.h"
 #include "Prado.h"
-#include "Escenario.h"
+#include "Escena.h"
 
 class GeEscenarios
 {
@@ -12,22 +12,30 @@ private:
 	Tejado* nivel1;
 	Edificio* nivel2;
 	Prado* nivel3;
+	Escena* esce;
 
 	int t_evento;
+	Keys tecla;
 
 public:
 	GeEscenarios(){
 		nivel1 = new Tejado();
 		nivel2 = new Edificio();
 		nivel3 = new Prado();
+		esce = new Escena();
 
 		t_evento = 0;
+		tecla = Keys::W;
 	}
 
 	~GeEscenarios(){}
 
 	void T_Evento(Jugador* ju) {
 		t_evento++;
+
+		if (ju->getvida() <= 0) nivel = FinalM;
+		
+
 
 		switch (nivel)
 		{
@@ -57,7 +65,9 @@ public:
 
 	}
 
+	void movPF(Keys tecla) { this->tecla = tecla; }
 	void setNivel(Niveles nivel) { this->nivel = nivel; }
+	Niveles getNivel() { return nivel; }
 
 	Rectangle getMargen(){
 		switch (nivel)
@@ -112,6 +122,7 @@ public:
 			nivel3->animarAl(bf);
 			break;
 		case FinalM:
+			esce->animarFinal(bf, tecla);
 			break;
 		case FinalB:
 			break;

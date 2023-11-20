@@ -107,7 +107,7 @@
     <ClInclude Include="GeEscenarios.h">
       <Filter>Archivos de encabezado\Escenarios</Filter>
     </ClInclude>
-    <ClInclude Include="Escenario.h">
+    <ClInclude Include="Escena.h">
       <Filter>Archivos de encabezado\Escenarios</Filter>
     </ClInclude>
     <ClInclude Include="Flama.h">

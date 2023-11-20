@@ -135,7 +135,7 @@
     <ClInclude Include="Entorno.h">
       <FileType>CppForm</FileType>
     </ClInclude>
-    <ClInclude Include="Escenario.h" />
+    <ClInclude Include="Escena.h" />
     <ClInclude Include="Flama.h" />
     <ClInclude Include="GeAliados.h" />
     <ClInclude Include="GeEnemigos.h" />

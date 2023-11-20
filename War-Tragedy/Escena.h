@@ -1,7 +1,7 @@
 #pragma once
 #include "Recursos.h"
 
-class PanFinal
+class Escena
 {
 private:
 	int t_evento;
@@ -10,7 +10,7 @@ private:
 
 	bool termino;
 public:
-	PanFinal() {
+	Escena() {
 		t_evento = 0;
 		margen = Rectangle(256, 144, 768, 432);
 		borde = Rectangle(0, 0, 1280, 720);
@@ -18,7 +18,7 @@ public:
 		termino = false;
 	}
 
-	~PanFinal() {}
+	~Escena() {}
 
 	bool verTer() { return termino; }
 
@@ -28,20 +28,19 @@ public:
 
 		switch (tecla)
 		{
-		case Keys::W:
-			bf->Graphics->DrawImage(rpa, borde, borde, GraphicsUnit::Pixel);
-			break;
 		case Keys::S:
 			bf->Graphics->DrawImage(rex, borde, borde, GraphicsUnit::Pixel);
 			break;
+		case Keys::W:
 		default:
+			bf->Graphics->DrawImage(rpa, borde, borde, GraphicsUnit::Pixel);
 			break;
 		}
 
-		
-		
 
-	
+
+
+
 		delete rex; delete rpa;
 	}
 

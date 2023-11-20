@@ -43,13 +43,14 @@ public:
 		jugador->disparar(x, y);
 	}
 
+	void movPF(Keys tecla) { geEs->movPF(tecla); }
+
 	void movJugador(bool teclapres, Keys tecla) {
 
 		if (teclapres)
 		{
 			switch (tecla)
 			{
-			case Keys::I:; break;
 			case Keys::W:jugador->setDireccion(Arriba); break;
 			case Keys::A: jugador->setDireccion(Izquierda); break;
 			case Keys::S: jugador->setDireccion(Abajo); break;
@@ -73,10 +74,37 @@ public:
 
 	}
 
+	void animarPl(BufferedGraphics^ bf) {
+		jugador->animar(bf, geEs->getMargen());
+		jugador->moverB(bf, geEs->getBorde());
+
+	}
+	void jugar(BufferedGraphics^ bf) {
+		geEs->Escenario(bf, jugador);
+		switch (geEs->getNivel())
+		{
+		case NTejado:
+		case NPrado:
+		case NEdificio:
+			iu->movVida(bf, jugador->getvida());
+			iu->movChaleco(bf, jugador->getchaleco());
+			animarPl(bf);
+			break;
+		default:
+			break;
+		}
+
+		
+	}
+
+	void animarBala() {
+
+	}
+
 	void vida(BufferedGraphics^ bg) {
 		Bitmap^ vidaa = gcnew Bitmap("assets/UI/Vida.png");
-		int BarraVida=0;
-		if (jugador->getvida() ==100) BarraVida = 10;
+		int BarraVida = 0;
+		if (jugador->getvida() == 100) BarraVida = 10;
 		if (jugador->getvida() < 100 && jugador->getvida() > 89) BarraVida = 9;
 		if (jugador->getvida() <= 89 && jugador->getvida() > 78) BarraVida = 8;
 		if (jugador->getvida() <= 78 && jugador->getvida() > 67) BarraVida = 7;
@@ -91,20 +119,6 @@ public:
 		bg->Graphics->DrawImage(vidaa, zonaAumento, area, GraphicsUnit::Pixel);
 		delete vidaa;
 	}
-	void animarPl(BufferedGraphics^ bf) {
-		jugador->animar(bf, geEs->getMargen());
-		jugador->moverB(bf, geEs->getBorde());
 
-	}
-	void jugar(BufferedGraphics^ bf) {
-		geEs->Escenario(bf, jugador);
-		iu->movVida(bf, jugador->getvida());
-		iu->movChaleco(bf, jugador->getchaleco());
-		animarPl(bf);
-	}
-
-	void animarBala() {
-
-	}
 
 };
