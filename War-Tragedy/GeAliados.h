@@ -184,7 +184,7 @@ public:
 					crearAvi(margen);
 					break;
 				case armadura:
-					ju->setchaleco(ju->getchaleco() + 1);
+					ju->setchaleco(ju->getchaleco() + 20);
 					//agregar mas armor
 					break;
 				case radio:
