@@ -20,8 +20,8 @@ protected:
 	Rectangle zonaAumento;
 	Rectangle hitbox;
 	Rectangle Fhitbox;
+	bool explosion; 
 	int chaleco;
-
 public:
 	Entidad(){}
 
@@ -43,7 +43,7 @@ public:
 		aumento = 1;
 		activo = true;
 		this->vida = vida;
-		chaleco = 0;
+		explosion = false;
 	}
 
 	~Entidad(){}
@@ -57,7 +57,6 @@ public:
 	int getancho() { return this->ancho; }
 	int getalto() { return this->alto; }
 	void setvida(int vidas) { this->vida = vidas; }
-	void setvel(int vel) { this->vel = vel; }
 	void setx(int x) { this->x = x; }
 	void sety(int y) { this->y = y; }
 	void setdx(int dx) { this->dx = dx; }
@@ -93,6 +92,17 @@ public:
 	bool ColisionF(Rectangle ajeno) {
 		return Fhitbox.IntersectsWith(ajeno);
 	}
+	void animarexplosion(BufferedGraphics^ bg) {
+		Bitmap^ explo = gcnew Bitmap("assets/Efectos/Explosion SpriteSheet.png");
+		indX++;
+		if (indX >= 4)indY++;
+		if (indY >= 4)explosion = false;		
+		if (explosion == false) {
+			activo = false;
+		}
+		dibujar(bg, explo);
+		delete explo;
+	}
 
 	void dibujar(BufferedGraphics^ bg, Bitmap^ bm) {
 		area = Rectangle(indX * ancho, indY * alto, ancho, alto);
@@ -100,17 +110,21 @@ public:
 		hitbox = Rectangle(x + Rx, y + Ry, Rancho * aumento, Ralto * aumento);
 		Fhitbox = Rectangle(x + Rx + roundf(dx)*vel, y + Ry + roundf(dy)*vel, Rancho * aumento, Ralto * aumento);
 
-		bg->Graphics->DrawRectangle(gcnew Pen(Color::Green), Fhitbox);
-		bg->Graphics->DrawRectangle(gcnew Pen(Color::Blue), hitbox);
+		//bg->Graphics->DrawRectangle(gcnew Pen(Color::Green), Fhitbox);
+		//bg->Graphics->DrawRectangle(gcnew Pen(Color::Blue), hitbox);
 		//bg->Graphics->DrawRectangle(gcnew Pen(Color::Red), zonaAumento);
 		bg->Graphics->DrawImage(bm, zonaAumento, area, GraphicsUnit::Pixel);
-		if (vida <= 0) activo = false;
+		//if (vida <= 0) activo = false;
+		if (vida <= 0) {			
+			explosion = true; 
+		
+		}
+
 	}
-
-
 	int getchaleco() { return this->chaleco; }
 	void setchaleco(int chaleco) { this->chaleco = chaleco; }
-	void resDano(int dano) { 
+	void resDano(int dano) {
+		vida -= dano;
 		if (chaleco > 0) {
 			setchaleco(getchaleco() - (dano * 2));
 		}
