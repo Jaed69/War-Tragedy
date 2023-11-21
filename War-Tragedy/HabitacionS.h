@@ -38,7 +38,6 @@ public:
 		info = Rectangle(780, 485, 600*0.75, 300*0.75);
 		notas = Rectangle(100,360,200,300);
 		termino = false;
-		//geE->crearSer();
 	}
 	~HabitacionS() {}
 
@@ -82,6 +81,14 @@ public:
 		bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), estanteria);
 		bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), cama);
 		delete fondo;
+		delete mesaa;
+		delete notaa;
+		delete areaMesa;
+		delete areaEstanteria;
+		delete areainfo;
+		delete areanotas;
+		delete estanteriaa;
+		delete infoo;
 	}
 
 	void colisiones(BufferedGraphics^ bf, Jugador* ju) {
