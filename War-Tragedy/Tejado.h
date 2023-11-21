@@ -80,6 +80,7 @@ public:
 		geA->moverKami(geE->getRandomEnem(), bf);
 		geA->moverMono(bf, borde);
 		geA->animarpUp(bf);
+		geA->moverAvion(bf, borde);
 	}
 
 };

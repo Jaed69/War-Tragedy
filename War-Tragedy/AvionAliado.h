@@ -11,9 +11,13 @@ public:
 		direccion = Abajo;
 		aumento = 2;
 		vel = 10;
+		Rx = 0;
+		Ry = 0;
+		Rancho = ancho;
+		Ralto = alto;
 	}
 	~AvionAliado() {}
-	void mover(BufferedGraphics^ bg, Rectangle rec) {
+	void mover(BufferedGraphics^ bg) {
 		Bitmap^ avi = gcnew Bitmap("assets/Enemigo/Avion/image.png");
 
 		switch (direccion)
@@ -68,9 +72,9 @@ public:
 		delete avi;
 	}
 	void disparar() {
-		Bala* oBala = new Bala(x, y, x +20, y);
+		Bala* oBala = new Bala(x+(ancho), y+(alto/2), x + (ancho) +20, y + (alto / 2));
 		oBala->setRnRl(10, 10);
-		Bala* oBala2 = new Bala(x, y, x -20, y);	
+		Bala* oBala2 = new Bala(x + (ancho / 2), y + (alto / 2), x + (ancho / 2) -20, y + (alto / 2));
 		oBala->setRnRl(10, 10);
 		vBala.push_back(oBala);
 		vBala.push_back(oBala2);
