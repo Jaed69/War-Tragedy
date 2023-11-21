@@ -25,14 +25,16 @@ public:
 		ammo = 50;
 		chaleco = 100;
 		danado = false;
+		
+
 	}
 
 	~Jugador(){}
 
+	bool getDash() { return this->dash; }
+	void setDash(bool dash) { this->dash = dash; }
 	int getchaleco() { return this->chaleco; }
 	void setchaleco(int chaleco) { this->chaleco = chaleco; }
-
-	int getchaleco() { return this->chaleco; }
 	int getbulletsize() { return vBala.size(); }
 	Direcciones getDir() { return direccion; }
 	Direcciones getUltDir() { return ultDireccion; }
@@ -40,9 +42,6 @@ public:
 	void setUltDir(Direcciones ultdir) { ultDireccion = ultdir; }
 
 
-	int getbulletsize() {
-		return vBala.size();
-	}
 	void animar(BufferedGraphics^ bg, Rectangle rec) {
 		Bitmap^ bm = gcnew Bitmap("assets/Personaje/Personaje.png");
 
@@ -231,12 +230,18 @@ public:
 	void Dano() { danado = true; }
 
 	void disparar(int fx, int fy) {
+		SoundPlayer^ shot = gcnew SoundPlayer("assets/Efectos/shot.wav");
+		SoundPlayer^ nshot = gcnew SoundPlayer("assets/Efectos/n_shot.wav");
 		if (ammo > 0) {
+			shot->Play();
 			Bala* oBala = new Bala(x, y, fx, fy);
 			oBala->setRnRl(10, 10);
 			vBala.push_back(oBala);
 			ammo--;
-		}		
+		}
+		else nshot->Play();
+
+		delete shot; delete nshot;
 	}
 
 	void moverB(BufferedGraphics^ bg, Rectangle rec) {
