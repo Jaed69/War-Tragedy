@@ -6,6 +6,7 @@
 #include "Avion.h"
 #include "Serpiente.h"
 #include "Flama.h"
+#include "Explosion.h"
 
 
 class GeEnemigos
@@ -21,6 +22,7 @@ private:
 	vector<Avion*> aviones;
 	vector<Serpiente*> serpientes;
 	vector<Flama*> flamas;
+	vector<Explosion*> explosiones;
 	int sArriba, sAbajo, sDerecha, sIzquierda;
 	int sLimArriba, sLimAbajo, sLimDerecha, sLimIzquierda;
 	int cantHeli, limCantHeli;
@@ -193,13 +195,28 @@ public:
 		Flama* lla = new Flama(x, y);
 		flamas.push_back(lla);
 	}
+	void crearExplosion(int x, int y) {
+		Explosion* exp = new Explosion(x, y);
+		explosiones.push_back(exp);
+	}
+	void animarExplosiones(BufferedGraphics^ bg) {		
+		for (int i = 0; i < explosiones.size(); i++) {
+			if (explosiones.at(i)->getActivo())
+				explosiones.at(i)->animar(bg);
+			else
+				explosiones.erase(explosiones.begin() + i);
+		}
+	}
 
 	void animarSol(BufferedGraphics^ bg, Rectangle con) {
 		for (int i = 0; i < soldados.size(); i++) {
 			if (soldados.at(i)->getActivo())
 				soldados.at(i)->mover(bg, con);
-			else
+			else {
+				crearExplosion(soldados.at(i)->getx(), soldados.at(i)->gety());
 				soldados.erase(soldados.begin() + i);
+			}
+
 		}
 	}
 
@@ -217,6 +234,7 @@ public:
 			if (helicopteros.at(i)->getActivo())
 				helicopteros.at(i)->mover(bg, con);
 			else {
+				crearExplosion(helicopteros.at(i)->getx(), helicopteros.at(i)->gety());
 				helicopteros.erase(helicopteros.begin() + i);
 				lim_hel++;
 			}
@@ -227,8 +245,10 @@ public:
 		for (int i = 0; i < aviones.size(); i++) {
 			if (aviones.at(i)->getActivo())
 				aviones.at(i)->mover(bg, con);
-			else
+			else {
+				crearExplosion(aviones.at(i)->getx(), aviones.at(i)->gety());
 				aviones.erase(aviones.begin() + i);
+			}
 		}
 	}
 
