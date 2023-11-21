@@ -1,4 +1,6 @@
 #pragma once
+#include "Juego.h"
+#include "Archivo.h"
 
 namespace WarTragedy {
 
@@ -14,7 +16,18 @@ namespace WarTragedy {
 	/// </summary>
 	public ref class Pausa : public System::Windows::Forms::Form
 	{
+	private:
+		Juego* ju;
+		Archivo* arch = new Archivo;
+		bool salir = false;
+
+		   bool restart = false;
+
 	public:
+		void setDatos(Juego* jg) { ju = jg; }
+		bool getSalir() { return salir; }
+		bool getRest() { return restart; }
+
 		Pausa(void)
 		{
 			InitializeComponent();
@@ -81,7 +94,7 @@ namespace WarTragedy {
 			this->Save->Size = System::Drawing::Size(40, 40);
 			this->Save->TabIndex = 0;
 			this->Save->UseVisualStyleBackColor = false;
-			this->Save->Click += gcnew System::EventHandler(this, &Pausa::button1_Click);
+			this->Save->Click += gcnew System::EventHandler(this, &Pausa::Save_Click);
 			// 
 			// Restart
 			// 
@@ -105,6 +118,7 @@ namespace WarTragedy {
 			this->Exit->Size = System::Drawing::Size(40, 40);
 			this->Exit->TabIndex = 2;
 			this->Exit->UseVisualStyleBackColor = true;
+			this->Exit->Click += gcnew System::EventHandler(this, &Pausa::Exit_Click);
 			// 
 			// label1
 			// 
@@ -117,7 +131,6 @@ namespace WarTragedy {
 			this->label1->Size = System::Drawing::Size(164, 38);
 			this->label1->TabIndex = 3;
 			this->label1->Text = L"GUARDAR";
-			this->label1->Click += gcnew System::EventHandler(this, &Pausa::label1_Click);
 			// 
 			// label2
 			// 
@@ -142,7 +155,6 @@ namespace WarTragedy {
 			this->label3->Size = System::Drawing::Size(108, 38);
 			this->label3->TabIndex = 5;
 			this->label3->Text = L"SALIR";
-			this->label3->Click += gcnew System::EventHandler(this, &Pausa::label3_Click);
 			// 
 			// Pausa
 			// 
@@ -157,7 +169,7 @@ namespace WarTragedy {
 			this->Controls->Add(this->Restart);
 			this->Controls->Add(this->Save);
 			this->Cursor = System::Windows::Forms::Cursors::Hand;
-			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedToolWindow;
 			this->Name = L"Pausa";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Pausa";
@@ -166,13 +178,20 @@ namespace WarTragedy {
 
 		}
 #pragma endregion
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	private: System::Void Restart_Click(System::Object^ sender, System::EventArgs^ e) {
+		restart = true;
+		this->Close();
 	}
-	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void Save_Click(System::Object^ sender, System::EventArgs^ e) {
+		arch->save(ju);
 	}
-private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void Restart_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void Exit_Click(System::Object^ sender, System::EventArgs^ e) {
+		salir = true;
+		this->Close();
+	}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	arch->load(ju);
 }
 };
 }

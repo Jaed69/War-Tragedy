@@ -38,6 +38,25 @@ public:
 	}
 
 	void setNivel(Niveles nivel) { geEs->setNivel(nivel); }
+	Niveles getNivel() { return geEs->getNivel(); }
+
+	int getVidaJu() { return jugador->getvida(); }
+	int getChalJu() { return jugador->getchaleco(); }
+	int getXJu() { return jugador->getx(); }
+	int getYJu() { return jugador->gety(); }
+	Direcciones getDir() { return jugador->getDir(); }
+	Direcciones getUltDir() { return jugador->getUltDir(); }
+	int getT_Evento() { return t_evento; }
+
+	void setVidaJu(int vida) { jugador->setvida(vida); }
+	void setChalJu(int chal) { jugador->setchaleco(chal); }
+	void setXJu(int x) { jugador->setx(x); }
+	void setYJu(int y) { jugador->sety(y); }
+	void setDir(Direcciones dir) { jugador->setDir(dir); }
+	void setUltDir(Direcciones ultdir) { return jugador->setUltDir(ultdir); }
+	void setT_Evento(int time) { t_evento = time; }
+
+
 
 	void disparar(int x, int y) {
 		jugador->disparar(x, y);
@@ -120,6 +139,9 @@ public:
 		bg->Graphics->DrawImage(vidaa, zonaAumento, area, GraphicsUnit::Pixel);
 		delete vidaa;
 	}
+
+
+
 
 
 };

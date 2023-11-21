@@ -126,6 +126,7 @@
     <ClCompile Include="Pausa.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Archivo.h" />
     <ClInclude Include="Avion.h" />
     <ClInclude Include="AvionAliado.h" />
     <ClInclude Include="Bala.h" />

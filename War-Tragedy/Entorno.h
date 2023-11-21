@@ -11,6 +11,7 @@ namespace WarTragedy {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Media;
 
 	/// <summary>
 	/// Resumen de Entorno
@@ -20,7 +21,10 @@ namespace WarTragedy {
 	private:
 		Juego* Jg;
 		Niveles nivel = NTejado;
+		Niveles nivelAct;
 		Pausa^ pausa;
+		SoundPlayer^ abrir = gcnew SoundPlayer("assets/UI/Abrir.wav");
+		SoundPlayer^ cerrar = gcnew SoundPlayer("assets/UI/Cerrar.wav");
 	private: System::Windows::Forms::Timer^ Timer_Eventos;
 	private: System::Windows::Forms::Timer^ Timer_Bala;
 
@@ -113,6 +117,7 @@ namespace WarTragedy {
 		BufferedGraphicsContext^ espacioBuffer = BufferedGraphicsManager::Current;
 		BufferedGraphics^ buffer = espacioBuffer->Allocate(g, this->ClientRectangle);
 
+		nivelAct = Jg->getNivel();
 		Jg->jugar(buffer);
 		buffer->Render(g);
 		delete buffer; delete espacioBuffer; delete g;
@@ -122,7 +127,17 @@ namespace WarTragedy {
 			this->Timer_Juego->Enabled = false;
 			this->Timer_Eventos->Enabled = false;
 			pausa = gcnew Pausa();
+			pausa->setDatos(Jg);
+			abrir->Play();
 			pausa->ShowDialog();
+			cerrar->Play();
+			if (pausa->getSalir()) this->Close();
+			if (pausa->getRest()){
+				delete Jg;
+				Jg = new Juego();
+				Jg->setNivel(nivelAct);
+			}
+
 			this->Timer_Juego->Enabled = true;
 			this->Timer_Eventos->Enabled = true;
 			delete pausa;
