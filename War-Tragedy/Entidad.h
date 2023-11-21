@@ -20,7 +20,8 @@ protected:
 	Rectangle zonaAumento;
 	Rectangle hitbox;
 	Rectangle Fhitbox;
-
+	bool explosion; 
+	int chaleco;
 public:
 	Entidad(){}
 
@@ -42,6 +43,8 @@ public:
 		aumento = 1;
 		activo = true;
 		this->vida = vida;
+		explosion = false;
+		chaleco = 0;
 	}
 
 	~Entidad(){}
@@ -90,7 +93,7 @@ public:
 	bool ColisionF(Rectangle ajeno) {
 		return Fhitbox.IntersectsWith(ajeno);
 	}
-
+	
 	void dibujar(BufferedGraphics^ bg, Bitmap^ bm) {
 		area = Rectangle(indX * ancho, indY * alto, ancho, alto);
 		zonaAumento = Rectangle(x, y, ancho * aumento, alto * aumento);
@@ -101,11 +104,25 @@ public:
 		//bg->Graphics->DrawRectangle(gcnew Pen(Color::Blue), hitbox);
 		//bg->Graphics->DrawRectangle(gcnew Pen(Color::Red), zonaAumento);
 		bg->Graphics->DrawImage(bm, zonaAumento, area, GraphicsUnit::Pixel);
-		if (vida <= 0) activo = false;
-	}
+		if (vida <= 0) activo = false;		
+		
+		/*if (vida <= 0) {
+			explosion = true; 
+		
+		}
+		*/
 
-	void resDano(int dano) { 
-		vida -= dano; 
+	}
+	int getchaleco() { return this->chaleco; }
+	void setchaleco(int chaleco) { this->chaleco = chaleco; }
+	void resDano(int dano) {
+		if (chaleco > 0) {
+			setchaleco(getchaleco() - (dano * 2));
+		}
+		else {
+			vida -= dano;
+
+		}
 	}
 
 

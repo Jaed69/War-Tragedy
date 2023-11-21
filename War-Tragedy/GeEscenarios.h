@@ -43,22 +43,22 @@ public:
 		{
 		case habitacionS:
 			nivel0->T_Evento(ju); 
-			ju->setaumento(2); 
+			ju->setaumento(2); ju->setvel(15);
 			if (nivel0->verTer()) nivel = habitacionS;
 			break;
 		case NTejado:
 			nivel1->T_Evento(ju);
-			ju->setaumento(1);
+			ju->setaumento(1); ju->setvel(8);
 			if (nivel1->verTer()) nivel = NEdificio;
 			break;
 		case NEdificio:
 			ju->setaumento(1);
-			nivel2->T_Evento(ju);
+			nivel2->T_Evento(ju); ju->setvel(8);
 			if (nivel2->verTer()) nivel = NPrado;
 			break;
 		case NPrado:
 			ju->setaumento(1);
-			nivel3->T_Evento(ju);
+			nivel3->T_Evento(ju); ju->setvel(8);
 			if (nivel3->verTer()) nivel = FinalM;
 			break;
 		case FinalM:
@@ -149,6 +149,7 @@ public:
 		{
 		case habitacionS:
 			nivel0->animarFn(bf);
+			nivel0->colisiones(bf, ju);
 			break;
 		case NTejado:
 			nivel1->animarFn(bf);

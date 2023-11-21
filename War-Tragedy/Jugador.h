@@ -5,7 +5,6 @@
 class Jugador:public Entidad
 {
 private:
-	int chaleco;
 	bool dash;
 	vector<Bala*> vBala;
 	int ammo;
@@ -32,8 +31,8 @@ public:
 
 	int getchaleco() { return this->chaleco; }
 	void setchaleco(int chaleco) { this->chaleco = chaleco; }
-	bool getDash() { return dash; }
-	void setDash(bool dash) { this->dash = dash; }
+
+	int getchaleco() { return this->chaleco; }
 	int getbulletsize() { return vBala.size(); }
 	Direcciones getDir() { return direccion; }
 	Direcciones getUltDir() { return ultDireccion; }
@@ -41,6 +40,9 @@ public:
 	void setUltDir(Direcciones ultdir) { ultDireccion = ultdir; }
 
 
+	int getbulletsize() {
+		return vBala.size();
+	}
 	void animar(BufferedGraphics^ bg, Rectangle rec) {
 		Bitmap^ bm = gcnew Bitmap("assets/Personaje/Personaje.png");
 

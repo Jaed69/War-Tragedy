@@ -70,6 +70,7 @@ public:
 		//geE->animarHel(bf,);
 		geE->animarBom(bf);
 		geE->animarSer(bf, borde, obstaculos);
+		geE->animarExplosiones(bf);
 		animarObs(bf);
 	}
 	//Zona en qeu se codifica el comportamiento de los alidos
@@ -77,6 +78,7 @@ public:
 		geA->moverKami(geE->getRandomEnem(),bf);
 		geA->moverMono(bf, borde);
 		geA->animarpUp(bf);
+		geA->moverAvion(bf, borde);
 		animarObs(bf);
 	}
 
