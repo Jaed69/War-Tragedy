@@ -38,6 +38,9 @@ public:
 	int getbulletsize() {
 		return vBala.size();
 	}
+	void setvel(int a) {
+		vel = a;
+	}
 	void animar(BufferedGraphics^ bg, Rectangle rec) {
 		Bitmap^ bm = gcnew Bitmap("assets/Personaje/Personaje.png");
 

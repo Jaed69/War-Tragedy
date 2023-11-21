@@ -44,6 +44,7 @@ public:
 		activo = true;
 		this->vida = vida;
 		explosion = false;
+		chaleco = 0;
 	}
 
 	~Entidad(){}
