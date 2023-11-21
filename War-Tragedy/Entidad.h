@@ -93,18 +93,7 @@ public:
 	bool ColisionF(Rectangle ajeno) {
 		return Fhitbox.IntersectsWith(ajeno);
 	}
-	void animarexplosion(BufferedGraphics^ bg) {
-		Bitmap^ explo = gcnew Bitmap("assets/Efectos/Explosion SpriteSheet.png");
-		indX++;
-		if (indX >= 4)indY++;
-		if (indY >= 4)explosion = false;		
-		if (explosion == false) {
-			activo = false;
-		}
-		dibujar(bg, explo);
-		delete explo;
-	}
-
+	
 	void dibujar(BufferedGraphics^ bg, Bitmap^ bm) {
 		area = Rectangle(indX * ancho, indY * alto, ancho, alto);
 		zonaAumento = Rectangle(x, y, ancho * aumento, alto * aumento);
