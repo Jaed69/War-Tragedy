@@ -29,7 +29,6 @@ public:
 			crearRandomPower(margen);
 		}*/
 		colPUp(ju, margen);
-		if (t_evento == 3) crearAvi(margen);
 
 	}
 
