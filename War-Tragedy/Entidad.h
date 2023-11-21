@@ -125,7 +125,6 @@ public:
 	int getchaleco() { return this->chaleco; }
 	void setchaleco(int chaleco) { this->chaleco = chaleco; }
 	void resDano(int dano) {
-		vida -= dano;
 		if (chaleco > 0) {
 			setchaleco(getchaleco() - (dano * 2));
 		}
