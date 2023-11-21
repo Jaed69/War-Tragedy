@@ -55,6 +55,7 @@ public:
 	int getancho() { return this->ancho; }
 	int getalto() { return this->alto; }
 	void setvida(int vidas) { this->vida = vidas; }
+	void setvel(int vel) { this->vel = vel; }
 	void setx(int x) { this->x = x; }
 	void sety(int y) { this->y = y; }
 	void setdx(int dx) { this->dx = dx; }
@@ -97,8 +98,8 @@ public:
 		hitbox = Rectangle(x + Rx, y + Ry, Rancho * aumento, Ralto * aumento);
 		Fhitbox = Rectangle(x + Rx + roundf(dx)*vel, y + Ry + roundf(dy)*vel, Rancho * aumento, Ralto * aumento);
 
-		//bg->Graphics->DrawRectangle(gcnew Pen(Color::Green), Fhitbox);
-		//bg->Graphics->DrawRectangle(gcnew Pen(Color::Blue), hitbox);
+		bg->Graphics->DrawRectangle(gcnew Pen(Color::Green), Fhitbox);
+		bg->Graphics->DrawRectangle(gcnew Pen(Color::Blue), hitbox);
 		//bg->Graphics->DrawRectangle(gcnew Pen(Color::Red), zonaAumento);
 		bg->Graphics->DrawImage(bm, zonaAumento, area, GraphicsUnit::Pixel);
 		if (vida <= 0) activo = false;
