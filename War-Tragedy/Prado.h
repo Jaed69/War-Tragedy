@@ -82,6 +82,7 @@ public:
 	void animarAl(BufferedGraphics^ bf) {
 		geA->moverKami(geE->getRandomEnem(),bf);
 		geA->moverMono(bf, borde);
+		geA->moverAvion(bf, borde);
 		geA->animarpUp(bf);
 	}
 

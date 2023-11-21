@@ -15,6 +15,7 @@ private:
 public:
 	GeAliado() {
 		t_evento = 0;
+		
 	}
 	~GeAliado() {}
 
@@ -27,7 +28,7 @@ public:
 		if (t_evento % 50 == 0) {
 			crearRandomPower(margen);
 		}*/
-		colPUp(ju);
+		colPUp(ju, margen);
 
 	}
 
@@ -35,8 +36,9 @@ public:
 		Mono* mono = new Mono(260, 210);
 		Monos.push_back(mono);
 	}
-	void crearAvi() {
-		AvionAliado* avi = new AvionAliado(100, 0);
+	void crearAvi(Rectangle margen) {
+		Random r;
+		AvionAliado* avi = new AvionAliado(r.Next(margen.X, margen.X + margen.Width), 0);
 		Aliados.push_back(avi);
 	}
 	void crearBanana(Rectangle margen) {
@@ -132,13 +134,19 @@ public:
 			Monos.at(i)->mover(bg, espacio);
 		}
 	}
-	void moverAvion(BufferedGraphics^ bg, Rectangle aviE, Rectangle balaE) {
+	void moverAvion(BufferedGraphics^ bg, Rectangle borde) {
 		for (int i = 0; i < Aliados.size(); i++) {
-			Aliados.at(i)->mover(bg, aviE);
-			if (t_evento % 8 == 0) {
-				Aliados.at(i)->disparar();
+			if (Aliados.at(i)->getActivo()) {
+
+				Aliados.at(i)->mover(bg);
+				if (t_evento % 4 == 0) {
+					Aliados.at(i)->disparar();
+				}
+				Aliados.at(i)->moverB(bg, borde);
 			}
-			Aliados.at(i)->moverB(bg, balaE);
+			else {
+				Aliados.erase(Aliados.begin() + i);
+			}
 		}
 	}
 	bool colKami(Rectangle ajeno) {		
@@ -160,7 +168,7 @@ public:
 			}
 		}
 	}
-	void colPUp(Jugador* ju) {
+	void colPUp(Jugador* ju, Rectangle margen) {
 		for (int i = 0; i < Powers.size(); i++) {
 			if (Powers.at(i)->Colision(ju->getFHB())) {
 				Powers.at(i)->setActivo(false);
@@ -170,10 +178,10 @@ public:
 					crearMon();
 					break;
 				case botiquin:
-					ju->setvida(ju->getvida() + 1);//corregir puede
+					ju->setvida(ju->getvida() + 5);//corregir puede
 					break;
 				case arma:
-					//agregar velocida de disparo o mas daño nose
+					crearAvi(margen);
 					break;
 				case armadura:
 					ju->setchaleco(ju->getchaleco() + 1);
