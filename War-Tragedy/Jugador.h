@@ -5,7 +5,6 @@
 class Jugador:public Entidad
 {
 private:
-	int chaleco;
 	bool dash;
 	vector<Bala*> vBala;
 	int ammo;
@@ -34,9 +33,6 @@ public:
 	void T_Evento() {
 		t_evento++;
 	}
-
-	int getchaleco() { return this->chaleco; }
-	void setchaleco(int chaleco) { this->chaleco = chaleco; }
 	bool getDash() { return dash; }
 	void setDash(bool dash) { this->dash = dash; }
 	int getbulletsize() {

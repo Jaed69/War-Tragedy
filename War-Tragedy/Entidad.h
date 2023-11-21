@@ -20,6 +20,7 @@ protected:
 	Rectangle zonaAumento;
 	Rectangle hitbox;
 	Rectangle Fhitbox;
+	int chaleco;
 
 public:
 	Entidad(){}
@@ -42,6 +43,7 @@ public:
 		aumento = 1;
 		activo = true;
 		this->vida = vida;
+		chaleco = 0;
 	}
 
 	~Entidad(){}
@@ -105,8 +107,17 @@ public:
 		if (vida <= 0) activo = false;
 	}
 
+
+	int getchaleco() { return this->chaleco; }
+	void setchaleco(int chaleco) { this->chaleco = chaleco; }
 	void resDano(int dano) { 
-		vida -= dano; 
+		if (chaleco > 0) {
+			setchaleco(getchaleco() - (dano * 2));
+		}
+		else {
+			vida -= dano;
+
+		}
 	}
 
 
