@@ -115,11 +115,13 @@ public:
 		//bg->Graphics->DrawRectangle(gcnew Pen(Color::Blue), hitbox);
 		//bg->Graphics->DrawRectangle(gcnew Pen(Color::Red), zonaAumento);
 		bg->Graphics->DrawImage(bm, zonaAumento, area, GraphicsUnit::Pixel);
-		//if (vida <= 0) activo = false;
-		if (vida <= 0) {			
+		if (vida <= 0) activo = false;		
+		
+		/*if (vida <= 0) {
 			explosion = true; 
 		
 		}
+		*/
 
 	}
 	int getchaleco() { return this->chaleco; }
