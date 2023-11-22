@@ -4,9 +4,11 @@ class GeObjetosM {
 private:
 	int t_evento;
 	vector<objetosMenu*>obj;
+	int indXlibro;
 public:
 	GeObjetosM() {
 		t_evento = 0;
+		indXlibro = 0;
 	}
 	~GeObjetosM(){}
 
@@ -30,13 +32,21 @@ public:
 		obj.push_back(paapel4);
 		obj.push_back(paapel5);
 	}
-
+	void animarlibro(BufferedGraphics^ bg) {
+		if (indXlibro < 16)indXlibro += 1;
+		Bitmap^ libroro = gcnew Bitmap("assets/Nivel/librooo.png");
+		Rectangle arealibro = Rectangle(indXlibro * 1280, 0, 1280, 720);
+		Rectangle libror = Rectangle(1, 1, 1280, 720);
+		bg->Graphics->DrawImage(libroro, libror, arealibro, GraphicsUnit::Pixel);
+		delete libroro;
+	}
 	void colisiones(BufferedGraphics^bg, Jugador*ju) {
 		for (int i = 0; i < obj.size(); i++) {
 			if (obj.at(i)->Colision(ju->getHB())) {
 				if (obj.at(i)->getTipo() == estanteria) {
 					ju->setdx(0);
 					ju->setdy(0);
+					animarlibro(bg);
 				}
 				if (obj.at(i)->getTipo() == mesa) {
 					ju->setdx(0);

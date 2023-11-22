@@ -51,7 +51,7 @@ public:
 	//Zona para la creacion de eventos segun el tiempo
 	void T_Evento(Jugador* ju) {//añadir jugador
 		t_evento++;
-		geO->T_Evento(ju);
+		geO->T_Evento(ju);		
 		if (t_evento == 1) geO->crearObj();
 		/*if (t_evento == 400)termino = true;
 		if (indXi < 60 && t_evento % 1 == 0)indXi++;
@@ -92,14 +92,14 @@ public:
 		bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), estanteria);
 		bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), cama);*/
 		delete fondo;
-		delete mesaa;
+		/*delete mesaa;
 		delete notaa;
 		delete areaMesa;
 		delete areaEstanteria;
 		delete areainfo;
 		delete areanotas;
 		delete estanteriaa;
-		delete infoo;
+		delete infoo;*/
 	}
 
 
