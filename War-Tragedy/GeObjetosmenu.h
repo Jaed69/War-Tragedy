@@ -13,7 +13,8 @@ public:
 	~GeObjetosM(){}
 
 	void T_Evento(Jugador* ju) {
-		t_evento++;
+		t_evento++; 
+		if (indXlibro == 16)indXlibro = 0;
 	}
 
 	void crearObj() {
@@ -33,7 +34,7 @@ public:
 		obj.push_back(paapel5);
 	}
 	void animarlibro(BufferedGraphics^ bg) {
-		if (indXlibro < 16)indXlibro += 1;
+		if (indXlibro <= 16)indXlibro += 1;
 		Bitmap^ libroro = gcnew Bitmap("assets/Nivel/librooo.png");
 		Rectangle arealibro = Rectangle(indXlibro * 1280, 0, 1280, 720);
 		Rectangle libror = Rectangle(1, 1, 1280, 720);
@@ -44,8 +45,6 @@ public:
 		for (int i = 0; i < obj.size(); i++) {
 			if (obj.at(i)->Colision(ju->getFHB())) {
 				if (obj.at(i)->getTipo() == estanteria) {
-					ju->setdx(0);
-					ju->setdy(0);
 					animarlibro(bg);
 				}
 				if (obj.at(i)->getTipo() == mesa) {

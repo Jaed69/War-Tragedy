@@ -207,8 +207,8 @@ public:
 			}
 		
 		}
-		
 		dibujar(bg, bm);
+		
 		mover(rec);
 		delete bm;
 	}
