@@ -19,7 +19,9 @@ private:
 	int indXi, indYi;
 	int indXn, indYn;
 	int indXl, indYl;
+	int indXlibro;
 	bool termino;
+	bool libro;
 public:
 	HabitacionS() {
 		t_evento = 0;
@@ -38,6 +40,8 @@ public:
 		info = Rectangle(780, 485, 600*0.75, 300*0.75);
 		notas = Rectangle(100,360,200,300);
 		termino = false;
+		libro = false;
+		indXlibro = 0;
 	}
 	~HabitacionS() {}
 
@@ -80,6 +84,13 @@ public:
 		bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), mesa);
 		bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), estanteria);
 		bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), cama);
+		if (libro) {
+			Bitmap^ libroro = gcnew Bitmap("assets/Nivel/librooo.png");
+			Rectangle arealibro = Rectangle(indXlibro * 1280, 0, 1280, 720);
+			Rectangle libror = Rectangle(1, 1, 1280, 720);
+			bf->Graphics->DrawImage(libroro, libror, arealibro, GraphicsUnit::Pixel);
+			delete libroro;
+		}
 		delete fondo;
 		delete mesaa;
 		delete notaa;
@@ -91,13 +102,21 @@ public:
 		delete infoo;
 	}
 
-	void colisiones(BufferedGraphics^ bf, Jugador* ju) {
+	void colisiones(BufferedGraphics^ bf, Jugador* ju) {		
 		if (ju->Colision(papel1)) indXn = 1;
 		else if (ju->Colision(papel2)) indXn = 2;
 		else if (ju->Colision(papel3)) indXn = 3;
 		else if (ju->Colision(papel4)) indXn = 4;
 		else if (ju->Colision(papel5)) indXn = 5;
 		else indXn = 0;
+		if (ju->Colision(estanteria)) {
+			libro = true;
+			if (indXlibro<16)indXlibro+=1;
+		}
+		else {
+			libro = false;
+			indXlibro = 0;
+		}
 	}
 
 	//Zona en qeu se codifica el comportamiento de los enemigos
