@@ -63,7 +63,6 @@ public:
 				}
 				if (obj.at(i)->getTipo() == papel2) {
 					animarnotitas(bg, 1);
-
 				}
 				if (obj.at(i)->getTipo() == papel3) {
 					animarnotitas(bg, 1);
