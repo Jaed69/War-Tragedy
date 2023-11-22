@@ -143,20 +143,26 @@ namespace WarTragedy {
 	private: System::Void btnNivel1_Click(System::Object^ sender, System::EventArgs^ e) {
 		Entorno^ juego = gcnew Entorno();
 		juego->setNivel(NTejado);
+		this->timer1->Enabled = false;
 		juego->ShowDialog();
+		this->timer1->Enabled = true;
 		delete juego;
 
 	}
 	private: System::Void btnNivel2_Click(System::Object^ sender, System::EventArgs^ e) {
 		Entorno^ juego = gcnew Entorno();
 		juego->setNivel(NEdificio);
+		this->timer1->Enabled = false;
 		juego->ShowDialog();
+		this->timer1->Enabled = true;
 		delete juego;
 	}
 	private: System::Void btnNivel3_Click(System::Object^ sender, System::EventArgs^ e) {
 		Entorno^ juego = gcnew Entorno();
 		juego->setNivel(NPrado);
+		this->timer1->Enabled = false;
 		juego->ShowDialog();
+		this->timer1->Enabled = true;
 		delete juego;
 	}
 

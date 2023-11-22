@@ -11,6 +11,7 @@ namespace WarTragedy {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Media;
 
 	/// <summary>
 	/// Resumen de Entorno
@@ -20,7 +21,10 @@ namespace WarTragedy {
 	private:
 		Juego* Jg;
 		Niveles nivel = NTejado;
+		Niveles nivelAct;
 		Pausa^ pausa;
+		SoundPlayer^ abrir = gcnew SoundPlayer("assets/UI/Abrir.wav");
+		SoundPlayer^ cerrar = gcnew SoundPlayer("assets/UI/Cerrar.wav");
 	private: System::Windows::Forms::Timer^ Timer_Eventos;
 	private: System::Windows::Forms::Timer^ Timer_Bala;
 
@@ -70,7 +74,6 @@ namespace WarTragedy {
 			this->components = (gcnew System::ComponentModel::Container());
 			this->Timer_Juego = (gcnew System::Windows::Forms::Timer(this->components));
 			this->Timer_Eventos = (gcnew System::Windows::Forms::Timer(this->components));
-			this->Timer_Bala = (gcnew System::Windows::Forms::Timer(this->components));
 			this->SuspendLayout();
 			// 
 			// Timer_Juego
@@ -83,18 +86,12 @@ namespace WarTragedy {
 			this->Timer_Eventos->Enabled = true;
 			this->Timer_Eventos->Tick += gcnew System::EventHandler(this, &Entorno::Timer_Eventos_Tick);
 			// 
-			// Timer_Bala
-			// 
-			this->Timer_Bala->Enabled = true;
-			this->Timer_Bala->Interval = 20;
-			this->Timer_Bala->Tick += gcnew System::EventHandler(this, &Entorno::Timer_Bala_Tick);
-			// 
 			// Entorno
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1280, 720);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"Entorno";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Entorno";
@@ -113,6 +110,7 @@ namespace WarTragedy {
 		BufferedGraphicsContext^ espacioBuffer = BufferedGraphicsManager::Current;
 		BufferedGraphics^ buffer = espacioBuffer->Allocate(g, this->ClientRectangle);
 
+		nivelAct = Jg->getNivel();
 		Jg->jugar(buffer);
 		buffer->Render(g);
 		delete buffer; delete espacioBuffer; delete g;
@@ -122,7 +120,17 @@ namespace WarTragedy {
 			this->Timer_Juego->Enabled = false;
 			this->Timer_Eventos->Enabled = false;
 			pausa = gcnew Pausa();
+			pausa->setDatos(Jg);
+			abrir->Play();
 			pausa->ShowDialog();
+			cerrar->Play();
+			if (pausa->getSalir()) this->Close();
+			if (pausa->getRest()){
+				delete Jg;
+				Jg = new Juego();
+				Jg->setNivel(nivelAct);
+			}
+
 			this->Timer_Juego->Enabled = true;
 			this->Timer_Eventos->Enabled = true;
 			delete pausa;

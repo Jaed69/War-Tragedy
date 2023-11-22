@@ -76,6 +76,7 @@ public:
 		geE->SeguirMovSoldado(ju->getx(), ju->gety());
 		geE->moverBalasHeli(bf, borde, ju);
 		geE->moverBalasSoldado(bf, borde);
+		geE->animarExplosiones(bf);
 		//geA->moverMono(bf,borde);
 	}
 
@@ -84,6 +85,7 @@ public:
 		geA->moverMono(bf, borde);
 		geA->moverAvion(bf, borde);
 		geA->animarpUp(bf);
+		geA->animarExplosiones(bf);
 	}
 
 };

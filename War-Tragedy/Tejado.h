@@ -74,6 +74,7 @@ public:
 		geE->animarLla(bf, borde);
 		geE->animarAvi(bf, borde);
 		geE->moverBalasHeli(bf, borde, ju);
+		geE->animarExplosiones(bf);
 		//geE->animarSer(bf, borde);
 	}
 	void animarAl(BufferedGraphics^ bf) { //agregar todos los aliados
@@ -81,6 +82,7 @@ public:
 		geA->moverMono(bf, borde);
 		geA->animarpUp(bf);
 		geA->moverAvion(bf, borde);
+		geA->animarExplosiones(bf);
 	}
 
 };

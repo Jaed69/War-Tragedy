@@ -91,6 +91,14 @@ public:
 		bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), estanteria);
 		bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), cama);*/
 		delete fondo;
+		delete mesaa;
+		delete notaa;
+		delete areaMesa;
+		delete areaEstanteria;
+		delete areainfo;
+		delete areanotas;
+		delete estanteriaa;
+		delete infoo;
 	}
 
 

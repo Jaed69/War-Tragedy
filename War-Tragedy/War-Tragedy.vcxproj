@@ -126,6 +126,7 @@
     <ClCompile Include="Pausa.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Archivo.h" />
     <ClInclude Include="Avion.h" />
     <ClInclude Include="AvionAliado.h" />
     <ClInclude Include="Bala.h" />
@@ -136,6 +137,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Escena.h" />
+    <ClInclude Include="Explosion.h" />
     <ClInclude Include="Flama.h" />
     <ClInclude Include="GeAliados.h" />
     <ClInclude Include="GeEnemigos.h" />
