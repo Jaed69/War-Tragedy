@@ -49,17 +49,29 @@ public:
 		case NTejado:
 			nivel1->T_Evento(ju);
 			ju->setaumento(1); ju->setvel(8);
-			if (nivel1->verTer()) nivel = NEdificio;
+			if (nivel1->verTer()) {
+				ju->setx(620);
+				ju->sety(404);
+				nivel = NEdificio;
+			}
 			break;
 		case NEdificio:
 			ju->setaumento(1);
 			nivel2->T_Evento(ju); ju->setvel(8);
-			if (nivel2->verTer()) nivel = NPrado;
-			break;
+			if (nivel2->verTer()) {
+				ju->setx(620);
+				ju->sety(404);
+				nivel = NPrado;
+			}
+				break;
 		case NPrado:
 			ju->setaumento(1);
 			nivel3->T_Evento(ju); ju->setvel(8);
-			if (nivel3->verTer()) nivel = FinalM;
+			if (nivel3->verTer()) {
+				ju->setx(620);
+				ju->sety(404);
+				nivel = FinalM;
+			}
 			break;
 		case FinalM:
 			break;
