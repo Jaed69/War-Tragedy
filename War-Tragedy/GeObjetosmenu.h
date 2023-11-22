@@ -42,7 +42,7 @@ public:
 	}
 	void colisiones(BufferedGraphics^bg, Jugador*ju) {
 		for (int i = 0; i < obj.size(); i++) {
-			if (obj.at(i)->Colision(ju->getHB())) {
+			if (obj.at(i)->Colision(ju->getFHB())) {
 				if (obj.at(i)->getTipo() == estanteria) {
 					ju->setdx(0);
 					ju->setdy(0);

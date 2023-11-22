@@ -61,6 +61,7 @@ public:
 		}
 		Rectangle area = Rectangle(ancho, alto, ancho, alto);
 		Rectangle zonaaumento = Rectangle(x, y, ancho, alto);
+		hitbox = Rectangle(x + Rx, y + Ry, Rancho * aumento, Ralto * aumento);
 		bg->Graphics->DrawRectangle(gcnew Pen(Color::Orange), zonaaumento);
 
 	}
