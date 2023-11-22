@@ -33,12 +33,19 @@ public:
 		obj.push_back(paapel4);
 		obj.push_back(paapel5);
 	}
+	void animarnotitas(BufferedGraphics^ bf, int i) {
+		Bitmap^ notaa = gcnew Bitmap("assets/Nivel/notaspiso.png");
+		Rectangle areanotas = Rectangle(i * 200,0, 200, 300);
+		Rectangle notas = Rectangle(100, 360, 200, 300);
+		bf->Graphics->DrawImage(notaa, notas, areanotas, GraphicsUnit::Pixel);
+		delete notaa;
+
+	}
 	void animarlibro(BufferedGraphics^ bg) {
 		if (indXlibro <= 16)indXlibro += 1;
 		Bitmap^ libroro = gcnew Bitmap("assets/Nivel/librooo.png");
 		Rectangle arealibro = Rectangle(indXlibro * 1280, 0, 1280, 720);
 		Rectangle libror = Rectangle(1, 1, 1280, 720);
-		bg->Graphics->DrawImage(libroro, libror, arealibro, GraphicsUnit::Pixel);
 		delete libroro;
 	}
 	void colisiones(BufferedGraphics^bg, Jugador*ju) {
@@ -52,18 +59,22 @@ public:
 					ju->setdy(0);
 				}
 				if (obj.at(i)->getTipo() == papel1) {
-
+					animarnotitas(bg, 1);
 				}
 				if (obj.at(i)->getTipo() == papel2) {
+					animarnotitas(bg, 1);
 
 				}
 				if (obj.at(i)->getTipo() == papel3) {
+					animarnotitas(bg, 1);
 
 				}
 				if (obj.at(i)->getTipo() == papel4) {
+					animarnotitas(bg, 1);
 
 				}
 				if (obj.at(i)->getTipo() == papel5) {
+					animarnotitas(bg, 1);
 
 				}
 			}

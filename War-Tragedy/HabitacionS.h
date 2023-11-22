@@ -61,7 +61,7 @@ public:
 
 	Rectangle getMargen() { return margen; }
 	Rectangle getBorde() { return borde; }
-
+	
 	void animarFn(BufferedGraphics^ bf) {
 		Bitmap^ fondo = gcnew Bitmap("assets/Nivel/cuarto3.png");
 		bf->Graphics->DrawImage(fondo, borde, borde, GraphicsUnit::Pixel);
