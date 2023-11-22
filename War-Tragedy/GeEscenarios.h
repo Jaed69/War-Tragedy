@@ -161,7 +161,7 @@ public:
 		{
 		case habitacionS:
 			nivel0->animarFn(bf);
-			nivel0->colisiones(bf, ju);
+			nivel0->animarOb(bf, ju);
 			break;
 		case NTejado:
 			nivel1->animarFn(bf);

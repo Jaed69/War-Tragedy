@@ -128,7 +128,10 @@
     <ClInclude Include="HabitacionS.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="Explosion.h">
+    <ClInclude Include="objetosmenu.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="GeObjetosmenu.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
