@@ -20,17 +20,6 @@ public:
 	}
 	~Explosion() {}
 
-	void getSpecks(Entidad* u) {
-		indX = 0;
-		indY = 0;
-		x = u->getx();
-		y = u->gety();
-		Rx = 0;
-		Ry = 0;
-		Rancho = u->getancho();
-		Ralto = u->getalto();
-
-	}
 
 	void animar(BufferedGraphics^ bg) {
 		Bitmap^ exp = gcnew Bitmap("assets/Obstaculo/Explosion 2 SpriteSheet.png");

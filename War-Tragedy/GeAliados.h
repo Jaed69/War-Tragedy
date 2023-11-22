@@ -3,6 +3,7 @@
 #include "AvionAliado.h"
 #include "Power.h"
 #include "Kami.h"
+#include "Explosion.h"
 #include "GeEnemigos.h"
 class GeAliado {
 private:
@@ -11,6 +12,7 @@ private:
 	vector<AvionAliado*> Aliados;
 	vector<Power*> Powers;
 	vector<Kami*> Kamis;
+	vector<Explosion*> explosiones;
 
 public:
 	GeAliado() {
@@ -32,6 +34,19 @@ public:
 
 	}
 
+	void crearExplosion(int x, int y) {
+		Explosion* exp = new Explosion(x, y);
+		explosiones.push_back(exp);
+	}
+
+	void animarExplosiones(BufferedGraphics^ bg) {
+		for (int i = 0; i < explosiones.size(); i++) {
+			if (explosiones.at(i)->getActivo())
+				explosiones.at(i)->animar(bg);
+			else
+				explosiones.erase(explosiones.begin() + i);
+		}
+	}
 	void crearMon() {
 		Mono* mono = new Mono(260, 210);
 		Monos.push_back(mono);
@@ -114,6 +129,7 @@ public:
 				Kamis.at(i)->mover(enem, bg);
 			}
 			else {
+				crearExplosion(Kamis.at(i)->getx(), Kamis.at(i)->gety());
 				Kamis.erase(Kamis.begin() + i);
 			}
 		}

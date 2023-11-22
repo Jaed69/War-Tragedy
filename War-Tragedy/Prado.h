@@ -85,6 +85,7 @@ public:
 		geA->moverMono(bf, borde);
 		geA->moverAvion(bf, borde);
 		geA->animarpUp(bf);
+		geA->animarExplosiones(bf);
 	}
 
 };
