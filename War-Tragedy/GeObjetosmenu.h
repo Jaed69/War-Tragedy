@@ -106,14 +106,14 @@ public:
 					seleccion = partidaG;
 				}
 				if (obj.at(i)->getTipo() == papel1) {
-					animarnotitas(bg, 4);
+					animarnotitas(bg, 2);
 				}
 				if (obj.at(i)->getTipo() == papel2) {
 					animarnotitas(bg, 1);
 					seleccion = nnivel1;
 				}
 				if (obj.at(i)->getTipo() == papel3) {
-					animarnotitas(bg, 2);
+					animarnotitas(bg, 4);
 					seleccion = nnivel2;
 
 				}

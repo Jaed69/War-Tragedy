@@ -84,25 +84,25 @@ public:
 		if (sArriba < sLimArriba) {
 			_y = 1; _x = r.Next(1, 1245);
 			sArriba += 1;
-			Soldado* sol = new Soldado(_x, _y);
+			Soldado* sol = new Soldado(_x, _y,3);
 			soldados.push_back(sol);
 		}
 		else if (sAbajo < sLimAbajo) {
 			_y = 669; _x = r.Next(1, 1245);
 			sAbajo += 1;
-			Soldado* sol = new Soldado(_x, _y);
+			Soldado* sol = new Soldado(_x, _y,4);
 			soldados.push_back(sol);
 		}
 		else if (sDerecha < sLimDerecha) {
 			_x = 1244; _y = r.Next(1, 670);
 			sDerecha += 1;
-			Soldado* sol = new Soldado(_x, _y);
+			Soldado* sol = new Soldado(_x, _y,1);
 			soldados.push_back(sol);
 		}
 		else if (sIzquierda < sLimIzquierda) {
 			_x = 1; _y = r.Next(1, 670);
 			sIzquierda += 1;
-			Soldado* sol = new Soldado(_x, _y);
+			Soldado* sol = new Soldado(_x, _y,2);
 			soldados.push_back(sol);
 		}
 		
@@ -214,6 +214,10 @@ public:
 				soldados.at(i)->mover(bg, con);
 			else {
 				crearExplosion(soldados.at(i)->getx(), soldados.at(i)->gety());
+				if (soldados.at(i)->getx() <=256&&sDerecha - 1 >= 0)sDerecha--;
+				else if (soldados.at(i)->getx() >= 768 && sIzquierda-1>=0)sIzquierda--;
+				else if (soldados.at(i)->gety() <= 144&&sArriba - 1 >= 0)sArriba--;
+				else if (soldados.at(i)->gety() >= 432&&sAbajo - 1 >= 0)sAbajo--;
 				soldados.erase(soldados.begin() + i);
 			}
 

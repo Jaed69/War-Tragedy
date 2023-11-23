@@ -5,9 +5,11 @@ class Soldado :public Entidad {
 private:
 	vector<Bala*> vBala;
 	bool estatico;
+	int dir; //1derecha 2izquierda 3arriba 4abajo
 public:
-	Soldado(int x, int y) :Entidad(x, y, 32, 48, 1) {//poner ancho alto bien y determinar vida
+	Soldado(int x, int y,int a) :Entidad(x, y, 32, 48, 1) {//poner ancho alto bien y determinar vida
 		estatico = false;
+		this->dir = dir;
 		if (x <= 256 && y + alto <= 144)direccion = AbDer;
 		else if (x >= 768 && y + alto <= 144)direccion = AbIzq;
 		else if (x <= 256 && y >= 432)direccion = ArrDer;
@@ -30,7 +32,7 @@ public:
 	}
 
 	bool getEstatico() { return estatico; }
-
+	int getDir() { return this->dir; }
 	void apuntarJugador(int jx, int jy) {
 		if (x == jx && jy < y) ultDireccion = Arriba;
 		if (x == jx && jy > y) ultDireccion = Abajo;
