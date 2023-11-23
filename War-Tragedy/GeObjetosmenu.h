@@ -106,7 +106,7 @@ public:
 					seleccion = partidaG;
 				}
 				if (obj.at(i)->getTipo() == papel1) {
-					animarnotitas(bg, 0);
+					animarnotitas(bg, 4);
 				}
 				if (obj.at(i)->getTipo() == papel2) {
 					animarnotitas(bg, 1);
