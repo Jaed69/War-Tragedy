@@ -81,10 +81,31 @@ public:
 					jugador->setDash(false);
 				}
 				break;
-
-			default:
-				break;
-
+			case Keys::Enter:
+				if (geEs->getNivel() == habitacionS) {
+					switch (geEs->getNivel0()->getgeOb()->colisionmenu(jugador))
+					{
+					case papel1:
+						break;
+					case papel2:
+						geEs->setNivel(NTejado);
+						break;
+					case papel3:
+						geEs->setNivel(NEdificio);
+						break;
+					case papel4:
+						geEs->setNivel(NPrado);
+						break;
+					case estanteria:
+						//nose
+						break;
+					case mesa:
+						//guadar?
+						break;
+					default:
+						break;
+					}
+				}
 			}
 		}
 		else {

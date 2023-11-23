@@ -82,6 +82,7 @@ namespace WarTragedy {
 			this->btnNivel1->Click += gcnew System::EventHandler(this, &MyForm::btnNivel1_Click);
 			this->btnNivel1->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MyForm::btnNivel1_KeyDown);
 			this->btnNivel1->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &MyForm::btnNivel1_KeyUp);
+			this->btnNivel1->Visible = false;
 			// 
 			// btnNivel2
 			// 
@@ -93,6 +94,7 @@ namespace WarTragedy {
 			this->btnNivel2->Text = L"Nivel2";
 			this->btnNivel2->UseVisualStyleBackColor = true;
 			this->btnNivel2->Click += gcnew System::EventHandler(this, &MyForm::btnNivel2_Click);
+			this->btnNivel2->Visible = false;
 			// 
 			// btnNivel3
 			// 
@@ -104,6 +106,7 @@ namespace WarTragedy {
 			this->btnNivel3->Text = L"Nivel3";
 			this->btnNivel3->UseVisualStyleBackColor = true;
 			this->btnNivel3->Click += gcnew System::EventHandler(this, &MyForm::btnNivel3_Click);
+			this->btnNivel3->Visible = false;
 			// 
 			// timer1
 			// 
@@ -123,7 +126,7 @@ namespace WarTragedy {
 			this->Name = L"MyForm";
 			this->SizeGripStyle = System::Windows::Forms::SizeGripStyle::Hide;
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"MyForm";
+			this->Text = L"War Tragedy";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->KeyDown += gcnew System::Windows::Forms::KeyEventHandler(this, &MyForm::MyForm_KeyDown);
 			this->KeyUp += gcnew System::Windows::Forms::KeyEventHandler(this, &MyForm::MyForm_KeyUp);
@@ -171,7 +174,7 @@ namespace WarTragedy {
 	}
 	private: System::Void MyForm_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		Jg->movJugador(true, e->KeyCode);
-		//if(e->KeyCode==Keys::L) Jg.nivel
+		//if (e->KeyCode == Keys::L) Jg.nivel;
 	}
 private: System::Void MyForm_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 	Jg->movJugador(false, e->KeyCode);
