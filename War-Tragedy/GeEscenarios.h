@@ -38,6 +38,11 @@ public:
 		if (nivel0->getNivel() == nnivel3) setNivel(NTejado);
 	}
 
+	HabitacionS* getNivel0() {
+		return nivel0;
+	}
+
+
 	void T_Evento(Jugador* ju) {
 		t_evento++;
 

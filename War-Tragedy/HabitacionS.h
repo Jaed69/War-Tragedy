@@ -46,6 +46,9 @@ public:
 
 	bool verTer() { return termino; }
 
+	GeObjetosM* getgeOb() {
+		return geO;
+	}
 	//Zona para la creacion de eventos segun el tiempo
 	void T_Evento(Jugador* ju) {//añadir jugador
 		t_evento++;

@@ -64,6 +64,36 @@ public:
 		Rectangle aumento = Rectangle(0, 0, 1280, 720);
 		bg->Graphics->DrawImage(general, aumento, areaG, GraphicsUnit::Pixel);
 	}
+	objM colisionmenu(Jugador* ju) {
+		for (int i = 0; i < obj.size(); i++) {
+			if (obj.at(i)->Colision(ju->getFHB())) {
+				if (obj.at(i)->getTipo() == estanteria) {
+					return estanteria;
+				}
+				if (obj.at(i)->getTipo() == mesa) {
+					return mesa;
+				}
+				if (obj.at(i)->getTipo() == papel1) {
+					return papel1;
+				}
+				if (obj.at(i)->getTipo() == papel2) {
+					return papel2;
+				}
+				if (obj.at(i)->getTipo() == papel3) {
+					return papel3;
+
+				}
+				if (obj.at(i)->getTipo() == papel4) {
+					return papel4;
+
+				}
+			}
+			else
+				seleccion = ninguna;
+		}
+	}
+
+
 	void colisiones(BufferedGraphics^bg, Jugador*ju) {
 		for (int i = 0; i < obj.size(); i++) {
 			if (obj.at(i)->Colision(ju->getFHB())) {
