@@ -54,7 +54,7 @@ public:
 		t_evento++;
 		geO->T_Evento(ju);		
 		if (t_evento == 1) geO->crearObj();
-		if (t_evento == 1) geO->setIndX(0);
+		//if (t_evento == 1) geO->setIndX(0);
 		/*if (t_evento == 400)termino = true;
 		if (indXi < 60 && t_evento % 1 == 0)indXi++;
 		if (indXi == 60 && t_evento % 50 == 0)indXi++;*/
@@ -69,7 +69,7 @@ public:
 		bf->Graphics->DrawImage(fondo, borde, borde, GraphicsUnit::Pixel);
 		bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), borde);
 		bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), margen);
-		if (geO->getIndX() >= 0 && t_evento < geO->getIndX()) geO->animarr(bf);
+		//if (geO->getIndX() >= 0 && t_evento < geO->getIndX()) geO->animarr(bf);
 		/*Bitmap^ fondo = gcnew Bitmap("assets/Nivel/cuarto2.png");
 		Bitmap^ mesaa = gcnew Bitmap("assets/Nivel/mesa.png");
 		Bitmap^ notaa = gcnew Bitmap("assets/Nivel/notaspiso.png");

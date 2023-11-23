@@ -5,12 +5,12 @@ private:
 	int t_evento;
 	vector<objetosMenu*>obj;
 	int indXlibro;
-	int indX;
+	//int indX;
 public:
 	GeObjetosM() {
 		t_evento = 0;
 		indXlibro = 0;
-		indX = 0;
+		//indX = 0;
 	}
 	~GeObjetosM(){}
 
@@ -18,8 +18,8 @@ public:
 		t_evento++; 
 	}
 
-	void setIndX(int indX) { this->indX = indX; }
-	int getIndX() { return indX; }
+	//void setIndX(int indX) { this->indX = indX; }
+	//int getIndX() { return indX; }
 
 	void crearObj() {
 		objetosMenu* estan = new objetosMenu(789, 66, estanteria);
@@ -54,45 +54,45 @@ public:
 		delete libroro;
 	}
 
-	void animarr(BufferedGraphics^ bg) {
+	/*void animarr(BufferedGraphics^ bg) {
 		Bitmap^ general = gcnew Bitmap("assets / Nivel / papeles2.png");
 		Rectangle areaG = Rectangle(indX * 1280, 0, 1280, 720);
 		Rectangle aumento = Rectangle(0, 0, 1280, 720);
 		bg->Graphics->DrawImage(general, aumento, areaG, GraphicsUnit::Pixel);
-	}
+	}*/
 	void colisiones(BufferedGraphics^bg, Jugador*ju) {
 		for (int i = 0; i < obj.size(); i++) {
 			if (obj.at(i)->Colision(ju->getFHB())) {
 				if (obj.at(i)->getTipo() == estanteria) {
-					//animarlibro(bg);
-					indX = 18;
+					animarlibro(bg);
+					//indX = 18;
 				}
 				if (obj.at(i)->getTipo() == mesa) {
-					//ju->setdx(0);
-					//ju->setdy(0);
-					indX = 17;
+					ju->setdx(0);
+					ju->setdy(0);
+					//indX = 17;
 				}
 				if (obj.at(i)->getTipo() == papel1) {
-					//animarnotitas(bg, 1);
-					indX = 19;
+					animarnotitas(bg, 1);
+					//indX = 19;
 				}
 				if (obj.at(i)->getTipo() == papel2) {
-					//animarnotitas(bg, 1);
-					indX = 20;
+					animarnotitas(bg, 1);
+					//indX = 20;
 				}
 				if (obj.at(i)->getTipo() == papel3) {
-					//animarnotitas(bg, 1);
-					indX = 21;
+					animarnotitas(bg, 1);
+					//indX = 21;
 
 				}
 				if (obj.at(i)->getTipo() == papel4) {
-					//animarnotitas(bg, 1);
-					indX = 22;
+					animarnotitas(bg, 1);
+					//indX = 22;
 
 				}
 				if (obj.at(i)->getTipo() == papel5) {
-					//animarnotitas(bg, 1);
-					indX = 23;
+					animarnotitas(bg, 1);
+					//indX = 23;
 
 				}
 			}
