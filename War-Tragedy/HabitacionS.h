@@ -88,15 +88,16 @@ public:
 		Bitmap^ infoo = gcnew Bitmap("assets/Nivel/info.png");
 		Bitmap^ infonot = gcnew Bitmap("assets/Nivel/exclamacion.png");
 		Bitmap^ explorarr = gcnew Bitmap("assets/Nivel/explorar.png");
-		Bitmap^ introo = gcnew Bitmap("assets/Nivel/inicio.png");
 		Rectangle areainfo = Rectangle(indXi * 600, 0, 600, 300);
 		Rectangle areaexclamacion = Rectangle(indXi * 52, 0, 52, 75);
 		Rectangle areaexplorar = Rectangle(indXn* 382,0,382,80);
 		Rectangle areaintro = Rectangle(indXa* 1280,0,1280,720);
 		if (intro) {
+			Bitmap^ introo = gcnew Bitmap("assets/Nivel/inicio.png");
 			bf->Graphics->DrawImage(introo, animacion, areaintro, GraphicsUnit::Pixel);
+			delete introo;
 		}
-		else if (!intro) {
+		else {
 			bf->Graphics->DrawImage(fondo, borde, borde, GraphicsUnit::Pixel);
 			bf->Graphics->DrawImage(infoo, info, areainfo, GraphicsUnit::Pixel);
 			bf->Graphics->DrawImage(explorarr, explorar, areaexplorar, GraphicsUnit::Pixel);
@@ -111,7 +112,6 @@ public:
 
 		}
 		
-		delete introo;
 		delete explorarr;
 		delete fondo;
 		delete infoo;
