@@ -1,5 +1,6 @@
 #pragma once
 #include "GeObjetosmenu.h"
+#include "Archivo.h"
 class HabitacionS {
 private:
 	int t_evento;
@@ -53,6 +54,7 @@ public:
 		t_evento++;
 		geO->T_Evento(ju);		
 		if (t_evento == 1) geO->crearObj();
+		//if (t_evento == 1) geO->setIndX(0);
 		/*if (t_evento == 400)termino = true;
 		if (indXi < 60 && t_evento % 1 == 0)indXi++;
 		if (indXi == 60 && t_evento % 50 == 0)indXi++;*/
@@ -61,12 +63,13 @@ public:
 
 	Rectangle getMargen() { return margen; }
 	Rectangle getBorde() { return borde; }
-
+	
 	void animarFn(BufferedGraphics^ bf) {
 		Bitmap^ fondo = gcnew Bitmap("assets/Nivel/cuarto3.png");
 		bf->Graphics->DrawImage(fondo, borde, borde, GraphicsUnit::Pixel);
 		bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), borde);
 		bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), margen);
+		//if (geO->getIndX() >= 0 && t_evento < geO->getIndX()) geO->animarr(bf);
 		/*Bitmap^ fondo = gcnew Bitmap("assets/Nivel/cuarto2.png");
 		Bitmap^ mesaa = gcnew Bitmap("assets/Nivel/mesa.png");
 		Bitmap^ notaa = gcnew Bitmap("assets/Nivel/notaspiso.png");
@@ -104,6 +107,7 @@ public:
 
 
 	void animarOb(BufferedGraphics^ bf, Jugador* ju) {
+
 		geO->colisiones(bf,ju);
 		/*geE->animarHel(bf, borde);
 		geE->animarLla(bf, borde);

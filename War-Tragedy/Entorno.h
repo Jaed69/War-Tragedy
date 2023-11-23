@@ -130,7 +130,6 @@ namespace WarTragedy {
 				Jg = new Juego();
 				Jg->setNivel(nivelAct);
 			}
-
 			this->Timer_Juego->Enabled = true;
 			this->Timer_Eventos->Enabled = true;
 			delete pausa;
