@@ -14,7 +14,6 @@ public:
 
 	void T_Evento(Jugador* ju) {
 		t_evento++; 
-		if (indXlibro == 16)indXlibro = 0;
 	}
 
 	void crearObj() {
@@ -42,10 +41,11 @@ public:
 
 	}
 	void animarlibro(BufferedGraphics^ bg) {
-		if (indXlibro <= 16)indXlibro += 1;
+		if (indXlibro < 16)indXlibro += 1;
 		Bitmap^ libroro = gcnew Bitmap("assets/Nivel/librooo.png");
 		Rectangle arealibro = Rectangle(indXlibro * 1280, 0, 1280, 720);
-		Rectangle libror = Rectangle(1, 1, 1280, 720);
+		Rectangle libror = Rectangle(1, 1, 1280, 720); 
+		bg->Graphics->DrawImage(libroro, libror, arealibro, GraphicsUnit::Pixel);
 		delete libroro;
 	}
 	void colisiones(BufferedGraphics^bg, Jugador*ju) {
@@ -53,6 +53,9 @@ public:
 			if (obj.at(i)->Colision(ju->getFHB())) {
 				if (obj.at(i)->getTipo() == estanteria) {
 					animarlibro(bg);
+				}
+				else {
+					indXlibro = 0;
 				}
 				if (obj.at(i)->getTipo() == mesa) {
 					ju->setdx(0);
