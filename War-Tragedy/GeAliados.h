@@ -30,6 +30,7 @@ public:
 		if (t_evento % 50 == 0) {
 			crearRandomPower(margen);
 		}*/
+		colmonitoconpup();
 		colPUp(ju, margen);
 
 	}
@@ -173,7 +174,15 @@ public:
 				}
 				else return false;
 			}
-		
+	}
+	void colmonitoconpup() {		
+			for (int i = 0; i < Monos.size(); i++) {
+				for (int j = 0; j < Powers.size(); j++) {
+					if (Monos.at(i)->Colision(Powers.at(j)->getHB())) {
+						//agregar aqui que dispare o que se yo abjidhjkvasbhkd						
+					}					
+				}
+			}		
 	}
 
 	void DispararMono() {
