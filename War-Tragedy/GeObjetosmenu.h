@@ -54,9 +54,6 @@ public:
 				if (obj.at(i)->getTipo() == estanteria) {
 					animarlibro(bg);
 				}
-				else {
-					indXlibro = 0;
-				}
 				if (obj.at(i)->getTipo() == mesa) {
 					ju->setdx(0);
 					ju->setdy(0);
