@@ -27,14 +27,14 @@ public:
 		t_evento++;
 		geEs->T_Evento(jugador);
 
-
+		/*
 		if (jugador->getDash() == false) {
 
 			if (t_evento > 5) {
 				t_evento = 0;
 				jugador->setDash(true);
 			}
-		}
+		}*/
 	}
 
 	void setNivel(Niveles nivel) { geEs->setNivel(nivel); }
@@ -75,12 +75,12 @@ public:
 			case Keys::S: jugador->setDireccion(Abajo); break;
 			case Keys::D: jugador->setDireccion(Derecha); break;
 
-			case Keys::Space:
+			/*case Keys::Space:
 				if (jugador->getDash()) {
 					jugador->setDireccion(Dash);
 					jugador->setDash(false);
 				}
-				break;
+				break;*/
 			case Keys::Enter:
 				if (geEs->getNivel() == habitacionS) {
 					switch (geEs->getNivel0()->getgeOb()->colisionmenu(jugador))
