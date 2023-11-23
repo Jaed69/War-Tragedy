@@ -6,7 +6,7 @@ private:
 	vector<Bala*> vBala;
 	bool estatico;
 public:
-	Soldado(int x, int y) :Entidad(x, y, 32, 48, 1) {//poner ancho alto bien y determinar vida
+	Soldado(int x, int y) :Entidad(x, y, 32, 48, 10) {//poner ancho alto bien y determinar vida
 		estatico = false;
 		if (x <= 256 && y + alto <= 144)direccion = AbDer;
 		else if (x >= 768 && y + alto <= 144)direccion = AbIzq;

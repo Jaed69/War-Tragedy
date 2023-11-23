@@ -8,7 +8,7 @@ private:
 	Sentido sentido;
 public:
 	Helicoptero() {}
-	Helicoptero(int x, int y) :Entidad(x, y, 40, 40, 1) {//poner ancho alto bien y determinar vida
+	Helicoptero(int x, int y) :Entidad(x, y, 40, 40, 15) {//poner ancho alto bien y determinar vida
 		Random r;
 		if (r.Next(100) % 2 == 0)
 			sentido = antihorario;

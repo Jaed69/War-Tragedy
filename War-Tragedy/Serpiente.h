@@ -21,7 +21,7 @@ public:
 		indX = 4;
 		indY = 2;
 		aumento = 1;
-		vel = 3;
+		vel = 6;
 		Rx = ancho/2;
 		Ry = 0;
 		Rancho = ancho/2;
