@@ -70,7 +70,7 @@ public:
 			if (nivel3->verTer()) {
 				ju->setx(620);
 				ju->sety(404);
-				nivel = FinalM;
+				nivel = FinalB;
 			}
 			break;
 		case FinalM:
