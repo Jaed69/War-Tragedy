@@ -171,6 +171,7 @@ namespace WarTragedy {
 	}
 	private: System::Void MyForm_KeyDown(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 		Jg->movJugador(true, e->KeyCode);
+		if(e->KeyCode==Keys::L) Jg.nivel
 	}
 private: System::Void MyForm_KeyUp(System::Object^ sender, System::Windows::Forms::KeyEventArgs^ e) {
 	Jg->movJugador(false, e->KeyCode);

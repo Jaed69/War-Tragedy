@@ -10,3 +10,4 @@ using namespace System::Media;
 
 enum Direcciones { Ninguna, Abajo, Arriba, Izquierda, Derecha, ArrDer, ArrIzq, AbDer, AbIzq, Dash };
 enum Niveles { NTejado, NEdificio, NPrado, FinalM, FinalB, FinalBS, FinalMS, habitacionS };
+enum Seleccion { ninguna, nnivel1, nnivel2, nnivel3, partidaG };

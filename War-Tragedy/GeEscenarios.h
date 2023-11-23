@@ -32,6 +32,12 @@ public:
 
 	~GeEscenarios(){}
 
+	void seleccionarnivel() {
+		if (nivel0->getNivel() == nnivel1) setNivel(NTejado);
+		if (nivel0->getNivel() == nnivel2) setNivel(NEdificio);
+		if (nivel0->getNivel() == nnivel3) setNivel(NTejado);
+	}
+
 	void T_Evento(Jugador* ju) {
 		t_evento++;
 

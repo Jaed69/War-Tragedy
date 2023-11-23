@@ -1,6 +1,6 @@
 #pragma once
 #include "Entidad.h"
-enum objM{papel1,papel2,papel3,papel4,papel5,estanteria,info,mesa, notas};
+enum objM{papel1,papel2,papel3,papel4,estanteria,info,mesa, notas};
 class objetosMenu : public Entidad {
 private:
 	objM tipo;
@@ -35,10 +35,6 @@ public:
 		case papel4:
 			ancho = Rancho = 45;
 			alto = Ralto = 36;
-			break;
-		case papel5:
-			ancho = Rancho = 45;
-			alto = Ralto = 35;
 			break;
 		case estanteria:
 			ancho = Rancho = 250;
