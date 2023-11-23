@@ -84,25 +84,25 @@ public:
 		if (sArriba < sLimArriba) {
 			_y = 1; _x = r.Next(1, 1245);
 			sArriba += 1;
-			Soldado* sol = new Soldado(_x, _y,3);
+			Soldado* sol = new Soldado(_x, _y);
 			soldados.push_back(sol);
 		}
 		else if (sAbajo < sLimAbajo) {
 			_y = 669; _x = r.Next(1, 1245);
 			sAbajo += 1;
-			Soldado* sol = new Soldado(_x, _y,4);
+			Soldado* sol = new Soldado(_x, _y);
 			soldados.push_back(sol);
 		}
 		else if (sDerecha < sLimDerecha) {
 			_x = 1244; _y = r.Next(1, 670);
 			sDerecha += 1;
-			Soldado* sol = new Soldado(_x, _y,1);
+			Soldado* sol = new Soldado(_x, _y);
 			soldados.push_back(sol);
 		}
 		else if (sIzquierda < sLimIzquierda) {
 			_x = 1; _y = r.Next(1, 670);
 			sIzquierda += 1;
-			Soldado* sol = new Soldado(_x, _y,2);
+			Soldado* sol = new Soldado(_x, _y);
 			soldados.push_back(sol);
 		}
 		
