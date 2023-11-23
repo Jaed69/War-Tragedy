@@ -12,6 +12,8 @@ private:
 
 	int t_evento;
 
+	bool n1, n2, n3;
+
 public:
 	Juego() {
 		jugador = new Jugador(620, 404);
@@ -19,6 +21,7 @@ public:
 		iu = new UI();
 
 		t_evento = 0;
+		n1 = n2 = n3 = false;
 	}
 
 	~Juego() {}
@@ -36,6 +39,14 @@ public:
 			}
 		}*/
 	}
+
+	bool getN1() { return n1; }
+	bool getN2() { return n2; }
+	bool getN3() { return n3; }
+
+	void setN1(bool n1) { this->n1 = n1; }
+	void setN2(bool n2) { this->n2 = n2; }
+	void setN3(bool n3) { this->n3 = n3; }
 
 	void setNivel(Niveles nivel) { geEs->setNivel(nivel); }
 	Niveles getNivel() { return geEs->getNivel(); }
@@ -88,13 +99,13 @@ public:
 					case papel1:
 						break;
 					case papel2:
-						geEs->setNivel(NTejado);
+						n1 = true;
 						break;
 					case papel3:
-						geEs->setNivel(NEdificio);
+						n2 = true;
 						break;
 					case papel4:
-						geEs->setNivel(NPrado);
+						n3 = true;
 						break;
 					case estanteria:
 						//nose
