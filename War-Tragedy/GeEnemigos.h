@@ -32,7 +32,7 @@ public:
 		t_evento = 0;
 		sArriba = sAbajo = sDerecha = sIzquierda = 0;
 		sLimArriba = sLimAbajo = sLimDerecha = sLimIzquierda = 3;
-		cantHeli = 0; limCantHeli = 2;
+		cantHeli = 0; limCantHeli = 3;
 		lim_hel = 2;
 	}
 	~GeEnemigos() {}

@@ -1,5 +1,6 @@
 #pragma once
 #include "GeObjetosmenu.h"
+#include "Recursos.h"
 
 class HabitacionS {
 private:
@@ -23,6 +24,7 @@ private:
 	Rectangle animacion;
 	int indXa;
 	bool intro;
+	bool play;
 public:
 	HabitacionS() {
 		t_evento = 0;
@@ -42,8 +44,12 @@ public:
 		explorar = Rectangle(460, 26, 382, 80);
 		nivelSeleccionado = geO->getSeleccion();
 		intro = true;
+		play = true;
 		animacion = Rectangle(0, 0, 1280, 720);
 		indXa = 0;
+
+		
+
 	}
 	~HabitacionS() {}
 
@@ -55,8 +61,13 @@ public:
 	//Zona para la creacion de eventos segun el tiempo
 	void T_Evento(Jugador* ju) {//añadir jugador
 		t_evento++;
+		SoundPlayer^ Sintro = gcnew SoundPlayer("assets/Nivel/Intro.wav");
+		
+		if(t_evento==18)Sintro->Play();
+
 		if (intro && t_evento >= 1 && indXa < 39) {
 			indXa++;
+			
 		}
 		else if (intro && t_evento >= 1 && indXa == 39) {
 			indXa = 0;
@@ -64,6 +75,7 @@ public:
 			intro = false;
 		}
 		if (!intro) {
+			Sintro->Stop();
 			geO->T_Evento(ju);
 			if (t_evento == 1) geO->crearObj();
 			if (indXi < 60 && t_evento % 1 == 0)indXi++;
@@ -72,6 +84,11 @@ public:
 			if (indXi == 60 && t_evento % 50 == 0)indXi++;
 		}
 
+		delete Sintro;
+	}
+
+	void introMusic() {
+
 	}
 
 	Seleccion getNivel() { return nivelSeleccionado; }
@@ -79,6 +96,8 @@ public:
 	Rectangle getBorde() { return borde; }
 
 	void animarFn(BufferedGraphics^ bf) {
+		
+
 		Bitmap^ fondo = gcnew Bitmap("assets/Nivel/cuarto.png");
 		Bitmap^ infoo = gcnew Bitmap("assets/Nivel/info.png");
 		Bitmap^ infonot = gcnew Bitmap("assets/Nivel/exclamacion.png");
@@ -106,7 +125,6 @@ public:
 			bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), margen);
 
 		}
-
 		delete explorarr;
 		delete fondo;
 		delete infoo;

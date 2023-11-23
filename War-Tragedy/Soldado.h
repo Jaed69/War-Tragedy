@@ -7,7 +7,7 @@ private:
 	bool estatico;
 	int dir; //1derecha 2izquierda 3arriba 4abajo
 public:
-	Soldado(int x, int y,int a) :Entidad(x, y, 32, 48, 1) {//poner ancho alto bien y determinar vida
+	Soldado(int x, int y) :Entidad(x, y, 32, 48, 10) {//poner ancho alto bien y determinar vida
 		estatico = false;
 		this->dir = dir;
 		if (x <= 256 && y + alto <= 144)direccion = AbDer;
