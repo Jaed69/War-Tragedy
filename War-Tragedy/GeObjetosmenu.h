@@ -15,10 +15,10 @@ public:
 		indX = 0;
 		seleccion = ninguna;
 	}
-	~GeObjetosM(){}
+	~GeObjetosM() {}
 
 	void T_Evento(Jugador* ju) {
-		t_evento++; 
+		t_evento++;
 	}
 
 	void setseleccion(Seleccion seleccion) { this->seleccion = seleccion; }
@@ -43,8 +43,8 @@ public:
 	}
 	void animarnotitas(BufferedGraphics^ bf, int i) {
 		Bitmap^ notaa = gcnew Bitmap("assets/Nivel/papel.png");
-		Rectangle areanotas = Rectangle(i * 366,0, 366, 414);
-		Rectangle notas = Rectangle(100, 360, 366*0.75, 0.75*414);
+		Rectangle areanotas = Rectangle(i * 366, 0, 366, 414);
+		Rectangle notas = Rectangle(100, 360, 366 * 0.75, 0.75 * 414);
 		bf->Graphics->DrawImage(notaa, notas, areanotas, GraphicsUnit::Pixel);
 		delete notaa;
 
@@ -53,7 +53,7 @@ public:
 		/*if (indXlibro < 16)indXlibro += 1;*/
 		Bitmap^ libroro = gcnew Bitmap("assets/Nivel/libro.png");
 		Rectangle arealibro = Rectangle(i * 800, 0, 800, 400);
-		Rectangle libror = Rectangle(230, 290, 800, 400); 
+		Rectangle libror = Rectangle(230, 290, 800, 400);
 		bg->Graphics->DrawImage(libroro, libror, arealibro, GraphicsUnit::Pixel);
 		delete libroro;
 	}
@@ -95,7 +95,7 @@ public:
 	}
 
 
-	void colisiones(BufferedGraphics^bg, Jugador*ju) {
+	void colisiones(BufferedGraphics^ bg, Jugador* ju) {
 		for (int i = 0; i < obj.size(); i++) {
 			if (obj.at(i)->Colision(ju->getFHB())) {
 				if (obj.at(i)->getTipo() == estanteria) {
