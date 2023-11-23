@@ -5,7 +5,7 @@
 class Jugador:public Entidad
 {
 private:
-	bool dash;
+	//bool dash;
 	vector<Bala*> vBala;
 	int ammo;
 	int t_evento;
@@ -17,7 +17,7 @@ public:
 		indX = 4;
 		indY = 2;
 		aumento = 1;
-		dash = true;
+		//dash = true;
 		vel = 8;
 		Rx = 10; Ry = 9;
 		Rancho = 10;
@@ -31,8 +31,8 @@ public:
 
 	~Jugador(){}
 
-	bool getDash() { return this->dash; }
-	void setDash(bool dash) { this->dash = dash; }
+	//bool getDash() { return this->dash; }
+	//void setDash(bool dash) { this->dash = dash; }
 	int getchaleco() { return this->chaleco; }
 	void setchaleco(int chaleco) { this->chaleco = chaleco; }
 	int getbulletsize() { return vBala.size(); }
@@ -162,6 +162,7 @@ public:
 			
 			break;
 
+		/*
 		case Dash: // nose como arreglar pipipi //podemos hacer q muera cuando se sale para no tener q corregir nada xdxdxdxdxdxdxdxdxdxdxd
 			switch (ultDireccion) {
 			case Arriba:
@@ -204,7 +205,7 @@ public:
 					ultDireccion = Izquierda;
 				}
 				break;
-			}
+			}*/
 		
 		}
 		dibujar(bg, bm);

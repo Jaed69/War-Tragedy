@@ -27,14 +27,14 @@ public:
 		t_evento++;
 		geEs->T_Evento(jugador);
 
-
+		/*
 		if (jugador->getDash() == false) {
 
 			if (t_evento > 5) {
 				t_evento = 0;
 				jugador->setDash(true);
 			}
-		}
+		}*/
 	}
 
 	void setNivel(Niveles nivel) { geEs->setNivel(nivel); }
@@ -75,16 +75,37 @@ public:
 			case Keys::S: jugador->setDireccion(Abajo); break;
 			case Keys::D: jugador->setDireccion(Derecha); break;
 
-			case Keys::Space:
+			/*case Keys::Space:
 				if (jugador->getDash()) {
 					jugador->setDireccion(Dash);
 					jugador->setDash(false);
 				}
-				break;
-
-			default:
-				break;
-
+				break;*/
+			case Keys::Enter:
+				if (geEs->getNivel() == habitacionS) {
+					switch (geEs->getNivel0()->getgeOb()->colisionmenu(jugador))
+					{
+					case papel1:
+						break;
+					case papel2:
+						geEs->setNivel(NTejado);
+						break;
+					case papel3:
+						geEs->setNivel(NEdificio);
+						break;
+					case papel4:
+						geEs->setNivel(NPrado);
+						break;
+					case estanteria:
+						//nose
+						break;
+					case mesa:
+						//guadar?
+						break;
+					default:
+						break;
+					}
+				}
 			}
 		}
 		else {
@@ -102,7 +123,7 @@ public:
 		geEs->Escenario(bf, jugador);
 		switch (geEs->getNivel())
 		{
-		case habitacionS:animarPl(bf); break;
+		case habitacionS:if(t_evento>=40)animarPl(bf); break;
 		case NTejado:
 		case NPrado:
 		case NEdificio:
