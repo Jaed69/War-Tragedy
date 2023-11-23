@@ -63,6 +63,7 @@ public:
 		Rectangle areaG = Rectangle(indX * 1280, 0, 1280, 720);
 		Rectangle aumento = Rectangle(0, 0, 1280, 720);
 		bg->Graphics->DrawImage(general, aumento, areaG, GraphicsUnit::Pixel);
+		delete general;
 	}
 	void colisiones(BufferedGraphics^bg, Jugador*ju) {
 		for (int i = 0; i < obj.size(); i++) {
