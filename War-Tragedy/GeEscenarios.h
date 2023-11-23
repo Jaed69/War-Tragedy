@@ -183,10 +183,7 @@ public:
 			esce->animarFinal(bf, tecla);
 			break;
 		case FinalB:
-			break;
-		case FinalMS:
-			break;
-		case FinalBS:
+			esce->animarFiB(bf);
 			break;
 		default:
 			break;

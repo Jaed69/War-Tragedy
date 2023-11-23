@@ -9,6 +9,8 @@ private:
 	Rectangle borde;
 
 	bool termino;
+	bool secreto;
+
 public:
 	Escena() {
 		t_evento = 0;
@@ -16,6 +18,7 @@ public:
 		borde = Rectangle(0, 0, 1280, 720);
 
 		termino = false;
+		secreto = false;
 	}
 
 	~Escena() {}
@@ -43,5 +46,18 @@ public:
 
 		delete rex; delete rpa;
 	}
+
+	void animarFiB(BufferedGraphics^ bf) {
+		Bitmap^ fs = gcnew Bitmap("assets/PF/finalSolo.png");
+		Bitmap^ fm = gcnew Bitmap("assets/PF/finalMono.png");
+
+		if (secreto) 
+			bf->Graphics->DrawImage(fm, borde, borde, GraphicsUnit::Pixel);
+		else 
+			bf->Graphics->DrawImage(fs, borde, borde, GraphicsUnit::Pixel);
+
+		delete fs; delete fm;
+	}
+
 
 };
