@@ -1,6 +1,6 @@
 #pragma once
 #include "GeObjetosmenu.h"
-#include "Archivo.h"
+
 class HabitacionS {
 private:
 	int t_evento;

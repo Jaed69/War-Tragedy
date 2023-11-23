@@ -86,7 +86,7 @@ public:
 			arch.close();
 		}
 	}
-	
+
 	void load(Juego* ju) {
 		archl.open("guardar.txt", ios::in);
 
@@ -147,7 +147,7 @@ public:
 		}
 
 		ju->setT_Evento(t_evento);
-	
+
 	}
 
 };
