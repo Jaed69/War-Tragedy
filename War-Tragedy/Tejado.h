@@ -63,8 +63,8 @@ public:
 
 		bf->Graphics->DrawImage(fondo, borde, borde, GraphicsUnit::Pixel);
 
-		bf->Graphics->DrawRectangle(gcnew Pen(Color::Red), borde);
-		bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), margen);
+		//bf->Graphics->DrawRectangle(gcnew Pen(Color::Red), borde);
+		//bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), margen);
 		delete fondo;
 	}
 
