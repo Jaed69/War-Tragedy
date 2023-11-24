@@ -30,7 +30,6 @@ public:
 	}
 
 	bool getEstatico() { return estatico; }
-
 	void apuntarJugador(int jx, int jy) {
 		if (x == jx && jy < y) ultDireccion = Arriba;
 		if (x == jx && jy > y) ultDireccion = Abajo;

@@ -214,6 +214,10 @@ public:
 				soldados.at(i)->mover(bg, con);
 			else {
 				crearExplosion(soldados.at(i)->getx(), soldados.at(i)->gety());
+				if (soldados.at(i)->getx() <=256&&sDerecha - 1 >= 0)sDerecha--;
+				else if (soldados.at(i)->getx() >= 768 && sIzquierda-1>=0)sIzquierda--;
+				else if (soldados.at(i)->gety() <= 144&&sArriba - 1 >= 0)sArriba--;
+				else if (soldados.at(i)->gety() >= 432&&sAbajo - 1 >= 0)sAbajo--;
 				soldados.erase(soldados.begin() + i);
 			}
 
