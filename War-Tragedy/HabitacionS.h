@@ -121,8 +121,8 @@ public:
 			bf->Graphics->DrawImage(infonot, info4, areaexclamacion, GraphicsUnit::Pixel);
 			bf->Graphics->DrawImage(infonot, info5, areaexclamacion, GraphicsUnit::Pixel);
 			bf->Graphics->DrawImage(infonot, info6, areaexclamacion, GraphicsUnit::Pixel);
-			bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), borde);
-			bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), margen);
+			//bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), borde);
+			//bf->Graphics->DrawRectangle(gcnew Pen(Color::Orange), margen);
 
 		}
 		delete explorarr;
