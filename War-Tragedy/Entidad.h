@@ -105,7 +105,8 @@ public:
 		bg->Graphics->DrawRectangle(gcnew Pen(Color::Blue), hitbox);
 		bg->Graphics->DrawRectangle(gcnew Pen(Color::Red), zonaAumento);
 		bg->Graphics->DrawImage(bm, zonaAumento, area, GraphicsUnit::Pixel);
-		if (vida <= 0) activo = false;		
+		if (vida <= 0) activo = false;
+		else activo = true;
 		
 		/*if (vida <= 0) {
 			explosion = true; 

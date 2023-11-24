@@ -12,7 +12,7 @@ private:
 
 	int t_evento;
 
-	bool n1, n2, n3;
+	bool n1, n2, n3, g1;
 
 public:
 	Juego() {
@@ -21,7 +21,7 @@ public:
 		iu = new UI();
 
 		t_evento = 0;
-		n1 = n2 = n3 = false;
+		n1 = n2 = n3 = g1 = false;
 	}
 
 	~Juego() {}
@@ -43,10 +43,12 @@ public:
 	bool getN1() { return n1; }
 	bool getN2() { return n2; }
 	bool getN3() { return n3; }
+	bool getG1() { return g1; }
 
 	void setN1(bool n1) { this->n1 = n1; }
 	void setN2(bool n2) { this->n2 = n2; }
 	void setN3(bool n3) { this->n3 = n3; }
+	void setG1(bool g1) { this->g1 = g1; }
 
 	void setNivel(Niveles nivel) { geEs->setNivel(nivel); }
 	Niveles getNivel() { return geEs->getNivel(); }
@@ -111,7 +113,7 @@ public:
 						//nose
 						break;
 					case mesa:
-						//guadar?
+						g1 = true;
 						break;
 					default:
 						break;

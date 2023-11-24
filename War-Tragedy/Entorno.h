@@ -19,7 +19,7 @@ namespace WarTragedy {
 	public ref class Entorno : public System::Windows::Forms::Form
 	{
 	private:
-		Juego* Jg;
+		Juego* Jg = new Juego();
 		Niveles nivel = NTejado;
 		Niveles nivelAct;
 		Pausa^ pausa;
@@ -34,6 +34,7 @@ namespace WarTragedy {
 		   
 	public:
 		void setNivel(Niveles nivel) { this->nivel = nivel; }
+		void setPartida(Juego* ju) { this->Jg = ju; }
 
 		Entorno(void)
 		{
@@ -41,7 +42,6 @@ namespace WarTragedy {
 			//
 			//TODO: agregar código de constructor aquí
 			//
-			Jg = new Juego();
 		}
 
 	protected:

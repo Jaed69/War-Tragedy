@@ -87,6 +87,7 @@ public:
 		case FinalM:
 			break;
 		case FinalB:
+
 			break;
 		case FinalMS:
 			break;
@@ -152,6 +153,7 @@ public:
 			{
 			case Keys::W:
 				ju->setvida(100);
+				ju->setchaleco(100);
 				nivel = NTejado;
 				break;
 			case Keys::S:
@@ -161,6 +163,7 @@ public:
 				break;
 			}
 			break;
+
 		default:
 			break;
 		}

@@ -2,6 +2,8 @@
 
 #include "Entorno.h"
 #include "Juego.h"
+#include "Archivo.h"
+
 namespace WarTragedy {
 
 	using namespace System;
@@ -19,6 +21,7 @@ namespace WarTragedy {
 	private:
 		Juego* Jg;
 		Niveles nivel = habitacionS;
+		Archivo* arch = new Archivo;
 	public:
 		MyForm(void)
 		{
@@ -131,6 +134,19 @@ namespace WarTragedy {
 			juego->ShowDialog();
 			Jg->setN3(false);
 			this->timer1->Enabled = true;
+			delete juego;
+		}
+		else if (Jg->getG1()) {
+			Entorno^ juego = gcnew Entorno();
+			Juego* jguar = new Juego;
+			arch->load(jguar);
+			juego->setNivel(arch->getN());
+			juego->setPartida(jguar);
+			this->timer1->Enabled = false;
+			juego->ShowDialog();
+			Jg->setG1(false);
+			this->timer1->Enabled = true;
+			delete jguar;
 			delete juego;
 		}
 

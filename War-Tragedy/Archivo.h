@@ -18,10 +18,13 @@ class Archivo {
 	int direcion;
 	int ultdirecion;
 	int t_evento;
+	Niveles niv;
 
 public:
 	Archivo() {}
 	~Archivo() {}
+
+	Niveles getN() { return niv; }
 
 	void save(Juego* ju) {
 		vida = ju->getVidaJu();
@@ -108,12 +111,18 @@ public:
 		ju->setYJu(Y);
 		switch (nivel) {
 		case 0:
-			ju->setNivel(NTejado); break;
+			ju->setNivel(NTejado);
+			niv = NTejado;
+			break;
 		case 1:
-			ju->setNivel(NEdificio); break;
+			ju->setNivel(NEdificio);
+			niv = NEdificio;
+			break;
 		case 2:
+			niv = NPrado;
 			ju->setNivel(NPrado); break;
 		default:
+			niv = FinalM;
 			ju->setNivel(FinalM); break;
 			break;
 		}
